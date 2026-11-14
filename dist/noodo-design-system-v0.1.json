@@ -1,0 +1,593 @@
+{
+  "schemaVersion": "noodo.design-system/0.1",
+  "status": "draft",
+  "exportedAt": "2026-11-14T14:38:07.402Z",
+  "source": {
+    "document": "NOODO_Dossier_Integral_Noviembre_2026.pdf",
+    "identityPages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "notes": "Valores base del dossier; reglas UI propuestas. Eventos propios NOODO; boletería posterior."
+  },
+  "tokens": {
+    "cream": "#F5F2E9",
+    "lavender": "#A995B8",
+    "coal": "#111111",
+    "graphite": "#2E2E2E",
+    "fog": "#77747A",
+    "radius": 16,
+    "font": "system"
+  },
+  "semanticTokens": {
+    "background": {
+      "canvas": "{coal}",
+      "surface": "#1B1A1D",
+      "raised": "{graphite}"
+    },
+    "text": {
+      "primary": "{cream}",
+      "secondary": "#BCB7C2",
+      "onAction": "{coal}"
+    },
+    "action": {
+      "primary": "{lavender}"
+    },
+    "border": {
+      "control": "#817987",
+      "subtle": "#3C3941"
+    },
+    "feedback": {
+      "success": "#91D6AE",
+      "warning": "#E7C482",
+      "danger": "#F29C9C",
+      "info": "#9DC9EC"
+    }
+  },
+  "foundations": {
+    "spacing": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "radii": {
+      "field": 8,
+      "card": 16,
+      "panel": 24,
+      "pill": 999
+    },
+    "touchTarget": 44,
+    "typography": {
+      "reference": "PP Neue Montreal (dossier p. 9)",
+      "preview": "system",
+      "status": "Pending official webfont files",
+      "scale": {
+        "display": {
+          "desktop": [
+            64,
+            68
+          ],
+          "mobile": [
+            40,
+            44
+          ],
+          "weight": 600
+        },
+        "title": {
+          "desktop": [
+            40,
+            44
+          ],
+          "mobile": [
+            32,
+            38
+          ],
+          "weight": 600
+        },
+        "heading": {
+          "size": 28,
+          "lineHeight": 34,
+          "weight": 600
+        },
+        "body": {
+          "size": 16,
+          "lineHeight": 26,
+          "weight": 400
+        },
+        "label": {
+          "size": 14,
+          "lineHeight": 20,
+          "weight": 600
+        },
+        "caption": {
+          "size": 12,
+          "lineHeight": 18,
+          "weight": 400
+        }
+      }
+    },
+    "breakpoints": {
+      "mobile": 0,
+      "tablet": 768,
+      "desktop": 1024
+    },
+    "motion": {
+      "fast": 120,
+      "standard": 180,
+      "surface": 240,
+      "reducedMotion": "disable nonessential motion"
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · hover · foco · activo · carga · inactivo",
+      "contract": "Etiqueta verbal; área táctil 44 px; icono opcional.",
+      "section": "ui"
+    },
+    {
+      "name": "IconButton",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · foco · activo · inactivo",
+      "contract": "Nombre accesible; icono 20–24 px; objetivo 44 px.",
+      "section": "ui"
+    },
+    {
+      "name": "TextLink",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · hover · foco · visitado",
+      "contract": "Subrayado en texto; destino explícito; externo identificado.",
+      "section": "ui"
+    },
+    {
+      "name": "TextField / Search",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Vacío · completado · error · lectura · inactivo",
+      "contract": "Etiqueta persistente, ayuda e ID de error; nunca solo placeholder.",
+      "section": "ui"
+    },
+    {
+      "name": "Textarea",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Vacío · completado · error · límite",
+      "contract": "Texto de ayuda, contador si hay máximo; conservar contenido al fallar.",
+      "section": "ui"
+    },
+    {
+      "name": "Select",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Vacío · selección · foco · inactivo",
+      "contract": "Control nativo como base; selección múltiple requiere patrón propio.",
+      "section": "ui"
+    },
+    {
+      "name": "Checkbox / Radio",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Sin selección · seleccionado · foco · inactivo",
+      "contract": "Grupos con leyenda; consentimiento nunca premarcado.",
+      "section": "ui"
+    },
+    {
+      "name": "Switch",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Encendido · apagado · inactivo",
+      "contract": "Etiqueta estable; anunciar estado; acción inmediata y reversible.",
+      "section": "ui"
+    },
+    {
+      "name": "Range",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · arrastre · foco · inactivo",
+      "contract": "Valor y unidad; flechas del teclado; alternativa visible al gesto.",
+      "section": "music"
+    },
+    {
+      "name": "Chip / Filter",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Todos · seleccionado · removible · inactivo",
+      "contract": "Texto + estado aria-pressed; filtros visibles; permitir limpiar.",
+      "section": "ui"
+    },
+    {
+      "name": "Badge",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Informativo · éxito · aviso · error",
+      "contract": "Estado escrito; nunca comunicar solo mediante color.",
+      "section": "states"
+    },
+    {
+      "name": "Avatar",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Imagen · iniciales · sin imagen",
+      "contract": "Recorte circular; iniciales accesibles; sin foto falsa del artista.",
+      "section": "music"
+    },
+    {
+      "name": "Tooltip",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Oculto · hover · foco · Escape",
+      "contract": "Solo ayuda breve; no alojar información esencial.",
+      "section": "ui"
+    },
+    {
+      "name": "Tabs",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Activo · inactivo · foco",
+      "contract": "Flechas izquierda/derecha, Home/End y panel asociado.",
+      "section": "ui"
+    },
+    {
+      "name": "Navigation / Menu",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Actual · foco · desplegado",
+      "contract": "Un patrón por contexto; enlace actual marcado; cierre con Escape.",
+      "section": "ui"
+    },
+    {
+      "name": "Breadcrumb",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Enlace · ubicación actual",
+      "contract": "Ubicación actual sin enlace; separadores decorativos.",
+      "section": "ui"
+    },
+    {
+      "name": "Pagination",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Primera · intermedia · última · carga",
+      "contract": "Página actual anunciada; anterior/siguiente con destino; conservar filtros.",
+      "section": "ui"
+    },
+    {
+      "name": "Accordion",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Cerrado · abierto · foco",
+      "contract": "Encabezado accionable; contenido permanece en orden de lectura.",
+      "section": "ui"
+    },
+    {
+      "name": "Dialog / Drawer",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Abierto · cerrado · confirmación",
+      "contract": "Foco contenido; Escape; botón cerrar; devolver foco al origen.",
+      "section": "ui"
+    },
+    {
+      "name": "Toast / Alert",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Éxito · error · información · aviso",
+      "contract": "Mensaje claro; errores persistentes; no ocultar acciones críticas en un toast.",
+      "section": "states"
+    },
+    {
+      "name": "Skeleton / Progress",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Cargando · listo · fallo",
+      "contract": "Reservar espacio; anunciar carga; indicador determinado solo con progreso real.",
+      "section": "states"
+    },
+    {
+      "name": "EmptyState",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Sin contenido · sin resultados · sin permiso",
+      "contract": "Explicar causa y acción disponible; no confundir vacío con error.",
+      "section": "states"
+    },
+    {
+      "name": "Error / Offline",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Red · servidor · no disponible · reintento",
+      "contract": "Conservar formulario y contexto; mensaje recuperable sin culpar a la persona.",
+      "section": "states"
+    },
+    {
+      "name": "ArtistCard",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Con foto · sin foto · nombre largo",
+      "contract": "Imagen 1:1; nombre, ciudad y estilo; acción separada de navegación.",
+      "section": "music"
+    },
+    {
+      "name": "ArtistIdentity",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Completo · incompleto · retirado",
+      "contract": "Avatar, nombre, ubicación y descripción; verificación solo si existe proceso.",
+      "section": "music"
+    },
+    {
+      "name": "ArtistBio / Credits",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Breve · extendido · sin créditos",
+      "contract": "Créditos y fuentes; enlaces autorizados; mostrar texto completo sin perder contexto.",
+      "section": "music"
+    },
+    {
+      "name": "ProviderEmbed",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Sin cargar · cargando · listo · bloqueado · fallo",
+      "contract": "Proveedor identificado; no autoplay; fallback externo de música; respetar controles nativos.",
+      "section": "music"
+    },
+    {
+      "name": "TrackRow",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Disponible · activa · inactiva · no disponible",
+      "contract": "Título, artista y duración cuando sea real; acción con nombre accesible.",
+      "section": "music"
+    },
+    {
+      "name": "PlayerControls",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Pausa · reproducción · carga · error",
+      "contract": "Contrato visual para integraciones; no prometer control de iframe sin API.",
+      "section": "music"
+    },
+    {
+      "name": "PlayerExpanded / Mini",
+      "family": "Música",
+      "scope": "Posterior",
+      "states": "Contraído · expandido · persistente",
+      "contract": "Solo si proveedor soporta API y continuidad; restaurar foco; no tapar contenido.",
+      "section": "music"
+    },
+    {
+      "name": "Queue / Repeat / Shuffle",
+      "family": "Música",
+      "scope": "Posterior",
+      "states": "Vacía · activa · reordenada",
+      "contract": "Requiere proveedor compatible; alternativas al arrastre; estados anunciados.",
+      "section": "inventory"
+    },
+    {
+      "name": "SessionVideo",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Poster · carga · reproducción · error",
+      "contract": "Subtítulos/transcripción cuando aplique; pausa, volumen y pantalla completa accesibles.",
+      "section": "music"
+    },
+    {
+      "name": "EventCard",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Anunciado · reprogramado · cancelado · finalizado",
+      "contract": "Evento creado en NOODO; fecha, zona horaria, lugar y estado; sin CTA de compra inicial.",
+      "section": "events"
+    },
+    {
+      "name": "DateBlock / Time",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Una fecha · rango · horario por confirmar",
+      "contract": "Formato legible en español; America/Bogota en datos; no fecha ambigua 03/04.",
+      "section": "events"
+    },
+    {
+      "name": "EventStatus",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Por confirmar · anunciado · reprogramado · cancelado · finalizado",
+      "contract": "Mostrar cambio, fecha actual y texto explicativo; no borrar cancelaciones sin aviso.",
+      "section": "events"
+    },
+    {
+      "name": "Lineup / Schedule",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Confirmado · por anunciar · modificado",
+      "contract": "Orden y hora si están confirmados; cartel del evento sin artistas inventados.",
+      "section": "events"
+    },
+    {
+      "name": "Venue / Location",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Con dirección · por confirmar · cambio de lugar",
+      "contract": "Nombre, dirección y acceso; enlace de mapa opcional, no enlace a compra de terceros.",
+      "section": "events"
+    },
+    {
+      "name": "Capacity / Admission",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Libre · registro posterior · por definir",
+      "contract": "No simular disponibilidad de entradas; requisitos de acceso en texto.",
+      "section": "events"
+    },
+    {
+      "name": "TicketType / Quantity",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Disponible · límite · agotado · selección",
+      "contract": "Nombre, moneda, precio y cargos desglosados; máximo y mínimo explícitos.",
+      "section": "events"
+    },
+    {
+      "name": "CheckoutSummary / Payment",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Revisión · procesando · pendiente · pagado · fallo",
+      "contract": "Importes coherentes; no cobro duplicado; pago pendiente distinto de confirmado.",
+      "section": "events"
+    },
+    {
+      "name": "DigitalTicket / QR",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Emitido · válido · usado · anulado",
+      "contract": "Código real solo con emisión; alternativa textual; legibilidad fuera de línea a definir.",
+      "section": "events"
+    },
+    {
+      "name": "Refund / Cancellation",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Solicitado · en revisión · aprobado · rechazado",
+      "contract": "Importe, estado, plazo informado y canal de ayuda; no prometer devolución instantánea.",
+      "section": "inventory"
+    },
+    {
+      "name": "CheckIn",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Válido · ya usado · inválido · sin conexión",
+      "contract": "Texto + icono + color; gestión de duplicados y reconexión; separado de la entrada del asistente.",
+      "section": "inventory"
+    },
+    {
+      "name": "EditorialCard",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Normal · patrocinado · sin imagen",
+      "contract": "Categoría, título, autor y fecha; identificar contenido patrocinado.",
+      "section": "editorial"
+    },
+    {
+      "name": "RichText / Quote / Credits",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Texto · cita · enlace · medios",
+      "contract": "Jerarquía h1–h3; texto legible 60–75 caracteres; crédito y pie de imagen.",
+      "section": "editorial"
+    },
+    {
+      "name": "MediaFrame",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "1:1 · 4:3 · 16:9 · 4:5 · 9:16",
+      "contract": "Punto focal editable; alt contextual; evitar texto incrustado en imágenes funcionales.",
+      "section": "editorial"
+    },
+    {
+      "name": "VenueCard / Space",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Completo · pendiente · no disponible",
+      "contract": "Tipo, ubicación y contacto autorizado; no mostrar abierto sin horario confiable.",
+      "section": "editorial"
+    },
+    {
+      "name": "MapPin / LocationList",
+      "family": "Contenido",
+      "scope": "Posterior",
+      "states": "Normal · seleccionado · agrupado",
+      "contract": "Mapa acompañado de lista accesible; no depender solo de posición o color.",
+      "section": "inventory"
+    },
+    {
+      "name": "ProfessionalCard / Connect",
+      "family": "Comunidad",
+      "scope": "Posterior",
+      "states": "Perfil · disponibilidad · contacto",
+      "contract": "Contacto autorizado; sin chat ni conexión social implícitos.",
+      "section": "editorial"
+    },
+    {
+      "name": "ParticipationForm",
+      "family": "Comunidad",
+      "scope": "Inicial",
+      "states": "Inicio · completado · enviando · enviado · error",
+      "contract": "Consentimiento independiente; conservar datos; límites de archivo y errores por campo.",
+      "section": "editorial"
+    },
+    {
+      "name": "Upload / Consent",
+      "family": "Comunidad",
+      "scope": "Inicial",
+      "states": "Vacío · subiendo · listo · rechazo",
+      "contract": "Tipo/tamaño permitidos; progreso real; permiso no equivale a transferencia de derechos.",
+      "section": "editorial"
+    },
+    {
+      "name": "Save / Follow / Share",
+      "family": "Comunidad",
+      "scope": "Posterior",
+      "states": "Sin guardar · guardado · compartido · error",
+      "contract": "No presentar seguidores falsos; definir cuenta o almacenamiento local antes de implementar.",
+      "section": "inventory"
+    },
+    {
+      "name": "ContentTable / Filters",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Borrador · revisión · publicado · retirado",
+      "contract": "Tabla semántica; búsqueda; acciones identificadas por registro.",
+      "section": "editorial"
+    },
+    {
+      "name": "ContentEditor / Preview",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Editando · guardando · guardado · conflicto",
+      "contract": "Campos requeridos, previsualización y advertencia de cambios sin guardar.",
+      "section": "inventory"
+    },
+    {
+      "name": "Publish / Schedule",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Borrador · revisión · programado · publicado",
+      "contract": "Permisos visibles; fecha y zona horaria; confirmación antes de retirar contenido.",
+      "section": "inventory"
+    },
+    {
+      "name": "Permission / Activity",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Permitido · sin acceso · sesión expirada",
+      "contract": "Explicar la acción no disponible; conservar cambios; historial de publicación.",
+      "section": "inventory"
+    }
+  ],
+  "notes": {
+    "palette": ""
+  },
+  "checks": {
+    "masters": false,
+    "typography": false,
+    "tokens": false,
+    "components": false,
+    "approval": false
+  },
+  "checklistMeaning": "Personal review only; does not represent joint approval."
+}
