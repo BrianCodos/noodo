@@ -1,0 +1,43 @@
+/* NOODO v0.2 — acento y glow actualizados el 15-11-2026. Base: dossier, p. 9. */
+:root {
+  --noodo-cream: #F5F2E9;
+  --noodo-lavender: #6F36E1;
+  --noodo-soft: #C397F4;
+  --noodo-coal: #160635;
+  --noodo-graphite: #2A1950;
+  --noodo-fog: #77747A;
+  --noodo-surface: #1E1040;
+  --noodo-text-secondary: #BCB7C2;
+  --noodo-border-control: #8C7AA6;
+  --noodo-border-subtle: #46335F;
+  --noodo-success: #91D6AE;
+  --noodo-warning: #E7C482;
+  --noodo-danger: #F29C9C;
+  --noodo-info: #9DC9EC;
+  --noodo-action: var(--noodo-lavender);
+  --noodo-on-action: #F5F2E9;
+  --noodo-soft-action: var(--noodo-soft);
+  --noodo-on-soft: #160635;
+  --noodo-accent-text: #B294E5;
+  --noodo-focus: var(--noodo-accent-text);
+  --noodo-glow-subtle: 0 0 16px color-mix(in srgb, var(--noodo-lavender) 14%, transparent);
+  --noodo-glow-interactive: 0 0 22px color-mix(in srgb, var(--noodo-lavender) 20%, transparent);
+  --noodo-glow-brand: 0 0 56px color-mix(in srgb, var(--noodo-lavender) 8%, transparent);
+  --noodo-font-preview: Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --noodo-radius-card: 16px;
+  --noodo-radius-field: 8px;
+  --noodo-radius-panel: 24px;
+  --noodo-target: 44px;
+  --noodo-space-4: 4px;
+  --noodo-space-8: 8px;
+  --noodo-space-12: 12px;
+  --noodo-space-16: 16px;
+  --noodo-space-24: 24px;
+  --noodo-space-32: 32px;
+  --noodo-space-48: 48px;
+  --noodo-space-64: 64px;
+  --noodo-motion-fast: 120ms;
+  --noodo-motion-standard: 180ms;
+  --noodo-motion-surface: 240ms;
+}
+/* Validar contraste después de cambiar la paleta. PP Neue Montreal no está incluida. */

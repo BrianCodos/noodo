@@ -1,0 +1,14 @@
+{
+  "tool": "Built-in image generation",
+  "purpose": "NOODO design system photography examples; fictional subjects",
+  "images": [
+    {
+      "name": "artist-portrait-v02",
+      "prompt": "Use case: photorealistic-natural. Asset type: photographic style specimen for NOODO, a music and culture design system rooted in Cali, Colombia. Generate one vertical 4:5 editorial portrait photograph, not a website or collage. Subject: a fictional adult Afro-Colombian woman electronic musician in her late 20s, natural curly hair, black understated clothing, large studio headphones resting around her neck. Candid quiet confident expression, three-quarter face, looking just off camera, waist-up framing with face in upper middle, room for a square crop. Environment: intimate music recording room, softly out-of-focus equipment behind. Lighting: restrained violet rim light inspired by #6F36E1, soft neutral-warm key light so skin stays natural and richly detailed, deep plum shadows inspired by #160635, tiny amber practical light in background. Real skin texture, subtle film grain, authentic documentary photography, 50mm lens, shallow depth of field. Muted environment with local luminous highlights, not a uniform purple filter. No text, logos, watermarks, UI, borders or typography. No recognizable real person or celebrity. No plastic skin, no glamour retouching, no exaggerated neon or cyberpunk props."
+    },
+    {
+      "name": "live-session-v02",
+      "prompt": "Use case: photorealistic-natural. Asset type: photographic style specimen for NOODO, a music and culture design system rooted in Cali, Colombia. Generate one wide landscape 16:9 editorial concert photograph, not a website or collage. An intimate live music session in an old cultural courtyard in Cali, terracotta floor, textured cream plaster and wooden doors, three fictional adult Colombian musicians: an Afro-Colombian marimba player, a woman guitarist and a hand percussionist, seen naturally performing together with a small audience at the lower frame edge. Camera at audience eye level, documentary mid-wide composition, human expressions and instruments plausible, faces visible, musicians clustered in middle two-thirds for flexible crops. Warm amber tungsten practical lights illuminate natural skin and wooden marimba; restrained violet accent illumination inspired by #6F36E1 on the walls and stage edges, deep plum shadows inspired by #160635. Rich cinematic low light, subtle grain, realistic texture and depth, not oversaturated, no uniform violet tint over skin. No readable signs, text, logos, watermarks, UI or typography. Not a real named venue or actual event. Avoid synthetic glossy faces, fantastical scenery, and stock-photo poses."
+    }
+  ]
+}
