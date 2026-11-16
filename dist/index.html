@@ -2,16 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#160635">
+  <meta name="theme-color" content="#110B1B">
   <meta name="description" content="Biblioteca visual y reglas de diseño de NOODO. Identidad, fundamentos y componentes en revisión.">
-  <title>NOODO — Design system 0.2</title>
-  <link rel="stylesheet" href="styles.css"><script defer src="content.js"></script><script defer src="app.js"></script>
-</head>
+  <script defer src="typography.js"></script><script defer src="player-rules.js?v=profile-18"></script><title>NOODO — Design system 0.3</title>
+  <link rel="stylesheet" href="styles.css"><script defer src="content.js"></script><script defer src="player-lab.js?v=profile-18"></script><script defer src="app.js?v=profile-18"></script>
+<link rel="stylesheet" href="typography.css"></head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <aside class="sidebar" aria-label="Navegación del design system">
   <a class="wordmark" href="#overview" aria-label="NOODO, inicio del catálogo">NOODO<span class="mark-dot"></span></a>
-  <div class="sidebar-sub">DESIGN SYSTEM <span>0.2</span></div>
+  <div class="sidebar-sub">Design system <span>0.3</span></div>
   <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un componente" aria-label="Buscar un componente"></label>
   <nav id="navigation"></nav>
   <div class="sidebar-bottom"><span class="status-dot"></span> Versión para revisión<br><small>Marca + producto digital<br>15 de noviembre de 2026</small></div>
@@ -19,13 +19,13 @@
 <div class="workspace">
   <header class="topbar"><div><span class="muted">Biblioteca /</span> <span id="breadcrumb">Introducción</span></div><div class="toolbar"><button id="export" class="button quiet">Exportar sistema <span aria-hidden="true">↗</span></button><button id="open-editor" class="button primary" aria-expanded="false" aria-controls="editor">Ajustar diseño <span aria-hidden="true">◐</span></button></div></header>
   <main id="main" tabindex="-1"></main>
-  <footer>NOODO · Música, cultura y conexiones <span>Reglas en revisión. Ninguna pantalla de producto construida.</span></footer>
+  <footer>NOODO · Música, cultura y conexiones <span>Reglas en revisión. Prototipos visuales sin integración de producto.</span></footer>
 </div>
 <dialog id="editor" class="editor">
   <div class="editor-head"><div><span class="eyebrow">LABORATORIO</span><h2>Ajustar el sistema</h2></div><button class="icon-button" id="close-editor" aria-label="Cerrar ajustes">×</button></div>
   <p>Los cambios afectan las muestras digitales. Las referencias originales del dossier se conservan intactas.</p>
   <div id="token-controls"></div>
-  <label class="field">Tipografía de prueba<select id="font-choice"><option value="system">Sans del sistema · sustitución temporal</option><option value="arial">Arial · alternativa de prueba</option><option value="georgia">Georgia · exploración editorial</option></select></label>
+  <label class="field">Tipografía de prueba<select id="font-choice"><option value="system">Sans del sistema · familia única</option></select></label>
   <label class="field">Radio de tarjetas <output id="radius-value">16 px</output><input id="radius" type="range" min="0" max="28" step="2" value="16"></label>
   <div class="contrast-box"><b>Contraste de tus ajustes</b><div id="contrast-results"></div><small>Comprobación de pares de color, no una certificación completa de accesibilidad.</small></div>
   <p class="small" id="save-status" role="status">Guardado solo en este navegador. Exporta para compartir o conservar una copia.</p>

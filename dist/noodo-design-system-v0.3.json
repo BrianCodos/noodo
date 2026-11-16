@@ -1,0 +1,966 @@
+{
+  "schemaVersion": "noodo.design-system/0.3",
+  "status": "draft",
+  "exportedAt": "2026-11-16T16:09:27.264Z",
+  "source": {
+    "document": "NOODO_Dossier_Integral_Noviembre_2026.pdf",
+    "identityPages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "notes": "Base del dossier; acento #6F36E1, fondo #110B1B y cards con glow/blur solicitados el 15 de noviembre de 2026. Lavanda #C397F4 observado en capturas del usuario. Eventos propios NOODO; boletería posterior."
+  },
+  "tokens": {
+    "textPrimary": "#F5F2E9",
+    "primary": "#6F36E1",
+    "accent": "#C397F4",
+    "background": "#110B1B",
+    "secondary": "#291E3B",
+    "neutral": "#77747A",
+    "radius": 16,
+    "font": "system"
+  },
+  "semanticTokens": {
+    "background": {
+      "canvas": "{background}",
+      "player": "#09060F",
+      "surface": "#1C1429",
+      "raised": "{secondary}"
+    },
+    "text": {
+      "primary": "{textPrimary}",
+      "secondary": "#BCB7C2",
+      "onAction": "#F5F2E9",
+      "onSoft": "#110B1B",
+      "accent": "#B294E5"
+    },
+    "action": {
+      "primary": "{primary}",
+      "soft": "{accent}",
+      "focus": "#B294E5"
+    },
+    "effects": {
+      "glow": {
+        "subtle": {
+          "x": 0,
+          "y": 0,
+          "blur": 16,
+          "opacity": 0.14,
+          "color": "{primary}"
+        },
+        "interactive": {
+          "x": 0,
+          "y": 0,
+          "blur": 22,
+          "opacity": 0.2,
+          "color": "{primary}"
+        },
+        "brand": {
+          "x": 0,
+          "y": 0,
+          "blur": 56,
+          "opacity": 0.08,
+          "color": "{primary}"
+        },
+        "card": {
+          "x": 0,
+          "y": 8,
+          "blur": 40,
+          "opacity": 0.2,
+          "color": "{primary}"
+        }
+      },
+      "blur": {
+        "ambient": 36,
+        "glass": 18
+      },
+      "cardGradient": {
+        "type": "radial",
+        "origin": "100% 0%",
+        "stops": [
+          {
+            "position": 0,
+            "color": "{accent}",
+            "mixWithBackground": 0.26
+          },
+          {
+            "position": 0.36,
+            "color": "{primary}",
+            "mixWithBackground": 0.18
+          },
+          {
+            "position": 0.78,
+            "color": "{background}"
+          }
+        ]
+      },
+      "glass": {
+        "surfaceOpacity": 0.86,
+        "fallback": "#1C1429"
+      }
+    },
+    "border": {
+      "control": "#8C7AA6",
+      "subtle": "#46335F"
+    },
+    "feedback": {
+      "success": "#91D6AE",
+      "warning": "#E7C482",
+      "danger": "#F29C9C",
+      "info": "#9DC9EC"
+    }
+  },
+  "playerSystem": {
+    "revision": "2026-11-16.profile-18",
+    "tokens": {
+      "workspaceInset": "24px",
+      "artistStructuralBackground": "transparent",
+      "artistPlayerPadding": "32px",
+      "rowPlayOpacity": 0.9,
+      "genreAspectRatio": "1 / 1",
+      "sessionAspectRatio": "16 / 9",
+      "catalogGap": "24px",
+      "sidebarBackground": "transparent",
+      "contextBackground": "transparent",
+      "dividerWidth": "1px",
+      "dividerColor": "color-mix(in srgb, var(--noodo-accent, var(--accent)) 22%, var(--noodo-background, var(--background)))",
+      "rowPaddingBlock": "6px",
+      "rowMinHeight": "60px",
+      "albumAspectRatio": "1 / 1",
+      "galleryColumns": 4,
+      "libraryRailWidth": "48px",
+      "albumMaxWidth": "280px",
+      "dockGlow": "0 -10px 42px color-mix(in srgb, var(--primary) 18%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 10%, transparent)"
+    },
+    "rules": [
+      [
+        "Superficies del perfil",
+        "Cabecera, mini reproductor, detalle de contacto y tarjetas de booking transparentes: sin degradado, glow ni fondo de card. Mantener divisores estructurales. Tipo de perfil en tamaño heading, arriba a la derecha del nombre."
+      ],
+      [
+        "Alineación de columnas",
+        "Inset superior compartido de 24 px. Biblioteca fija debajo del header, con scroll propio si su contenido excede el alto y divisor hasta el borde inferior. La columna central se desplaza de forma independiente visualmente."
+      ],
+      [
+        "Mini reproductor independiente",
+        "Cinco canciones, pista, progreso y volumen propios. Al reproducir aquí se pausa el global sin modificar su canción, posición, cola, mezcla ni repetición. Si el mini está sonando al abandonar el perfil, se pausa y reanuda el global. Reproducir el global pausa el mini. Nunca deben sonar ambos."
+      ],
+      [
+        "Galería integrada",
+        "Abrir fotografías dentro del mismo contenedor de Galería. Controles anterior, siguiente y regreso a cuadrícula; flechas y Escape con foco dentro del visor. Conservar altura, posición de página y foco de la miniatura."
+      ],
+      [
+        "Bandas recomendadas",
+        "Carrusel de ocho perfiles con portada 1:1 y nombre enlazado. Deslizamiento horizontal, controles anterior/siguiente y teclado. Antes de las canciones en Inicio; no duplicar en Guardados ni búsquedas."
+      ],
+      [
+        "Regreso uniforme",
+        "Control Volver en la esquina superior izquierda del centro, antes del título. Regresa a la vista de origen conservando posición, foco y reproducción. Detalles anidados regresan un nivel cada vez."
+      ],
+      [
+        "Sesiones y plataformas",
+        "Detalle de video transparente, sin degradado. Accesos a YouTube y Spotify: URL oficial cuando exista; en su ausencia, identificar la acción como Buscar en la plataforma. Nunca inventar un enlace a una publicación."
+      ],
+      [
+        "Concierto compacto",
+        "Variante del listado de conciertos para la columna derecha: bloque de fecha, imagen, categoría, nombre, lugar, hora y acción de entradas. Adaptar la distribución al ancho sin reducir la tipografía."
+      ],
+      [
+        "Catálogo de géneros",
+        "GenreCard siempre 1:1, tanto en Inicio como en Explorar géneros. Grid adaptable: 6 columnas amplias, 4 medianas, 3 compactas y 2 móviles. Cada tarjeta abre todos los perfiles del género; el chip de género del artista abre el mismo resultado. Usar géneros del catálogo, con estado vacío si no hay artistas."
+      ],
+      [
+        "Sessions de video",
+        "Extender SessionVideo a SessionVideoCard: poster 16:9, play centrado, duración, título, artista y guardar. Grid de 2 columnas en escritorio y 1 en móvil; abre video en el centro manteniendo dock. Las sesiones no se mezclan en la cola de audio."
+      ],
+      [
+        "Contexto fijo",
+        "Panel derecho transparente, siempre visible en la vista de escucha y en el detalle de álbum en escritorio, sin controles de plegado. Canción, Artista, Conciertos y Letras cambian el resumen en esa misma columna, sin navegación. Solo el nombre enlazado abre el perfil. En móvil, apertura superpuesta desde header."
+      ],
+      [
+        "Navegación y perfiles",
+        "Inicio, Canciones, Sessions y Guardados sin contadores. El perfil distingue Banda, Artista, DJ o Productor. Las pills de integrantes enlazan perfiles personales; Contactar abre booking y prensa."
+      ],
+      [
+        "Banner multipropósito",
+        "Un espacio promocional solo en Inicio: canciones sin búsqueda ni filtro de género. Ocultarlo en Guardados, Sessions, búsquedas, géneros, perfiles y detalles. Mostrarlo de nuevo al regresar al inicio solo si no fue cerrado. Ubicarlo en la columna central antes de las canciones. Configurable por campaña: tipo, imagen, etiqueta, título, texto, CTA y destino para artista, canción, sesión, evento o publicidad. Publicidad debe identificarse como tal. Cierre accesible de 44 × 44 px; recordar el cierre durante la sesión por campaña. Nunca iniciar reproducción automáticamente."
+      ],
+      [
+        "Iconos y orden de canción",
+        "Iconos en caja cuadrada 1:1 sin deformación. Play/pausa al inicio de cada fila, antes de portada y título; eliminar numeración. Play de 44 × 44 px con SVG de 22 × 22 px; opacidad base 0.9 y opacidad completa al pasar el cursor o recibir foco. Guardar y Apoyar permanecen como acciones separadas."
+      ],
+      [
+        "Estructura global",
+        "Usar todo el ancho disponible, con márgenes de 20 px en escritorio y 10 px en móvil. Header y reproductor persistentes. Biblioteca plegable a un rail; su toggle vive junto a Tu biblioteca. En el perfil del artista ocultar el contexto derecho y mostrarlo de nuevo al abrir un álbum o regresar a escucha."
+      ],
+      [
+        "Contenido central",
+        "Perfiles, letras, conciertos, cola, álbumes, galería y videos se abren en el centro. Los detalles permiten regresar conservando la posición. Al seleccionar una canción, mostrar primero una síntesis en el panel derecho. Merchandising no forma parte de esta versión."
+      ],
+      [
+        "Navegación persistente del artista",
+        "Header global siempre visible. Menú del artista fijo debajo; al salir la cabecera, mostrar foto y nombre antes de las secciones. Adaptar el contenido al ancho real del centro y mantener la escucha al navegar."
+      ],
+      [
+        "Conciertos en lista",
+        "Filas con fecha, miniatura, categoría, nombre enlazado al detalle, lugar, hora y acción de tickets. Comprar tickets en eventos de pago; Reservar entrada en gratuitos. Detalle central; mostrar disponibilidad antes de reservar o pagar. Glow suave sin borde decorativo."
+      ],
+      [
+        "Mini reproductor del artista",
+        "Cinco canciones por artista. Estado independiente del global y controles de anterior, reproducir/pausar, siguiente, avance y volumen. Superficie transparente, padding de 32 px, divisor izquierdo y alto completo en la tercera columna de la cabecera. En móvil apilar y mover el divisor arriba. Cada fila incluye Añadir a playlist como acción independiente. Crear o elegir una playlist, guardar en este navegador y evitar canciones duplicadas."
+      ],
+      [
+        "Detalle de álbum",
+        "Portada 1:1 idéntica a la del catálogo, título, tipo, año, nombre enlazado de la banda, biografía y duración. Reutilizar CompactTrackRow y sus acciones Play, Guardar y Apoyar. Selección, progreso y reproducción sincronizados con el dock persistente. Información de la banda a la derecha; regreso al perfil conserva la escucha."
+      ],
+      [
+        "Álbumes cuadrados",
+        "Portadas 1:1, con título y metadatos fuera. Cuatro columnas iguales en escritorio, máximo 280 px por portada; conservar el tamaño aunque haya menos de cuatro. Dos columnas en centros de 680 px o menos."
+      ],
+      [
+        "Galería fotográfica",
+        "Doce imágenes en cuatro columnas y tres filas en escritorio. Reducir a dos columnas en centros menores de 440 px. Abrir la imagen y su navegación dentro del contenedor de la galería; conservar la procedencia de los recursos en la documentación interna."
+      ],
+      [
+        "Redes del artista",
+        "YouTube, Spotify, SoundCloud, Deezer, web y TikTok mediante iconos de 22 px en controles de 44 px, con nombre accesible y tooltip. Mostrar estado pendiente cuando no exista URL oficial; nunca enlazar a cuentas inventadas."
+      ],
+      [
+        "Reproductor persistente",
+        "La barra vive fuera de las vistas de canciones y artista. Navegar no recrea el reproductor: mantiene pista, progreso, pausa, volumen, mezcla y repetición. Los enlaces Atrás/Adelante también conservan la escucha. Reservar espacio inferior para la barra. Fondo oscuro y halo suave mediante player-dock-glow para separar la barra del contenido, sin borde decorativo."
+      ],
+      [
+        "Apoyo al artista",
+        "Cada canción incluye Apoyar, separado de Guardar. Abre en la columna central una muestra de aportes en COP con importes seleccionables y confirmación explícita sin cobro. En móvil usa icono con nombre accesible."
+      ],
+      [
+        "Encabezados de columnas",
+        "Tu biblioteca en accent. La columna de información empieza con la fila de iconos, sin el título En detalle."
+      ],
+      [
+        "Página de artista",
+        "Cabecera con retrato, género único, nombre, ubicación, biografía y equipo. Mini reproductor en la cabecera. Después: álbumes; una fila con conciertos a la izquierda y galería a la derecha; y Multimedia. Contactar en la cabecera abre booking y prensa. Sin columna derecha ni merchandising. Redes y contactos oficiales pendientes deben comunicarse como tales."
+      ],
+      [
+        "Pestañas de contexto",
+        "Cuatro iconos en una fila horizontal: canción, artista, conciertos y letras. Activo únicamente en accent, sin borde ni indicador inferior; conservar el anillo de foco solo para navegación con teclado; etiquetas accesibles, tooltip nativo, foco visible y navegación con flechas. Objetivo mínimo de 44 px de alto."
+      ],
+      [
+        "Acceso al perfil",
+        "La portada del reproductor enlaza al perfil del artista con icono de vínculo. No abrir un modal de biografía ni duplicar el perfil dentro del reproductor. Mantener la barra y el estado al navegar."
+      ],
+      [
+        "Cabecera de artista",
+        "Tres columnas en escritorio: retrato a la izquierda, información en el centro y reproductor independiente a la derecha. Los tres comienzan a la misma altura. En anchos intermedios, el reproductor pasa a una fila completa; en móvil, se apilan foto, información y reproductor. Texto alineado con el borde superior del retrato. Debajo de la biografía, integrantes como píldoras de foto y nombre, enlazadas a su perfil. Acciones y redes ancladas a la base de la foto. Contactar usa icono y texto; abre booking y prensa en el centro, sin duplicar una sección al pie. En móvil apilar sin espacios artificiales."
+      ],
+      [
+        "Biblioteca estructural",
+        "Fondo transparente y divisor derecho de 1 px desde el header hasta el borde inferior de la pantalla. Toggle junto al título accent; al plegar, conservar un rail con el control para reabrir. Solo navegación, sin bloque Tu escucha ni progreso duplicado. En móvil, panel abierto superpuesto y opaco."
+      ],
+      [
+        "Fila compacta",
+        "Padding vertical de 6 px, altura mínima de 60 px y controles de 44 px de alto. La fila puede crecer si el texto lo necesita. Conservar título y artista; no reducir la tipografía para compactar."
+      ],
+      [
+        "Selección y reproducción",
+        "Primer clic en cualquier zona no interactiva de una fila o en su título: seleccionar y mostrar información a la derecha sin interrumpir la pista que suena. Si ya está seleccionada, otro clic reproduce o reanuda. Enter y Espacio equivalentes. Play, Guardar y Apoyar actúan independientemente. Borde accent y relleno de progreso solo para reproducción; selección y reproducción son estados distintos."
+      ],
+      [
+        "Contexto del artista",
+        "Superficie transparente, sin degradado, glow, borde ni radio de card; hereda el fondo de la página. En móvil, el panel superpuesto usa background para mantener legibilidad. El enlace muestra el nombre de la banda o artista del perfil asociado a la canción seleccionada, nunca el título de la canción ni el nombre de un integrante. La tercera columna muestra la canción seleccionada y accesos a su información. Puede ser distinta de la pista del dock. En páginas de artista se oculta para ampliar el centro; al volver a escucha o abrir un álbum se muestra siempre."
+      ],
+      [
+        "Contenido editorial",
+        "Interfaz sin notas de prototipo, referencias a IA ni encabezados decorativos. Títulos de sección en accent y nombres concretos. Conservar procedencia de recursos en documentación interna. Datos o servicios ausentes usan estados claros: no disponible, sin resultados o error; no simular cobros ni videos inexistentes."
+      ]
+    ]
+  },
+  "foundations": {
+    "spacing": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "radii": {
+      "field": 8,
+      "card": 16,
+      "panel": 24,
+      "pill": 999
+    },
+    "touchTarget": 44,
+    "typography": {
+      "family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Arial, sans-serif",
+      "reference": "PP Neue Montreal · dossier p. 9 · archivos oficiales pendientes",
+      "case": "Sentence case; preserve brand names, acronyms and code identifiers",
+      "minimumSize": 12,
+      "roles": {
+        "display": {
+          "size": 48,
+          "lineHeight": 52,
+          "mobileSize": 36,
+          "mobileLineHeight": 40,
+          "weight": 600,
+          "tracking": "-0.035em",
+          "usage": "Mensaje principal de una pieza destacada. Máximo uno por vista."
+        },
+        "title": {
+          "size": 32,
+          "lineHeight": 38,
+          "mobileSize": 28,
+          "mobileLineHeight": 34,
+          "weight": 600,
+          "tracking": "-0.025em",
+          "usage": "Título de página o diálogo principal."
+        },
+        "heading": {
+          "size": 24,
+          "lineHeight": 30,
+          "weight": 600,
+          "tracking": "-0.02em",
+          "usage": "Secciones y títulos de cards destacadas."
+        },
+        "body": {
+          "size": 16,
+          "lineHeight": 24,
+          "weight": 400,
+          "tracking": "0",
+          "usage": "Párrafos, descripciones y contenido de lectura."
+        },
+        "label": {
+          "size": 14,
+          "lineHeight": 20,
+          "weight": 500,
+          "tracking": "0",
+          "usage": "Navegación, botones, filtros y nombres de pistas."
+        },
+        "meta": {
+          "size": 12,
+          "lineHeight": 18,
+          "weight": 400,
+          "tracking": "0",
+          "usage": "Duración, artista secundario, créditos y ayuda breve."
+        }
+      }
+    },
+    "breakpoints": {
+      "mobile": 0,
+      "tablet": 768,
+      "desktop": 1024
+    },
+    "motion": {
+      "fast": 120,
+      "standard": 180,
+      "surface": 240,
+      "reducedMotion": "disable nonessential motion"
+    }
+  },
+  "photography": {
+    "direction": "Natural skin texture; violet rim light; amber practical highlights; deep plum shadows; no uniform purple filter.",
+    "aiLabelRequired": false,
+    "artist": {
+      "asset": "assets/artist-portrait-v02.png",
+      "ratio": "4:5",
+      "focalPoint": "50% 28%",
+      "fictional": true
+    },
+    "session": {
+      "asset": "assets/live-session-v02.png",
+      "ratio": "16:9",
+      "focalPoint": "50% 48%",
+      "fictional": true
+    },
+    "prompts": "assets/photo-prompts-v02.json",
+    "albumCovers": {
+      "ratio": "1 / 1",
+      "assets": [
+        "assets/album-entre-luces-v17.png",
+        "assets/album-marea-adentro-v17.png",
+        "assets/album-raiz-electrica-v17.png",
+        "assets/album-umbral-v17.png"
+      ],
+      "provenance": "../album-covers-v17.json"
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · hover · foco · activo · carga · inactivo",
+      "contract": "Etiqueta verbal; área táctil 44 px; icono opcional.",
+      "section": "ui"
+    },
+    {
+      "name": "IconButton",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · foco · activo · inactivo",
+      "contract": "Nombre accesible; icono 20–24 px; objetivo 44 px.",
+      "section": "ui"
+    },
+    {
+      "name": "TextLink",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · hover · foco · visitado",
+      "contract": "Subrayado en texto; destino explícito; externo identificado.",
+      "section": "ui"
+    },
+    {
+      "name": "TextField / Search",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Vacío · completado · error · lectura · inactivo",
+      "contract": "Etiqueta persistente, ayuda e ID de error; nunca solo placeholder.",
+      "section": "ui"
+    },
+    {
+      "name": "Textarea",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Vacío · completado · error · límite",
+      "contract": "Texto de ayuda, contador si hay máximo; conservar contenido al fallar.",
+      "section": "ui"
+    },
+    {
+      "name": "Select",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Vacío · selección · foco · inactivo",
+      "contract": "Control nativo como base; selección múltiple requiere patrón propio.",
+      "section": "ui"
+    },
+    {
+      "name": "Checkbox / Radio",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Sin selección · seleccionado · foco · inactivo",
+      "contract": "Grupos con leyenda; consentimiento nunca premarcado.",
+      "section": "ui"
+    },
+    {
+      "name": "Switch",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Encendido · apagado · inactivo",
+      "contract": "Etiqueta estable; anunciar estado; acción inmediata y reversible.",
+      "section": "ui"
+    },
+    {
+      "name": "Range",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Reposo · arrastre · foco · inactivo",
+      "contract": "Valor y unidad; flechas del teclado; alternativa visible al gesto.",
+      "section": "music"
+    },
+    {
+      "name": "Chip / Filter",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Todos · seleccionado · removible · inactivo",
+      "contract": "Texto + estado aria-pressed; filtros visibles; permitir limpiar.",
+      "section": "ui"
+    },
+    {
+      "name": "Badge",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Informativo · éxito · aviso · error",
+      "contract": "Estado escrito; nunca comunicar solo mediante color.",
+      "section": "states"
+    },
+    {
+      "name": "Avatar",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Imagen · iniciales · sin imagen",
+      "contract": "Recorte circular; iniciales accesibles; sin foto falsa del artista.",
+      "section": "music"
+    },
+    {
+      "name": "Tooltip",
+      "family": "Base",
+      "scope": "Inicial",
+      "states": "Oculto · hover · foco · Escape",
+      "contract": "Solo ayuda breve; no alojar información esencial.",
+      "section": "ui"
+    },
+    {
+      "name": "Tabs",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Activo · inactivo · foco",
+      "contract": "Flechas izquierda/derecha, Home/End y panel asociado.",
+      "section": "ui"
+    },
+    {
+      "name": "Navigation / Menu",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Actual · foco · desplegado",
+      "contract": "Un patrón por contexto; enlace actual marcado; cierre con Escape.",
+      "section": "ui"
+    },
+    {
+      "name": "Breadcrumb",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Enlace · ubicación actual",
+      "contract": "Ubicación actual sin enlace; separadores decorativos.",
+      "section": "ui"
+    },
+    {
+      "name": "Pagination",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Primera · intermedia · última · carga",
+      "contract": "Página actual anunciada; anterior/siguiente con destino; conservar filtros.",
+      "section": "ui"
+    },
+    {
+      "name": "Accordion",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Cerrado · abierto · foco",
+      "contract": "Encabezado accionable; contenido permanece en orden de lectura.",
+      "section": "ui"
+    },
+    {
+      "name": "Dialog / Drawer",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Abierto · cerrado · confirmación",
+      "contract": "Foco contenido; Escape; botón cerrar; devolver foco al origen.",
+      "section": "ui"
+    },
+    {
+      "name": "Toast / Alert",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Éxito · error · información · aviso",
+      "contract": "Mensaje claro; errores persistentes; no ocultar acciones críticas en un toast.",
+      "section": "states"
+    },
+    {
+      "name": "Skeleton / Progress",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Cargando · listo · fallo",
+      "contract": "Reservar espacio; anunciar carga; indicador determinado solo con progreso real.",
+      "section": "states"
+    },
+    {
+      "name": "EmptyState",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Sin contenido · sin resultados · sin permiso",
+      "contract": "Explicar causa y acción disponible; no confundir vacío con error.",
+      "section": "states"
+    },
+    {
+      "name": "Error / Offline",
+      "family": "Feedback",
+      "scope": "Inicial",
+      "states": "Red · servidor · no disponible · reintento",
+      "contract": "Conservar formulario y contexto; mensaje recuperable sin culpar a la persona.",
+      "section": "states"
+    },
+    {
+      "name": "ArtistCard",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Con foto · sin foto · nombre largo",
+      "contract": "Imagen 1:1; nombre, ciudad y estilo; acción separada de navegación.",
+      "section": "music"
+    },
+    {
+      "name": "ArtistIdentity",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Completo · incompleto · retirado",
+      "contract": "Avatar, nombre, ubicación y descripción; verificación solo si existe proceso.",
+      "section": "music"
+    },
+    {
+      "name": "ArtistBio / Credits",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Breve · extendido · sin créditos",
+      "contract": "Créditos y fuentes; enlaces autorizados; mostrar texto completo sin perder contexto.",
+      "section": "music"
+    },
+    {
+      "name": "ProviderEmbed",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Sin cargar · cargando · listo · bloqueado · fallo",
+      "contract": "Proveedor identificado; no autoplay; fallback externo de música; respetar controles nativos.",
+      "section": "music"
+    },
+    {
+      "name": "TrackRow",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Disponible · activa · inactiva · no disponible",
+      "contract": "Título, artista y duración cuando sea real; acción con nombre accesible.",
+      "section": "music"
+    },
+    {
+      "name": "PlayerControls",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Pausa · reproducción · carga · error",
+      "contract": "Contrato visual para integraciones; no prometer control de iframe sin API.",
+      "section": "music"
+    },
+    {
+      "name": "PlayerExpanded / Mini",
+      "family": "Música",
+      "scope": "Posterior",
+      "states": "Contraído · expandido · persistente",
+      "contract": "Diseño disponible; continuidad de producto depende del proveedor.",
+      "section": "player"
+    },
+    {
+      "name": "Queue / Repeat / Shuffle",
+      "family": "Música",
+      "scope": "Posterior",
+      "states": "Vacía · activa · reordenada",
+      "contract": "Muestra interactiva en el sistema; requiere proveedor compatible para producto.",
+      "section": "player"
+    },
+    {
+      "name": "SessionVideo",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Poster · carga · reproducción · error",
+      "contract": "Subtítulos/transcripción cuando aplique; pausa, volumen y pantalla completa accesibles.",
+      "section": "music"
+    },
+    {
+      "name": "EventCard",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Anunciado · reprogramado · cancelado · finalizado",
+      "contract": "Evento creado en NOODO; fecha, zona horaria, lugar y estado; sin CTA de compra inicial.",
+      "section": "events"
+    },
+    {
+      "name": "DateBlock / Time",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Una fecha · rango · horario por confirmar",
+      "contract": "Formato legible en español; America/Bogota en datos; no fecha ambigua 03/04.",
+      "section": "events"
+    },
+    {
+      "name": "EventStatus",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Por confirmar · anunciado · reprogramado · cancelado · finalizado",
+      "contract": "Mostrar cambio, fecha actual y texto explicativo; no borrar cancelaciones sin aviso.",
+      "section": "events"
+    },
+    {
+      "name": "Lineup / Schedule",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Confirmado · por anunciar · modificado",
+      "contract": "Orden y hora si están confirmados; cartel del evento sin artistas inventados.",
+      "section": "events"
+    },
+    {
+      "name": "Venue / Location",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Con dirección · por confirmar · cambio de lugar",
+      "contract": "Nombre, dirección y acceso; enlace de mapa opcional, no enlace a compra de terceros.",
+      "section": "events"
+    },
+    {
+      "name": "Capacity / Admission",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Libre · registro posterior · por definir",
+      "contract": "No simular disponibilidad de entradas; requisitos de acceso en texto.",
+      "section": "events"
+    },
+    {
+      "name": "TicketType / Quantity",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Disponible · límite · agotado · selección",
+      "contract": "Nombre, moneda, precio y cargos desglosados; máximo y mínimo explícitos.",
+      "section": "events"
+    },
+    {
+      "name": "CheckoutSummary / Payment",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Revisión · procesando · pendiente · pagado · fallo",
+      "contract": "Importes coherentes; no cobro duplicado; pago pendiente distinto de confirmado.",
+      "section": "events"
+    },
+    {
+      "name": "DigitalTicket / QR",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Emitido · válido · usado · anulado",
+      "contract": "Código real solo con emisión; alternativa textual; legibilidad fuera de línea a definir.",
+      "section": "events"
+    },
+    {
+      "name": "Refund / Cancellation",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Solicitado · en revisión · aprobado · rechazado",
+      "contract": "Importe, estado, plazo informado y canal de ayuda; no prometer devolución instantánea.",
+      "section": "inventory"
+    },
+    {
+      "name": "CheckIn",
+      "family": "Boletería",
+      "scope": "Posterior",
+      "states": "Válido · ya usado · inválido · sin conexión",
+      "contract": "Texto + icono + color; gestión de duplicados y reconexión; separado de la entrada del asistente.",
+      "section": "inventory"
+    },
+    {
+      "name": "EditorialCard",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Normal · patrocinado · sin imagen",
+      "contract": "Categoría, título, autor y fecha; identificar contenido patrocinado.",
+      "section": "editorial"
+    },
+    {
+      "name": "RichText / Quote / Credits",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Texto · cita · enlace · medios",
+      "contract": "Jerarquía h1–h3; texto legible 60–75 caracteres; crédito y pie de imagen.",
+      "section": "editorial"
+    },
+    {
+      "name": "MediaFrame",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "1:1 · 4:3 · 16:9 · 4:5 · 9:16",
+      "contract": "Punto focal editable; alt contextual; evitar texto incrustado en imágenes funcionales.",
+      "section": "editorial"
+    },
+    {
+      "name": "VenueCard / Space",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Completo · pendiente · no disponible",
+      "contract": "Tipo, ubicación y contacto autorizado; no mostrar abierto sin horario confiable.",
+      "section": "editorial"
+    },
+    {
+      "name": "MapPin / LocationList",
+      "family": "Contenido",
+      "scope": "Posterior",
+      "states": "Normal · seleccionado · agrupado",
+      "contract": "Mapa acompañado de lista accesible; no depender solo de posición o color.",
+      "section": "inventory"
+    },
+    {
+      "name": "ProfessionalCard / Connect",
+      "family": "Comunidad",
+      "scope": "Posterior",
+      "states": "Perfil · disponibilidad · contacto",
+      "contract": "Contacto autorizado; sin chat ni conexión social implícitos.",
+      "section": "editorial"
+    },
+    {
+      "name": "ParticipationForm",
+      "family": "Comunidad",
+      "scope": "Inicial",
+      "states": "Inicio · completado · enviando · enviado · error",
+      "contract": "Consentimiento independiente; conservar datos; límites de archivo y errores por campo.",
+      "section": "editorial"
+    },
+    {
+      "name": "Upload / Consent",
+      "family": "Comunidad",
+      "scope": "Inicial",
+      "states": "Vacío · subiendo · listo · rechazo",
+      "contract": "Tipo/tamaño permitidos; progreso real; permiso no equivale a transferencia de derechos.",
+      "section": "editorial"
+    },
+    {
+      "name": "Save / Follow / Share",
+      "family": "Comunidad",
+      "scope": "Posterior",
+      "states": "Sin guardar · guardado · compartido · error",
+      "contract": "No presentar seguidores falsos; definir cuenta o almacenamiento local antes de implementar.",
+      "section": "inventory"
+    },
+    {
+      "name": "ContentTable / Filters",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Borrador · revisión · publicado · retirado",
+      "contract": "Tabla semántica; búsqueda; acciones identificadas por registro.",
+      "section": "editorial"
+    },
+    {
+      "name": "ContentEditor / Preview",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Editando · guardando · guardado · conflicto",
+      "contract": "Campos requeridos, previsualización y advertencia de cambios sin guardar.",
+      "section": "inventory"
+    },
+    {
+      "name": "Publish / Schedule",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Borrador · revisión · programado · publicado",
+      "contract": "Permisos visibles; fecha y zona horaria; confirmación antes de retirar contenido.",
+      "section": "inventory"
+    },
+    {
+      "name": "Permission / Activity",
+      "family": "Administración",
+      "scope": "Inicial",
+      "states": "Permitido · sin acceso · sesión expirada",
+      "contract": "Explicar la acción no disponible; conservar cambios; historial de publicación.",
+      "section": "inventory"
+    },
+    {
+      "name": "PlayerProgress / Volume",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Inicio · avance · final · silencio",
+      "contract": "Rangos nativos, unidad y valor accesible; simulación sin audio.",
+      "section": "player"
+    },
+    {
+      "name": "GlowCard / GlassCard",
+      "family": "Superficies",
+      "scope": "Inicial",
+      "states": "Reposo · hover · foco · sin blur",
+      "contract": "Radial top-right → bottom-left; fallback sólido, texto nítido.",
+      "section": "layout"
+    },
+    {
+      "name": "PlayerSidebar",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Escritorio · panel móvil",
+      "contract": "Transparente, divisor derecho; navegación sin repetir canciones.",
+      "section": "player"
+    },
+    {
+      "name": "CompactTrackRow",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Seleccionada · reproduciendo · pausada",
+      "contract": "Padding vertical 6 px; mínimo 60 px; borde accent solo reproduciendo y progreso interior.",
+      "section": "player"
+    },
+    {
+      "name": "ArtistContext / ProfileLink",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Canción seleccionada · perfil abierto",
+      "contract": "Foto, biografía, género, ciudad y enlace local al perfil del artista.",
+      "section": "player"
+    },
+    {
+      "name": "GenreCard",
+      "family": "Descubrimiento",
+      "scope": "Inicial",
+      "states": "Reposo · foco · hover",
+      "contract": "Proporción 1:1; grid adaptable; abre los perfiles del género.",
+      "section": "player"
+    },
+    {
+      "name": "SessionVideoCard",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Poster · reproducción · no disponible",
+      "contract": "Extiende SessionVideo con tarjeta 16:9 y destino central.",
+      "section": "player"
+    },
+    {
+      "name": "RecommendedArtistCarousel",
+      "family": "Descubrimiento",
+      "scope": "Inicial",
+      "states": "Ocho perfiles · teclado · desplazamiento",
+      "contract": "Portadas 1:1; nombre enlazado al perfil; solo en Inicio.",
+      "section": "player"
+    },
+    {
+      "name": "ContextConcertCard",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Gratis · reserva · tickets",
+      "contract": "Fecha, fotografía, categoría, nombre, lugar y acción; versión compacta del perfil.",
+      "section": "player"
+    },
+    {
+      "name": "UnifiedBack",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Vista · detalle anidado · perfil",
+      "contract": "Siempre arriba a la izquierda; restaura el origen sin interrumpir la escucha.",
+      "section": "player"
+    },
+    {
+      "name": "ArtistStructuralSurface",
+      "family": "Artistas",
+      "scope": "Inicial",
+      "states": "Cabecera · canciones · booking",
+      "contract": "Fondo transparente, divisores estructurales; padding semántico.",
+      "section": "player"
+    },
+    {
+      "name": "IndependentArtistPlayer",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Pausado · reproduciendo · salir del perfil",
+      "contract": "Estado propio; exclusión mutua con global y restauración de escucha al salir.",
+      "section": "player"
+    },
+    {
+      "name": "InlinePhotoViewer",
+      "family": "Artistas",
+      "scope": "Inicial",
+      "states": "Cuadrícula · foto abierta",
+      "contract": "Visor dentro de Galería; anterior/siguiente, Escape y foco restaurado.",
+      "section": "player"
+    },
+    {
+      "name": "ArtistProfileLayout",
+      "family": "Artistas",
+      "scope": "Inicial",
+      "states": "Escritorio · intermedio · móvil",
+      "contract": "Cabecera: foto, información, reproductor. Después álbumes; conciertos y galería en dos columnas; Multimedia.",
+      "section": "player"
+    }
+  ],
+  "notes": {},
+  "checks": {
+    "masters": false,
+    "typography": false,
+    "tokens": false,
+    "components": false,
+    "approval": false
+  },
+  "checklistMeaning": "Personal review only; does not represent joint approval."
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "entre-luces",
+    "prompt": "Create a finished professional music album cover, square 1:1, edge to edge artwork, not a mockup. Cinematic analog photograph of a solitary silhouette crossing a wet street in Cali at night, violet light spilling from a small music club, amber reflection on asphalt, deeply atmospheric, real film grain, understated editorial art direction. Album title text exactly \"Entre luces\" in tasteful distinctive editorial typography, highly legible, integrated with composition; no artist name, no other text, no logos, no watermark. High-end independent music release design, visually memorable at thumbnail size. Avoid generic gradient blobs or stock template style.",
+    "source": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-644b09a9-ad0c-403b-98a7-994222b9bbf8.png",
+    "destination": "dist/assets/album-entre-luces-v17.png",
+    "mode": "built-in image_gen"
+  },
+  {
+    "slug": "marea-adentro",
+    "prompt": "Create a finished professional music album cover, square 1:1, edge to edge artwork, not a mockup. Fine art aerial photograph of deep teal Pacific ocean meeting black volcanic sand, a tiny human figure standing at the water edge, silver foam drawing organic abstract lines, mist, subtle warm peach sunrise. Poetic atmospheric analog photography. Album title text exactly \"Marea adentro\" in tasteful distinctive editorial typography, highly legible, integrated with composition; no artist name, no other text, no logos, no watermark. High-end independent music release design, visually memorable at thumbnail size. Avoid generic gradient blobs or stock template style.",
+    "source": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-ced22a18-2dba-41f0-b8ff-061e892f8337.png",
+    "destination": "dist/assets/album-marea-adentro-v17.png",
+    "mode": "built-in image_gen"
+  },
+  {
+    "slug": "raiz-electrica",
+    "prompt": "Create a finished professional music album cover, square 1:1, edge to edge artwork, not a mockup. Surreal tactile botanical still life, copper roots intertwining with a weathered electronic circuit and a vivid red tropical flower emerging from dark earth, dramatic directional amber and purple studio light, luxurious macro detail, experimental music artwork. Album title text exactly \"Raíz eléctrica\" in tasteful distinctive editorial typography, highly legible, integrated with composition; no artist name, no other text, no logos, no watermark. High-end independent music release design, visually memorable at thumbnail size. Avoid generic gradient blobs or stock template style.",
+    "source": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-dfd577b2-e9b8-4bca-b52b-49c72e2ed144.png",
+    "destination": "dist/assets/album-raiz-electrica-v17.png",
+    "mode": "built-in image_gen"
+  },
+  {
+    "slug": "umbral",
+    "prompt": "Create a finished professional music album cover, square 1:1, edge to edge artwork, not a mockup. Minimal cinematic photograph of a freestanding open doorway on a misty mountain ridge at blue hour, luminous peach light through the doorway, tiny distant birds, deep plum sky and silver fog, exquisite analog grain, emotional and mysterious. Album title text exactly \"Umbral\" in tasteful distinctive editorial typography, highly legible, integrated with composition; no artist name, no other text, no logos, no watermark. High-end independent music release design, visually memorable at thumbnail size. Avoid generic gradient blobs or stock template style.",
+    "source": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-ba97f9bc-763e-4573-af0c-9d2d078aa26d.png",
+    "destination": "dist/assets/album-umbral-v17.png",
+    "mode": "built-in image_gen"
+  }
+]

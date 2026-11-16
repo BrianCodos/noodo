@@ -1,0 +1,72 @@
+{
+  "tool": "image_gen built-in",
+  "gallery": [
+    {
+      "id": "rehearsal",
+      "scene": "a Colombian independent electronic band rehearsing in a small warm studio: female lead vocalist, male keyboardist and female percussionist, candid wide angle",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-89b1f4b5-e716-4127-a31d-0837e04dbf1f.png",
+      "file": "gallery-rehearsal-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: a Colombian independent electronic band rehearsing in a small warm studio: female lead vocalist, male keyboardist and female percussionist, candid wide angle. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "synth",
+      "scene": "close-up of a musician's hands playing an analog synthesizer in a small studio, no recognizable brand",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-b8ed2f09-2f33-499d-8487-47999cb0d955.png",
+      "file": "gallery-synth-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: close-up of a musician's hands playing an analog synthesizer in a small studio, no recognizable brand. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "percussion",
+      "scene": "close-up of a female percussionist's hands playing congas, tactile wood and skin, rhythmic energy",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-f4d510ed-2f47-40a1-9aa3-5e574c6f0eca.png",
+      "file": "gallery-percussion-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: close-up of a female percussionist's hands playing congas, tactile wood and skin, rhythmic energy. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "night-stage",
+      "scene": "a live independent music stage seen from the audience with silhouettes of a female vocalist, keyboardist and percussionist in Cali, intimate joyful atmosphere",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-3d2c94fc-4528-4f19-9ef9-6fe2208ca6d4.png",
+      "file": "gallery-night-stage-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: a live independent music stage seen from the audience with silhouettes of a female vocalist, keyboardist and percussionist in Cali, intimate joyful atmosphere. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "backstage",
+      "scene": "candid backstage documentary detail of headphones, coiled cables and a handwritten blank notebook on a wooden table",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-eb378011-5c7c-4bdf-81d9-c4ca84a49fdd.png",
+      "file": "gallery-backstage-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: candid backstage documentary detail of headphones, coiled cables and a handwritten blank notebook on a wooden table. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "cali-night",
+      "scene": "a lively evening street in San Antonio, Cali, Colombian colonial houses, warm windows and a small music venue with no legible signage",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-af7282da-9773-4935-924a-d87795c89919.png",
+      "file": "gallery-cali-night-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: a lively evening street in San Antonio, Cali, Colombian colonial houses, warm windows and a small music venue with no legible signage. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "microphone",
+      "scene": "close-up of a studio vocal microphone and pop filter, intimate rehearsal room with blurred musicians in background",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-836d67f1-519b-47c7-8950-b1d416eb226d.png",
+      "file": "gallery-microphone-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: close-up of a studio vocal microphone and pop filter, intimate rehearsal room with blurred musicians in background. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    },
+    {
+      "id": "crowd",
+      "scene": "joyful diverse young adult audience at an intimate Colombian independent music event, candid documentary photograph",
+      "path": "/Users/codos/.codex/generated_images/01a1da1f-de57-79a3-ae1e-293794fc7b55/exec-a3a63dff-4a64-4c36-b3fc-4459b6bdc4fd.png",
+      "file": "gallery-crowd-v03.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape 4:3 editorial gallery photo for NOODO, a fictional independent music project in Cali. Scene: joyful diverse young adult audience at an intimate Colombian independent music event, candid documentary photograph. Natural photographic textures, violet rim lighting and warm amber highlights, deep plum shadows, subtle film grain, authentic youthful musical mood. No text, no logos, no watermark. Single photograph, no collage."
+    }
+  ],
+  "portraits": [
+    {
+      "file": "member-simon-v03.png",
+      "prompt": "Fictional Colombian keyboardist aged 30, short dark curly hair and moustache, black shirt, chest-up studio portrait, violet rim and amber lighting, natural skin, no text or logos."
+    },
+    {
+      "file": "member-mar-v03.png",
+      "prompt": "Fictional Colombian female percussionist aged 29, warm brown skin, dark hair in a loose bun, plum clothing, chest-up studio portrait, violet rim and amber lighting, natural skin, no text or logos."
+    }
+  ],
+  "shared_gallery_prompt": "Photorealistic-natural landscape 4:3 editorial gallery for fictional independent music project in Cali. Natural textures, violet rim lighting, amber highlights, deep plum shadows, subtle film grain, youthful joyful music mood. No text, logos or watermarks. Single photograph."
+}

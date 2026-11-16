@@ -1,0 +1,135 @@
+{
+  "date": "2026-11-15",
+  "scope": [
+    "Design system",
+    "Web player"
+  ],
+  "before": {
+    "styles.css": {
+      "font-family": [
+        "ui-monospace,SFMono-Regular,Menlo,monospace",
+        "var(--font)"
+      ],
+      "font-size": [
+        "10px",
+        "11px",
+        "12px",
+        "13px",
+        "14px",
+        "15px",
+        "16px",
+        "17px",
+        "18px",
+        "19px",
+        "21px",
+        "22px",
+        "23px",
+        "25px",
+        "26px",
+        "28px",
+        "29px",
+        "30px",
+        "32px",
+        "36px",
+        "40px",
+        "42px",
+        "44px",
+        "50px",
+        "56px",
+        "70px",
+        "7px",
+        "9px",
+        "clamp(26px,3vw,44px)",
+        "clamp(36px,5vw,64px)",
+        "clamp(42px,5.7vw,80px)"
+      ],
+      "font-weight": [
+        "500",
+        "550",
+        "600",
+        "700",
+        "900"
+      ],
+      "letter-spacing": [
+        "-.035em",
+        "-.03em",
+        "-2px",
+        "-6px",
+        ".03em",
+        "0",
+        "1.5px",
+        "1.7px",
+        "1px",
+        "2.2px",
+        "2px"
+      ],
+      "text-transform": [
+        "uppercase"
+      ]
+    },
+    "listen.css": {
+      "font-family": [
+        "Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+      ],
+      "font-size": [
+        "10px",
+        "11px",
+        "12px",
+        "13px",
+        "22px",
+        "23px",
+        "24px",
+        "25px",
+        "26px",
+        "27px",
+        "30px",
+        "31px",
+        "32px",
+        "36px",
+        "44px",
+        "46px",
+        "6px",
+        "7px",
+        "8px",
+        "9px",
+        "clamp(28px,2.8vw,44px)",
+        "clamp(40px,4vw,62px)"
+      ],
+      "font-weight": [
+        "300",
+        "450",
+        "500",
+        "550",
+        "600",
+        "900"
+      ],
+      "letter-spacing": [
+        "-.045em",
+        "-1.3px",
+        "-2.8px",
+        "-4px",
+        ".3px",
+        "1.5px",
+        "1px",
+        "2.1px",
+        "2px"
+      ],
+      "text-transform": [
+        "uppercase"
+      ]
+    }
+  },
+  "findings": [
+    "One system sans stack in each view, but not centralized; Inter was named without a supplied font file.",
+    "Inconsistent size, weight and tracking created the appearance of multiple typefaces.",
+    "Metadata as small as 6px and pervasive uppercase reduced hierarchy and readability.",
+    "The documented scale did not match actual component styles."
+  ],
+  "decisions": [
+    "One shared system sans family; official PP Neue Montreal remains pending.",
+    "Six semantic roles: display, title, heading, body, label, meta.",
+    "Only 400, 500 and 600 weights in UI; wordmark is a brand exception.",
+    "Sentence case; uppercase only NOODO, IA, UI, CSS and identifiers.",
+    "No UI text below 12px; responsive display/title only."
+  ]
+}

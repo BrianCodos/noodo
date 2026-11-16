@@ -1,0 +1,40 @@
+/* NOODO · Tipografía semántica compartida. Generado desde typography.js. */
+:root{
+  --font-family-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --type-display-size: 48px;
+  --type-display-line: 52px;
+  --type-display-weight: 600;
+  --type-display-tracking: -0.035em;
+  --type-display: 600 var(--type-display-size)/var(--type-display-line) var(--font-family-ui);
+  --type-title-size: 32px;
+  --type-title-line: 38px;
+  --type-title-weight: 600;
+  --type-title-tracking: -0.025em;
+  --type-title: 600 var(--type-title-size)/var(--type-title-line) var(--font-family-ui);
+  --type-heading-size: 24px;
+  --type-heading-line: 30px;
+  --type-heading-weight: 600;
+  --type-heading-tracking: -0.02em;
+  --type-heading: 600 var(--type-heading-size)/var(--type-heading-line) var(--font-family-ui);
+  --type-body-size: 16px;
+  --type-body-line: 24px;
+  --type-body-weight: 400;
+  --type-body-tracking: 0;
+  --type-body: 400 var(--type-body-size)/var(--type-body-line) var(--font-family-ui);
+  --type-label-size: 14px;
+  --type-label-line: 20px;
+  --type-label-weight: 500;
+  --type-label-tracking: 0;
+  --type-label: 500 var(--type-label-size)/var(--type-label-line) var(--font-family-ui);
+  --type-meta-size: 12px;
+  --type-meta-line: 18px;
+  --type-meta-weight: 400;
+  --type-meta-tracking: 0;
+  --type-meta: 400 var(--type-meta-size)/var(--type-meta-line) var(--font-family-ui);
+}
+@media(max-width:600px){:root{
+  --type-display-size: 36px;
+  --type-display-line: 40px;
+  --type-title-size: 28px;
+  --type-title-line: 34px;
+}}

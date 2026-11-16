@@ -1,0 +1,109 @@
+/* NOODO · Tipografía semántica compartida. Generado desde typography.js. */
+:root{
+  --font-family-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --type-display-size: 48px;
+  --type-display-line: 52px;
+  --type-display-weight: 600;
+  --type-display-tracking: -0.035em;
+  --type-display: 600 var(--type-display-size)/var(--type-display-line) var(--font-family-ui);
+  --type-title-size: 32px;
+  --type-title-line: 38px;
+  --type-title-weight: 600;
+  --type-title-tracking: -0.025em;
+  --type-title: 600 var(--type-title-size)/var(--type-title-line) var(--font-family-ui);
+  --type-heading-size: 24px;
+  --type-heading-line: 30px;
+  --type-heading-weight: 600;
+  --type-heading-tracking: -0.02em;
+  --type-heading: 600 var(--type-heading-size)/var(--type-heading-line) var(--font-family-ui);
+  --type-body-size: 16px;
+  --type-body-line: 24px;
+  --type-body-weight: 400;
+  --type-body-tracking: 0;
+  --type-body: 400 var(--type-body-size)/var(--type-body-line) var(--font-family-ui);
+  --type-label-size: 14px;
+  --type-label-line: 20px;
+  --type-label-weight: 500;
+  --type-label-tracking: 0;
+  --type-label: 500 var(--type-label-size)/var(--type-label-line) var(--font-family-ui);
+  --type-meta-size: 12px;
+  --type-meta-line: 18px;
+  --type-meta-weight: 400;
+  --type-meta-tracking: 0;
+  --type-meta: 400 var(--type-meta-size)/var(--type-meta-line) var(--font-family-ui);
+}
+@media(max-width:600px){:root{
+  --type-display-size: 36px;
+  --type-display-line: 40px;
+  --type-title-size: 28px;
+  --type-title-line: 34px;
+}}
+:root{
+  --workspace-inset: 24px;
+  --artist-structural-background: transparent;
+  --artist-player-padding: 32px;
+  --player-row-play-opacity: 0.9;
+  --genre-card-ratio: 1 / 1;
+  --session-card-ratio: 16 / 9;
+  --catalog-gap: 24px;
+  --player-sidebar-background: transparent;
+  --player-context-background: transparent;
+  --player-divider-width: 1px;
+  --player-divider-color: color-mix(in srgb, var(--noodo-accent, var(--accent)) 22%, var(--noodo-background, var(--background)));
+  --player-row-padding-block: 6px;
+  --player-row-min-height: 60px;
+  --artist-album-ratio: 1 / 1;
+  --artist-gallery-columns: 4;
+  --shell-rail-width: 48px;
+  --artist-album-max-width: 280px;
+  --player-dock-glow: 0 -10px 42px color-mix(in srgb, var(--primary) 18%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+/* NOODO v0.3 — acento y glow actualizados el 15-11-2026. Base: dossier, p. 9. */
+:root {
+  --noodo-primary: #6F36E1;
+  --noodo-accent: #C397F4;
+  --noodo-background: #110B1B;
+  --noodo-secondary: #291E3B;
+  --noodo-textPrimary: #F5F2E9;
+  --noodo-neutral: #77747A;
+  --noodo-player-background: #09060F;
+  --noodo-surface: #1C1429;
+  --noodo-text-secondary: #BCB7C2;
+  --noodo-border-control: #8C7AA6;
+  --noodo-border-subtle: #46335F;
+  --noodo-success: #91D6AE;
+  --noodo-warning: #E7C482;
+  --noodo-danger: #F29C9C;
+  --noodo-info: #9DC9EC;
+  --noodo-action: var(--noodo-primary);
+  --noodo-on-action: #F5F2E9;
+  --noodo-accent-action: var(--noodo-accent);
+  --noodo-on-soft: #110B1B;
+  --noodo-accent-text: #B294E5;
+  --noodo-focus: var(--noodo-accent-text);
+  --noodo-glow-subtle: 0 0 16px color-mix(in srgb, var(--noodo-primary) 14%, transparent);
+  --noodo-glow-interactive: 0 0 22px color-mix(in srgb, var(--noodo-primary) 20%, transparent);
+  --noodo-glow-card: 0 8px 40px color-mix(in srgb, var(--noodo-primary) 20%, transparent);
+  --noodo-card-gradient: radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--noodo-accent) 26%, var(--noodo-background)) 0%, color-mix(in srgb, var(--noodo-primary) 18%, var(--noodo-background)) 36%, var(--noodo-background) 78%);
+  --noodo-blur-ambient: 36px;
+  --noodo-blur-glass: 18px;
+  --noodo-glass: color-mix(in srgb, var(--noodo-surface) 86%, transparent);
+  --noodo-glow-brand: 0 0 56px color-mix(in srgb, var(--noodo-primary) 8%, transparent);
+  --noodo-font-preview: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --noodo-radius-card: 16px;
+  --noodo-radius-field: 8px;
+  --noodo-radius-panel: 24px;
+  --noodo-target: 44px;
+  --noodo-space-4: 4px;
+  --noodo-space-8: 8px;
+  --noodo-space-12: 12px;
+  --noodo-space-16: 16px;
+  --noodo-space-24: 24px;
+  --noodo-space-32: 32px;
+  --noodo-space-48: 48px;
+  --noodo-space-64: 64px;
+  --noodo-motion-fast: 120ms;
+  --noodo-motion-standard: 180ms;
+  --noodo-motion-surface: 240ms;
+}
+/* Validar contraste después de cambiar la paleta. PP Neue Montreal no está incluida. */
