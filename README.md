@@ -41,3 +41,10 @@ for file in dist/*.js; do node --check "$file" || exit 1; done
 ```
 
 La revisión visual y funcional más reciente se realizó a 1771×1314, 1093×827 y 390×844. Los detalles están en `REVIEW-V18.md`.
+
+## Web publicada
+
+- Reproductor: https://briancodos.github.io/noodo/listen.html
+- Design system: https://briancodos.github.io/noodo/
+
+GitHub Actions publica la carpeta `dist/` en GitHub Pages cuando hay cambios en ella en `main`. El workflow también puede ejecutarse manualmente desde Actions.
