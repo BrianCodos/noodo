@@ -44,6 +44,7 @@
   toggle.onclick=()=>{collapsed=!collapsed;paint();try{localStorage.setItem('noodo-discovery-'+key,collapsed?'collapsed':'expanded');}catch{}};
   heading.append(toggle);paint();
  }
+ document.getElementById('top-playlists').onclick=()=>{closeMobilePanels();window.noodoLibrary.open();};
  const mobileNav=document.querySelector('.mobile-navigation');
  mobileNav.addEventListener('click',async event=>{
   const button=event.target.closest('[data-mobile-view]');if(!button)return;
