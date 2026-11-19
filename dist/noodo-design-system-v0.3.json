@@ -1,7 +1,7 @@
 {
   "schemaVersion": "noodo.design-system/0.3",
   "status": "draft",
-  "exportedAt": "2026-11-16T16:09:27.264Z",
+  "exportedAt": "2026-11-16T20:30:36.744Z",
   "source": {
     "document": "NOODO_Dossier_Integral_Noviembre_2026.pdf",
     "identityPages": [
@@ -117,7 +117,7 @@
     }
   },
   "playerSystem": {
-    "revision": "2026-11-16.profile-18",
+    "revision": "2026-11-16.profile-19",
     "tokens": {
       "workspaceInset": "24px",
       "artistStructuralBackground": "transparent",
@@ -169,7 +169,7 @@
       ],
       [
         "Concierto compacto",
-        "Variante del listado de conciertos para la columna derecha: bloque de fecha, imagen, categoría, nombre, lugar, hora y acción de entradas. Adaptar la distribución al ancho sin reducir la tipografía."
+        "Variante del listado de conciertos para la columna derecha: bloque de fecha, categoría, nombre, lugar y hora, sin fotografía. Acción de entradas únicamente con icono de ticket en botón 1:1 de 44 px, etiqueta accesible y tooltip Reservar entrada o Comprar tickets. Adaptar la distribución al ancho sin reducir la tipografía."
       ],
       [
         "Catálogo de géneros",
@@ -209,7 +209,7 @@
       ],
       [
         "Conciertos en lista",
-        "Filas con fecha, miniatura, categoría, nombre enlazado al detalle, lugar, hora y acción de tickets. Comprar tickets en eventos de pago; Reservar entrada en gratuitos. Detalle central; mostrar disponibilidad antes de reservar o pagar. Glow suave sin borde decorativo."
+        "Filas con fecha, miniatura, categoría, nombre enlazado al detalle, lugar, hora y acción de tickets. Comprar tickets en eventos de pago; Reservar entrada en gratuitos. Acción de tickets y flecha de detalle siempre juntas, alineadas a la derecha; en espacios estrechos ambas pasan juntas a la segunda fila. Detalle central; mostrar disponibilidad antes de reservar o pagar. Glow suave sin borde decorativo."
       ],
       [
         "Mini reproductor del artista",
@@ -308,8 +308,8 @@
         "display": {
           "size": 48,
           "lineHeight": 52,
-          "mobileSize": 36,
-          "mobileLineHeight": 40,
+          "mobileSize": 30,
+          "mobileLineHeight": 36,
           "weight": 600,
           "tracking": "-0.035em",
           "usage": "Mensaje principal de una pieza destacada. Máximo uno por vista."
@@ -317,8 +317,8 @@
         "title": {
           "size": 32,
           "lineHeight": 38,
-          "mobileSize": 28,
-          "mobileLineHeight": 34,
+          "mobileSize": 24,
+          "mobileLineHeight": 30,
           "weight": 600,
           "tracking": "-0.025em",
           "usage": "Título de página o diálogo principal."
@@ -326,6 +326,8 @@
         "heading": {
           "size": 24,
           "lineHeight": 30,
+          "mobileSize": 20,
+          "mobileLineHeight": 26,
           "weight": 600,
           "tracking": "-0.02em",
           "usage": "Secciones y títulos de cards destacadas."
@@ -910,7 +912,7 @@
       "family": "Eventos",
       "scope": "Inicial",
       "states": "Gratis · reserva · tickets",
-      "contract": "Fecha, fotografía, categoría, nombre, lugar y acción; versión compacta del perfil.",
+      "contract": "Fecha, categoría, nombre y lugar; sin foto. Botón de ticket 44 × 44 con etiqueta accesible y tooltip.",
       "section": "player"
     },
     {

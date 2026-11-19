@@ -32,11 +32,13 @@
   --type-meta-tracking: 0;
   --type-meta: 400 var(--type-meta-size)/var(--type-meta-line) var(--font-family-ui);
 }
-@media(max-width:600px){:root{
-  --type-display-size: 36px;
-  --type-display-line: 40px;
-  --type-title-size: 28px;
-  --type-title-line: 34px;
+@media(max-width:760px){:root{
+  --type-display-size: 30px;
+  --type-display-line: 36px;
+  --type-title-size: 24px;
+  --type-title-line: 30px;
+  --type-heading-size: 20px;
+  --type-heading-line: 26px;
 }}
 :root{
   --workspace-inset: 24px;
