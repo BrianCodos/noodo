@@ -86,7 +86,7 @@
   --noodo-glow-subtle: 0 0 16px color-mix(in srgb, var(--noodo-primary) 14%, transparent);
   --noodo-glow-interactive: 0 0 22px color-mix(in srgb, var(--noodo-primary) 20%, transparent);
   --noodo-glow-card: 0 8px 40px color-mix(in srgb, var(--noodo-primary) 20%, transparent);
-  --noodo-card-gradient: radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--noodo-accent) 26%, var(--noodo-background)) 0%, color-mix(in srgb, var(--noodo-primary) 18%, var(--noodo-background)) 36%, var(--noodo-background) 78%);
+  --noodo-card-gradient: var(--noodo-surface);
   --noodo-blur-ambient: 36px;
   --noodo-blur-glass: 18px;
   --noodo-glass: color-mix(in srgb, var(--noodo-surface) 86%, transparent);

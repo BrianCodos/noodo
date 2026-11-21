@@ -11,3 +11,5 @@ Guía para el agente revisor de UI. Revisar los cambios contra los tokens y cont
 ## Revisión del 21 de noviembre de 2026
 
 El agente independiente confirmó el selector genérico `.genre-artist-card span` como causa del contraste 1,18:1, el borde inferior explícito y la regla móvil que desplazaba todas las acciones debajo de la fotografía. Se corrigieron esas reglas. Validación visual en navegador pendiente.
+
+- Cards: rechazar fondos degradados decorativos. Usar superficie plana o transparente; la tarjeta editorial es transparente. Revisar también hover, selección y exportación CSS.

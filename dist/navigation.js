@@ -83,7 +83,7 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  placeInfoControl();mobile.addEventListener('change',placeInfoControl);
  infoToggle.onclick=()=>{const opening=!(mobile.matches?mobilePanels.info:panels.info);if(opening&&mobile.matches)selectInfo('artist',false,false);setPanel('info',opening);};
  // Accessible, independently collapsible discovery sections.
- for(const [selector,key,label] of [['.collections','genres','Géneros'],['#recommended','bands','Bandas recomendadas']]){
+ for(const [selector,key,label] of [['.collections','genres','Géneros'],['#recommended','bands','Bandas recomendadas'],['#featured-session','featured-session','Sesión destacada'],['#editorial-feature','editorial','Historias de artistas']]){
   const section=document.querySelector(selector),heading=section.querySelector('.section-heading');
   const body=document.createElement('div');body.id='discovery-'+key;body.className='discovery-section-body';
   [...section.children].filter(child=>child!==heading).forEach(child=>body.append(child));section.append(body);
@@ -126,12 +126,13 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
    const i=url.searchParams.get('track');if(i!==null)window.noodoPlayer.select(Number(i),url.searchParams.get('play')==='1');
    const context=url.searchParams.get('context');if(['song','lyrics'].includes(context)){showView(contextView);normalizeBack(contextView);selectInfo(context,false,false);}else{showView(listenView);document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});}
   }
+  if(url.pathname.endsWith('/article.html'))showPanel(window.noodoEditorial.article(url.searchParams.get('story')||'luna-marea'));
   closeMobilePanels();paintPanels();window.dispatchEvent(new Event('resize'));const sessionId=url.searchParams.get('session');if(sessionId!==null&&tracks[Number(sessionId)]?.kind==='session')openSession(Number(sessionId));
   const eventCode=url.searchParams.get('event');if(eventCode)window.noodoEvents.openCode(eventCode);
   if(scroll){center.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});const target=url.hash&&document.getElementById(url.hash.slice(1));if(target)target.scrollIntoView({behavior:'instant'});}
  }
  function captureOrigin(){return {href:location.href,scroll:scrollY,musicView:view,panels:[...panelStack.map(item=>item.panel),activePanel].filter(panel=>panel&&panel.id!=='detail-dialog'),baseScroll:returnScroll};}
- async function goBack(){if(activePanel){closePanel();return;}const origin=navigationTrail.pop();if(!origin)return navigate('listen.html',false);window.noodoPlayer.save();const url=new URL(origin.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;await renderRoute(url,false);if(!url.pathname.endsWith('/artist.html'))setView(origin.musicView);window.scrollTo({top:origin.baseScroll,behavior:'instant'});for(const panel of origin.panels)if(panel.isConnected)showPanel(panel);window.scrollTo({top:origin.scroll,behavior:'instant'});}
+ async function goBack(){if(activePanel?.dataset.kind==='Editorial'){closePanel(false);}else if(activePanel){closePanel();return;}const origin=navigationTrail.pop();if(!origin)return navigate('listen.html',false);window.noodoPlayer.save();const url=new URL(origin.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;await renderRoute(url,false);if(!url.pathname.endsWith('/artist.html'))setView(origin.musicView);window.scrollTo({top:origin.baseScroll,behavior:'instant'});for(const panel of origin.panels)if(panel.isConnected)showPanel(panel);window.scrollTo({top:origin.scroll,behavior:'instant'});}
  function navigate(href,remember=true){if(remember)navigationTrail.push(captureOrigin());window.noodoPlayer.save();const url=new URL(href,location.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;return renderRoute(url);}
  window.noodoWorkspace={navigate,showPanel,closePanel,back:goBack,setPanel,songs:()=>{if(location.pathname.endsWith('/listen.html')&&!location.search&&!activePanel&&!listenView.hidden){closeMobilePanels();return;}return navigate('listen.html');},openContext:(name,i)=>{if(name==='artist'||name==='events')return navigate('artist.html?artist='+artistProfileIndex(i)+(name==='events'?'#conciertos':''));return navigate('listen.html?context='+name);}};
  // All section back controls use one handler before legacy listeners run.
@@ -142,10 +143,10 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  },true);
  document.addEventListener('click',e=>{
   const a=e.target.closest('a[href]');if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target||a.hasAttribute('download'))return;
-  const url=new URL(a.href,location.href);if(url.origin!==location.origin||!['listen.html','artist.html'].some(name=>url.pathname.endsWith('/'+name))||a.getAttribute('href').startsWith('#'))return;
+  const url=new URL(a.href,location.href);if(url.origin!==location.origin||!['listen.html','artist.html','article.html'].some(name=>url.pathname.endsWith('/'+name))||a.getAttribute('href').startsWith('#'))return;
   e.preventDefault();if(a.matches('.hero-back'))goBack();else navigate(url.href);
  });
- document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(activePanel){e.preventDefault();closePanel();}else closeMobilePanels();});
+ document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(activePanel){e.preventDefault();if(activePanel.dataset.kind==='Editorial')goBack();else closePanel();}else closeMobilePanels();});
  let lastRoute=location.pathname+location.search;
  window.addEventListener('popstate',()=>{const nextRoute=location.pathname+location.search;if(nextRoute===lastRoute&&!activePanel)return;lastRoute=nextRoute;renderRoute(new URL(location.href));});
  paintPanels();renderRoute(new URL(location.href),true);

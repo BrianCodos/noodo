@@ -62,7 +62,7 @@
 .artist-view .event-badges .event-free{color:var(--muted);box-shadow:none;background:var(--surface)}
 .artist-view .event-place{display:flex;align-items:center;gap:6px;font:var(--type-meta);color:var(--muted)}.artist-view .event-place svg{width:16px;height:16px}
 .artist-view .event-open{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--surface);color:var(--accent);font:var(--type-heading)}
-.artist-view .concert-row:hover{background:radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--accent) 25%,var(--background)),var(--background) 90%)}
+.artist-view .concert-row:hover{background:var(--surface)}
 /* Full information, queue and secondary flows use the center instead of modals. */
 .central-panel{background:var(--card-gradient);padding:24px;border:0;border-radius:20px;min-width:0;min-height:360px;font:var(--type-body)}
 .central-panel:focus{outline:none}.central-panel h2{font:var(--type-title);margin:12px 0 20px}.central-panel p{color:var(--muted);line-height:1.65;margin:12px 0}
@@ -733,8 +733,56 @@
 
 /* Compact disclosure rhythm, shared by expanded and collapsed sections. */
 :root{--disclosure-heading-gap:4px;--disclosure-section-gap:12px;--disclosure-collapsed-gap:0px}
-.workspace-app .discovery>:is(.collections,.recommended){margin-block:var(--disclosure-section-gap)}
-.workspace-app .discovery>:is(.collections,.recommended)>.section-heading:has(.discovery-toggle){margin:0 0 var(--disclosure-heading-gap);padding-block:0;min-height:44px;align-items:center}
-.workspace-app .discovery>:is(.collections,.recommended).section-collapsed{margin-block:var(--disclosure-collapsed-gap)}
-.workspace-app .discovery>:is(.collections,.recommended).section-collapsed>.section-heading:has(.discovery-toggle){margin:0}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature){margin-block:var(--disclosure-section-gap)}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature)>.section-heading:has(.discovery-toggle){margin:0 0 var(--disclosure-heading-gap);padding-block:0;min-height:44px;align-items:center}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature).section-collapsed{margin-block:var(--disclosure-collapsed-gap)}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature).section-collapsed>.section-heading:has(.discovery-toggle){margin:0}
 .workspace-app .discovery>.section-collapsed+.track-section>.songs-heading{margin-top:8px}
+
+/* FeaturedSession composes the shared SessionCard and SectionDisclosure. */
+.featured-session{min-width:0}
+.featured-session .section-heading h2{font:var(--type-heading);color:var(--accent);margin:0}
+.featured-session .session-card{width:100%}
+
+
+/* SessionCard text is independent from its poster and configurable per instance. */
+.session-card-info{display:flex;align-items:center;gap:12px;padding:12px 16px}
+.session-card-copy{flex:1;min-width:0;overflow-wrap:anywhere}
+.session-card-copy h3{margin:0;color:var(--text);font:var(--type-label);font-weight:600}
+.session-card-copy p{margin:4px 0 0;color:var(--muted);font:var(--type-label)}
+.session-card-copy .session-card-meta{font:var(--type-meta)}
+.session-card-info>.icon-button{flex-shrink:0;width:44px;height:44px}
+.session-card .session-open{padding:0;display:block}
+.featured-session .session-card{background:transparent;box-shadow:none;border-radius:0;overflow:visible}
+.featured-session .session-card-info{padding:0 0 12px}
+.featured-session .session-card[data-info-position=bottom] .session-card-info{padding:12px 0 0}
+.featured-session .session-poster{border-radius:16px}
+
+/* SessionCard overlay keeps metadata and artwork inside one frame. */
+.session-card[data-info-position=overlay]{position:relative;isolation:isolate;border-radius:16px;overflow:hidden}
+.session-card[data-info-position=overlay] .session-card-info{position:absolute;inset:auto 0 0;z-index:2;padding:48px 16px 16px;background:linear-gradient(transparent,rgba(9,6,15,.88) 45%,#09060f);pointer-events:none}
+.session-card[data-info-position=overlay] .session-card-info>.icon-button{pointer-events:auto;color:#F5F3F7;background:rgba(9,6,15,.6);border-radius:50%}
+.session-card[data-info-position=overlay] .session-card-copy h3,.session-card[data-info-position=overlay] .session-card-copy p{color:#F5F3F7}
+.session-card[data-info-position=overlay] .session-duration{top:12px;bottom:auto}
+.session-card[data-info-position=overlay] .session-play{top:36%}
+
+/* EditorialFeature / EditorialArticle share typography and shell navigation. */
+.editorial-feature .section-heading h2{font:var(--type-heading);color:var(--accent);margin:0}
+.editorial-card{display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,1.2fr);gap:20px;align-items:center;padding:16px;background:var(--card-gradient);border-radius:16px}
+.editorial-card>img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
+.editorial-card-copy{min-width:0}.editorial-eyebrow,.editorial-byline{font:var(--type-meta);color:var(--accent)}
+.editorial-card h3{font:var(--type-heading);color:var(--text);margin:8px 0}
+.editorial-card p{font:var(--type-meta);color:var(--muted);margin:0 0 12px}
+.editorial-read{font:var(--type-label);color:var(--accent);display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.editorial-article{max-width:900px;margin-inline:auto}
+.editorial-article-header h1{font:var(--type-title);color:var(--text);margin:8px 0 12px}
+.editorial-lead{font:var(--type-body);color:var(--muted);margin:0 0 12px}
+.editorial-article figure{margin:24px 0}.editorial-article figure img{display:block;width:100%;max-height:480px;object-fit:cover;object-position:center 35%;border-radius:16px}
+.editorial-article figcaption{font:var(--type-meta);color:var(--muted);margin-top:8px}
+.editorial-prose{max-width:65ch;margin-inline:auto}.editorial-prose p{font:var(--type-body);line-height:1.75;color:var(--muted);margin:0 0 20px}
+.editorial-prose h2{font:var(--type-heading);color:var(--accent);margin:28px 0 10px}
+.editorial-listen{padding:20px;background:var(--surface);border-radius:16px}.editorial-listen h2{margin-top:0}.editorial-listen .pill{margin:4px 8px 4px 0}
+@media(max-width:400px){.editorial-card{grid-template-columns:1fr}.editorial-card>img{aspect-ratio:4/3}}
+
+/* Cards use flat surfaces; editorial cards inherit the page background. */
+.editorial-card{background:transparent;box-shadow:none}

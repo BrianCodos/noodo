@@ -44,8 +44,7 @@
 @media(max-width:700px){.photo-overlay-demo{width:100%;height:300px;min-height:0;aspect-ratio:auto}}
 
 /* v0.3 — semantic tokens, stage light, glass and player specimens. */
-:root{--glow-card:0 8px 40px color-mix(in srgb,var(--primary) 20%,transparent);--blur-ambient:36px;--blur-glass:18px;--glass:color-mix(in srgb,var(--surface) 86%,transparent);--card-gradient:radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--accent) 26%,var(--background)) 0%,color-mix(in srgb,var(--primary) 18%,var(--background)) 36%,var(--background) 78%)}
-.panel:not(.flat),.spec-demo,.glow-card{background:var(--card-gradient);box-shadow:var(--glow-card)}
+:root{--glow-card:0 8px 40px color-mix(in srgb,var(--primary) 20%,transparent);--blur-ambient:36px;--blur-glass:18px;--glass:color-mix(in srgb,var(--surface) 86%,transparent);--card-gradient:var(--surface);box-shadow:var(--glow-card)}
 .panel h3,.spec-info h3{color:var(--accent)}
 .glow-card{border:1px solid color-mix(in srgb,var(--accent) 28%,var(--background));border-radius:var(--radius);overflow:hidden}
 .glass-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}

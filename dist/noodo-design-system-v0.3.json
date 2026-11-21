@@ -1016,6 +1016,24 @@
       "category": "Navegación",
       "status": "Inicial",
       "contract": "Control compartido noodoDisclosure.mount: aria-expanded, aria-controls, foco seguro e inert al plegar; animación interrumpible de altura y opacidad de 200 ms, sin movimiento con prefers-reduced-motion. Estado persistente por sección. Cabecera de 44 px sin margen vertical al plegar; separación de 0 px entre secciones plegadas, 12 px abiertas y 4 px entre cabecera y contenido."
+    },
+    {
+      "name": "FeaturedSession",
+      "category": "Música",
+      "status": "Inicial",
+      "contract": "FeaturedSession compone SessionCard y SectionDisclosure debajo de Bandas recomendadas, solo en inicio sin filtros. Portada 16:9, duración, título, artista, abrir sesión y guardar; mismo renderer y acciones que Originals. Sin autoplay. Plegado animado y persistente. Datos del catálogo; no duplicar reproductores. Información textual superpuesta dentro del marco de la foto por defecto, con degradado oscuro para legibilidad; opciones por instancia: title, artist, meta, infoPosition (overlay/top/bottom) y showSave. Textos escapados; abrir y guardar siguen vinculados al ID original de la sesión."
+    },
+    {
+      "name": "EditorialFeature / EditorialArticle",
+      "category": "Música",
+      "status": "Inicial",
+      "contract": "EditorialFeature: sección editorial plegable después de FeaturedSession. Tarjeta configurable por datos (artista, título, resumen, imagen, categoría y lectura) enlazada a article.html?story=slug. EditorialArticle comparte shell, regreso y reproductor persistente; incluye portada, texto largo y acceso al perfil y canciones. Marcar contenido ficticio de muestra y no atribuir entrevistas inventadas."
+    },
+    {
+      "name": "CardSurface",
+      "category": "Fundamentos",
+      "status": "Definido",
+      "contract": "Las cards no usan fondos degradados decorativos. Usar superficie plana (surface) o transparente; EditorialFeature usa transparente. Los estados hover y selección también son planos. Los degradados de legibilidad sobre fotografías y las ilustraciones de género son contenido visual, no fondos de superficie."
     }
   ],
   "notes": {},
@@ -1052,5 +1070,11 @@
       "playArtistPlaylist",
       "saveArtist"
     ]
+  },
+  "cardSurface": {
+    "background": "surface",
+    "editorialBackground": "transparent",
+    "decorativeGradients": false,
+    "rule": "Las cards no usan fondos degradados decorativos. Usar superficie plana (surface) o transparente; EditorialFeature usa transparente. Los estados hover y selección también son planos. Los degradados de legibilidad sobre fotografías y las ilustraciones de género son contenido visual, no fondos de superficie."
   }
 }
