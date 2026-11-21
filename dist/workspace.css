@@ -283,7 +283,7 @@
 .genre-directory-grid .orb{position:absolute;width:80%;height:auto;aspect-ratio:1;right:-18%;bottom:8%}
 .genre-artists-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,260px));gap:24px}
 .genre-artist-card{display:flex;flex-direction:column;gap:12px;text-decoration:none;border-radius:18px;padding:12px;background:var(--card-gradient)}
-.genre-artist-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}.genre-artist-card strong{font:var(--type-label);color:var(--text)}.genre-artist-card span{color:var(--muted);font:var(--type-meta)}
+.genre-artist-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}.genre-artist-card strong{font:var(--type-label);color:var(--text)}.genre-artist-card>span,.artist-card-copy>span{color:var(--muted);font:var(--type-meta)}
 .session-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--catalog-gap)}
 .session-card{min-width:0;background:var(--card-gradient);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px color-mix(in srgb,var(--primary) 10%,transparent)}
 .session-open{display:flex;flex-direction:column;gap:8px;align-items:stretch;width:100%;text-align:left;padding:0 0 12px;color:var(--text);background:none;border:0}
@@ -649,9 +649,92 @@
  .workspace-app .player-dock .mobile-player-details{grid-row:2}
 }
 @media(max-width:539px){
- .workspace-app .player-dock .dock-identity{grid-column:1/-1;grid-row:1}
+ .workspace-app .player-dock,.workspace-app.artist-mode .player-dock{grid-template-columns:minmax(0,1fr) auto 44px}
+ .workspace-app .player-dock .dock-identity{grid-column:1;grid-row:1}
+ .workspace-app .player-dock .transport{grid-column:2;grid-row:1;justify-self:end}
+ .workspace-app .player-dock #info-toggle,.workspace-app.artist-mode .player-dock #info-toggle{grid-column:3;grid-row:1}
  .workspace-app .player-dock .progress{grid-column:1/-1;grid-row:2}
- .workspace-app .player-dock .transport{grid-column:1/-1;grid-row:3;justify-self:center}
- .workspace-app .player-dock #info-toggle,.workspace-app.artist-mode .player-dock #info-toggle{grid-column:2;grid-row:3}
- .workspace-app .player-dock .mobile-player-details{grid-row:4}
+ .workspace-app .player-dock .mobile-player-details{grid-row:3}
 }
+
+/* One section entry rhythm and one back-control component throughout the shell. */
+:root{--section-top-gap:12px;--section-heading-gap:12px;--section-back-gap:4px}
+.workspace-app #center-stage{padding-top:var(--section-top-gap)}
+.workspace-app #center-details>.central-panel,.workspace-app #context-view{padding-top:0;margin-top:0}
+.workspace-app #center-stage .unified-back{display:flex;width:max-content;max-width:100%;min-height:44px;padding:0!important;margin:0 0 var(--section-back-gap)!important;border:0;background:transparent;box-shadow:none;border-radius:8px;font:var(--type-label)!important;color:var(--accent);align-items:center;gap:8px}
+.workspace-app #center-stage .unified-back:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.workspace-app #center-details>.central-panel>.section-heading,.workspace-app #center-details>.central-panel>.dialog-heading,.workspace-app #center-details>.central-panel>.dialog-top{margin:0 0 var(--section-heading-gap);min-height:0}
+.workspace-app #center-details>.central-panel>.section-heading>:is(h1,h2),.workspace-app #center-details>.central-panel>.section-heading>div>:is(h1,h2),.workspace-app #center-details>.central-panel>.unified-back+:is(h1,h2){margin-top:0;margin-bottom:var(--section-heading-gap)}
+.workspace-app #context-view>.unified-back+*,.workspace-app #artist-view>.unified-back+*{margin-top:0}
+@media(max-width:760px){:root{--section-top-gap:8px;--section-heading-gap:12px}}
+
+/* ArtistCollection / ArtistCard: shared list and grid variants. */
+:root{--artist-list-image-size:80px;--artist-collection-gap:12px}
+.artist-view-switch{display:flex;justify-content:flex-end;gap:4px;margin:0 0 12px}
+.artist-view-switch button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--muted);font:var(--type-label)}
+.artist-view-switch button[aria-pressed=true]{background:var(--secondary);color:var(--accent);border-color:var(--line)}
+.artist-view-switch svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.artist-collection{display:grid;gap:var(--artist-collection-gap);grid-template-columns:minmax(0,1fr)}
+.artist-collection .artist-card{min-width:0;display:flex;flex-direction:row;align-items:center;gap:16px;padding:12px;border-radius:14px;background:transparent;border:0;text-decoration:none}
+.artist-collection .artist-card>img{width:var(--artist-list-image-size);height:var(--artist-list-image-size);aspect-ratio:1;object-fit:cover;flex-shrink:0;border-radius:12px}
+.artist-card-copy{display:flex;flex:1;flex-direction:column;gap:6px;min-width:0;overflow-wrap:anywhere}
+.artist-collection .artist-card-arrow{flex-shrink:0;color:var(--accent);font-size:22px}
+.artist-collection .artist-card:hover{background:var(--surface)}
+.artist-collection .artist-card:focus-visible,.artist-view-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.artist-collection[data-view=grid]{grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:16px}
+.artist-collection[data-view=grid] .artist-card{flex-direction:column;align-items:stretch;gap:12px;background:var(--card-gradient);border-bottom:0}
+.artist-collection[data-view=grid] .artist-card>img{width:100%;height:auto}
+.artist-collection[data-view=grid] .artist-card-arrow{display:none}
+.artist-collection-empty{grid-column:1/-1}
+
+/* Collapsed desktop library retains every navigation action. */
+.workspace-app #library-body button{display:flex;align-items:center;gap:10px}
+.workspace-app #library-body button svg{width:20px;height:20px;flex-shrink:0}
+.workspace-app #library-body .library-icon{display:flex;flex-shrink:0}
+@media(min-width:761px){
+ .workspace-app.library-collapsed .sidebar-heading{justify-content:center}
+ .workspace-app.library-collapsed #library-body .library-label{display:none}
+ .workspace-app.library-collapsed #library-body button{justify-content:center;width:44px;min-width:44px;min-height:44px;padding:10px;margin-inline:auto;gap:0}
+ .workspace-app.library-collapsed .music-views,.workspace-app.library-collapsed .library-shortcuts{display:flex;flex-direction:column;align-items:center;gap:8px;padding-inline:0}
+}
+
+/* ArtistCard actions are separate from the profile link. */
+.artist-collection .artist-card{flex-wrap:wrap}
+.artist-card-profile{display:flex;align-items:center;gap:16px;flex:1;min-width:0;text-decoration:none}
+.artist-card-profile>img{width:var(--artist-list-image-size);height:var(--artist-list-image-size);object-fit:cover;aspect-ratio:1;border-radius:12px;flex-shrink:0}
+.artist-card-actions{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.artist-card-socials,.artist-card-playback{display:flex;align-items:center;gap:4px}
+.artist-card-actions .icon-button{width:44px;height:44px;min-width:44px;padding:10px}
+.artist-card-actions svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.artist-card-actions [aria-pressed=true]{color:var(--accent);background:var(--secondary);border-radius:50%}
+.artist-card-actions [aria-pressed=true] svg{fill:currentColor}
+.artist-card-playback .pill{min-height:44px;padding:8px 12px;gap:8px;font:var(--type-label)}
+.artist-card-profile:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:12px}
+.artist-collection[data-view=grid] .artist-card-profile{flex-direction:column;align-items:stretch;width:100%}
+.artist-collection[data-view=grid] .artist-card-profile>img{width:100%;height:auto}
+.artist-collection[data-view=grid] .artist-card-actions{width:100%;align-items:stretch}
+.artist-collection[data-view=grid] .artist-card-socials,.artist-collection[data-view=grid] .artist-card-playback{justify-content:space-between}
+.artist-collection[data-view=grid]{grid-template-columns:repeat(auto-fill,minmax(min(210px,100%),1fr))}
+/* List actions share the portrait area; only their internal groups wrap. */
+.artist-collection[data-view=list] .artist-card{display:grid;grid-template-columns:var(--artist-list-image-size) minmax(0,1fr);column-gap:16px;row-gap:8px;align-items:center}
+.artist-collection[data-view=list] .artist-card-profile{display:contents}
+.artist-collection[data-view=list] .artist-card-profile>img{grid-column:1;grid-row:1 / 3;align-self:start}
+.artist-collection[data-view=list] .artist-card-copy{grid-column:2;grid-row:1}
+.artist-collection[data-view=list] .artist-card-actions{grid-column:2;grid-row:2;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;min-width:0;gap:4px}
+.artist-collection[data-view=list] .artist-card-profile:focus-visible>img{outline:2px solid var(--accent);outline-offset:4px}
+.artist-card-playback .pill span{color:inherit;font:inherit}
+@media(max-width:460px){.artist-collection[data-view=list] .artist-card{column-gap:12px}.artist-collection[data-view=list] .artist-card-playback .pill span{display:none}.artist-collection[data-view=list] .artist-card-playback .pill{width:44px;padding:10px;justify-content:center}}
+@media(max-width:360px){.artist-card-playback .pill span{display:none}}
+
+/* Shared heading playback actions. */
+.song-heading-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.song-heading-actions>.icon-button{width:44px;height:44px;color:var(--accent);background:var(--secondary);border-radius:50%}
+@media(max-width:420px){.songs-heading{flex-wrap:wrap}.song-heading-actions{margin-left:auto}}
+
+/* Compact disclosure rhythm, shared by expanded and collapsed sections. */
+:root{--disclosure-heading-gap:4px;--disclosure-section-gap:12px;--disclosure-collapsed-gap:0px}
+.workspace-app .discovery>:is(.collections,.recommended){margin-block:var(--disclosure-section-gap)}
+.workspace-app .discovery>:is(.collections,.recommended)>.section-heading:has(.discovery-toggle){margin:0 0 var(--disclosure-heading-gap);padding-block:0;min-height:44px;align-items:center}
+.workspace-app .discovery>:is(.collections,.recommended).section-collapsed{margin-block:var(--disclosure-collapsed-gap)}
+.workspace-app .discovery>:is(.collections,.recommended).section-collapsed>.section-heading:has(.discovery-toggle){margin:0}
+.workspace-app .discovery>.section-collapsed+.track-section>.songs-heading{margin-top:8px}

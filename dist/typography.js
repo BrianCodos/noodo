@@ -5,9 +5,9 @@ const typographySystem={
  case:'Sentence case; preserve brand names, acronyms and code identifiers',
  minimumSize:12,
  roles:{
-  display:{size:48,lineHeight:52,mobileSize:30,mobileLineHeight:36,weight:600,tracking:'-0.035em',usage:'Mensaje principal de una pieza destacada. Máximo uno por vista.'},
-  title:{size:32,lineHeight:38,mobileSize:24,mobileLineHeight:30,weight:600,tracking:'-0.025em',usage:'Título de página o diálogo principal.'},
-  heading:{size:24,lineHeight:30,mobileSize:20,mobileLineHeight:26,weight:600,tracking:'-0.02em',usage:'Secciones y títulos de cards destacadas.'},
+  display:{size:40,lineHeight:46,mobileSize:26,mobileLineHeight:32,weight:600,tracking:'-0.035em',usage:'Mensaje principal de una pieza destacada. Máximo uno por vista.'},
+  title:{size:26,lineHeight:32,mobileSize:20,mobileLineHeight:26,weight:600,tracking:'-0.025em',usage:'Título de página o diálogo principal.'},
+  heading:{size:18,lineHeight:24,mobileSize:16,mobileLineHeight:22,weight:600,tracking:'-0.02em',usage:'Secciones y títulos de cards destacadas.'},
   body:{size:16,lineHeight:24,weight:400,tracking:'0',usage:'Párrafos, descripciones y contenido de lectura.'},
   label:{size:14,lineHeight:20,weight:500,tracking:'0',usage:'Navegación, botones, filtros y nombres de pistas.'},
   meta:{size:12,lineHeight:18,weight:400,tracking:'0',usage:'Duración, artista secundario, créditos y ayuda breve.'}

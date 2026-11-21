@@ -39,33 +39,23 @@ $('#hero-genre').onclick=()=>window.noodoGenres.artists(artist.genre);
 const artistTracks=tracks.map((t,i)=>({t,i})).filter(({t,i})=>t.kind==='track'&&artistProfileIndex(i)===artistIndex).slice(0,5);
 $('#mini-player-heading').textContent='Canciones';
 const miniFmt=n=>`${Math.floor(n/60)}:${String(n%60).padStart(2,'0')}`;
-let miniCurrent=artistTracks[0].i,miniElapsed=0,miniPlaying=false,miniVolume=70;
-$('#artist-track-list').innerHTML=artistTracks.map(({t,i},n)=>`<div class="mini-track" data-mini-row="${i}"><button class="mini-song" data-mini-track="${i}" aria-label="Reproducir ${t.title}"><span class="mini-number">${String(n+1).padStart(2,'0')}</span><img src="${t.image}" alt=""><span class="mini-track-copy"><strong>${t.title}</strong><small>${t.artist}</small></span><span class="mini-time">${miniFmt(t.duration)}</span><span class="mini-play">${icon('play')}</span></button><button class="mini-add icon-button" data-add-playlist="${i}" aria-label="Añadir ${t.title} a una playlist" title="Añadir a playlist">${icon('plus')}</button></div>`).join('');
+const artistTrackIds=artistTracks.map(({i})=>i);
+const disposeArtistRows=window.noodoTrackList.mount($('#artist-track-list'),artistTrackIds);
+function miniState(){const state=window.noodoPlayer.getState();return artistTrackIds.includes(state.current)?state:{...state,current:artistTrackIds[0],elapsed:0,playing:false};}
 function paintMiniPlayer(){
- const state={current:miniCurrent,elapsed:miniElapsed,playing:miniPlaying,volume:miniVolume};
- const inPlayer=true,isPlaying=miniPlaying,progress=miniElapsed,t=tracks[miniCurrent];
- $('#mini-current-image').src=t.image;$('#mini-current-image').alt='Portada de '+t.title;$('#mini-current-title').textContent=t.title;$('#mini-status').textContent=isPlaying?'Reproduciendo':inPlayer?'En pausa':'Selección del artista';
- $('#mini-toggle').innerHTML=icon(isPlaying?'pause':'play');$('#mini-toggle').setAttribute('aria-label',(isPlaying?'Pausar ':'Reproducir ')+t.title+' en mini reproductor');$('#mini-toggle').setAttribute('aria-pressed',String(isPlaying));
- $('#mini-elapsed').textContent=miniFmt(progress);$('#mini-duration').textContent=miniFmt(t.duration);$('#mini-seek').max=t.duration;$('#mini-seek').value=progress;$('#mini-seek').style.setProperty('--range-progress',(progress/t.duration*100)+'%');$('#mini-seek').setAttribute('aria-valuetext',miniFmt(progress)+' de '+miniFmt(t.duration));
+ const state=miniState(),t=tracks[state.current];if(!t)return;
+ $('#mini-current-image').src=t.image;$('#mini-current-image').alt='Portada de '+t.title;$('#mini-current-title').textContent=t.title;$('#mini-status').textContent=state.playing?'Reproduciendo':'En pausa';
+ $('#mini-toggle').innerHTML=icon(state.playing?'pause':'play');$('#mini-toggle').setAttribute('aria-label',(state.playing?'Pausar ':'Reproducir ')+t.title);$('#mini-toggle').setAttribute('aria-pressed',String(state.playing));
+ $('#mini-elapsed').textContent=miniFmt(state.elapsed);$('#mini-duration').textContent=miniFmt(t.duration);$('#mini-seek').max=t.duration;$('#mini-seek').value=state.elapsed;$('#mini-seek').style.setProperty('--range-progress',(state.elapsed/t.duration*100)+'%');$('#mini-seek').setAttribute('aria-valuetext',miniFmt(state.elapsed)+' de '+miniFmt(t.duration));
  $('#mini-volume').value=state.volume;$('#mini-volume').style.setProperty('--range-progress',state.volume+'%');$('#mini-volume').setAttribute('aria-valuetext',state.volume+' por ciento');
- $$('[data-mini-track]').forEach(button=>{const i=Number(button.dataset.miniTrack),active=i===state.current,playing=active&&state.playing,row=button.closest('.mini-track');row.classList.toggle('current',active);row.classList.toggle('playing',playing);button.setAttribute('aria-pressed',String(playing));button.setAttribute('aria-label',(playing?'Pausar ':'Reproducir ')+tracks[i].title);button.querySelector('.mini-play').innerHTML=icon(playing?'pause':'play');row.style.setProperty('--row-progress',active?(state.elapsed/tracks[i].duration*100)+'%':'0%');});
 }
-function playMini(i=miniCurrent){
- if(i!==miniCurrent){miniCurrent=i;miniElapsed=0;}
- if(miniElapsed>=tracks[miniCurrent].duration)miniElapsed=0;
- window.noodoPlayer.pause();miniPlaying=true;paintMiniPlayer();
-}
-function toggleMini(i=miniCurrent){if(i===miniCurrent&&miniPlaying){miniPlaying=false;paintMiniPlayer();}else playMini(i);}
-$$('[data-mini-track]').forEach(button=>button.addEventListener('click',()=>toggleMini(Number(button.dataset.miniTrack))));
-$('#mini-toggle').onclick=()=>toggleMini();
-function stepMini(direction){const index=artistTracks.findIndex(({i})=>i===miniCurrent);playMini(artistTracks[(index+direction+artistTracks.length)%artistTracks.length].i);}
+$('#mini-toggle').onclick=()=>window.noodoPlayer.toggleTrack(miniState().current);
+function stepMini(direction){const index=artistTrackIds.indexOf(miniState().current);window.noodoPlayer.select(artistTrackIds[(index+direction+artistTrackIds.length)%artistTrackIds.length],true);}
 $('#mini-previous').onclick=()=>stepMini(-1);$('#mini-next').onclick=()=>stepMini(1);
-$('#mini-seek').oninput=e=>{miniElapsed=Number(e.target.value);paintMiniPlayer();};
-$('#mini-volume').oninput=e=>{miniVolume=Number(e.target.value);paintMiniPlayer();};
-function onGlobalPlayerChange(){if(window.noodoPlayer.getState().playing)miniPlaying=false;paintMiniPlayer();}
-window.addEventListener('noodo:playerchange',onGlobalPlayerChange);paintMiniPlayer();
-const miniTimer=setInterval(()=>{if(!miniPlaying)return;miniElapsed++;if(miniElapsed>=tracks[miniCurrent].duration)stepMini(1);else paintMiniPlayer();},1000);
-$('#hero-listen').addEventListener('click',e=>{e.preventDefault();playMini(artistTracks[0].i);});
+$('#mini-seek').oninput=e=>window.noodoPlayer.seek(miniState().current,Number(e.target.value));
+$('#mini-volume').oninput=e=>{window.noodoPlayer.setVolume(Number(e.target.value));paintMiniPlayer();};
+window.addEventListener('noodo:playerchange',paintMiniPlayer);paintMiniPlayer();
+$('#hero-listen').addEventListener('click',e=>{e.preventDefault();window.noodoPlayer.playQueue(artistTrackIds);});
 let toastTimer;function toast(message){$('#artist-toast').textContent=message;$('#artist-toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#artist-toast').classList.remove('visible'),3500);}
 const followKey='noodo-follow-'+artistSlug;let following=false;try{following=localStorage.getItem(followKey)==='true';}catch{}
 function paintFollow(){$('#follow').setAttribute('aria-pressed',String(following));$('#follow-text').textContent=following?'Siguiendo':'Seguir artista';$('#follow [data-icon]').innerHTML=icon(following?'check':'plus');}
@@ -137,5 +127,5 @@ $$('[data-video]').forEach(b=>b.addEventListener('click',()=>{const live=b.datas
 $('#concert-list').innerHTML=concertSamples.map((event,i)=>`<article class="concert-row"><time class="event-date" datetime="${event.date}"><span>${event.weekday}</span><strong>${event.day}</strong><span>${event.month}</span></time><img src="${event.image}" alt=""><div class="event-copy"><span class="event-badges"><span>${event.kind}</span>${event.free?'<span class="event-free">Gratis</span>':''}</span><button class="event-title" data-concert="${i}">${event.title}</button><span class="event-place">${icon('pin')}${event.place} · ${event.time}</span></div><div class="concert-actions"><button class="button ticket-action" data-ticket="${i}">${icon('ticket')}<span>${event.free?'Reservar entrada':'Comprar tickets'}</span></button><button class="event-open" data-concert="${i}" aria-label="Ver ${event.title}">↗</button></div></article>`).join('');
 $$('[data-concert],[data-ticket]').forEach(button=>button.addEventListener('click',()=>window.noodoEvents.open(Number(button.dataset.concert??button.dataset.ticket))));
 
-return ()=>{disposeAlbumRows?.();clearInterval(miniTimer);window.removeEventListener('noodo:playerchange',onGlobalPlayerChange);if(miniPlaying){miniPlaying=false;window.noodoPlayer.resume();}dialog.remove();stickyResize.disconnect();clearTimeout(toastTimer);cancelAnimationFrame(sectionFrame);window.removeEventListener("scroll",onArtistScroll);window.removeEventListener("resize",updateActiveSection);};
+return ()=>{disposeAlbumRows?.();disposeArtistRows();window.removeEventListener('noodo:playerchange',paintMiniPlayer);dialog.remove();stickyResize.disconnect();clearTimeout(toastTimer);cancelAnimationFrame(sectionFrame);window.removeEventListener("scroll",onArtistScroll);window.removeEventListener("resize",updateActiveSection);};
 };
