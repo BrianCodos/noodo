@@ -558,7 +558,7 @@
 .mobile-player-details{display:none}
 @media(max-width:760px){
  .workspace-app .player-dock .mobile-player-details{display:block;grid-column:1/-1;grid-row:3;min-width:0;height:0;overflow:hidden;opacity:0;visibility:hidden;margin-top:-6px;transition:height 320ms cubic-bezier(.22,1,.36,1),opacity 200ms ease,visibility 0s linear 320ms,margin-top 320ms ease}
- .workspace-app.info-open .player-dock .mobile-player-details{height:min(58dvh,calc(100dvh - var(--shell-header-height) - var(--mobile-nav-height) - 160px));opacity:1;visibility:visible;margin-top:0;transition-delay:0s}
+ .workspace-app.info-open .player-dock .mobile-player-details{height:max(0px,calc(100dvh - var(--shell-header-height) - var(--mobile-nav-height) - 20px - var(--mobile-player-chrome,128px)));opacity:1;visibility:visible;margin-top:0;transition-delay:0s}
  .workspace-app.info-open .player-dock{border-radius:20px}
  .workspace-app .player-dock .mobile-player-details #context-sidebar,.workspace-app.artist-mode .player-dock .mobile-player-details #context-sidebar,.workspace-app.info-collapsed .player-dock .mobile-player-details #context-sidebar{display:block!important;position:static;inset:auto;width:100%;height:100%;max-height:none;min-height:0;margin:0;padding:0 4px 16px;border:0;border-top:1px solid var(--player-divider-color);border-radius:0;box-shadow:none;background:transparent;overflow:auto;overscroll-behavior:contain}
  .workspace-app .player-dock #context-sidebar .context-summary>img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:1;object-fit:cover;border-radius:16px;margin-bottom:16px}
@@ -591,4 +591,67 @@
  .workspace-app .center-stage:has(#queue-dialog:not([hidden])){padding-top:8px}
  .workspace-app .topbar-actions{gap:0}
  .workspace-app .topbar-actions .icon-button{width:40px;min-width:40px}
+}
+
+/* Compact mobile context: artwork stays beside the text. */
+@media(max-width:760px){
+ .workspace-app .player-dock #sidebar-detail:has(>img){display:grid;grid-template-columns:80px minmax(0,1fr);align-content:start;gap:8px 14px}
+ .workspace-app .player-dock #sidebar-detail:has(>img)>img{grid-column:1;grid-row:1/5;width:80px;height:80px;aspect-ratio:1;max-height:none;object-fit:cover;border-radius:12px;margin:0}
+ .workspace-app .player-dock #sidebar-detail:has(>img)>:not(img){grid-column:2;min-width:0;margin:0}
+ .workspace-app .player-dock #context-sidebar .context-tabs{padding-top:8px}
+}
+
+/* Unified detail on mobile and accessible header overflow options. */
+.header-options-toggle,.header-option-label{display:none}
+@media(max-width:760px){
+ .workspace-app .player-dock #context-sidebar .context-tabs{display:none}
+ .workspace-app .player-dock #sidebar-detail{padding-top:16px;gap:20px}
+ .mobile-detail-overview{display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start}
+ .mobile-detail-overview>img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
+ .mobile-detail-overview>div{display:grid;gap:10px;min-width:0}
+ .mobile-detail-section{display:grid;gap:12px}
+ .mobile-detail-section h3{font:var(--type-label);margin:0}
+ .workspace-app>.player-topbar{display:grid;grid-template-columns:auto minmax(0,1fr) 44px;gap:12px;z-index:90}
+ .workspace-app .player-topbar .topbar-center{width:auto;min-width:0;grid-column:2;grid-row:1}
+ .workspace-app .header-options-toggle{display:flex;grid-column:3;grid-row:1;width:44px;height:44px}
+ .workspace-app .topbar-actions{display:none;position:absolute;right:12px;top:calc(100% + 8px);width:min(260px,calc(100vw - 24px));padding:8px;flex-direction:column;align-items:stretch;gap:4px;background:var(--noodo-player-background);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 32px #0008}
+ .workspace-app .options-open .topbar-actions{display:flex}
+ .workspace-app .topbar-actions .icon-button{width:100%;height:48px;justify-content:flex-start;gap:12px;border-radius:10px;padding:12px}
+ .workspace-app .topbar-actions .header-option-label{display:inline;font:var(--type-label)}
+}
+@media(max-width:480px){
+ .workspace-app>.player-topbar{grid-template-columns:minmax(0,1fr) 44px}
+ .workspace-app .header-options-toggle{grid-column:2}
+ .workspace-app .player-topbar .topbar-center{grid-column:1/-1;grid-row:2;width:100%}
+}
+
+@media(max-width:760px){
+ #sidebar-detail .mobile-detail-section .compact-concert{grid-template-columns:42px minmax(0,1fr) 44px;gap:10px}
+ #sidebar-detail .mobile-detail-section .compact-ticket{grid-column:3;grid-row:1;align-self:center}
+}
+
+/* Keep breathing room above the expanded player and compact event summaries. */
+@media(max-width:760px){
+ #sidebar-detail .mobile-detail-section .compact-concert{padding:10px 12px;min-height:64px}
+ #sidebar-detail .mobile-detail-section .compact-concert time{padding:0;gap:2px;min-height:0}
+ #sidebar-detail .mobile-detail-section .compact-concert time>span:first-child{display:none}
+ #sidebar-detail .mobile-detail-section .compact-concert time>strong{font:var(--type-label)}
+ #sidebar-detail .mobile-detail-section .compact-event-kind{display:none}
+ #sidebar-detail .mobile-detail-section .compact-event-copy{min-width:0;display:grid;gap:4px}
+ #sidebar-detail .mobile-detail-section .compact-event-copy>strong,#sidebar-detail .mobile-detail-section .compact-event-copy>p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0}
+}
+@media(min-width:540px) and (max-width:760px){
+ .workspace-app .player-dock{grid-template-columns:minmax(110px,1fr) minmax(100px,1.2fr) auto 44px}
+ .workspace-app .player-dock .dock-identity{grid-column:1;grid-row:1}
+ .workspace-app .player-dock .progress{grid-column:2;grid-row:1}
+ .workspace-app .player-dock .transport{grid-column:3;grid-row:1}
+ .workspace-app .player-dock #info-toggle,.workspace-app.artist-mode .player-dock #info-toggle{grid-column:4;grid-row:1}
+ .workspace-app .player-dock .mobile-player-details{grid-row:2}
+}
+@media(max-width:539px){
+ .workspace-app .player-dock .dock-identity{grid-column:1/-1;grid-row:1}
+ .workspace-app .player-dock .progress{grid-column:1/-1;grid-row:2}
+ .workspace-app .player-dock .transport{grid-column:1/-1;grid-row:3;justify-self:center}
+ .workspace-app .player-dock #info-toggle,.workspace-app.artist-mode .player-dock #info-toggle{grid-column:2;grid-row:3}
+ .workspace-app .player-dock .mobile-player-details{grid-row:4}
 }

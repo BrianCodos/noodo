@@ -964,5 +964,10 @@
     "components": false,
     "approval": false
   },
-  "checklistMeaning": "Personal review only; does not represent joint approval."
+  "checklistMeaning": "Personal review only; does not represent joint approval.",
+  "songListContract": {
+    "component": "CompactTrackRow",
+    "styleClass": "song-list",
+    "rule": "Todo listado de canciones (Inicio, Canciones, cola, álbumes y playlists) reutiliza el mismo componente CompactTrackRow: portada, título, artista, reproducir, guardar, añadir a playlist y apoyar. Compartir renderer, estilos song-list, estados y eventos; no crear una variante visual simplificada para la cola. En móvil, mantener acciones alineadas en una fila y altura mínima de 60 px."
+  }
 }

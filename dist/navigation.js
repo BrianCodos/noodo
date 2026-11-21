@@ -17,6 +17,15 @@
  for(const name of ['library','info']){document.getElementById(name+'-toggle').onclick=()=>setPanel(name,!(mobile.matches?mobilePanels[name]:panels[name]));if(document.getElementById('close-'+name))document.getElementById('close-'+name).onclick=()=>setPanel(name,!(mobile.matches?mobilePanels[name]:panels[name]));}
  mobile.addEventListener('change',()=>{mobilePanels={library:false,info:false};paintPanels();});
  const header=document.querySelector('.player-topbar'),toolbar=document.querySelector('.workspace-tools'),dock=document.querySelector('.player-dock');
+ const actions=header.querySelector('.topbar-actions');actions.id='header-options';
+ const optionsToggle=document.createElement('button');optionsToggle.type='button';optionsToggle.className='icon-button header-options-toggle';optionsToggle.setAttribute('aria-label','Abrir opciones');optionsToggle.setAttribute('aria-controls',actions.id);optionsToggle.setAttribute('aria-expanded','false');optionsToggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';header.append(optionsToggle);
+ for(const button of actions.querySelectorAll('button:not(#info-toggle)')){const label=document.createElement('span');label.className='header-option-label';label.textContent=button.getAttribute('aria-label');button.append(label);}
+ function closeOptions(focus=false){header.classList.remove('options-open');optionsToggle.setAttribute('aria-expanded','false');optionsToggle.setAttribute('aria-label','Abrir opciones');if(focus)optionsToggle.focus();}
+ optionsToggle.onclick=()=>{const open=!header.classList.contains('options-open');header.classList.toggle('options-open',open);optionsToggle.setAttribute('aria-expanded',String(open));optionsToggle.setAttribute('aria-label',open?'Cerrar opciones':'Abrir opciones');};
+ actions.addEventListener('click',e=>{if(e.target.closest('button'))closeOptions();});
+ document.addEventListener('click',e=>{if(!actions.contains(e.target)&&!optionsToggle.contains(e.target))closeOptions();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&header.classList.contains('options-open'))closeOptions(true);});
+ mobile.addEventListener('change',()=>closeOptions());
  const infoToggle=document.getElementById('info-toggle');
  const infoPanel=document.getElementById('context-sidebar');
  const panelHome=document.createComment('Desktop contextual sidebar');infoPanel.before(panelHome);
@@ -28,10 +37,6 @@
  }
  placeInfoControl();mobile.addEventListener('change',placeInfoControl);
  infoToggle.onclick=()=>{const opening=!(mobile.matches?mobilePanels.info:panels.info);if(opening&&mobile.matches)selectInfo('artist',false,false);setPanel('info',opening);};
- const infoHeading=document.createElement('div');infoHeading.className='mobile-info-heading';
- infoHeading.innerHTML='<strong>Información de la reproducción</strong><button type="button" class="icon-button" aria-label="Cerrar información del reproductor">'+icon('close')+'</button>';
- infoHeading.querySelector('button').onclick=()=>setPanel('info',false);
- document.getElementById('context-sidebar').prepend(infoHeading);
  // Accessible, independently collapsible discovery sections.
  for(const [selector,key,label] of [['.collections','genres','Géneros'],['#recommended','bands','Bandas recomendadas']]){
   const section=document.querySelector(selector),heading=section.querySelector('.section-heading');
@@ -67,7 +72,7 @@
  mobileNavObserver.observe(center,{attributes:true,attributeFilter:['hidden'],subtree:true});
  mobileNavObserver.observe(document.querySelector('.music-views'),{attributes:true,attributeFilter:['aria-pressed'],subtree:true});
  syncMobileNavigation();
- const shellResize=new ResizeObserver(()=>{document.documentElement.style.setProperty('--shell-dock-height',dock.offsetHeight+'px');document.documentElement.style.setProperty('--shell-header-height',header.offsetHeight+'px');document.documentElement.style.setProperty('--shell-top-offset',(header.offsetHeight+toolbar.offsetHeight)+'px');document.documentElement.style.setProperty('--shell-dock-space',(dock.offsetHeight+32+(mobile.matches?mobileNav.offsetHeight:0))+'px');});shellResize.observe(header);shellResize.observe(toolbar);shellResize.observe(dock);shellResize.observe(mobileNav);
+ const shellResize=new ResizeObserver(()=>{if(mobile.matches){const chrome=dock.offsetHeight-expansion.offsetHeight;document.documentElement.style.setProperty('--mobile-player-chrome',chrome+'px');}document.documentElement.style.setProperty('--shell-dock-height',dock.offsetHeight+'px');document.documentElement.style.setProperty('--shell-header-height',header.offsetHeight+'px');document.documentElement.style.setProperty('--shell-top-offset',(header.offsetHeight+toolbar.offsetHeight)+'px');document.documentElement.style.setProperty('--shell-dock-space',(dock.offsetHeight+32+(mobile.matches?mobileNav.offsetHeight:0))+'px');});shellResize.observe(header);shellResize.observe(toolbar);shellResize.observe(dock);shellResize.observe(mobileNav);
  async function renderRoute(url,scroll=true){
   const version=++routeVersion,artistRoute=url.pathname.endsWith('/artist.html');closePanel(false);
   if(artistRoute){
