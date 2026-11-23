@@ -48,3 +48,40 @@ La revisión visual y funcional más reciente se realizó a 1771×1314, 1093×82
 - Design system: https://briancodos.github.io/noodo/
 
 GitHub Actions publica la carpeta `dist/` en GitHub Pages cuando hay cambios en ella en `main`. El workflow también puede ejecutarse manualmente desde Actions.
+
+## Radar · Mapbox
+
+Radar usa Mapbox GL JS 3.35.0, cargado desde el CDN oficial únicamente al abrir la sección. Conserva una sola instancia al cambiar de sección, y sincroniza el buscador y las tarjetas con los marcadores. Los eventos y sus coordenadas son ejemplos, no una agenda real.
+
+Para activar el mapa, configurar `accessToken` en `dist/mapbox-config.js` con un token **público** (`pk.`) de la cuenta de Mapbox. Restringir sus URLs autorizadas a los orígenes de desarrollo y producción. No usar tokens secretos (`sk.`). El campo `style` admite una URL de estilo de Mapbox Studio.
+
+Sin token, el buscador y las tarjetas siguen funcionando y el mapa presenta un estado de indisponibilidad. Los errores de red, autorización o WebGL presentan una opción de reintento. Mapbox mantiene visibles sus controles y atribuciones. Validar con un token real: abrir Radar, buscar un artista, seleccionar tarjeta y marcador, cambiar de sección y volver, y comprobar móvil y escritorio.
+
+## Comunidad · vista previa local
+
+- `listen.html?section=community`: salas, Match por disciplina y foro unificado.
+- `community-admin.html`: crear, editar y cerrar salas oficiales; retirar entradas del foro.
+- En `../noodo-admin/`, la ruta `/comunidad` incrusta esta administración desde el servidor público local del puerto 4174. Ambos usan el mismo origen del iframe y por ello comparten la configuración de ejemplo. El servidor público debe estar encendido.
+- `community.js` y `community.css` reutilizan los tokens vigentes. Los perfiles de Match enlazan al catálogo de artistas existente; sus disciplinas e interés previo son datos de ejemplo.
+- La identidad de demostración vive en sessionStorage. Mensajes, intereses, salas y entradas viven en `noodo-community-v2` en localStorage. No hay usuarios reales, envío de mensajes, autenticación, permisos de servidor ni sincronización entre dispositivos. La administración es únicamente una demo local.
+- El flujo de invitado solicita un perfil demo antes de Comunidad, favoritos, seguimiento y playlists. Escuchar canciones y ver sesiones permanece abierto. Este control de interfaz no es una barrera de seguridad.
+- Producción pendiente: identidad autenticada, roles de equipo, vinculación usuario/artista, autorización de lectura y escritura en servidor, almacenamiento por usuario, chat en tiempo real y match mutuo calculado por servidor.
+- La versión anterior del feed permanece intacta en `noodo-community-v1`; no se borra ni migra automáticamente.
+
+Revisión 2026-11-23: navegación de invitado, entrada demo, filtro Arreglista, match de ejemplo, formulario de publicación y visibilidad del post en administración comprobados en Chrome. Validación de sintaxis JS correcta; build de administración y sus seis pruebas existentes correctos. Vista móvil pendiente de revisión visual.
+
+### Componentes de Comunidad · 23 de noviembre
+
+`community-ui.js` expone `noodoPageTitle.render(title)` y `noodoAvatar.render(configuration, accessibleLabel)`. PageTitle es un único h1 sin antetítulo ni descripción, usado por Comunidad, Radar y administración de Comunidad. La ilustración paramétrica de Avatar conserva los rasgos de `assets/character-reference.png` y admite cinco colores de audífonos, cuatro expresiones y cuatro accesorios. Las opciones se validan contra listas cerradas; los textos se escapan.
+
+El selector de emoticones tiene categorías Caras, Gestos, Música y Símbolos, etiquetas accesibles e inserción en la posición del cursor. Los borradores se mantienen al cambiar de sala. El diálogo de personalización admite cancelar y Escape, conserva el foco y guarda solo al confirmar. La apariencia se conserva localmente por el nombre del perfil de demostración; los nuevos mensajes guardan una copia del avatar.
+
+La columna de participantes presenta presencia real **solo dentro de esta demo local**: una entrada por perfil entre pestañas del mismo origen, heartbeat de 10 segundos y expiración de 30 segundos. Cambiar de sala, salir o cerrar la pestaña retira la presencia anterior. No representa usuarios de otros dispositivos ni una sesión autenticada. Para producción se necesita presencia autorizada en servidor y un ID de usuario estable.
+
+Validación de esta iteración: Chrome mostró el título simplificado; selección y guardado de color Menta, expresión Feliz y accesorio Nota; inserción y envío de un emoji; entrada de una segunda pestaña (2 participantes) y salida al cerrarla (1 participante). Sintaxis de los archivos JS modificados revisada. No se realizó una revisión móvil nueva.
+
+### Distribución de Comunidad y Radar
+
+`section-player.js` traslada el único reproductor existente a la columna derecha en Comunidad y Radar; al salir de estas secciones vuelve a su posición inferior. Se conservan controles, IDs y estado de reproducción. En móvil se presenta en el flujo de la página, encima del contenido, sin superponer una barra inferior. `section-player.css` define ambas distribuciones. Las salas de chat aprovechan la altura de la ventana, mantienen el historial desplazable y añaden el directorio «Todas las salas» debajo, con acceso directo a cada sala abierta por administración.
+
+Comprobado en Chrome: chat ampliado, directorio renderizado, reproductor lateral en Comunidad y Radar, y retorno al reproductor inferior fijo en Inicio; una sola instancia de reproductor en todos los casos.

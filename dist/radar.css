@@ -1,0 +1,77 @@
+#radar-view{padding:12px 0 28px}#radar-view[hidden]{display:none}.radar-heading{display:flex;align-items:center;gap:20px;margin-bottom:0}.radar-heading .radar-search{flex:1;min-width:0}.radar-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--accent)}.radar-heading h1{font-size:28px;margin:0;flex:none}.radar-heading p,.radar-footnote{color:var(--muted);line-height:1.6}.radar-heading p{margin:0}.radar-search{display:flex;align-items:center;gap:12px;background:var(--secondary);border:1px solid #ffffff18;border-radius:14px;padding:14px 16px}.radar-search svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:1.8;flex:none}.radar-search input{background:none;border:0;color:var(--text, #f7f4fa);font:inherit;min-width:0;width:100%;outline:none}.radar-search:focus-within{outline:2px solid var(--accent);outline-offset:3px}.radar-location{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:16px 0;font-size:12px;color:var(--muted)}.radar-demo{color:var(--accent);background:var(--secondary);border-radius:20px;padding:6px 10px}.radar-layout{display:grid;gap:24px}.radar-map{height:320px;position:relative;isolation:isolate;overflow:hidden;border:1px solid #ffffff18;border-radius:18px;background:#1b1527}.radar-map-art{position:absolute;width:100%;height:100%}.radar-map-label{position:absolute;top:45%;left:43%;letter-spacing:.25em;font-size:12px;color:#d5c9e5}.radar-map-note{position:absolute;bottom:10px;left:10px;right:10px;width:fit-content;padding:5px 8px;border-radius:6px;background:#110b1be6;color:#d3c9df;font-size:10px}.radar-pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;background:#21162e;color:#dbc1f4;border:2px solid var(--accent);border-radius:50%;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 4px 18px #0006}.radar-pin[aria-pressed=true]{background:var(--accent);color:#160e22;box-shadow:0 0 0 8px #bf92ed25}.radar-results-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.radar-results-heading h2{font-size:16px;margin:0}.radar-results-heading>span{font-size:12px;color:var(--muted)}.radar-cards{display:grid;gap:10px}.radar-card{width:100%;display:flex;align-items:center;text-align:left;gap:12px;padding:16px 12px;border:1px solid transparent;border-radius:14px;background:var(--secondary);color:inherit;font:inherit;cursor:pointer}.radar-card[aria-pressed=true]{border-color:var(--accent);background:#251a35}.radar-date{display:grid;gap:5px;text-align:center;flex:0 0 52px;color:var(--accent)}.radar-date small{font-size:10px;letter-spacing:.08em}.radar-date strong{font-size:12px}.radar-event-copy{display:grid;gap:6px;flex:1;min-width:0}.radar-event-copy strong{font-size:14px}.radar-event-copy span,.radar-event-copy small{font-size:12px;color:var(--muted);line-height:1.4}.radar-footnote,.radar-empty{font-size:12px;margin-top:20px}.radar-card:focus-visible,.radar-pin:focus-visible{outline:2px solid #fff;outline-offset:3px}#library-radar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;flex-shrink:0}#library-radar[aria-current=page]{color:var(--accent);background:var(--secondary)}
+@media(min-width:1200px){.radar-layout{grid-template-columns:1.1fr 1fr;align-items:start}.radar-map{height:370px}}
+@media(max-width:760px){.workspace-app .mobile-navigation{grid-template-columns:repeat(5,minmax(0,1fr))}.radar-map{height:260px}.radar-heading h1{font-size:24px}.radar-heading p{font-size:14px}#radar-view{padding-top:8px}}
+/* Mapbox keeps its own marker transform and mandatory attribution visible. */
+#radar-mapbox{position:absolute;inset:0;width:100%;height:100%}.radar-map-status{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px;text-align:center;background:#1b1527ed;color:var(--muted);font-size:14px;line-height:1.5}.radar-map-status[hidden]{display:none}.radar-map-status p{max-width:280px;margin:0}.radar-map .radar-pin{position:absolute;left:auto;top:auto}.radar-map .mapboxgl-ctrl-attrib{font-size:10px}.radar-map .mapboxgl-canvas:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+
+/* RadarEventCard and viewport-aware map layout. */
+.radar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.radar-view-switch{display:flex;gap:4px}.radar-view-switch button{min-height:44px;padding:8px 14px;border-radius:999px;color:var(--muted);background:transparent;font:var(--type-label)}
+.radar-view-switch button[aria-pressed=true]{background:var(--secondary);color:var(--accent)}
+.radar-map-section{position:sticky;top:calc(var(--shell-header-height) + 8px);align-self:start;min-width:0}
+#radar-view .radar-map{height:var(--radar-map-height,60dvh);min-height:180px}
+.radar-layout{align-items:start}.radar-results{min-width:0}
+#radar-view.radar-map-hidden .radar-layout{grid-template-columns:minmax(0,1fr)}
+.radar-event-image{width:104px;height:104px;object-fit:cover;border-radius:10px;flex-shrink:0}
+.radar-card{padding:12px;gap:16px;align-items:center;background:var(--surface)}
+.radar-card .radar-date{display:block;text-align:left;font:var(--type-meta);color:var(--accent);flex:none}
+.radar-card .radar-event-copy{gap:5px}.radar-card .radar-price{color:var(--text);font:var(--type-label);font-weight:600}.radar-card .radar-price[data-free=true]{color:var(--accent)}
+.radar-card-arrow{color:var(--accent);flex-shrink:0}
+#radar-view[data-event-view=grid] .radar-cards{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px}
+#radar-view[data-event-view=grid] .radar-card{display:flex;flex-direction:column;align-items:stretch;position:relative}
+#radar-view[data-event-view=grid] .radar-event-image{width:100%;height:auto;aspect-ratio:16/9}
+#radar-view[data-event-view=grid] .radar-card-arrow{position:absolute;right:16px;bottom:16px}
+@media(min-width:1000px){.radar-layout{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+@media(max-width:999px){.radar-map-section{z-index:5}.radar-layout{grid-template-columns:minmax(0,1fr)}#radar-view .radar-map{height:min(var(--radar-map-height,45dvh),45dvh)}}
+@media(max-width:480px){.radar-event-image{width:80px;height:100px}.radar-card{gap:10px}.radar-card-arrow{display:none}}
+
+@media(max-width:760px){.radar-heading{gap:16px}.radar-heading .radar-search{gap:8px;padding:12px;min-height:44px}.radar-heading .radar-search input{font-size:14px}}
+
+/* Desktop map dimensions stay stable while only the event collection scrolls. */
+@media(min-width:1000px){
+ #radar-view:not(.radar-map-hidden) .radar-layout{height:var(--radar-map-height,60dvh);min-height:180px}
+ #radar-view:not(.radar-map-hidden) .radar-map-section{height:100%;position:sticky;top:calc(var(--shell-header-height) + 8px)}
+ #radar-view:not(.radar-map-hidden) .radar-map{height:100%}
+ #radar-view:not(.radar-map-hidden) .radar-results{height:100%;min-height:0;display:flex;flex-direction:column}
+ #radar-view:not(.radar-map-hidden) .radar-results-heading{flex-shrink:0}
+ #radar-view:not(.radar-map-hidden) .radar-cards{min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable;align-content:start;padding:2px 6px 2px 2px}
+}
+.radar-cards:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+/* Map controls belong to the map; view controls belong to the event collection. */
+#radar-toggle-map{position:absolute;top:12px;left:12px;z-index:6;background:#160e22ed;min-height:44px;box-shadow:0 4px 16px #0004}
+#radar-view .radar-map[hidden]{display:none}
+#radar-view.radar-map-hidden .radar-map-section{position:relative;min-height:44px;height:auto}
+.radar-map-hidden #radar-toggle-map{position:relative;top:auto;left:auto}
+.radar-results-heading{flex-wrap:wrap;gap:8px 12px}.radar-results-heading h2{margin-right:auto}.radar-results-heading .radar-view-switch{flex-shrink:0}
+.radar-event-popup .mapboxgl-popup-content{padding:0;border-radius:14px;background:#21162e;color:#f7f4fa;box-shadow:0 8px 28px #0008;overflow:hidden;border:1px solid #bd91ef80}
+.radar-event-popup.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip{border-top-color:#21162e}
+.radar-event-popup .mapboxgl-popup-close-button{width:36px;height:36px;right:4px;top:4px;border-radius:50%;background:#110b1be6;color:white;font-size:23px;z-index:1}
+.radar-event-popup .mapboxgl-popup-close-button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.radar-map-event>img{width:100%;height:76px;object-fit:cover;display:block}.radar-map-event>div{padding:12px}.radar-map-event .radar-date{display:block;font-size:10px;text-align:left;color:var(--accent)}.radar-map-event h3{margin:5px 0;font-size:14px;line-height:1.3}.radar-map-event p{margin:4px 0;font-size:11px;line-height:1.35;color:#d0c4dc}.radar-map-event strong{display:block;margin-top:8px;color:var(--accent);font-size:13px}
+@media(max-width:380px){.radar-results-heading .radar-view-switch{width:100%;justify-content:flex-end}}
+/* Radar uses the space of the desktop music information column. */
+@media(min-width:761px){
+ .workspace-app:has(#radar-view:not([hidden])) #context-sidebar,
+ .workspace-app:has(#radar-view:not([hidden])) #info-toggle{display:none}
+ .workspace-app:has(#radar-view:not([hidden])) .workspace-grid{grid-template-columns:var(--shell-left-width) minmax(0,1fr)}
+ .workspace-app.library-collapsed:has(#radar-view:not([hidden])) .workspace-grid{grid-template-columns:var(--shell-rail-width) minmax(0,1fr)}
+}
+/* Event tickets: portrait flyer, perforation and a branded detachable stub. */
+#radar-view .radar-card{--ticket-stub:72px;position:relative;isolation:isolate;display:grid;grid-template-columns:90px minmax(0,1fr) var(--ticket-stub);gap:16px;padding:14px 0 14px 14px;overflow:hidden;border:1px solid #c493f329;border-radius:16px;background:linear-gradient(110deg,var(--surface),#20162d);text-align:left}
+#radar-view .radar-card[aria-pressed=true]{border-color:var(--accent);background:linear-gradient(110deg,#2b1d3c,#21162e)}
+#radar-view .radar-card:hover{border-color:var(--accent)}
+#radar-view .radar-card .radar-event-image{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:8px}
+#radar-view .radar-card .radar-event-copy{min-width:0;overflow-wrap:anywhere}
+.radar-ticket-stub{align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:14px;border-left:1px dashed #c493f359;padding:10px 8px;color:var(--accent)}
+.radar-ticket-brand{font-size:10px;font-weight:800;letter-spacing:.06em}.radar-ticket-label{font-size:9px;letter-spacing:.15em;color:var(--muted)}
+#radar-view .radar-ticket-stub .radar-card-arrow{display:grid;place-items:center;position:static;width:32px;height:32px;border-radius:50%;background:#c493f31a;font-size:20px}
+#radar-view .radar-card::before,#radar-view .radar-card::after{content:'';position:absolute;right:calc(var(--ticket-stub) - 8px);width:16px;height:16px;border:1px solid #c493f340;border-radius:50%;background:var(--background,#110b1b);z-index:1;pointer-events:none}
+#radar-view .radar-card::before{top:-9px}#radar-view .radar-card::after{bottom:-9px}
+#radar-view[data-event-view=grid] .radar-card{display:flex;flex-direction:column;align-items:stretch;gap:14px;padding:14px 14px 0}
+#radar-view[data-event-view=grid] .radar-card .radar-event-image{width:100%;height:auto;aspect-ratio:3/4}
+#radar-view[data-event-view=grid] .radar-ticket-stub{flex-direction:row;border-left:0;border-top:1px dashed #c493f359;margin-top:auto;min-height:58px;padding:10px 0}
+#radar-view[data-event-view=grid] .radar-card::before,#radar-view[data-event-view=grid] .radar-card::after{top:auto;bottom:50px;right:auto}
+#radar-view[data-event-view=grid] .radar-card::before{left:-9px}#radar-view[data-event-view=grid] .radar-card::after{right:-9px}
+/* The in-map event preview also respects the flyer format. */
+.radar-map-event{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px;padding:12px}.radar-map-event>img{width:66px;height:auto;aspect-ratio:3/4;border-radius:6px}.radar-map-event>div{padding:0}.radar-map-event h3{padding-right:12px}
+@media(max-width:600px){#radar-view .radar-card{--ticket-stub:48px;grid-template-columns:66px minmax(0,1fr) var(--ticket-stub);gap:10px;padding:12px 0 12px 12px}.radar-ticket-stub{padding:8px 4px}.radar-ticket-brand{font-size:8px}.radar-ticket-label{font-size:8px}}

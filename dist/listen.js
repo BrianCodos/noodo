@@ -190,7 +190,7 @@ try{promoDismissed=sessionStorage.getItem(promoKey)==='1';}catch{}
 updatePromoVisibility();
 $('#dismiss-promo').onclick=()=>{promoDismissed=true;updatePromoVisibility();try{sessionStorage.setItem(promoKey,'1');}catch{}$('#tracks-title').focus({preventScroll:true});};
 
-function updatePromoVisibility(){const home=view==='home'&&filter==='track'&&genre==='all'&&!$('#search-music').value.trim();$('#promo-banner').hidden=promoDismissed||!home;$('#recommended').hidden=!home;$('#featured-session').hidden=!home;$('#editorial-feature').hidden=!home;}
+function updatePromoVisibility(){const home=view==='home'&&filter==='track'&&genre==='all'&&!$('#search-music').value.trim();$('#promo-banner').hidden=promoDismissed||!home;$('#recommended').hidden=!home;$('#featured-session').hidden=!home;$('#editorial-feature').hidden=!home;$('#new-releases').hidden=!home;}
 
 // Shared song row renderer, styles and actions for catalog, queue, albums and playlists.
 window.noodoTrackList={mount(element,indices){
@@ -206,5 +206,13 @@ $('#band-slider').innerHTML=recommendedArtists.map(i=>`<a class="band-card" href
 const bandSlider=$('#band-slider');function scrollBands(direction){bandSlider.scrollBy({left:direction*bandSlider.clientWidth*.8,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});}
 $('#bands-prev').onclick=()=>scrollBands(-1);$('#bands-next').onclick=()=>scrollBands(1);
 bandSlider.onkeydown=e=>{if(e.target===bandSlider&&['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();scrollBands(e.key==='ArrowLeft'?-1:1);}};
-$('#genre-slider').innerHTML=Object.keys(genreNames).map(genreTile).join('');$('#genre-slider').onclick=e=>{const button=e.target.closest('[data-open-genre]');if(button)openGenreArtists(button.dataset.openGenre);};
+$('#genre-slider').innerHTML=Object.keys(genreNames).map(genreTile).join('')+'<button class="collection genre-view-all" data-all-genres><strong>Ver todos los géneros</strong><span class="collection-bottom">Explorar catálogo '+icon('arrow')+'</span></button>';
+$('#genre-slider').onclick=e=>{if(e.target.closest('[data-all-genres]'))return openGenres();const button=e.target.closest('[data-open-genre]');if(button)openGenreArtists(button.dataset.openGenre);};
+// ReleaseCard uses curated prototype covers and the shared playback state.
+const releaseSelection=[['Entre luces','entre-luces'],['Cruzar la noche','marea-adentro'],['Raíz eléctrica','raiz-electrica'],['Aire violeta','umbral']].map(([title,cover])=>({index:tracks.findIndex(t=>t.kind==='track'&&t.title===title&&t.artist==='Luna Marea'),cover:'assets/album-'+cover+'-v17.png'})).filter(item=>item.index>=0);
+window.noodoReleaseCard={render({index,cover}){const t=tracks[index];return `<button type="button" class="release-card" data-release-track="${index}" aria-label="Reproducir ${t.title}, ${t.artist}"><span class="release-art"><img src="${cover}" alt="" loading="lazy"><span class="release-play">${icon('play')}</span></span><strong>${t.title}</strong><span>${t.artist}</span></button>`;}};
+$('#new-release-cards').innerHTML=releaseSelection.map(window.noodoReleaseCard.render).join('');
+$('#new-release-cards').onclick=e=>{const button=e.target.closest('[data-release-track]');if(button)window.noodoPlayer.toggleTrack(Number(button.dataset.releaseTrack));};
+function paintReleaseCards(){document.querySelectorAll('[data-release-track]').forEach(button=>{const i=Number(button.dataset.releaseTrack),active=i===current&&playing;button.setAttribute('aria-label',(active?'Pausar ':'Reproducir ')+tracks[i].title+', '+tracks[i].artist);button.setAttribute('aria-pressed',String(active));button.querySelector('.release-play').innerHTML=icon(active?'pause':'play');});}
+window.addEventListener('noodo:playerchange',paintReleaseCards);paintReleaseCards();
 function openConcert(i){window.noodoEvents.open(i);}
