@@ -786,13 +786,13 @@
 .editorial-card{background:transparent;box-shadow:none}
 
 /* LibraryNavigation: one alignment and spacing contract for all actions. */
-:root{--library-item-height:44px;--library-item-padding:12px;--library-icon-size:20px;--library-item-gap:12px}
+:root{--library-item-height:48px;--library-item-padding:12px;--library-icon-size:20px;--library-item-gap:12px}
 .workspace-app #library-body :is(.music-views,.library-shortcuts){display:flex;flex-direction:column;gap:4px;padding:0;margin:0}
-.workspace-app #library-body .library-shortcuts{margin-top:16px}
-.workspace-app #library-body button{display:flex;align-items:center;justify-content:flex-start;gap:var(--library-item-gap);width:100%;min-height:var(--library-item-height);padding:10px var(--library-item-padding);margin:0;border:0;border-radius:var(--radius-compact,12px);background:transparent;color:var(--muted);font:var(--type-label);text-align:left}
-.workspace-app #library-body button svg{width:var(--library-icon-size);height:var(--library-icon-size);flex:0 0 var(--library-icon-size)}
-.workspace-app #library-body button :is(.library-icon,[data-icon]){display:flex;align-items:center;justify-content:center;width:var(--library-icon-size);flex:0 0 var(--library-icon-size)}
-.workspace-app #library-body .library-label{margin:0;color:inherit;line-height:20px}
+.workspace-app #library-body .library-shortcuts{margin-top:4px}
+.workspace-app #library-body button{display:flex;align-items:center;justify-content:flex-start;gap:var(--library-item-gap);width:100%;height:var(--library-item-height);min-height:var(--library-item-height);box-sizing:border-box;padding:8px var(--library-item-padding);margin:0;border:0;border-radius:var(--radius-compact,12px);background:transparent;color:var(--muted);font:var(--type-label);text-align:left}
+.workspace-app #library-body button svg{color:inherit;width:var(--library-icon-size);height:var(--library-icon-size);flex:0 0 var(--library-icon-size)}
+.workspace-app #library-body button :is(.library-icon,[data-icon]){color:inherit;display:flex;align-items:center;justify-content:center;width:var(--library-icon-size);flex:0 0 var(--library-icon-size)}
+.workspace-app #library-body .library-label{margin:0;color:inherit;line-height:16px;white-space:normal;min-width:0}
 .workspace-app #library-body button:hover{background:var(--surface);color:var(--text)}
 .workspace-app #library-body button:is(.active,[aria-pressed=true],[aria-current=page]){background:var(--secondary);color:var(--accent)}
 .workspace-app #library-body button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}

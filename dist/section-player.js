@@ -33,7 +33,7 @@
   mini.innerHTML=state.playing?pauseIcon:playIcon;mini.setAttribute('aria-label',state.playing?'Pausar':'Reproducir');mini.title=mini.getAttribute('aria-label');
   volumeToggle.innerHTML=document.getElementById('mute').innerHTML;
   const ids=queue.map(track=>track.id),signature=JSON.stringify(ids);if(signature===queueSignature)return;queueSignature=signature;
-  disposeQueue?.();disposeQueue=window.noodoTrackList.mount(list,ids,{queue:true});
+  disposeQueue?.();disposeQueue=window.noodoTrackList.mount(list,ids,{queue:true,compact:true});
   sidebar.querySelector('.section-queue-count').textContent=queue.length;
 
  }

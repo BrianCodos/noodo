@@ -120,21 +120,18 @@
 .workspace-app.section-player-mode .progress #elapsed{grid-column:1;grid-row:1}
 .workspace-app.section-player-mode .progress #duration{grid-column:3;grid-row:1}
 .workspace-app.section-player-mode .section-volume{margin-top:0}
-/* Queue uses the shared TrackRow with actions on a separate line.
+/* Queue uses the compact variant of the shared TrackRow.
    Minimum 44px controls and 12px metadata remain usable in the narrow column. */
 @media(min-width:761px){.workspace-app.section-player-mode{--shell-right-width:272px}}
 .workspace-app.section-player-mode .transport{gap:0}
 .workspace-app.section-player-mode .transport .icon-button{width:44px;min-width:44px;height:44px;padding:10px}
 .workspace-app.section-player-mode .dock-center{grid-template-columns:minmax(0,1fr) 44px}
 .section-volume>button,#section-player-toggle{width:44px;min-width:44px;height:44px}
-#section-player-sidebar .section-queue-list .track-row{display:grid;grid-template-columns:44px 32px minmax(0,1fr) 44px!important;gap:4px!important;padding:8px 0!important;min-height:96px;align-items:center}
-#section-player-sidebar .track-row .track-play{grid-column:1;grid-row:1}
-#section-player-sidebar .track-row .track-cover{display:block;grid-column:2;grid-row:1;width:32px!important;height:32px!important}
-#section-player-sidebar .track-row .track-info{grid-column:3/-1;grid-row:1;min-width:0}
-#section-player-sidebar .track-row .track-select{font:var(--type-label);text-align:left}
-#section-player-sidebar .track-row .track-info small{font:var(--type-meta)}
-#section-player-sidebar .track-row .track-type,#section-player-sidebar .track-row .support-button{display:none!important}
-#section-player-sidebar .track-row .track-duration{display:block!important;grid-column:1/3;grid-row:2;font:var(--type-meta);color:var(--muted)}
-#section-player-sidebar .track-row [data-save]{grid-column:3;grid-row:2;justify-self:end}
-#section-player-sidebar .track-row .playlist-add{grid-column:4;grid-row:2}
-#section-player-sidebar .track-row .icon-button{width:44px!important;min-width:44px!important;height:44px!important;padding:10px!important}
+/* Compact TrackRow: song and artist beside the same two shared actions. */
+#section-player-sidebar .section-queue-list .track-row-compact{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px!important;gap:0!important;padding:6px 4px!important;min-height:56px;align-items:center}
+#section-player-sidebar .track-row-compact .track-info{grid-column:1;grid-row:1;min-width:0;padding:0 4px}
+#section-player-sidebar .track-row-compact .track-select{display:block;max-width:100%;font:var(--type-label);line-height:20px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0}
+#section-player-sidebar .track-row-compact .track-info small{display:block;font:var(--type-meta);line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#section-player-sidebar .track-row-compact [data-save]{grid-column:2;grid-row:1}
+#section-player-sidebar .track-row-compact .playlist-add{grid-column:3;grid-row:1}
+#section-player-sidebar .track-row-compact .icon-button{width:44px!important;min-width:44px!important;height:44px!important;padding:10px!important}

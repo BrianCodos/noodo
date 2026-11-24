@@ -8,7 +8,7 @@
  document.querySelectorAll('[data-icon="community"]').forEach(el=>el.innerHTML=icon('community'));
  function panel(id,title){let el=document.getElementById(id);if(!el){el=document.createElement('section');el.id=id;el.className='central-panel experience-panel';el.hidden=true;el.tabIndex=-1;document.getElementById('center-details').append(el);}el.setAttribute('aria-label',title);return el;}
  function show(el,html){el.innerHTML='<button class="text-button unified-back" data-back>← Volver</button>'+html;el.querySelector('[data-back]').onclick=()=>window.noodoWorkspace.closePanel();window.noodoWorkspace.showPanel(el);}
- function activate(id){document.querySelectorAll('.music-views .nav').forEach(b=>{b.classList.toggle('active',b.dataset.view===id);b.setAttribute('aria-pressed',String(b.dataset.view===id));});}
+ function activate(){window.noodoNavigation?.sync();}
  const events=concertSamples.map((event,i)=>({...event,code:'ND-2026-'+String(i+1).padStart(3,'0'),image:i%2?'assets/live-session-v02.png':'assets/gallery-night-stage-v03.png',stage:'assets/gallery-rehearsal-v03.png',address:'Sector San Antonio · Cali',doors:i===0?'17:30':i===1?'14:00':i===2?'21:00':'19:00',localities:[{name:'General',capacity:120,available:84,price:event.free?0:45000},{name:'Preferencial',capacity:40,available:18,price:event.free?0:75000},{name:'Balcón',capacity:30,available:12,price:event.free?0:60000}]}));
  const money=n=>n?'$'+n.toLocaleString('es-CO'):'Gratis';
  function openEvent(i){const event=events[i];if(event)window.noodoWorkspace.navigate('event.html?event='+event.code);}

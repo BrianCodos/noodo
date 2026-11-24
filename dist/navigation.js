@@ -55,6 +55,7 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   for(const node of [...button.childNodes])if(node.nodeType===Node.TEXT_NODE&&node.textContent.trim()){
    const text=document.createElement('span');text.className='library-label';text.textContent=node.textContent;node.replaceWith(text);
   }
+  button.dataset.navigation=button.dataset.view||button.id.replace('library-','');
   if(button.dataset.view){const glyph=document.createElement('span');glyph.className='library-icon';glyph.innerHTML=icon(libraryIcons[button.dataset.view]);button.prepend(glyph);}
  });
  // Shared floating label for collapsed library controls, outside sidebar clipping.
@@ -120,31 +121,50 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   else {await window.noodoWorkspace.songs();setView(destination);}
   center.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});
  });
- function syncMobileNavigation(){
-  const panelId=activePanel?.id||'';
-  const current=activePanel?(panelId==='radar-event-page'?'radar':panelId.includes('playlist')?'saved':panelId.includes('community')?'community':null):!radarView.hidden?'radar':!listenView.hidden?view:null;
+ // Single selection is derived from the visible destination, including sign-in gates.
+ function sectionForPanel(panel){
+  if(!panel)return null;
+  if(panel.dataset.navigation)return panel.dataset.navigation;
+  const id=panel.id;
+  if(id==='community-page')return 'community';
+  if(id.includes('playlist'))return 'saved';
+  if(id==='followed-artists')return 'artists';
+  if(id.startsWith('genre-'))return 'genres';
+  if(id==='queue-dialog')return 'queue';
+  if(id==='session-dialog')return 'session';
+  if(id==='radar-event-page'||panel.dataset.kind==='RadarEvent')return 'radar';
+  return null;
+ }
+ function syncNavigation(){
+  const base=activePanel?returnView:views.find(item=>!item.hidden);
+  const current=sectionForPanel(activePanel)||[...panelStack].reverse().map(item=>sectionForPanel(item.panel)).find(Boolean)||(base===radarView?'radar':base===artistView?'artists':base===listenView?view:null);
+  document.querySelectorAll('#library-body [data-navigation]').forEach(button=>{
+   const selected=button.dataset.navigation===current;
+   button.classList.toggle('active',selected);
+   button.setAttribute('aria-pressed',String(selected));
+   if(selected)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
+  });
   mobileNav.querySelectorAll('button').forEach(button=>{
-   if(button.dataset.mobileView===current)button.setAttribute('aria-current','page');
-   else button.removeAttribute('aria-current');
+   if(button.dataset.mobileView===current)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
   });
  }
- const mobileNavObserver=new MutationObserver(syncMobileNavigation);
- mobileNavObserver.observe(center,{attributes:true,attributeFilter:['hidden'],subtree:true});
- mobileNavObserver.observe(document.querySelector('.music-views'),{attributes:true,attributeFilter:['aria-pressed'],subtree:true});
- syncMobileNavigation();
+ window.noodoNavigation={sync:syncNavigation};
+ const navigationObserver=new MutationObserver(syncNavigation);
+ navigationObserver.observe(center,{attributes:true,attributeFilter:['hidden','data-navigation'],subtree:true,childList:true});
+ syncNavigation();
  const shellResize=new ResizeObserver(()=>{if(mobile.matches){const chrome=dock.offsetHeight-expansion.offsetHeight;document.documentElement.style.setProperty('--mobile-player-chrome',chrome+'px');}document.documentElement.style.setProperty('--shell-dock-height',dock.offsetHeight+'px');document.documentElement.style.setProperty('--shell-header-height',header.offsetHeight+'px');document.documentElement.style.setProperty('--shell-top-offset',(header.offsetHeight+toolbar.offsetHeight)+'px');document.documentElement.style.setProperty('--shell-dock-space',(dock.offsetHeight+32+(mobile.matches?mobileNav.offsetHeight:0))+'px');});shellResize.observe(header);shellResize.observe(toolbar);shellResize.observe(dock);shellResize.observe(mobileNav);
  async function renderRoute(url,scroll=true){
   const version=++routeVersion,artistRoute=url.pathname.endsWith('/artist.html');closePanel(false);
   if(artistRoute){
-   try{const html=await loadFragment();if(version!==routeVersion)return;cleanupArtist?.();artistView.innerHTML=html;showView(artistView);document.body.classList.add('artist-mode');cleanupArtist=window.mountArtist(artistView);normalizeBack(artistView,artistView.querySelector('.hero-back'));selectInfo(url.hash==='#conciertos'?'events':'artist',false,false);document.querySelectorAll('[data-view]').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});}
+   try{const html=await loadFragment();if(version!==routeVersion)return;cleanupArtist?.();artistView.innerHTML=html;showView(artistView);document.body.classList.add('artist-mode');cleanupArtist=window.mountArtist(artistView);normalizeBack(artistView,artistView.querySelector('.hero-back'));selectInfo(url.hash==='#conciertos'?'events':'artist',false,false);syncNavigation();}
    catch(error){console.error(error);artistView.innerHTML='<section><h1>No pudimos abrir el perfil.</h1><p>La reproducción continúa. <a href="listen.html">Volver a canciones</a></p></section>';showView(artistView);}
   }else{
    cleanupArtist?.();cleanupArtist=null;artistView.innerHTML='';document.body.classList.remove('artist-mode');document.title='NOODO · Escucha la ciudad';
    const i=url.searchParams.get('track');if(i!==null)window.noodoPlayer.select(Number(i),url.searchParams.get('play')==='1');
-   const context=url.searchParams.get('context');if(['song','lyrics'].includes(context)){showView(contextView);normalizeBack(contextView);selectInfo(context,false,false);}else{showView(listenView);document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});}
+   const context=url.searchParams.get('context');if(['song','lyrics'].includes(context)){showView(contextView);normalizeBack(contextView);selectInfo(context,false,false);}else{showView(listenView);syncNavigation();}
   }
-  if(url.searchParams.get('section')==='radar'){showView(radarView);document.title='Radar · NOODO';document.querySelectorAll('[data-view]').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});}
-  document.getElementById('library-radar')?.setAttribute('aria-current',radarView.hidden&&!url.pathname.endsWith('/event.html')?'false':'page');
+  if(url.searchParams.get('section')==='radar'){showView(radarView);document.title='Radar · NOODO';syncNavigation();}
+  syncNavigation();
   if(url.pathname.endsWith('/article.html'))showPanel(window.noodoEditorial.article(url.searchParams.get('story')||'luna-marea'));
   if(url.pathname.endsWith('/event.html'))showPanel(window.noodoEventPage.render(url.searchParams.get('event')));
   closeMobilePanels();paintPanels();window.dispatchEvent(new Event('resize'));const sessionId=url.searchParams.get('session');if(sessionId!==null&&tracks[Number(sessionId)]?.kind==='session')openSession(Number(sessionId));

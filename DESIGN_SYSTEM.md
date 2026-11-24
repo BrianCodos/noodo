@@ -82,3 +82,9 @@ El editor, el reproductor y el checkout consumen theme.js: seis colores editable
 ## Criterio de aceptación
 
 Revisar 320, 390, 525, 768, 1024 y 1440 px, con biblioteca abierta/cerrada y textos largos. Verificar ausencia de scroll horizontal global, nombres accesibles, foco, teclado, controles sin intersección, estabilidad de portadas, dock y navegación. Ejecutar tests y comparar tokens/inventario. Para certificación pixel perfect hacen falta diseños aprobados, capturas base reproducibles y comparación por navegador; esta auditoría no reemplaza ese proceso.
+
+### Ajustes de Comunidad y navegación · 24 noviembre 2026
+
+- `LibraryNavigationItem`: componente compartido en las nueve entradas, altura de 48 px, icono de 20 px y un solo estado activo derivado de la vista visible; rail plegado de 44 px. El estado se conserva al abrir y cerrar paneles y al acceder a una sección que solicita perfil de demo.
+- `CommunityEntryCard`: tres columnas con arte de campaña coherente para Salas de chat, Nodo Match y Foro. En móvil se apilan y la selección abre la sección correspondiente tras entrar a la demo.
+- `TrackRow` variante `compact`: canción y artista en dos líneas, acciones compartidas de guardar y añadir a playlist de 44 px. La cola lateral omite portada, duración, género y botón de play independiente; el título y Enter/Espacio siguen reproduciendo.
