@@ -49,13 +49,6 @@
 .radar-event-popup .mapboxgl-popup-close-button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
 .radar-map-event>img{width:100%;height:76px;object-fit:cover;display:block}.radar-map-event>div{padding:12px}.radar-map-event .radar-date{display:block;font-size:10px;text-align:left;color:var(--accent)}.radar-map-event h3{margin:5px 0;font-size:14px;line-height:1.3}.radar-map-event p{margin:4px 0;font-size:11px;line-height:1.35;color:#d0c4dc}.radar-map-event strong{display:block;margin-top:8px;color:var(--accent);font-size:13px}
 @media(max-width:380px){.radar-results-heading .radar-view-switch{width:100%;justify-content:flex-end}}
-/* Radar uses the space of the desktop music information column. */
-@media(min-width:761px){
- .workspace-app:has(#radar-view:not([hidden])) #context-sidebar,
- .workspace-app:has(#radar-view:not([hidden])) #info-toggle{display:none}
- .workspace-app:has(#radar-view:not([hidden])) .workspace-grid{grid-template-columns:var(--shell-left-width) minmax(0,1fr)}
- .workspace-app.library-collapsed:has(#radar-view:not([hidden])) .workspace-grid{grid-template-columns:var(--shell-rail-width) minmax(0,1fr)}
-}
 /* Event tickets: portrait flyer, perforation and a branded detachable stub. */
 #radar-view .radar-card{--ticket-stub:72px;position:relative;isolation:isolate;display:grid;grid-template-columns:90px minmax(0,1fr) var(--ticket-stub);gap:16px;padding:14px 0 14px 14px;overflow:hidden;border:1px solid #c493f329;border-radius:16px;background:linear-gradient(110deg,var(--surface),#20162d);text-align:left}
 #radar-view .radar-card[aria-pressed=true]{border-color:var(--accent);background:linear-gradient(110deg,#2b1d3c,#21162e)}
@@ -75,3 +68,12 @@
 /* The in-map event preview also respects the flyer format. */
 .radar-map-event{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px;padding:12px}.radar-map-event>img{width:66px;height:auto;aspect-ratio:3/4;border-radius:6px}.radar-map-event>div{padding:0}.radar-map-event h3{padding-right:12px}
 @media(max-width:600px){#radar-view .radar-card{--ticket-stub:48px;grid-template-columns:66px minmax(0,1fr) var(--ticket-stub);gap:10px;padding:12px 0 12px 12px}.radar-ticket-stub{padding:8px 4px}.radar-ticket-brand{font-size:8px}.radar-ticket-label{font-size:8px}}
+/* Map and event list use the width available inside Radar, not the whole window. */
+#radar-view{min-width:0;container-type:inline-size;container-name:radar}
+#radar-view .radar-layout{grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:24px}
+#radar-view .radar-results{max-height:var(--radar-map-height);overflow:auto;scrollbar-width:thin;padding-right:4px}
+#radar-view .radar-results-heading{position:sticky;top:0;z-index:2;background:var(--background);padding-bottom:12px}
+#radar-view .radar-card{--ticket-stub:40px;grid-template-columns:64px minmax(0,1fr) var(--ticket-stub);gap:10px;padding:12px 0 12px 12px}
+#radar-view .radar-ticket-brand{font-size:8px}#radar-view .radar-ticket-label{font-size:8px}
+#radar-view.radar-map-hidden .radar-layout{grid-template-columns:minmax(0,1fr)}
+@container radar (max-width:660px){#radar-view .radar-layout{grid-template-columns:minmax(0,1fr)}#radar-view .radar-map-section{position:relative;top:auto}#radar-view .radar-map{height:55dvh;min-height:320px}#radar-view .radar-results{max-height:none;overflow:visible}#radar-view .radar-results-heading{position:static}}

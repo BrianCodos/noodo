@@ -839,3 +839,25 @@
  .workspace-app.library-collapsed #library-body button:is(:hover,:focus-visible) svg{filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 65%,transparent))}
 }
 .library-tooltip{position:fixed;z-index:120;max-width:240px;padding:8px 12px;border-radius:8px;background:var(--secondary);color:var(--text);font:var(--type-label);box-shadow:0 4px 16px #0005;pointer-events:none}
+/* Shared song lists adapt to their own width, including the artist's narrow column. */
+:is(.song-list,#album-track-list,#playlist-rows){container-type:inline-size;container-name:songs}
+:is(.song-list,#album-track-list,#playlist-rows) .track-info{min-width:0}
+:is(.song-list,#album-track-list,#playlist-rows) .track-select{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+:is(.song-list,#album-track-list,#playlist-rows) .track-info small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@container songs (max-width:650px){
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row{grid-template-columns:36px 36px minmax(0,1fr) 36px 36px!important;gap:8px!important;padding:10px 0!important;align-items:center}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .track-type,:is(.song-list,#album-track-list,#playlist-rows) .track-row .track-duration{display:none!important}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .track-cover{display:block;width:36px!important;height:36px!important}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .icon-button{width:36px!important;min-width:36px!important;height:44px!important;padding:7px!important}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .support-button{grid-column:3/-1;grid-row:2;justify-self:start;width:auto;height:32px;min-height:32px;padding:4px 0}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .support-button span{display:inline}
+}
+.center-stage .artist-view .artist-hero>.hero-portrait{height:560px;max-height:65dvh;min-height:340px;align-self:start}
+.center-stage .artist-view .artist-hero>.artist-mini-player{height:auto;align-self:start;overflow:hidden}
+#artist-track-list{max-height:440px;overflow:auto;scrollbar-width:thin;min-width:0;padding-right:4px}
+@container stage (max-width:600px){.center-stage .artist-view .artist-hero>.hero-portrait{height:auto;aspect-ratio:1;max-height:420px;min-height:0}#artist-track-list{max-height:none;overflow:visible}}
+/* Shared desktop library divider: half opacity in expanded and icon rail states. */
+@media(min-width:761px){
+ .workspace-app #player-sidebar{border-right-color:color-mix(in srgb,var(--player-divider-color) 50%,transparent)}
+ .workspace-app.library-collapsed #player-sidebar{box-shadow:inset -1px 0 color-mix(in srgb,var(--player-divider-color) 50%,transparent)}
+}

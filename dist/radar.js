@@ -101,8 +101,8 @@
   const dock=document.querySelector('.player-dock').getBoundingClientRect();
   // Use the layout's document position, not the map's moving viewport position.
   const top=root.querySelector('.radar-layout').getBoundingClientRect().top+window.scrollY;
-  const bottom=Math.min(innerHeight-12,dock.top-12);
-  root.style.setProperty('--radar-map-height',Math.max(180,bottom-top)+'px');
+  const bottom=document.body.classList.contains('section-player-mode')?innerHeight-24:Math.min(innerHeight-12,dock.top-12);
+  root.style.setProperty('--radar-map-height',Math.max(320,bottom-top)+'px');
  }
  let resizeFrame=0;function scheduleMapSize(){cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(sizeMap);}
  window.addEventListener('resize',scheduleMapSize);
