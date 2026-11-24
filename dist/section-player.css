@@ -122,7 +122,7 @@
 .workspace-app.section-player-mode .section-volume{margin-top:0}
 /* Queue uses the compact variant of the shared TrackRow.
    Minimum 44px controls and 12px metadata remain usable in the narrow column. */
-@media(min-width:761px){.workspace-app.section-player-mode{--shell-right-width:272px}}
+
 .workspace-app.section-player-mode .transport{gap:0}
 .workspace-app.section-player-mode .transport .icon-button{width:44px;min-width:44px;height:44px;padding:10px}
 .workspace-app.section-player-mode .dock-center{grid-template-columns:minmax(0,1fr) 44px}
@@ -135,3 +135,26 @@
 #section-player-sidebar .track-row-compact [data-save]{grid-column:2;grid-row:1}
 #section-player-sidebar .track-row-compact .playlist-add{grid-column:3;grid-row:1}
 #section-player-sidebar .track-row-compact .icon-button{width:44px!important;min-width:44px!important;height:44px!important;padding:10px!important}
+
+/* Proportional app shell: adapt controls to the available right column. */
+@media(min-width:761px){.workspace-app #content #section-player-sidebar{container:section-player / inline-size}}
+@container section-player (max-width:230px){
+ .workspace-app.section-player-mode .transport{display:grid;grid-template-columns:repeat(3,44px);justify-content:center;gap:4px}
+ .workspace-app.section-player-mode .transport #previous{grid-column:1;grid-row:1}
+ .workspace-app.section-player-mode .transport #toggle-play{grid-column:2;grid-row:1;width:44px;height:44px}
+ .workspace-app.section-player-mode .transport #next{grid-column:3;grid-row:1}
+ .workspace-app.section-player-mode .transport #shuffle{grid-column:1;grid-row:2}
+ .workspace-app.section-player-mode .transport #repeat{grid-column:3;grid-row:2}
+ .workspace-app.section-player-mode .dock-identity{flex-wrap:wrap;gap:8px}
+ .workspace-app.section-player-mode .dock-identity strong{font:var(--type-label)}
+ .section-queue-heading{flex-wrap:wrap}
+ .section-player-heading h2{white-space:normal;overflow-wrap:anywhere}
+ .section-volume-panel{width:min(232px,calc(100cqw - 8px))}
+}
+@container section-player (max-width:170px){
+ .workspace-app.section-player-mode .transport{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+ .workspace-app.section-player-mode .transport .icon-button,.workspace-app.section-player-mode .transport #toggle-play{min-width:0;width:100%;padding:6px}
+ .workspace-app.section-player-mode .dock-center{grid-template-columns:minmax(0,1fr)}
+ .workspace-app.section-player-mode .progress{grid-column:1;grid-row:2;gap:4px}
+ .workspace-app.section-player-mode .section-volume{grid-column:1;grid-row:3;justify-self:end}
+}
