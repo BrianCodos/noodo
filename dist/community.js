@@ -57,7 +57,7 @@ new MutationObserver(()=>{if(activeRoom())pulse();else leavePresence();}).observ
 window.noodoCommunity={open};
 document.getElementById('library-community').onclick=open;
 // Capture all existing library/follow actions before their handlers mutate local data.
-const protectedSelector='[data-save],[data-session-save],[data-artist-save],[data-playlist-add],[data-follow],#save-current,#library-community,#library-artists,#top-playlists,[data-view="saved"],[data-mobile-view="saved"],[data-mobile-view="community"],#follow-artist,#follow,#create-playlist,#add-to-playlist';
+const protectedSelector='[data-user-playlist-create],#create-library-playlist,[data-save],[data-session-save],[data-artist-save],[data-playlist-add],[data-follow],#save-current,#library-community,#library-artists,#top-playlists,[data-view="saved"],[data-mobile-view="saved"],[data-mobile-view="community"],#follow-artist,#follow,#create-playlist,#add-to-playlist';
 document.addEventListener('click',e=>{const b=e.target.closest(protectedSelector);if(b&&!identity()){e.preventDefault();e.stopImmediatePropagation();gate(()=>{if(b.isConnected)b.click();else open();});}},true);
 const profile=document.getElementById('profile');profile?.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();if(identity())open();else gate(open);},true);
 window.addEventListener('storage',e=>{if(e.key?.startsWith(PRESENCE))paintParticipants();else if(e.key===KEY&&host&&!host.hidden&&identity())render();});

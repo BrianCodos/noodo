@@ -30,6 +30,16 @@ jobs:
         uses: actions/checkout@v6
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Configure public Mapbox token
+        env:
+          MAPBOX_PUBLIC_TOKEN: ${{ secrets.MAPBOX_PUBLIC_TOKEN }}
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const token = process.env.MAPBOX_PUBLIC_TOKEN || '';
+          if (token && !token.startsWith('pk.')) throw new Error('Use a public Mapbox token (pk.).');
+          fs.writeFileSync('dist/mapbox-config.js', 'window.NOODO_MAPBOX = ' + JSON.stringify({accessToken: token, style: 'mapbox://styles/mapbox/dark-v11'}) + ';\n');
+          NODE
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:

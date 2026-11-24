@@ -122,7 +122,7 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  });
  function syncMobileNavigation(){
   const panelId=activePanel?.id||'';
-  const current=activePanel?(panelId.includes('playlist')?'saved':panelId.includes('community')?'community':null):!radarView.hidden?'radar':!listenView.hidden?view:null;
+  const current=activePanel?(panelId==='radar-event-page'?'radar':panelId.includes('playlist')?'saved':panelId.includes('community')?'community':null):!radarView.hidden?'radar':!listenView.hidden?view:null;
   mobileNav.querySelectorAll('button').forEach(button=>{
    if(button.dataset.mobileView===current)button.setAttribute('aria-current','page');
    else button.removeAttribute('aria-current');
@@ -144,15 +144,16 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
    const context=url.searchParams.get('context');if(['song','lyrics'].includes(context)){showView(contextView);normalizeBack(contextView);selectInfo(context,false,false);}else{showView(listenView);document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});}
   }
   if(url.searchParams.get('section')==='radar'){showView(radarView);document.title='Radar · NOODO';document.querySelectorAll('[data-view]').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});}
-  document.getElementById('library-radar')?.setAttribute('aria-current',radarView.hidden?'false':'page');
+  document.getElementById('library-radar')?.setAttribute('aria-current',radarView.hidden&&!url.pathname.endsWith('/event.html')?'false':'page');
   if(url.pathname.endsWith('/article.html'))showPanel(window.noodoEditorial.article(url.searchParams.get('story')||'luna-marea'));
+  if(url.pathname.endsWith('/event.html'))showPanel(window.noodoEventPage.render(url.searchParams.get('event')));
   closeMobilePanels();paintPanels();window.dispatchEvent(new Event('resize'));const sessionId=url.searchParams.get('session');if(sessionId!==null&&tracks[Number(sessionId)]?.kind==='session')openSession(Number(sessionId));
   if(url.searchParams.get('section')==='community')window.noodoCommunity.open();
-  const eventCode=url.searchParams.get('event');if(eventCode)window.noodoEvents.openCode(eventCode);
+  const eventCode=url.searchParams.get('event');if(eventCode&&!url.pathname.endsWith('/event.html'))window.noodoEvents.openCode(eventCode);
   if(scroll){center.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});const target=url.hash&&document.getElementById(url.hash.slice(1));if(target)target.scrollIntoView({behavior:'instant'});}
  }
  function captureOrigin(){return {href:location.href,scroll:scrollY,musicView:view,panels:[...panelStack.map(item=>item.panel),activePanel].filter(panel=>panel&&panel.id!=='detail-dialog'),baseScroll:returnScroll};}
- async function goBack(){if(activePanel?.dataset.kind==='Editorial'){closePanel(false);}else if(activePanel){closePanel();return;}const origin=navigationTrail.pop();if(!origin)return navigate('listen.html',false);window.noodoPlayer.save();const url=new URL(origin.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;await renderRoute(url,false);if(!url.pathname.endsWith('/artist.html'))setView(origin.musicView);window.scrollTo({top:origin.baseScroll,behavior:'instant'});for(const panel of origin.panels)if(panel.isConnected)showPanel(panel);window.scrollTo({top:origin.scroll,behavior:'instant'});}
+ async function goBack(){if(activePanel?.id==='playlist-library'&&activePanel.dataset.libraryView==='detail'){window.noodoLibrary.open();return;}if(activePanel?.dataset.kind==='RadarEvent'&&!navigationTrail.length)return navigate('listen.html?section=radar',false);if(['Editorial','RadarEvent'].includes(activePanel?.dataset.kind)){closePanel(false);}else if(activePanel){closePanel();return;}const origin=navigationTrail.pop();if(!origin)return navigate('listen.html',false);window.noodoPlayer.save();const url=new URL(origin.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;await renderRoute(url,false);if(!url.pathname.endsWith('/artist.html'))setView(origin.musicView);window.scrollTo({top:origin.baseScroll,behavior:'instant'});for(const panel of origin.panels)if(panel.isConnected)showPanel(panel);window.scrollTo({top:origin.scroll,behavior:'instant'});}
  function navigate(href,remember=true){if(remember)navigationTrail.push(captureOrigin());window.noodoPlayer.save();const url=new URL(href,location.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;return renderRoute(url);}
  window.noodoWorkspace={navigate,showPanel,closePanel,back:goBack,setPanel,songs:()=>{if(location.pathname.endsWith('/listen.html')&&!location.search&&!activePanel&&!listenView.hidden){closeMobilePanels();return;}return navigate('listen.html');},openContext:(name,i)=>{if(name==='artist'||name==='events')return navigate('artist.html?artist='+artistProfileIndex(i)+(name==='events'?'#conciertos':''));return navigate('listen.html?context='+name);}};
  // All section back controls use one handler before legacy listeners run.
@@ -163,10 +164,10 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  },true);
  document.addEventListener('click',e=>{
   const a=e.target.closest('a[href]');if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target||a.hasAttribute('download'))return;
-  const url=new URL(a.href,location.href);if(url.origin!==location.origin||!['listen.html','artist.html','article.html'].some(name=>url.pathname.endsWith('/'+name))||a.getAttribute('href').startsWith('#'))return;
+  const url=new URL(a.href,location.href);if(url.origin!==location.origin||!['listen.html','artist.html','article.html','event.html'].some(name=>url.pathname.endsWith('/'+name))||a.getAttribute('href').startsWith('#'))return;
   e.preventDefault();if(a.matches('.hero-back'))goBack();else navigate(url.href);
  });
- document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(activePanel){e.preventDefault();if(activePanel.dataset.kind==='Editorial')goBack();else closePanel();}else closeMobilePanels();});
+ document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(activePanel){e.preventDefault();if(['Editorial','RadarEvent'].includes(activePanel.dataset.kind)||(activePanel.id==='playlist-library'&&activePanel.dataset.libraryView==='detail'))goBack();else closePanel();}else closeMobilePanels();});
  let lastRoute=location.pathname+location.search;
  window.addEventListener('popstate',()=>{const nextRoute=location.pathname+location.search;if(nextRoute===lastRoute&&!activePanel)return;lastRoute=nextRoute;renderRoute(new URL(location.href));});
  paintPanels();renderRoute(new URL(location.href),true);

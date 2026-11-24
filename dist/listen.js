@@ -169,7 +169,7 @@ try{const prior=JSON.parse(sessionStorage.getItem('noodo-player-session')||'null
 const routeTrack=new URLSearchParams(location.search).get('track');if(routeTrack!==null&&Number.isInteger(Number(routeTrack))&&tracks[Number(routeTrack)]&&Number(routeTrack)!==current){current=Number(routeTrack);elapsed=0;playing=false;}
 function persistPlayer(){try{sessionStorage.setItem('noodo-player-session',JSON.stringify({current,elapsed,playing,volume,shuffle,repeat,saved:[...saved]}));}catch{}}
 window.addEventListener('pagehide',persistPlayer);
-window.noodoPlayer={playQueue:(ids,mix=false)=>{playbackQueue=[...new Set(ids)].filter(i=>tracks[i]?.kind==='track');if(!playbackQueue.length){playbackQueue=null;return;}if(mix)for(let i=playbackQueue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[playbackQueue[i],playbackQueue[j]]=[playbackQueue[j],playbackQueue[i]];}start(playbackQueue[0]);},pause:()=>{playing=false;paintTransport();renderList();},resume:()=>{playing=true;paintTransport();renderList();},getState:()=>({current,elapsed,playing,volume}),toggleTrack:i=>{if(!tracks[i])return;if(tracks[i].kind==='session'){openSession(i);return;}selected=i;i===current?toggle():start(i);renderContext();},select:(i,play)=>{if(!Number.isInteger(i)||!tracks[i])return;if(tracks[i].kind==='session'){openSession(i);return;}selected=i;if(i!==current){current=i;elapsed=0;}if(play)playing=true;paintCurrent();persistPlayer();},seek:(i,value)=>{if(!tracks[i]||!Number.isFinite(value))return;if(current!==i){current=i;playing=false;}selected=i;elapsed=Math.max(0,Math.min(tracks[i].duration,value));if(elapsed===tracks[i].duration)playing=false;paintCurrent();},setVolume:value=>{if(!Number.isFinite(value))return;volume=Math.max(0,Math.min(100,value));if(volume)lastVolume=volume;paintVolume();},save:persistPlayer};
+window.noodoPlayer={playQueue:(ids,mix=false)=>{playbackQueue=[...new Set(ids)].filter(i=>tracks[i]?.kind==='track');if(!playbackQueue.length){playbackQueue=null;return;}if(mix)for(let i=playbackQueue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[playbackQueue[i],playbackQueue[j]]=[playbackQueue[j],playbackQueue[i]];}start(playbackQueue[0]);},pause:()=>{playing=false;paintTransport();renderList();},resume:()=>{playing=true;paintTransport();renderList();},getState:()=>({current,elapsed,playing,volume}),getQueue:()=>audioIndices().map(id=>({id,title:tracks[id].title,artist:tracks[id].artist,duration:tracks[id].duration})),toggleTrack:i=>{if(!tracks[i])return;if(tracks[i].kind==='session'){openSession(i);return;}selected=i;i===current?toggle():start(i);renderContext();},select:(i,play)=>{if(!Number.isInteger(i)||!tracks[i])return;if(tracks[i].kind==='session'){openSession(i);return;}selected=i;if(i!==current){current=i;elapsed=0;}if(play)playing=true;paintCurrent();persistPlayer();},seek:(i,value)=>{if(!tracks[i]||!Number.isFinite(value))return;if(current!==i){current=i;playing=false;}selected=i;elapsed=Math.max(0,Math.min(tracks[i].duration,value));if(elapsed===tracks[i].duration)playing=false;paintCurrent();},setVolume:value=>{if(!Number.isFinite(value))return;volume=Math.max(0,Math.min(100,value));if(volume)lastVolume=volume;paintVolume();},save:persistPlayer};
 let supportTrack=0;
 function openSupport(i){supportTrack=i;$('#support-artist').textContent=tracks[i].artist+' · '+tracks[i].title;$('#support-result').textContent='';$('#confirm-support').disabled=false;window.noodoWorkspace.showPanel($('#support-dialog'));}
 $('#close-support').addEventListener('click',()=>window.noodoWorkspace.closePanel());
@@ -181,24 +181,29 @@ for(const mode of ['shuffle','repeat'])$('#'+mode).setAttribute('aria-pressed',S
 
 $('#context-back').addEventListener('click',()=>window.noodoWorkspace.songs());
 
-// One campaign slot; the same structure supports artist, song, event or advertising destinations.
-const promoCampaign={id:'live-patio-01',kind:'session',label:'NOODO Sessions · Live session',title:'Un patio. Muchas formas de sonar.',description:'Pulso de la ciudad: un encuentro entre voces, raíces y nuevas frecuencias.',image:'assets/live-session-v02.png',action:'Ver sesión',href:'listen.html?session=1'};
-const promoKey='noodo-dismissed-promo-'+promoCampaign.id;
+// Homepage advertising placement: 2172 × 724 artwork, with accessible live CTAs.
+// Replace this campaign's creative and destinations when an advertiser books the slot.
+const promoCampaign={id:'nuevas-frecuencias-01',kind:'advertising',title:'Noche de nuevas frecuencias',image:'assets/advertising/nuevas-frecuencias-2172x724.png',alt:'NOODO presenta Nuevas Frecuencias. Luna Marea en vivo. 27 de noviembre, 19:00, San Antonio, Cali.',href:'event.html?event=ND-R26-001',ticketHref:'checkout.html?event=ND-R26-001'};
 $('#promo-banner').dataset.kind=promoCampaign.kind;
-$('#promo-label').textContent=promoCampaign.label;$('#promo-title').textContent=promoCampaign.title;$('#promo-description').textContent=promoCampaign.description;$('#promo-image').src=promoCampaign.image;$('#promo-action-label').textContent=promoCampaign.action;$('#promo-cta').href=promoCampaign.href;
-try{promoDismissed=sessionStorage.getItem(promoKey)==='1';}catch{}
+$('#promo-banner').dataset.campaign=promoCampaign.id;
+$('#promo-banner').setAttribute('aria-label','Publicidad: '+promoCampaign.title);
+$('#promo-image').src=promoCampaign.image;
+$('#promo-image').alt=promoCampaign.alt;
+$('#promo-cta').href=promoCampaign.href;
+$('#promo-tickets').href=promoCampaign.ticketHref;
 updatePromoVisibility();
-$('#dismiss-promo').onclick=()=>{promoDismissed=true;updatePromoVisibility();try{sessionStorage.setItem(promoKey,'1');}catch{}$('#tracks-title').focus({preventScroll:true});};
 
 function updatePromoVisibility(){const home=view==='home'&&filter==='track'&&genre==='all'&&!$('#search-music').value.trim();$('#promo-banner').hidden=promoDismissed||!home;$('#recommended').hidden=!home;$('#featured-session').hidden=!home;$('#editorial-feature').hidden=!home;$('#new-releases').hidden=!home;}
 
 // Shared song row renderer, styles and actions for catalog, queue, albums and playlists.
-window.noodoTrackList={mount(element,indices){
+window.noodoTrackList={mount(element,indices,{queue=false}={}){
  element.classList.add("song-list");
  function render(){const focus=document.activeElement,attrs=['data-track-play','data-track-select','data-save','data-support','data-playlist-add'];const attr=element.contains(focus)?attrs.find(a=>focus.hasAttribute(a)):null,value=attr?focus.getAttribute(attr):null;const focusedRow=focus?.matches('[data-row-track]')&&element.contains(focus)?focus.dataset.rowTrack:null;element.innerHTML=indices.map(i=>row(tracks[i],i)).join('');paintRowProgress();if(attr)element.querySelector('['+attr+'="'+value+'"]')?.focus({preventScroll:true});else if(focusedRow)element.querySelector('[data-row-track="'+focusedRow+'"]')?.focus({preventScroll:true});}
- function keyboard(e){if(e.target.matches('[data-row-track]')&&['Enter',' '].includes(e.key)){e.preventDefault();selectTrack(Number(e.target.dataset.rowTrack));}}
- element.addEventListener('click',listAction);element.addEventListener('keydown',keyboard);window.addEventListener('noodo:catalogchange',render);render();
- return ()=>{element.removeEventListener('click',listAction);element.removeEventListener('keydown',keyboard);window.removeEventListener('noodo:catalogchange',render);};
+ function selectRow(id){if(queue)window.noodoPlayer.toggleTrack(id);else selectTrack(id);}
+ function action(e){const select=e.target.closest('[data-track-select]');if(queue&&(select||!e.target.closest('button,a,input'))){const row=e.target.closest('[data-row-track]');if(row){selectRow(Number(row.dataset.rowTrack));return;}}listAction(e);}
+ function keyboard(e){if(e.target.matches('[data-row-track]')&&['Enter',' '].includes(e.key)){e.preventDefault();selectRow(Number(e.target.dataset.rowTrack));}}
+ element.addEventListener('click',action);element.addEventListener('keydown',keyboard);window.addEventListener('noodo:catalogchange',render);render();
+ return ()=>{element.removeEventListener('click',action);element.removeEventListener('keydown',keyboard);window.removeEventListener('noodo:catalogchange',render);};
 },preview(i){if(!tracks[i])return;selected=i;renderContext();renderList();},play:i=>start(i)};
 
 // Eight profile cards; each opens the artist in the persistent player shell.

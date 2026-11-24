@@ -1,0 +1,13 @@
+/* Stateless EventCard shared by grid/list; the host owns selection and persistence. */
+(()=>{
+ const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const icons={view:'<path d="M7 17 17 7M7 7h10v10"/>',save:'<path d="M6 3h12v18l-6-4-6 4Z"/>',share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/>'};
+ const icon=name=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[name]}</svg>`;
+ function viewLink(event,id){return `<a class="radar-view-event" href="event.html?event=${id}" aria-label="Ver evento: ${escape(event.name)}">Ver evento ${icon('view')}</a>`;}
+ function actions(event,id,saved=false){return `<button type="button" class="radar-action" data-save-event="${id}" aria-pressed="${saved}" aria-label="${saved?'Quitar de guardados':'Guardar evento'}: ${escape(event.name)}" title="${saved?'Quitar de guardados':'Guardar evento'}">${icon('save')}</button><button type="button" class="radar-action" data-share-event="${id}" aria-label="Compartir evento: ${escape(event.name)}" title="Compartir evento">${icon('share')}</button>`;}
+ window.noodoEventCard={render(event,{selected=false,saved=false}={}){
+  const price=event.price===0?'Gratis':Number.isFinite(event.price)?new Intl.NumberFormat('es-CO',{style:'currency',currency:event.currency||'COP',maximumFractionDigits:0}).format(event.price)+' COP':'Precio por confirmar';
+  return `<article class="radar-card" data-card-event="${event.id}" data-active="${selected}"><div class="radar-card-main"><div class="radar-event-art"><img class="radar-event-image" src="${escape(event.image)}" alt="Flyer de ${escape(event.name)}" loading="lazy"><div class="radar-ticket-stub" role="group" aria-label="Acciones de ${escape(event.name)}">${actions(event,event.id,saved)}</div></div><span class="radar-event-copy"><span class="radar-date">${escape(event.day)} · ${escape(event.date)} · ${escape(event.time)}</span><span class="radar-event-category">${escape(event.category)}</span><button type="button" class="radar-card-select" data-select-event="${event.id}" aria-pressed="${selected}" aria-label="${selected?'Abrir evento':'Ubicar en el mapa'}: ${escape(event.name)}">${escape(event.name)}</button><span>Organiza: ${escape(event.organizer||'Por confirmar')}</span><small>⌖ ${escape(event.place)}</small><span class="radar-price" data-free="${event.price===0}">${escape(price)}</span>${viewLink(event,event.id)}</span></div></article>`;
+ }};
+ window.noodoEventCard.actions=actions;window.noodoEventCard.viewLink=viewLink;
+})();
