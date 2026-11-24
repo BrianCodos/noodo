@@ -919,28 +919,3 @@
 
 #session-unavailable-poster{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-card,16px)}
 #session-media-status{font:var(--type-meta);color:var(--muted);margin:12px 0}
-
-/* AppShell: 20 / 60 / 20 of usable width, after gutters; one shared desktop frame. */
-:root{--shell-max-width:1920px;--shell-gap:20px;--shell-page-inset:20px}
-@media(min-width:761px){
- .workspace-app{--shell-side-width:calc((100% - var(--shell-gap) - var(--shell-gap))/5);--shell-left-track:var(--shell-side-width);--shell-right-track:var(--shell-side-width)}
- .workspace-app.library-collapsed{--shell-left-track:var(--shell-rail-width)}
- .workspace-app.section-player-collapsed{--shell-right-track:56px}
- .workspace-app #content{width:100%;max-width:var(--shell-max-width);margin-inline:auto;padding-inline:var(--shell-page-inset)}
- .workspace-app #content .workspace-grid{grid-template-columns:var(--shell-left-track) minmax(0,1fr) var(--shell-right-track);gap:var(--shell-gap)}
- .workspace-app #content .workspace-grid::before{display:none}
- .workspace-app #content #player-sidebar{display:block;position:sticky;grid-column:1;grid-row:1;top:var(--shell-header-height);left:auto;right:auto;bottom:auto;width:100%;min-width:0;max-width:none;height:calc(100dvh - var(--shell-header-height));max-height:none;margin:0;box-sizing:border-box}
- .workspace-app #content #center-stage{grid-column:2;grid-row:1;min-width:0}
- .workspace-app #content :is(#context-sidebar,#section-player-sidebar){grid-column:3;grid-row:1;width:100%;min-width:0;max-width:none;box-sizing:border-box}
- .workspace-app.artist-mode:not(.section-player-mode) #context-sidebar{display:block!important}
- .workspace-app.artist-mode #info-toggle{display:flex!important}
- .workspace-app>.player-topbar{width:100%;max-width:var(--shell-max-width);margin-inline:auto}
- .workspace-app:not(.section-player-mode) .player-dock{width:calc(100% - 32px);max-width:calc(var(--shell-max-width) - 32px);left:50%;right:auto;transform:translateX(-50%)}
- .workspace-app #context-sidebar{container-type:inline-size;container-name:context}
-}
-/* Controls reflow inside the proportional sidebar before they can overlap. */
-@container context (max-width:220px){
- .context-tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:0}
- .context-summary{padding-inline:0;overflow-wrap:anywhere}
- .context-summary .compact-concert{grid-template-columns:1fr;gap:8px}
-}

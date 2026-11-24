@@ -88,7 +88,3 @@ Revisar 320, 390, 525, 768, 1024 y 1440 px, con biblioteca abierta/cerrada y tex
 - `LibraryNavigationItem`: componente compartido en las nueve entradas, altura de 48 px, icono de 20 px y un solo estado activo derivado de la vista visible; rail plegado de 44 px. El estado se conserva al abrir y cerrar paneles y al acceder a una sección que solicita perfil de demo.
 - `CommunityEntryCard`: tres columnas con arte de campaña coherente para Salas de chat, Nodo Match y Foro. En móvil se apilan y la selección abre la sección correspondiente tras entrar a la demo.
 - `TrackRow` variante `compact`: canción y artista en dos líneas, acciones compartidas de guardar y añadir a playlist de 44 px. La cola lateral omite portada, duración, género y botón de play independiente; el título y Enter/Espacio siguen reproduciendo.
-
-### Distribución global de columnas
-
-El AppShell de escritorio comparte una proporción 20% / 60% / 20% entre biblioteca, contenido y panel derecho, calculada sobre el ancho disponible después de los dos gutters de 20 px. El contenedor, la cabecera y el reproductor inferior se centran con un ancho máximo de 1920 px (incluye 20 px de margen interior por lado). Se aplica también a perfiles de artistas, Radar y Comunidad. Al plegar una barra, el contenido absorbe ese espacio y la otra barra conserva su ancho. Hasta 760 px se mantiene la composición móvil de una columna. Fuente: `styles/workspace/09-proportional-layout.css`.
