@@ -84,7 +84,7 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  optionsToggle.onclick=()=>{const open=!header.classList.contains('options-open');header.classList.toggle('options-open',open);optionsToggle.setAttribute('aria-expanded',String(open));optionsToggle.setAttribute('aria-label',open?'Cerrar opciones':'Abrir opciones');};
  actions.addEventListener('click',e=>{if(e.target.closest('button'))closeOptions();});
  document.addEventListener('click',e=>{if(!actions.contains(e.target)&&!optionsToggle.contains(e.target))closeOptions();});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&header.classList.contains('options-open'))closeOptions(true);});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&header.classList.contains('options-open')){e.preventDefault();e.stopImmediatePropagation();closeOptions(true);}});
  mobile.addEventListener('change',()=>closeOptions());
  const infoToggle=document.getElementById('info-toggle');
  const infoPanel=document.getElementById('context-sidebar');
@@ -167,7 +167,7 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   const url=new URL(a.href,location.href);if(url.origin!==location.origin||!['listen.html','artist.html','article.html','event.html'].some(name=>url.pathname.endsWith('/'+name))||a.getAttribute('href').startsWith('#'))return;
   e.preventDefault();if(a.matches('.hero-back'))goBack();else navigate(url.href);
  });
- document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(activePanel){e.preventDefault();if(['Editorial','RadarEvent'].includes(activePanel.dataset.kind)||(activePanel.id==='playlist-library'&&activePanel.dataset.libraryView==='detail'))goBack();else closePanel();}else closeMobilePanels();});
+ document.addEventListener('keydown',e=>{if(e.key!=='Escape'||e.defaultPrevented||document.querySelector('dialog[open]'))return;if(activePanel){e.preventDefault();if(['Editorial','RadarEvent'].includes(activePanel.dataset.kind)||(activePanel.id==='playlist-library'&&activePanel.dataset.libraryView==='detail'))goBack();else closePanel();}else closeMobilePanels();});
  let lastRoute=location.pathname+location.search;
  window.addEventListener('popstate',()=>{const nextRoute=location.pathname+location.search;if(nextRoute===lastRoute&&!activePanel)return;lastRoute=nextRoute;renderRoute(new URL(location.href));});
  paintPanels();renderRoute(new URL(location.href),true);

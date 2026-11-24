@@ -47,7 +47,7 @@
  toggle.addEventListener('click',()=>setCollapsed(!collapsed));
  mini.addEventListener('click',()=>window.noodoPlayer.getState().playing?window.noodoPlayer.pause():window.noodoPlayer.resume());
 
- sidebar.addEventListener('keydown',event=>{if(event.key==='Escape'&&!volumePanel.hidden){event.stopPropagation();closeVolume();volumeToggle.focus();return;}if(event.key==='Escape'&&!collapsed){setCollapsed(true);toggle.focus();}});
+ sidebar.addEventListener('keydown',event=>{if(event.key==='Escape'&&!volumePanel.hidden){event.stopPropagation();closeVolume();volumeToggle.focus();return;}if(event.key==='Escape'&&!collapsed){event.preventDefault();event.stopPropagation();setCollapsed(true);toggle.focus();}});
  document.addEventListener('click',event=>{if(active&&event.target.closest('#queue-toggle,#top-queue')){event.preventDefault();event.stopImmediatePropagation();setCollapsed(false);list.focus({preventScroll:true});}},true);
  window.addEventListener('noodo:playerchange',renderQueue);window.addEventListener('noodo:catalogchange',renderQueue);
  new MutationObserver(update).observe(center,{subtree:true,attributes:true,attributeFilter:['hidden'],childList:true});

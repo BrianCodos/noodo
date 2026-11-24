@@ -1,0 +1,82 @@
+/* Shared song lists adapt to their own width, including the artist's narrow column. */
+:is(.song-list,#album-track-list,#playlist-rows){container-type:inline-size;container-name:songs}
+:is(.song-list,#album-track-list,#playlist-rows) .track-info{min-width:0}
+:is(.song-list,#album-track-list,#playlist-rows) .track-select{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+:is(.song-list,#album-track-list,#playlist-rows) .track-info small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@container songs (max-width:650px){
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row{grid-template-columns:44px 36px minmax(0,1fr) 44px 44px!important;gap:4px!important;padding:10px 0!important;align-items:center}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .track-type,:is(.song-list,#album-track-list,#playlist-rows) .track-row .track-duration{display:none!important}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .track-cover{display:block;width:36px!important;height:36px!important}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .icon-button{width:44px!important;min-width:44px!important;height:44px!important;padding:10px!important}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .support-button{grid-column:3/-1;grid-row:2;justify-self:start;width:auto;height:44px;min-height:44px;padding:10px 0}
+ :is(.song-list,#album-track-list,#playlist-rows) .track-row .support-button span{display:inline}
+}
+.center-stage .artist-view .artist-hero>.hero-portrait{height:560px;max-height:65dvh;min-height:340px;align-self:start}
+.center-stage .artist-view .artist-hero>.artist-mini-player{height:auto;align-self:start;overflow:hidden}
+#artist-track-list{max-height:440px;overflow:auto;scrollbar-width:thin;min-width:0;padding-right:4px}
+@container stage (max-width:600px){.center-stage .artist-view .artist-hero>.hero-portrait{height:auto;aspect-ratio:1;max-height:420px;min-height:0}#artist-track-list{max-height:none;overflow:visible}}
+/* Shared desktop library divider: half opacity in expanded and icon rail states. */
+@media(min-width:761px){
+ .workspace-app #player-sidebar{border-right-color:color-mix(in srgb,var(--player-divider-color) 50%,transparent)}
+ .workspace-app.library-collapsed #player-sidebar{box-shadow:inset -1px 0 color-mix(in srgb,var(--player-divider-color) 50%,transparent)}
+}
+/* User playlists share the square-cover rhythm of artist albums. */
+.user-playlists{margin:8px 0 28px;padding-bottom:24px;border-bottom:1px solid color-mix(in srgb,var(--accent) 12%,transparent)}
+.user-playlists[hidden]{display:none}.user-playlists .section-heading{margin-bottom:16px;gap:12px;flex-wrap:wrap}.user-playlists h2{font:var(--type-label);color:var(--accent);margin:0}
+.user-playlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;align-items:start}
+.user-playlist-card{display:flex;flex-direction:column;gap:7px;min-width:0;border:0;padding:0;background:transparent;color:var(--text);text-align:left;cursor:pointer;font:inherit}
+.user-playlist-art{display:grid;position:relative;aspect-ratio:1;width:100%;border-radius:var(--radius-compact, 12px);overflow:hidden;background:linear-gradient(145deg,var(--secondary),var(--surface));border:1px solid color-mix(in srgb,var(--accent) 14%,transparent)}
+.user-playlist-art.is-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}.user-playlist-art img{width:100%;height:100%;object-fit:cover;min-height:0}
+.user-playlist-placeholder{display:grid;place-items:center;color:var(--accent)}.user-playlist-placeholder svg{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.5}
+.user-playlist-card strong{font:var(--type-label);overflow-wrap:anywhere}.user-playlist-card small{font:var(--type-meta);color:var(--muted)}
+.user-playlist-open{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--noodo-on-soft,var(--background))}
+.user-playlist-card:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:var(--radius-compact, 12px)}.user-playlist-card:hover .user-playlist-art{border-color:var(--accent)}
+@media(min-width:761px){.user-playlist-grid{grid-template-columns:repeat(auto-fill,minmax(140px,180px))}}
+@media(max-width:400px){.user-playlist-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+.user-playlist-art.is-mosaic{gap:2px}.user-playlist-art.is-mosaic img{display:block;aspect-ratio:1;object-fit:cover}
+.playlist-page-heading{display:flex;align-items:center;gap:24px;min-width:0}.playlist-page-heading>.user-playlist-art{width:150px;flex:none}.playlist-page-heading h1{overflow-wrap:anywhere}.playlist-page-heading p{color:var(--muted);margin-top:8px}
+@media(max-width:600px){.playlist-page-heading{gap:16px}.playlist-page-heading>.user-playlist-art{width:100px}.playlist-page-heading h1{font-size:22px}}
+
+/* Advertising placement: edge-to-edge 3:1 creative, no gradients or image overlays. */
+.workspace-app .promo-banner{min-height:0;aspect-ratio:3/1;margin:0 0 32px;border-radius:var(--radius-panel,24px);background:#dcf96b;box-shadow:none;isolation:isolate}
+.workspace-app .promo-banner::before{content:none;display:none}
+.workspace-app .promo-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;object-position:center;opacity:1;z-index:0}
+.promo-disclosure{position:absolute;top:14px;right:18px;z-index:1;color:#171020;background:#dcf96b;padding:4px 8px;border-radius:4px;font:var(--type-meta)}
+.promo-actions{position:absolute;left:3.5%;bottom:6%;z-index:1;display:flex;gap:12px;align-items:center}
+.promo-actions .pill{min-height:44px;padding:12px 22px;border:1px solid #171020;font:var(--type-label);font-weight:600;text-decoration:none;box-shadow:none}
+.promo-actions .promo-more{background:#dcf96b;color:#171020}
+.promo-actions .promo-tickets{background:#171020;color:#fff}
+.promo-actions .pill:hover{background:#6330b0;color:#fff;border-color:#6330b0}
+.promo-actions .pill:focus-visible{outline:3px solid #6330b0;outline-offset:3px}
+@container stage (max-width:800px){
+ .workspace-app .promo-banner{aspect-ratio:auto;display:flex;flex-direction:column;border-radius:var(--radius-card, 16px)}
+ .workspace-app .promo-image{position:static;aspect-ratio:3/1;height:auto}
+ .promo-actions{position:static;padding:12px 16px 16px;gap:10px}
+ .promo-actions .pill{padding:10px 16px}
+ .promo-disclosure{top:6px;right:8px;font-size:12px;padding:2px 5px}
+}
+
+/* The library opens with covers; track rows belong to the selected playlist. */
+#playlist-library>.section-heading{gap:20px;flex-wrap:wrap;margin-bottom:28px}
+#playlist-library .library-playlist-grid{grid-template-columns:repeat(auto-fill,minmax(180px,220px));gap:28px 24px;margin:8px 0 32px}
+#playlist-library .library-playlist-grid .user-playlist-card{gap:10px}
+@container stage (max-width:540px){
+ #playlist-library .library-playlist-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+}
+
+/* Input hit areas include the full visual control, without overlapping siblings. */
+.workspace-app .search input{min-height:44px;min-width:0}
+.workspace-app .search .browse-button{width:44px;min-width:44px;height:44px}
+.workspace-app input[type=range]{min-height:44px}
+
+@media(max-width:360px){.workspace-app .mobile-navigation{grid-template-columns:repeat(5,auto)}.mobile-navigation button{min-width:44px}}
+/* Reserve the utility group's intrinsic width at tablet / small-desktop widths. */
+@media(min-width:761px) and (max-width:1100px){
+ .workspace-app>.player-topbar{grid-template-columns:auto minmax(0,1fr) auto;gap:12px}
+ .workspace-app .topbar-actions{gap:2px}
+ .workspace-app .topbar-actions .icon-button{width:44px;min-width:44px;height:44px}
+ .workspace-app .player-topbar .search{min-width:0}
+}
+
+#session-unavailable-poster{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-card,16px)}
+#session-media-status{font:var(--type-meta);color:var(--muted);margin:12px 0}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "noodo.design-system/0.3",
-  "status": "draft",
-  "exportedAt": "2026-11-16T20:30:36.744Z",
+  "status": "draft-audited",
+  "exportedAt": "2026-11-24",
   "source": {
     "document": "NOODO_Dossier_Integral_Noviembre_2026.pdf",
     "identityPages": [
@@ -137,24 +137,7 @@
         "glass": 18
       },
       "cardGradient": {
-        "type": "radial",
-        "origin": "100% 0%",
-        "stops": [
-          {
-            "position": 0,
-            "color": "{accent}",
-            "mixWithBackground": 0.26
-          },
-          {
-            "position": 0.36,
-            "color": "{primary}",
-            "mixWithBackground": 0.18
-          },
-          {
-            "position": 0.78,
-            "color": "{background}"
-          }
-        ]
+        "type": "none"
       },
       "glass": {
         "surfaceOpacity": 0.86,
@@ -195,6 +178,10 @@
       "dockGlow": "0 -10px 42px color-mix(in srgb, var(--primary) 18%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 10%, transparent)"
     },
     "rules": [
+      [
+        "Componente de canciones compartido",
+        "Todo listado de canciones (Inicio, Canciones, cola, álbumes y playlists) reutiliza el mismo componente CompactTrackRow: portada, título, artista, reproducir, guardar, añadir a playlist y apoyar. Compartir renderer, estilos song-list, estados y eventos; no crear una variante visual simplificada para la cola. En móvil, mantener acciones alineadas en una fila y altura mínima de 60 px."
+      ],
       [
         "Superficies del perfil",
         "Cabecera, mini reproductor, detalle de contacto y tarjetas de booking transparentes: sin degradado, glow ni fondo de card. Mantener divisores estructurales. Tipo de perfil en tamaño heading, arriba a la derecha del nombre."
@@ -245,7 +232,7 @@
       ],
       [
         "Banner multipropósito",
-        "Un espacio promocional solo en Inicio: canciones sin búsqueda ni filtro de género. Ocultarlo en Guardados, Sessions, búsquedas, géneros, perfiles y detalles. Mostrarlo de nuevo al regresar al inicio solo si no fue cerrado. Ubicarlo en la columna central antes de las canciones. Configurable por campaña: tipo, imagen, etiqueta, título, texto, CTA y destino para artista, canción, sesión, evento o publicidad. Publicidad debe identificarse como tal. Cierre accesible de 44 × 44 px; recordar el cierre durante la sesión por campaña. Nunca iniciar reproducción automáticamente."
+        "Un espacio promocional solo en Inicio: canciones sin búsqueda ni filtro de género. Ocultarlo en Guardados, Sessions, búsquedas, géneros, perfiles y detalles. Mostrarlo de nuevo al regresar al inicio solo si no fue cerrado. Ubicarlo en la columna central antes de las canciones. Configurable por campaña: tipo, imagen, etiqueta, título, texto, CTA y destino para artista, canción, sesión, evento o publicidad. Publicidad debe identificarse como tal. Campaña publicitaria actual: imagen 3:1 sin degradado, identificación Publicidad, Ver más y Comprar tiquete; acciones debajo en móvil. Nunca iniciar reproducción automáticamente."
       ],
       [
         "Iconos y orden de canción",
@@ -277,7 +264,7 @@
       ],
       [
         "Álbumes cuadrados",
-        "Portadas 1:1, con título y metadatos fuera. Cuatro columnas iguales en escritorio, máximo 280 px por portada; conservar el tamaño aunque haya menos de cuatro. Dos columnas en centros de 680 px o menos."
+        "Portadas 1:1, con título y metadatos fuera. CatalogCoverGrid compartido: mínimo objetivo 180 px (140 px en centros compactos), gap 16 px y hasta 8 columnas; tamaño uniforme entre colecciones."
       ],
       [
         "Galería fotográfica",
@@ -362,28 +349,28 @@
       "minimumSize": 12,
       "roles": {
         "display": {
-          "size": 48,
-          "lineHeight": 52,
-          "mobileSize": 30,
-          "mobileLineHeight": 36,
+          "size": 40,
+          "lineHeight": 46,
+          "mobileSize": 26,
+          "mobileLineHeight": 32,
           "weight": 600,
           "tracking": "-0.035em",
           "usage": "Mensaje principal de una pieza destacada. Máximo uno por vista."
         },
         "title": {
-          "size": 32,
-          "lineHeight": 38,
-          "mobileSize": 24,
-          "mobileLineHeight": 30,
+          "size": 26,
+          "lineHeight": 32,
+          "mobileSize": 20,
+          "mobileLineHeight": 26,
           "weight": 600,
           "tracking": "-0.025em",
           "usage": "Título de página o diálogo principal."
         },
         "heading": {
-          "size": 24,
-          "lineHeight": 30,
-          "mobileSize": 20,
-          "mobileLineHeight": 26,
+          "size": 18,
+          "lineHeight": 24,
+          "mobileSize": 16,
+          "mobileLineHeight": 22,
           "weight": 600,
           "tracking": "-0.02em",
           "usage": "Secciones y títulos de cards destacadas."
@@ -413,8 +400,8 @@
     },
     "breakpoints": {
       "mobile": 0,
-      "tablet": 768,
-      "desktop": 1024
+      "desktopShell": 761,
+      "wide": 1500
     },
     "motion": {
       "fast": 120,
@@ -457,7 +444,12 @@
       "scope": "Inicial",
       "states": "Reposo · hover · foco · activo · carga · inactivo",
       "contract": "Etiqueta verbal; área táctil 44 px; icono opcional.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "IconButton",
@@ -465,7 +457,12 @@
       "scope": "Inicial",
       "states": "Reposo · foco · activo · inactivo",
       "contract": "Nombre accesible; icono 20–24 px; objetivo 44 px.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "TextLink",
@@ -473,7 +470,12 @@
       "scope": "Inicial",
       "states": "Reposo · hover · foco · visitado",
       "contract": "Subrayado en texto; destino explícito; externo identificado.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "TextField / Search",
@@ -481,7 +483,12 @@
       "scope": "Inicial",
       "states": "Vacío · completado · error · lectura · inactivo",
       "contract": "Etiqueta persistente, ayuda e ID de error; nunca solo placeholder.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Textarea",
@@ -489,7 +496,12 @@
       "scope": "Inicial",
       "states": "Vacío · completado · error · límite",
       "contract": "Texto de ayuda, contador si hay máximo; conservar contenido al fallar.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Select",
@@ -497,7 +509,12 @@
       "scope": "Inicial",
       "states": "Vacío · selección · foco · inactivo",
       "contract": "Control nativo como base; selección múltiple requiere patrón propio.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Checkbox / Radio",
@@ -505,7 +522,12 @@
       "scope": "Inicial",
       "states": "Sin selección · seleccionado · foco · inactivo",
       "contract": "Grupos con leyenda; consentimiento nunca premarcado.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Switch",
@@ -513,7 +535,12 @@
       "scope": "Inicial",
       "states": "Encendido · apagado · inactivo",
       "contract": "Etiqueta estable; anunciar estado; acción inmediata y reversible.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Range",
@@ -521,7 +548,12 @@
       "scope": "Inicial",
       "states": "Reposo · arrastre · foco · inactivo",
       "contract": "Valor y unidad; flechas del teclado; alternativa visible al gesto.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Chip / Filter",
@@ -529,7 +561,12 @@
       "scope": "Inicial",
       "states": "Todos · seleccionado · removible · inactivo",
       "contract": "Texto + estado aria-pressed; filtros visibles; permitir limpiar.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Badge",
@@ -537,7 +574,12 @@
       "scope": "Inicial",
       "states": "Informativo · éxito · aviso · error",
       "contract": "Estado escrito; nunca comunicar solo mediante color.",
-      "section": "states"
+      "section": "states",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Avatar",
@@ -545,7 +587,12 @@
       "scope": "Inicial",
       "states": "Imagen · iniciales · sin imagen",
       "contract": "Recorte circular; iniciales accesibles; sin foto falsa del artista.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Tooltip",
@@ -553,7 +600,12 @@
       "scope": "Inicial",
       "states": "Oculto · hover · foco · Escape",
       "contract": "Solo ayuda breve; no alojar información esencial.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Tabs",
@@ -561,7 +613,12 @@
       "scope": "Inicial",
       "states": "Activo · inactivo · foco",
       "contract": "Flechas izquierda/derecha, Home/End y panel asociado.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Navigation / Menu",
@@ -569,7 +626,12 @@
       "scope": "Inicial",
       "states": "Actual · foco · desplegado",
       "contract": "Un patrón por contexto; enlace actual marcado; cierre con Escape.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Breadcrumb",
@@ -577,7 +639,12 @@
       "scope": "Inicial",
       "states": "Enlace · ubicación actual",
       "contract": "Ubicación actual sin enlace; separadores decorativos.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Pagination",
@@ -585,7 +652,12 @@
       "scope": "Inicial",
       "states": "Primera · intermedia · última · carga",
       "contract": "Página actual anunciada; anterior/siguiente con destino; conservar filtros.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Accordion",
@@ -593,7 +665,12 @@
       "scope": "Inicial",
       "states": "Cerrado · abierto · foco",
       "contract": "Encabezado accionable; contenido permanece en orden de lectura.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Dialog / Drawer",
@@ -601,7 +678,12 @@
       "scope": "Inicial",
       "states": "Abierto · cerrado · confirmación",
       "contract": "Foco contenido; Escape; botón cerrar; devolver foco al origen.",
-      "section": "ui"
+      "section": "ui",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Toast / Alert",
@@ -609,7 +691,12 @@
       "scope": "Inicial",
       "states": "Éxito · error · información · aviso",
       "contract": "Mensaje claro; errores persistentes; no ocultar acciones críticas en un toast.",
-      "section": "states"
+      "section": "states",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Skeleton / Progress",
@@ -617,7 +704,12 @@
       "scope": "Inicial",
       "states": "Cargando · listo · fallo",
       "contract": "Reservar espacio; anunciar carga; indicador determinado solo con progreso real.",
-      "section": "states"
+      "section": "states",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "EmptyState",
@@ -625,7 +717,12 @@
       "scope": "Inicial",
       "states": "Sin contenido · sin resultados · sin permiso",
       "contract": "Explicar causa y acción disponible; no confundir vacío con error.",
-      "section": "states"
+      "section": "states",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Error / Offline",
@@ -633,7 +730,12 @@
       "scope": "Inicial",
       "states": "Red · servidor · no disponible · reintento",
       "contract": "Conservar formulario y contexto; mensaje recuperable sin culpar a la persona.",
-      "section": "states"
+      "section": "states",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "ArtistCard",
@@ -641,7 +743,12 @@
       "scope": "Inicial",
       "states": "Lista · cuadrícula · guardado · foco · vacío",
       "contract": "ArtistCollection / ArtistCard compartido para lista y cuadrícula. Foto 1:1 de 80 px en lista. Enlace de perfil separado de botones; nunca anidar botones en enlaces. Redes Instagram, YouTube y Spotify: no inventar URLs, avisar si falta enlace oficial. Reproducir abre la playlist del artista con CompactTrackRow e inicia su cola. Guardar artista usa aria-pressed y la misma persistencia que Seguir/Tus artistas. Acciones táctiles de 44 px y selector Lista/Cuadrícula persistente. Lista sin borde inferior, con acciones junto a la foto y ajuste interno en pantallas estrechas. Botón principal: fondo accent #C397F4 y texto background #110B1B (8,32:1); sus etiquetas e iconos heredan color del botón, nunca del metadato.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "ArtistIdentity",
@@ -649,7 +756,12 @@
       "scope": "Inicial",
       "states": "Completo · incompleto · retirado",
       "contract": "Avatar, nombre, ubicación y descripción; verificación solo si existe proceso.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "ArtistBio / Credits",
@@ -657,7 +769,12 @@
       "scope": "Inicial",
       "states": "Breve · extendido · sin créditos",
       "contract": "Créditos y fuentes; enlaces autorizados; mostrar texto completo sin perder contexto.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "ProviderEmbed",
@@ -665,7 +782,116 @@
       "scope": "Inicial",
       "states": "Sin cargar · cargando · listo · bloqueado · fallo",
       "contract": "Proveedor identificado; no autoplay; fallback externo de música; respetar controles nativos.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
+    },
+    {
+      "name": "LibraryNavigation",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Normal · activo · foco",
+      "contract": "Iconos de 20 px alineados a la izquierda, gap 12 px, padding 10/12 px, objetivo mínimo 44 px. Tipografía label, texto muted, activo accent sobre secondary y foco visible. Mismo estilo para navegación y accesos. Plegado conserva iconos. Sidebar plegado: ancho 68 px, margen interno simétrico 12 px y controles cuadrados 44×44 px. Abrir biblioteca conserva proporción 1:1. Hover/foco ilumina icono en accent; tooltip flotante muestra nombre accesible y se cierra al salir, activar, desplazar o pulsar Escape.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "navigation.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "HomeDiscovery",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Normal · activo · foco",
+      "contract": "Fila responsive de géneros y bandas con último tile Ver todas; columnas según ancho real del centro. Directorio completo mediante openGenres. FeaturedSession y EditorialFeature en dos columnas; móvil apilado.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "catalog-cards.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "ReleaseCard",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Normal · activo · foco",
+      "contract": "Portada 1:1, título, artista y acción play/pausa sobre portada, sincronizada con noodoPlayer. Selección curada de muestra sin fechas de publicación verificadas. Tamaño y columnas compartidos con CatalogCoverGrid; última tarjeta Ver todas. Superficie transparente.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "catalog-cards.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "RadarEventCard / RadarMap",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Mapa · lista · tarjetas · seleccionado",
+      "contract": "RadarEventCard reutilizable: imagen, fecha, título, artista, organizador, ubicación y precio COP o Gratis; datos de muestra identificados. Variantes lista y tarjetas con misma acción de selección y estado. RadarMap fija su alto en píxeles al entrar o cambiar el tamaño de ventana según el espacio hasta el reproductor; no recalcula en scroll. Los eventos tienen scroll independiente en escritorio. El mapa se puede ocultar; al ocultar, resultados ocupan todo el ancho. Vista y mapa persistentes; en móvil mapa limitado a 45dvh para permitir explorar eventos.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "radar.js",
+        "demo": "listen.html?section=radar"
+      }
+    },
+    {
+      "name": "CardSurface",
+      "family": "Fundamentos",
+      "scope": "Definido",
+      "states": "Plano · transparente",
+      "contract": "Las cards no usan fondos degradados decorativos. Usar superficie plana (surface) o transparente; EditorialFeature usa transparente. Los estados hover y selección también son planos. Los degradados de legibilidad sobre fotografías y las ilustraciones de género son contenido visual, no fondos de superficie.",
+      "section": "music",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
+    },
+    {
+      "name": "EditorialFeature / EditorialArticle",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Tarjeta · artículo · no disponible",
+      "contract": "EditorialFeature: sección editorial plegable después de FeaturedSession. Tarjeta configurable por datos (artista, título, resumen, imagen, categoría y lectura) enlazada a article.html?story=slug. EditorialArticle comparte shell, regreso y reproductor persistente; incluye portada, texto largo y acceso al perfil y canciones. Marcar contenido ficticio de muestra y no atribuir entrevistas inventadas.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "editorial.js",
+        "demo": "article.html?story=luna-marea"
+      }
+    },
+    {
+      "name": "FeaturedSession",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Visible · plegada · guardada",
+      "contract": "FeaturedSession compone SessionCard y SectionDisclosure debajo de Bandas recomendadas, solo en inicio sin filtros. Portada 16:9, duración, título, artista, abrir sesión y guardar; mismo renderer y acciones que Originals. Sin autoplay. Plegado animado y persistente. Datos del catálogo; no duplicar reproductores. Información textual superpuesta dentro del marco de la foto por defecto, con degradado oscuro para legibilidad; opciones por instancia: title, artist, meta, infoPosition (overlay/top/bottom) y showSave. Textos escapados; abrir y guardar siguen vinculados al ID original de la sesión.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "SectionDisclosure",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Expandido · plegado · transición · movimiento reducido",
+      "contract": "Componente noodoDisclosure.mount compartido. Botón de 44 px con aria-expanded y aria-controls; anima altura y opacidad durante 200 ms. Admite interrupción, devuelve foco al botón e impide interacción con contenido plegado. Sin animación con prefers-reduced-motion. Estado persistente por sección. Cabecera de 44 px sin margen vertical al plegar; separación de 0 px entre secciones plegadas, 12 px abiertas y 4 px entre cabecera y contenido.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "TrackRow",
@@ -673,7 +899,12 @@
       "scope": "Inicial",
       "states": "Disponible · activa · inactiva · no disponible",
       "contract": "Componente único noodoTrackList: mismo renderer row(), iconos y acciones en inicio, perfil del artista, cola, álbumes y playlists. Incluye reproducir/pausar, portada, título, artista, guardar, añadir a playlist y apoyar. Estado y progreso compartidos con noodoPlayer; no crear mini-track ni estados de reproducción independientes.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "PlayerControls",
@@ -681,7 +912,12 @@
       "scope": "Inicial",
       "states": "Pausa · reproducción · carga · error",
       "contract": "Contrato visual para integraciones; no prometer control de iframe sin API.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "PlayerExpanded / Mini",
@@ -689,7 +925,12 @@
       "scope": "Posterior",
       "states": "Contraído · expandido · persistente",
       "contract": "Diseño disponible; continuidad de producto depende del proveedor.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "Queue / Repeat / Shuffle",
@@ -697,7 +938,12 @@
       "scope": "Posterior",
       "states": "Vacía · activa · reordenada",
       "contract": "Muestra interactiva en el sistema; requiere proveedor compatible para producto.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "SessionVideo",
@@ -705,15 +951,25 @@
       "scope": "Inicial",
       "states": "Poster · carga · reproducción · error",
       "contract": "Subtítulos/transcripción cuando aplique; pausa, volumen y pantalla completa accesibles.",
-      "section": "music"
+      "section": "music",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "EventCard",
       "family": "Eventos",
       "scope": "Inicial",
       "states": "Anunciado · reprogramado · cancelado · finalizado",
-      "contract": "Evento creado en NOODO; fecha, zona horaria, lugar y estado; sin CTA de compra inicial.",
-      "section": "events"
+      "contract": "Evento creado en NOODO; fecha, zona horaria, lugar y estado; CTA al detalle y a Comprar tiquete; checkout local de demostración.",
+      "section": "events",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "event-page.js",
+        "demo": "event.html?event=ND-R26-001"
+      }
     },
     {
       "name": "DateBlock / Time",
@@ -721,7 +977,12 @@
       "scope": "Inicial",
       "states": "Una fecha · rango · horario por confirmar",
       "contract": "Formato legible en español; America/Bogota en datos; no fecha ambigua 03/04.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "EventStatus",
@@ -729,7 +990,12 @@
       "scope": "Inicial",
       "states": "Por confirmar · anunciado · reprogramado · cancelado · finalizado",
       "contract": "Mostrar cambio, fecha actual y texto explicativo; no borrar cancelaciones sin aviso.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Lineup / Schedule",
@@ -737,7 +1003,12 @@
       "scope": "Inicial",
       "states": "Confirmado · por anunciar · modificado",
       "contract": "Orden y hora si están confirmados; cartel del evento sin artistas inventados.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Venue / Location",
@@ -745,7 +1016,12 @@
       "scope": "Inicial",
       "states": "Con dirección · por confirmar · cambio de lugar",
       "contract": "Nombre, dirección y acceso; enlace de mapa opcional, no enlace a compra de terceros.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Capacity / Admission",
@@ -753,7 +1029,12 @@
       "scope": "Inicial",
       "states": "Libre · registro posterior · por definir",
       "contract": "No simular disponibilidad de entradas; requisitos de acceso en texto.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "TicketType / Quantity",
@@ -761,7 +1042,12 @@
       "scope": "Posterior",
       "states": "Disponible · límite · agotado · selección",
       "contract": "Nombre, moneda, precio y cargos desglosados; máximo y mínimo explícitos.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "checkout.js",
+        "demo": "checkout.html?event=ND-R26-001"
+      }
     },
     {
       "name": "CheckoutSummary / Payment",
@@ -769,7 +1055,12 @@
       "scope": "Posterior",
       "states": "Revisión · procesando · pendiente · pagado · fallo",
       "contract": "Importes coherentes; no cobro duplicado; pago pendiente distinto de confirmado.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "checkout.js",
+        "demo": "checkout.html?event=ND-R26-001"
+      }
     },
     {
       "name": "DigitalTicket / QR",
@@ -777,7 +1068,12 @@
       "scope": "Posterior",
       "states": "Emitido · válido · usado · anulado",
       "contract": "Código real solo con emisión; alternativa textual; legibilidad fuera de línea a definir.",
-      "section": "events"
+      "section": "events",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "checkout.js",
+        "demo": "checkout.html?event=ND-R26-001"
+      }
     },
     {
       "name": "Refund / Cancellation",
@@ -785,7 +1081,12 @@
       "scope": "Posterior",
       "states": "Solicitado · en revisión · aprobado · rechazado",
       "contract": "Importe, estado, plazo informado y canal de ayuda; no prometer devolución instantánea.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "CheckIn",
@@ -793,7 +1094,12 @@
       "scope": "Posterior",
       "states": "Válido · ya usado · inválido · sin conexión",
       "contract": "Texto + icono + color; gestión de duplicados y reconexión; separado de la entrada del asistente.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "EditorialCard",
@@ -801,7 +1107,12 @@
       "scope": "Inicial",
       "states": "Normal · patrocinado · sin imagen",
       "contract": "Categoría, título, autor y fecha; identificar contenido patrocinado.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "RichText / Quote / Credits",
@@ -809,7 +1120,12 @@
       "scope": "Inicial",
       "states": "Texto · cita · enlace · medios",
       "contract": "Jerarquía h1–h3; texto legible 60–75 caracteres; crédito y pie de imagen.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "MediaFrame",
@@ -817,7 +1133,12 @@
       "scope": "Inicial",
       "states": "1:1 · 4:3 · 16:9 · 4:5 · 9:16",
       "contract": "Punto focal editable; alt contextual; evitar texto incrustado en imágenes funcionales.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "VenueCard / Space",
@@ -825,7 +1146,12 @@
       "scope": "Inicial",
       "states": "Completo · pendiente · no disponible",
       "contract": "Tipo, ubicación y contacto autorizado; no mostrar abierto sin horario confiable.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "MapPin / LocationList",
@@ -833,7 +1159,12 @@
       "scope": "Posterior",
       "states": "Normal · seleccionado · agrupado",
       "contract": "Mapa acompañado de lista accesible; no depender solo de posición o color.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "radar.js",
+        "demo": "listen.html?section=radar"
+      }
     },
     {
       "name": "ProfessionalCard / Connect",
@@ -841,7 +1172,12 @@
       "scope": "Posterior",
       "states": "Perfil · disponibilidad · contacto",
       "contract": "Contacto autorizado; sin chat ni conexión social implícitos.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "ParticipationForm",
@@ -849,7 +1185,12 @@
       "scope": "Inicial",
       "states": "Inicio · completado · enviando · enviado · error",
       "contract": "Consentimiento independiente; conservar datos; límites de archivo y errores por campo.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Upload / Consent",
@@ -857,7 +1198,12 @@
       "scope": "Inicial",
       "states": "Vacío · subiendo · listo · rechazo",
       "contract": "Tipo/tamaño permitidos; progreso real; permiso no equivale a transferencia de derechos.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Save / Follow / Share",
@@ -865,7 +1211,12 @@
       "scope": "Posterior",
       "states": "Sin guardar · guardado · compartido · error",
       "contract": "No presentar seguidores falsos; definir cuenta o almacenamiento local antes de implementar.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "ContentTable / Filters",
@@ -873,7 +1224,12 @@
       "scope": "Inicial",
       "states": "Borrador · revisión · publicado · retirado",
       "contract": "Tabla semántica; búsqueda; acciones identificadas por registro.",
-      "section": "editorial"
+      "section": "editorial",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "ContentEditor / Preview",
@@ -881,7 +1237,12 @@
       "scope": "Inicial",
       "states": "Editando · guardando · guardado · conflicto",
       "contract": "Campos requeridos, previsualización y advertencia de cambios sin guardar.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Publish / Schedule",
@@ -889,7 +1250,12 @@
       "scope": "Inicial",
       "states": "Borrador · revisión · programado · publicado",
       "contract": "Permisos visibles; fecha y zona horaria; confirmación antes de retirar contenido.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "Permission / Activity",
@@ -897,7 +1263,142 @@
       "scope": "Inicial",
       "states": "Permitido · sin acceso · sesión expirada",
       "contract": "Explicar la acción no disponible; conservar cambios; historial de publicación.",
-      "section": "inventory"
+      "section": "inventory",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
+    },
+    {
+      "name": "CatalogCoverGrid",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Vista previa · directorio · vacío · responsive",
+      "contract": "catalog-cards.js/css: portada cuadrada compartida; mínimo objetivo 180 px (140 px en centros pequeños), separación 16 px y máximo 8 columnas. Fila previa completa con último tile Ver todas. Álbum, género, playlist, artista y canción mantienen el mismo tamaño.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "catalog-cards.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "PlaylistLibrary / PlaylistDetail",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Biblioteca · detalle · vacía · creación",
+      "contract": "experience.js: primero grid de portadas; seleccionar abre canciones. Volver regresa al grid. Reproducir inactivo si la lista está vacía. Reutiliza noodoTrackList.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "experience.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "AdvertisingBanner",
+      "family": "Contenido",
+      "scope": "Inicial",
+      "states": "Visible · responsive · sin campaña",
+      "contract": "listen.js/workspace.css: imagen 3:1 a ancho completo, sin degradado. Identificación Publicidad y dos CTA: Ver más y Comprar tiquete. En móvil acciones debajo para no tapar el arte. Sin autoplay.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "SectionPlayer / VolumePopover",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Expandido · plegado · volumen abierto · móvil",
+      "contract": "section-player.js/css: mueve el único dock al lateral en Radar y Comunidad de escritorio. En móvil vuelve al pie. Cola con botones 44 px, texto mínimo 12 px, acciones en segunda línea. Volumen abre con aria-expanded y cierra con Escape.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "section-player.js",
+        "demo": "listen.html?section=radar"
+      }
+    },
+    {
+      "name": "MobileNavigation / Options",
+      "family": "Navegación",
+      "scope": "Inicial",
+      "states": "Actual · menú abierto · teclado",
+      "contract": "workspace.css/navigation.js: cinco destinos en una única fila; altura reservada bajo el dock, safe-area y objetivos de al menos 44 px. Menú complementario con nombre accesible.",
+      "section": "ui",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "navigation.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "ContextPanel",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Canción · artista · conciertos · letras",
+      "contract": "listen.js: tabs con panel asociado. Resumen en escritorio y acceso desde dock en móvil. Las pestañas no deben duplicar controles de reproducción.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
+    },
+    {
+      "name": "RadarFilters / MapPopup",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Filtro · sin resultados · seleccionado · mapa fallido",
+      "contract": "radar.js/css: filtros por fecha, mapa/lista/cuadrícula, popup con imagen cover, guardar y compartir. Mantener accesible lista cuando falle mapa.",
+      "section": "events",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "radar.js",
+        "demo": "listen.html?section=radar"
+      }
+    },
+    {
+      "name": "EventDetail / Checkout",
+      "family": "Eventos",
+      "scope": "Inicial",
+      "states": "Detalle · localidades · formulario · resumen · demo",
+      "contract": "event-page.js/event-card.js/checkout.js: identidad compartida, COP, localidades y cantidades. Checkout es demostración; no representa cobro ni emisión real.",
+      "section": "events",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "event-page.js",
+        "demo": "event.html?event=ND-R26-001"
+      }
+    },
+    {
+      "name": "CommunityGate / Chat / Match / Forum",
+      "family": "Comunidad",
+      "scope": "Inicial",
+      "states": "Invitado · demo local · vacío · mensajes · formulario",
+      "contract": "community.js/community-ui.js: entrada de demostración explícita. Salas, perfiles, publicaciones y respuestas conservan patrones compartidos. No afirmar registro real ni envío a terceros.",
+      "section": "editorial",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "community.js",
+        "demo": "listen.html?section=community"
+      }
+    },
+    {
+      "name": "ArtistAlbums / Gallery / Contact",
+      "family": "Música",
+      "scope": "Inicial",
+      "states": "Perfil · álbum · galería · contacto · sin enlace",
+      "contract": "artist.js: navegación interna, portada compartida, canciones noodoTrackList, galería y datos de booking. No inventar enlaces sociales cuando faltan.",
+      "section": "music",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "PlayerProgress / Volume",
@@ -905,15 +1406,25 @@
       "scope": "Inicial",
       "states": "Inicio · avance · final · silencio",
       "contract": "Rangos nativos, unidad y valor accesible; simulación sin audio.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "GlowCard / GlassCard",
       "family": "Superficies",
       "scope": "Inicial",
       "states": "Reposo · hover · foco · sin blur",
-      "contract": "Radial top-right → bottom-left; fallback sólido, texto nítido.",
-      "section": "layout"
+      "contract": "Superficie plana, glow sutil opcional y fallback sólido; texto nítido.",
+      "section": "layout",
+      "implementation": {
+        "status": "Contrato / muestra de catálogo",
+        "source": null,
+        "demo": null
+      }
     },
     {
       "name": "PlayerSidebar",
@@ -921,7 +1432,12 @@
       "scope": "Inicial",
       "states": "Escritorio · panel móvil",
       "contract": "Transparente, divisor derecho; navegación sin repetir canciones.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "navigation.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "CompactTrackRow",
@@ -929,7 +1445,12 @@
       "scope": "Inicial",
       "states": "Seleccionada · reproduciendo · pausada",
       "contract": "Padding vertical 6 px; mínimo 60 px; borde accent solo reproduciendo y progreso interior.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "ArtistContext / ProfileLink",
@@ -937,7 +1458,12 @@
       "scope": "Inicial",
       "states": "Canción seleccionada · perfil abierto",
       "contract": "Foto, biografía, género, ciudad y enlace local al perfil del artista.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "GenreCard",
@@ -945,7 +1471,12 @@
       "scope": "Inicial",
       "states": "Reposo · foco · hover",
       "contract": "Proporción 1:1; grid adaptable; abre los perfiles del género.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "catalog-cards.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "SessionVideoCard",
@@ -953,15 +1484,25 @@
       "scope": "Inicial",
       "states": "Poster · reproducción · no disponible",
       "contract": "Extiende SessionVideo con tarjeta 16:9 y destino central.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "listen.js",
+        "demo": "listen.html"
+      }
     },
     {
-      "name": "RecommendedArtistCarousel",
+      "name": "RecommendedArtistGrid",
       "family": "Descubrimiento",
       "scope": "Inicial",
-      "states": "Ocho perfiles · teclado · desplazamiento",
-      "contract": "Portadas 1:1; nombre enlazado al perfil; solo en Inicio.",
-      "section": "player"
+      "states": "Fila responsive · directorio · teclado",
+      "contract": "CatalogCoverGrid: portadas 1:1 y último tile Ver todas; nombre enlazado al perfil; solo en Inicio.",
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "catalog-cards.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "ContextConcertCard",
@@ -969,7 +1510,12 @@
       "scope": "Inicial",
       "states": "Gratis · reserva · tickets",
       "contract": "Fecha, categoría, nombre y lugar; sin foto. Botón de ticket 44 × 44 con etiqueta accesible y tooltip.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "event-page.js",
+        "demo": "event.html?event=ND-R26-001"
+      }
     },
     {
       "name": "UnifiedBack",
@@ -977,7 +1523,12 @@
       "scope": "Inicial",
       "states": "Vista · detalle anidado · perfil",
       "contract": "Siempre arriba a la izquierda; restaura el origen sin interrumpir la escucha.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "navigation.js",
+        "demo": "listen.html"
+      }
     },
     {
       "name": "ArtistStructuralSurface",
@@ -985,7 +1536,12 @@
       "scope": "Inicial",
       "states": "Cabecera · canciones · booking",
       "contract": "Fondo transparente, divisores estructurales; padding semántico.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "IndependentArtistPlayer",
@@ -993,7 +1549,12 @@
       "scope": "Inicial",
       "states": "Pausado · reproduciendo · salir del perfil",
       "contract": "Estado propio; exclusión mutua con global y restauración de escucha al salir.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "InlinePhotoViewer",
@@ -1001,7 +1562,12 @@
       "scope": "Inicial",
       "states": "Cuadrícula · foto abierta",
       "contract": "Visor dentro de Galería; anterior/siguiente, Escape y foco restaurado.",
-      "section": "player"
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     },
     {
       "name": "ArtistProfileLayout",
@@ -1009,55 +1575,12 @@
       "scope": "Inicial",
       "states": "Escritorio · intermedio · móvil",
       "contract": "Cabecera: foto, información, reproductor. Después álbumes; conciertos y galería en dos columnas; Multimedia.",
-      "section": "player"
-    },
-    {
-      "name": "SectionDisclosure",
-      "category": "Navegación",
-      "status": "Inicial",
-      "contract": "Control compartido noodoDisclosure.mount: aria-expanded, aria-controls, foco seguro e inert al plegar; animación interrumpible de altura y opacidad de 200 ms, sin movimiento con prefers-reduced-motion. Estado persistente por sección. Cabecera de 44 px sin margen vertical al plegar; separación de 0 px entre secciones plegadas, 12 px abiertas y 4 px entre cabecera y contenido."
-    },
-    {
-      "name": "FeaturedSession",
-      "category": "Música",
-      "status": "Inicial",
-      "contract": "FeaturedSession compone SessionCard y SectionDisclosure debajo de Bandas recomendadas, solo en inicio sin filtros. Portada 16:9, duración, título, artista, abrir sesión y guardar; mismo renderer y acciones que Originals. Sin autoplay. Plegado animado y persistente. Datos del catálogo; no duplicar reproductores. Información textual superpuesta dentro del marco de la foto por defecto, con degradado oscuro para legibilidad; opciones por instancia: title, artist, meta, infoPosition (overlay/top/bottom) y showSave. Textos escapados; abrir y guardar siguen vinculados al ID original de la sesión."
-    },
-    {
-      "name": "EditorialFeature / EditorialArticle",
-      "category": "Música",
-      "status": "Inicial",
-      "contract": "EditorialFeature: sección editorial plegable después de FeaturedSession. Tarjeta configurable por datos (artista, título, resumen, imagen, categoría y lectura) enlazada a article.html?story=slug. EditorialArticle comparte shell, regreso y reproductor persistente; incluye portada, texto largo y acceso al perfil y canciones. Marcar contenido ficticio de muestra y no atribuir entrevistas inventadas."
-    },
-    {
-      "name": "CardSurface",
-      "category": "Fundamentos",
-      "status": "Definido",
-      "contract": "Las cards no usan fondos degradados decorativos. Usar superficie plana (surface) o transparente; EditorialFeature usa transparente. Los estados hover y selección también son planos. Los degradados de legibilidad sobre fotografías y las ilustraciones de género son contenido visual, no fondos de superficie."
-    },
-    {
-      "name": "LibraryNavigation",
-      "category": "Música",
-      "status": "Inicial",
-      "contract": "Iconos de 20 px alineados a la izquierda, gap 12 px, padding 10/12 px, objetivo mínimo 44 px. Tipografía label, texto muted, activo accent sobre secondary y foco visible. Mismo estilo para navegación y accesos. Plegado conserva iconos. Sidebar plegado: ancho 68 px, margen interno simétrico 12 px y controles cuadrados 44×44 px. Abrir biblioteca conserva proporción 1:1. Hover/foco ilumina icono en accent; tooltip flotante muestra nombre accesible y se cierra al salir, activar, desplazar o pulsar Escape."
-    },
-    {
-      "name": "HomeDiscovery",
-      "category": "Música",
-      "status": "Inicial",
-      "contract": "Escritorio: una fila de géneros con 5 géneros y Ver todos; 3 géneros en centros estrechos. Directorio completo mediante openGenres. FeaturedSession y EditorialFeature en dos columnas; móvil apilado."
-    },
-    {
-      "name": "ReleaseCard",
-      "category": "Música",
-      "status": "Inicial",
-      "contract": "Portada 1:1, título, artista y acción play/pausa sobre portada, sincronizada con noodoPlayer. Selección curada de muestra sin fechas de publicación verificadas. Cuatro columnas en escritorio y carrusel móvil. Superficie transparente."
-    },
-    {
-      "name": "RadarEventCard / RadarMap",
-      "category": "Eventos",
-      "status": "Inicial",
-      "contract": "RadarEventCard reutilizable: imagen, fecha, título, artista, organizador, ubicación y precio COP o Gratis; datos de muestra identificados. Variantes lista y tarjetas con misma acción de selección y estado. RadarMap fija su alto en píxeles al entrar o cambiar el tamaño de ventana según el espacio hasta el reproductor; no recalcula en scroll. Los eventos tienen scroll independiente en escritorio. El mapa se puede ocultar; al ocultar, resultados ocupan todo el ancho. Vista y mapa persistentes; en móvil mapa limitado a 45dvh para permitir explorar eventos."
+      "section": "player",
+      "implementation": {
+        "status": "Prototipo implementado",
+        "source": "artist.js",
+        "demo": "artist.html?artist=0"
+      }
     }
   ],
   "notes": {},

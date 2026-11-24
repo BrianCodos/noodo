@@ -1,0 +1,76 @@
+/* Profile 17: structural surfaces, independent listening and inline photography. */
+.workspace-app .center-stage{padding-top:var(--workspace-inset)}
+.workspace-app .context-sidebar{margin-top:var(--workspace-inset);top:calc(var(--shell-header-height) + var(--workspace-inset));padding-top:0}
+.workspace-app .player-sidebar{padding-top:var(--workspace-inset);align-self:start}
+.center-stage .artist-view .artist-hero,.center-stage .artist-view .hero-copy{background:var(--artist-structural-background);box-shadow:none}
+.artist-view .hero-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin:18px 0}
+.center-stage .artist-view .hero-title-row h1{margin:0;min-width:0}
+.artist-view .hero-title-row .hero-type{font:var(--type-heading);color:var(--accent);padding-top:5px;flex-shrink:0}
+.center-stage .artist-view .about-section{align-items:stretch}
+.center-stage .artist-view .artist-mini-player{background:var(--artist-structural-background);box-shadow:none;border-radius:0;border:0;border-left:var(--player-divider-width) solid var(--player-divider-color);padding:0 var(--artist-player-padding) var(--artist-player-padding);align-self:stretch;height:100%}
+.artist-view .artist-mini-player h2{margin:0}
+.artist-view .artist-mini-player .section-heading{margin-bottom:32px}
+.artist-view .album-art:has(img){padding:0;background:none;overflow:hidden}
+.artist-view .album-art:has(img)::before,.artist-view .album-art:has(img)::after{display:none}
+.artist-view .album-art>img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:cover}
+.central-panel[data-kind="Contacto"],.central-panel[data-kind="Contacto"] .booking-grid article{background:var(--artist-structural-background);box-shadow:none;border-radius:0}
+.central-panel[data-kind="Contacto"]{padding:0}
+.booking-grid article{padding:24px 0}
+.booking-grid article+article{border-left:var(--player-divider-width) solid var(--player-divider-color);padding-left:32px}
+.booking-grid dt{display:flex;gap:10px;align-items:center}.booking-grid dt svg{width:20px;height:20px;color:var(--accent)}
+.gallery-viewer{height:var(--gallery-viewer-height,600px);min-height:360px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:16px}
+.gallery-viewer-toolbar,.gallery-viewer-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;font:var(--type-meta);color:var(--muted)}
+.gallery-viewer>img{width:100%;height:100%;min-height:0;object-fit:contain;border-radius:var(--radius-card, 16px)}
+.gallery-viewer .text-button{color:var(--accent)}
+@container stage (max-width:900px){.center-stage .artist-view .artist-mini-player{border-left:0;border-top:var(--player-divider-width) solid var(--player-divider-color);padding:24px 0;height:auto}.artist-view .hero-title-row{gap:12px}.artist-view .hero-title-row .hero-type{font:var(--type-label)}}
+@container stage (max-width:560px){.booking-grid article+article{border-left:0;border-top:var(--player-divider-width) solid var(--player-divider-color);padding-left:0}.gallery-viewer{height:min(var(--gallery-viewer-height,500px),70vh)}}
+@media(min-width:761px){
+ .workspace-app .workspace-grid::before{content:'';grid-column:1;grid-row:1;min-width:0}
+ .workspace-app .player-sidebar,.workspace-app.library-collapsed #player-sidebar{position:fixed;top:var(--shell-header-height);left:20px;bottom:0;width:var(--shell-left-width);height:calc(100dvh - var(--shell-header-height));max-height:none}
+ .workspace-app.library-collapsed #player-sidebar{width:var(--shell-rail-width)}
+}
+@media(min-width:761px) and (max-width:1000px){.workspace-app .player-sidebar,.workspace-app.library-collapsed #player-sidebar{left:14px}}
+.center-stage .artist-view .section-heading h2{margin:0}
+.center-stage .artist-view .section-heading{margin-bottom:24px}
+
+/* Profile 18: identity and listening share the header; albums precede events/gallery. */
+.center-stage .artist-view .artist-hero{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(280px,1.15fr) minmax(340px,1fr);gap:24px 32px;min-height:0;overflow:visible}
+.center-stage .artist-view .hero-copy{justify-content:flex-start;margin-top:0}
+.center-stage .artist-view .hero-portrait{aspect-ratio:auto;min-height:520px;height:100%;max-height:none}
+.center-stage .artist-view .artist-hero>.artist-mini-player{min-width:0;padding:0 0 0 32px;border-top:0;border-left:var(--player-divider-width) solid var(--player-divider-color)}
+.artist-view .artist-events-gallery{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;padding:32px 0;align-items:start}
+.artist-events-gallery>section{min-width:0;scroll-margin-top:var(--artist-anchor-offset)}
+.artist-events-gallery>#conciertos{container-type:inline-size;container-name:concerts}
+.artist-events-gallery:has(>#conciertos[hidden]){grid-template-columns:minmax(0,1fr)}
+.artist-events-gallery #galeria{container-type:inline-size;container-name:photos}
+.artist-events-gallery .concert-row{grid-template-columns:54px 60px minmax(0,1fr) 36px;gap:12px;padding:16px}
+.artist-events-gallery .concert-row>img{display:block;width:60px;height:68px;grid-column:2;grid-row:1}
+.artist-events-gallery .event-date{grid-column:1;grid-row:1;min-height:80px}
+.artist-events-gallery .event-copy{grid-column:3;grid-row:1}
+.artist-events-gallery .event-open{grid-column:4;grid-row:1;width:36px;height:40px}
+.artist-events-gallery .ticket-action{grid-column:3/5;grid-row:2;justify-self:start}
+.artist-events-gallery .event-title{font:var(--type-label);font-weight:600}
+@container concerts (max-width:410px){.artist-events-gallery .concert-row>img{display:none}.artist-events-gallery .event-copy{grid-column:2}.artist-events-gallery .event-open{grid-column:3}.artist-events-gallery .ticket-action{grid-column:2/4;padding-inline:12px}}
+@container photos (max-width:400px){.center-stage .artist-view .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container stage (max-width:1150px){
+ .center-stage .artist-view .artist-hero{grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr)}
+ .center-stage .artist-view .artist-hero>.artist-mini-player{grid-column:1/-1;border-left:0;border-top:var(--player-divider-width) solid var(--player-divider-color);padding:32px 0 0;height:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);column-gap:40px}
+ .artist-hero>.artist-mini-player>.section-heading{grid-column:1/-1}
+ .artist-hero>.artist-mini-player>#artist-track-list{grid-column:2;grid-row:2/6}
+ .center-stage .artist-view .hero-portrait{min-height:420px}
+}
+@container stage (max-width:800px){.artist-view .artist-events-gallery{grid-template-columns:minmax(0,1fr);gap:40px}}
+@container stage (max-width:600px){
+ .center-stage .artist-view .artist-hero{grid-template-columns:minmax(0,1fr);gap:24px}
+ .center-stage .artist-view .hero-portrait{height:auto;aspect-ratio:1;min-height:0;max-height:420px}
+ .center-stage .artist-view .artist-hero>.artist-mini-player{display:block;padding:24px 0 0;grid-column:auto}
+ .artist-view .hero-bottom{margin-top:24px}
+ .artist-view .artist-events-gallery{padding:24px 0}
+}
+
+/* Keep both concert actions together at the right edge. */
+.artist-events-gallery .concert-row{grid-template-columns:54px 60px minmax(0,1fr) auto}
+.artist-events-gallery .concert-actions{grid-column:4;grid-row:1;display:flex;align-items:center;justify-content:flex-end;gap:12px}
+.artist-events-gallery .concert-actions .ticket-action,.artist-events-gallery .concert-actions .event-open{grid-column:auto;grid-row:auto;flex-shrink:0}
+@container concerts (max-width:620px){.artist-events-gallery .concert-actions{grid-column:2/-1;grid-row:2;justify-self:end}}
+@container concerts (max-width:410px){.artist-events-gallery .concert-row{grid-template-columns:48px minmax(0,1fr) 32px}}

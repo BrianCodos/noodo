@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="es">
-<head>
+<head><script src="theme.js?v=ui-69"></script>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#110B1B">
   <meta name="description" content="Biblioteca visual y reglas de diseño de NOODO. Identidad, fundamentos y componentes en revisión.">
-  <script defer src="typography.js?v=radar-47"></script><script defer src="player-rules.js?v=profile-19"></script><title>NOODO — Design system 0.3</title>
-  <link rel="stylesheet" href="styles.css"><script defer src="content.js?v=radar-47"></script><script defer src="player-lab.js?v=profile-19"></script><script defer src="app.js?v=radar-47"></script>
-<link rel="stylesheet" href="typography.css?v=radar-47"></head>
+  <script defer src="typography.js?v=ui-69"></script><script defer src="player-rules.js?v=ui-69"></script><title>NOODO — Design system 0.3</title>
+  <link rel="stylesheet" href="styles.css?v=ui-69"><script defer src="content.js?v=ui-69"></script><script defer src="player-lab.js?v=ui-69"></script><script defer src="component-status.js?v=ui-69"></script><script defer src="app.js?v=ui-69"></script>
+<link rel="stylesheet" href="typography.css?v=ui-69"></head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <aside class="sidebar" aria-label="Navegación del design system">
@@ -14,15 +14,15 @@
   <div class="sidebar-sub">Design system <span>0.3</span></div>
   <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un componente" aria-label="Buscar un componente"></label>
   <nav id="navigation"></nav>
-  <div class="sidebar-bottom"><span class="status-dot"></span> Versión para revisión<br><small>Marca + producto digital<br>15 de noviembre de 2026</small></div>
+  <div class="sidebar-bottom"><span class="status-dot"></span> Versión para revisión<br><small>Marca + producto digital<br>24 de noviembre de 2026</small></div>
 </aside>
 <div class="workspace">
   <header class="topbar"><div><span class="muted">Biblioteca /</span> <span id="breadcrumb">Introducción</span></div><div class="toolbar"><button id="export" class="button quiet">Exportar sistema <span aria-hidden="true">↗</span></button><button id="open-editor" class="button primary" aria-expanded="false" aria-controls="editor">Ajustar diseño <span aria-hidden="true">◐</span></button></div></header>
   <main id="main" tabindex="-1"></main>
   <footer>NOODO · Música, cultura y conexiones <span>Reglas en revisión. Prototipos visuales sin integración de producto.</span></footer>
 </div>
-<dialog id="editor" class="editor">
-  <div class="editor-head"><div><span class="eyebrow">LABORATORIO</span><h2>Ajustar el sistema</h2></div><button class="icon-button" id="close-editor" aria-label="Cerrar ajustes">×</button></div>
+<dialog id="editor" class="editor" aria-labelledby="editor-title">
+  <div class="editor-head"><div><span class="eyebrow">LABORATORIO</span><h2 id="editor-title">Ajustar el sistema</h2></div><button class="icon-button" id="close-editor" aria-label="Cerrar ajustes">×</button></div>
   <p>Los cambios afectan las muestras digitales. Las referencias originales del dossier se conservan intactas.</p>
   <div id="token-controls"></div>
   <label class="field">Tipografía de prueba<select id="font-choice"><option value="system">Sans del sistema · familia única</option></select></label>
@@ -30,8 +30,9 @@
   <div class="contrast-box"><b>Contraste de tus ajustes</b><div id="contrast-results"></div><small>Comprobación de pares de color, no una certificación completa de accesibilidad.</small></div>
   <p class="small" id="save-status" role="status">Guardado solo en este navegador. Exporta para compartir o conservar una copia.</p>
   <div class="button-row"><button class="button primary" id="export-editor">Exportar JSON</button><button class="button" id="export-css">Exportar CSS</button><label class="button file-label">Importar JSON<input id="import-file" type="file" accept="application/json,.json"></label></div>
+  <div class="button-row"><button class="button primary" id="save-editor">Guardar cambios</button><button class="button" id="cancel-editor">Cancelar</button></div>
   <button class="text-button" id="reset">Restablecer ajustes iniciales</button>
 </dialog>
-<dialog id="demo-dialog"><form method="dialog"><span class="eyebrow">MUESTRA DE COMPONENTE</span><h2>Confirmar una acción</h2><p>El diálogo recibe el foco, se cierra con Escape y devuelve el foco al botón que lo abrió.</p><div class="button-row"><button class="button" value="cancel">Cancelar</button><button class="button primary" value="confirm">Confirmar muestra</button></div></form></dialog>
+<dialog id="demo-dialog" aria-labelledby="demo-dialog-title"><form method="dialog"><span class="eyebrow">MUESTRA DE COMPONENTE</span><h2 id="demo-dialog-title">Confirmar una acción</h2><p>El diálogo recibe el foco, se cierra con Escape y devuelve el foco al botón que lo abrió.</p><div class="button-row"><button class="button" value="cancel">Cancelar</button><button class="button primary" value="confirm">Confirmar muestra</button></div></form></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body></html>

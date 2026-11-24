@@ -1,0 +1,117 @@
+/* ArtistCollection / ArtistCard: shared list and grid variants. */
+:root{--artist-list-image-size:80px;--artist-collection-gap:12px}
+.artist-view-switch{display:flex;justify-content:flex-end;gap:4px;margin:0 0 12px}
+.artist-view-switch button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid transparent;border-radius:var(--radius-compact,12px);background:transparent;color:var(--muted);font:var(--type-label)}
+.artist-view-switch button[aria-pressed=true]{background:var(--secondary);color:var(--accent);border-color:var(--line)}
+.artist-view-switch svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.artist-collection{display:grid;gap:var(--artist-collection-gap);grid-template-columns:minmax(0,1fr)}
+.artist-collection .artist-card{min-width:0;display:flex;flex-direction:row;align-items:center;gap:16px;padding:12px;border-radius:var(--radius-card,16px);background:transparent;border:0;text-decoration:none}
+.artist-collection .artist-card>img{width:var(--artist-list-image-size);height:var(--artist-list-image-size);aspect-ratio:1;object-fit:cover;flex-shrink:0;border-radius:var(--radius-compact, 12px)}
+.artist-card-copy{display:flex;flex:1;flex-direction:column;gap:6px;min-width:0;overflow-wrap:anywhere}
+.artist-collection .artist-card-arrow{flex-shrink:0;color:var(--accent);font-size:22px}
+.artist-collection .artist-card:hover{background:var(--surface)}
+.artist-collection .artist-card:focus-visible,.artist-view-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.artist-collection[data-view=grid]{grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:16px}
+.artist-collection[data-view=grid] .artist-card{flex-direction:column;align-items:stretch;gap:12px;background:var(--card-gradient);border-bottom:0}
+.artist-collection[data-view=grid] .artist-card>img{width:100%;height:auto}
+.artist-collection[data-view=grid] .artist-card-arrow{display:none}
+.artist-collection-empty{grid-column:1/-1}
+
+/* Collapsed desktop library retains every navigation action. */
+.workspace-app #library-body button{gap:10px}
+.workspace-app #library-body button svg{width:20px;height:20px;flex-shrink:0}
+.workspace-app #library-body .library-icon{display:flex;flex-shrink:0}
+@media(min-width:761px){
+ .workspace-app.library-collapsed .sidebar-heading{justify-content:center}
+ .workspace-app.library-collapsed #library-body .library-label{display:none}
+ .workspace-app.library-collapsed .music-views,.workspace-app.library-collapsed .library-shortcuts{display:flex;flex-direction:column;align-items:center;gap:8px;padding-inline:0}
+}
+
+/* ArtistCard actions are separate from the profile link. */
+.artist-collection .artist-card{flex-wrap:wrap}
+.artist-card-profile{display:flex;align-items:center;gap:16px;flex:1;min-width:0;text-decoration:none}
+.artist-card-profile>img{width:var(--artist-list-image-size);height:var(--artist-list-image-size);object-fit:cover;aspect-ratio:1;border-radius:var(--radius-compact, 12px);flex-shrink:0}
+.artist-card-actions{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.artist-card-socials,.artist-card-playback{display:flex;align-items:center;gap:4px}
+.artist-card-actions .icon-button{width:44px;height:44px;min-width:44px;padding:10px}
+.artist-card-actions svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.artist-card-actions [aria-pressed=true]{color:var(--accent);background:var(--secondary);border-radius:50%}
+.artist-card-actions [aria-pressed=true] svg{fill:currentColor}
+.artist-card-playback .pill{min-height:44px;padding:8px 12px;gap:8px;font:var(--type-label)}
+.artist-card-profile:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:var(--radius-compact, 12px)}
+.artist-collection[data-view=grid] .artist-card-profile{flex-direction:column;align-items:stretch;width:100%}
+.artist-collection[data-view=grid] .artist-card-profile>img{width:100%;height:auto}
+.artist-collection[data-view=grid] .artist-card-actions{width:100%;align-items:stretch}
+.artist-collection[data-view=grid] .artist-card-socials,.artist-collection[data-view=grid] .artist-card-playback{justify-content:space-between}
+.artist-collection[data-view=grid]{grid-template-columns:repeat(auto-fill,minmax(min(210px,100%),1fr))}
+/* List actions share the portrait area; only their internal groups wrap. */
+.artist-collection[data-view=list] .artist-card{display:grid;grid-template-columns:var(--artist-list-image-size) minmax(0,1fr);column-gap:16px;row-gap:8px;align-items:center}
+.artist-collection[data-view=list] .artist-card-profile{display:contents}
+.artist-collection[data-view=list] .artist-card-profile>img{grid-column:1;grid-row:1 / 3;align-self:start}
+.artist-collection[data-view=list] .artist-card-copy{grid-column:2;grid-row:1}
+.artist-collection[data-view=list] .artist-card-actions{grid-column:2;grid-row:2;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;min-width:0;gap:4px}
+.artist-collection[data-view=list] .artist-card-profile:focus-visible>img{outline:2px solid var(--accent);outline-offset:4px}
+.artist-card-playback .pill span{color:inherit;font:inherit}
+@media(max-width:460px){.artist-collection[data-view=list] .artist-card{column-gap:12px}.artist-collection[data-view=list] .artist-card-playback .pill span{display:none}.artist-collection[data-view=list] .artist-card-playback .pill{width:44px;padding:10px;justify-content:center}}
+@media(max-width:360px){.artist-card-playback .pill span{display:none}}
+
+/* Shared heading playback actions. */
+.song-heading-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.song-heading-actions>.icon-button{width:44px;height:44px;color:var(--accent);background:var(--secondary);border-radius:50%}
+@media(max-width:420px){.songs-heading{flex-wrap:wrap}.song-heading-actions{margin-left:auto}}
+
+/* Compact disclosure rhythm, shared by expanded and collapsed sections. */
+:root{--disclosure-heading-gap:4px;--disclosure-section-gap:12px;--disclosure-collapsed-gap:0px}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature){margin-block:var(--disclosure-section-gap)}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature)>.section-heading:has(.discovery-toggle){margin:0 0 var(--disclosure-heading-gap);padding-block:0;min-height:44px;align-items:center}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature).section-collapsed{margin-block:var(--disclosure-collapsed-gap)}
+.workspace-app .discovery>:is(.collections,.recommended,.featured-session,.editorial-feature).section-collapsed>.section-heading:has(.discovery-toggle){margin:0}
+.workspace-app .discovery>.section-collapsed+.track-section>.songs-heading{margin-top:8px}
+
+/* FeaturedSession composes the shared SessionCard and SectionDisclosure. */
+.featured-session{min-width:0}
+.featured-session .section-heading h2{font:var(--type-heading);color:var(--accent);margin:0}
+.featured-session .session-card{width:100%}
+
+
+/* SessionCard text is independent from its poster and configurable per instance. */
+.session-card-info{display:flex;align-items:center;gap:12px;padding:12px 16px}
+.session-card-copy{flex:1;min-width:0;overflow-wrap:anywhere}
+.session-card-copy h3{margin:0;color:var(--text);font:var(--type-label);font-weight:600}
+.session-card-copy p{margin:4px 0 0;color:var(--muted);font:var(--type-label)}
+.session-card-copy .session-card-meta{font:var(--type-meta)}
+.session-card-info>.icon-button{flex-shrink:0;width:44px;height:44px}
+.session-card .session-open{padding:0;display:block}
+.featured-session .session-card{background:transparent;box-shadow:none;border-radius:0;overflow:visible}
+.featured-session .session-card-info{padding:0 0 12px}
+.featured-session .session-card[data-info-position=bottom] .session-card-info{padding:12px 0 0}
+.featured-session .session-poster{border-radius:var(--radius-card, 16px)}
+
+/* SessionCard overlay keeps metadata and artwork inside one frame. */
+.session-card[data-info-position=overlay]{position:relative;isolation:isolate;border-radius:var(--radius-card, 16px);overflow:hidden}
+.session-card[data-info-position=overlay] .session-card-info{position:absolute;inset:auto 0 0;z-index:2;padding:48px 16px 16px;background:linear-gradient(transparent,rgba(9,6,15,.88) 45%,#09060f);pointer-events:none}
+.session-card[data-info-position=overlay] .session-card-info>.icon-button{pointer-events:auto;color:#F5F3F7;background:rgba(9,6,15,.6);border-radius:50%}
+.session-card[data-info-position=overlay] .session-card-copy h3,.session-card[data-info-position=overlay] .session-card-copy p{color:#F5F3F7}
+.session-card[data-info-position=overlay] .session-duration{top:12px;bottom:auto}
+.session-card[data-info-position=overlay] .session-play{top:36%}
+
+/* EditorialFeature / EditorialArticle share typography and shell navigation. */
+.editorial-feature .section-heading h2{font:var(--type-heading);color:var(--accent);margin:0}
+.editorial-card{display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,1.2fr);gap:20px;align-items:center;padding:16px;background:var(--card-gradient);border-radius:var(--radius-card, 16px)}
+.editorial-card>img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--radius-compact, 12px)}
+.editorial-card-copy{min-width:0}.editorial-eyebrow,.editorial-byline{font:var(--type-meta);color:var(--accent)}
+.editorial-card h3{font:var(--type-heading);color:var(--text);margin:8px 0}
+.editorial-card p{font:var(--type-meta);color:var(--muted);margin:0 0 12px}
+.editorial-read{font:var(--type-label);color:var(--accent);display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.editorial-article{max-width:900px;margin-inline:auto}
+.editorial-article-header h1{font:var(--type-title);color:var(--text);margin:8px 0 12px}
+.editorial-lead{font:var(--type-body);color:var(--muted);margin:0 0 12px}
+.editorial-article figure{margin:24px 0}.editorial-article figure img{display:block;width:100%;max-height:480px;object-fit:cover;object-position:center 35%;border-radius:var(--radius-card, 16px)}
+.editorial-article figcaption{font:var(--type-meta);color:var(--muted);margin-top:8px}
+.editorial-prose{max-width:65ch;margin-inline:auto}.editorial-prose p{font:var(--type-body);line-height:1.75;color:var(--muted);margin:0 0 20px}
+.editorial-prose h2{font:var(--type-heading);color:var(--accent);margin:28px 0 10px}
+.editorial-listen{padding:20px;background:var(--surface);border-radius:var(--radius-card, 16px)}.editorial-listen h2{margin-top:0}.editorial-listen .pill{margin:4px 8px 4px 0}
+@media(max-width:400px){.editorial-card{grid-template-columns:1fr}.editorial-card>img{aspect-ratio:4/3}}
+
+/* Cards use flat surfaces; editorial cards inherit the page background. */
+.editorial-card{background:transparent;box-shadow:none}

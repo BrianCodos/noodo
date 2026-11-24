@@ -1,0 +1,25 @@
+/* Shared cover rule: square art, 180px target minimum (140px on narrow stages),
+   16px gap, up to 8 equal columns. Preview rows reserve the final slot for View all.
+   Media details, editorial features, event posters and compact song rows are separate components. */
+:root{--catalog-card-min:180px;--catalog-card-gap:16px;--catalog-card-radius:var(--radius-card,16px);--catalog-card-max-columns:8}
+#center-stage .catalog-card-grid{display:grid!important;grid-template-columns:repeat(var(--catalog-columns,2),minmax(0,1fr))!important;grid-auto-flow:row!important;grid-auto-columns:auto!important;gap:var(--catalog-card-gap)!important;align-items:start;max-width:none!important;width:100%;overflow:visible!important;scroll-snap-type:none!important;padding:0!important;box-sizing:border-box}
+#center-stage .catalog-card-grid>[hidden]{display:none!important}
+#center-stage .catalog-card-grid>:not([hidden]){min-width:0;width:100%;box-sizing:border-box;grid-column:auto}
+#center-stage .catalog-card-grid> :is(.release-card,.band-card,.user-playlist-card,.album,.catalog-more){align-self:start;text-align:left;padding:0;background:transparent;border:0;color:var(--text);text-decoration:none}
+#center-stage .catalog-card-grid :is(.release-art,.band-card>img,.user-playlist-art,.album-art,.catalog-more-art),#center-stage .catalog-card-grid>.collection{display:block;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:1;box-sizing:border-box;object-fit:cover;border-radius:var(--catalog-card-radius);overflow:hidden}
+#center-stage .catalog-card-grid>.collection:not([hidden]){display:flex!important;padding:16px;justify-content:space-between}
+#center-stage .catalog-card-grid .user-playlist-art{display:grid}
+#center-stage .catalog-card-grid .user-playlist-art img{min-width:0;min-height:0}
+#center-stage .catalog-card-grid :is(.band-card,.user-playlist-card){gap:10px}
+#center-stage .catalog-card-grid :is(.release-card>strong,.band-card>strong,.user-playlist-card>strong,.album>.item-title){font:var(--type-label);font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+#center-stage .catalog-card-grid .release-card>strong,#center-stage .catalog-card-grid .album>.item-title{margin:10px 0 4px}
+#center-stage .catalog-card-grid .catalog-more .catalog-more-art{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:18px;background:var(--secondary);color:var(--accent);border:1px solid var(--line)}
+.catalog-more{cursor:pointer;font:inherit}
+.catalog-more-art strong{font:var(--type-label);font-weight:600}
+.catalog-more-art svg{width:28px;height:28px;align-self:flex-end;fill:none;stroke:currentColor;stroke-width:1.7}
+.catalog-more>small{display:block;font:var(--type-meta);color:var(--muted);margin-top:10px}
+.catalog-more:hover .catalog-more-art{border-color:var(--accent)}
+.catalog-more:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:var(--catalog-card-radius)}
+#recommended .recommend-controls,.collections .carousel-controls{display:none!important}
+.catalog-directory>h1{margin-bottom:24px}
+@container stage (max-width:540px){#center-stage .catalog-card-grid{--catalog-card-min:140px;--catalog-card-radius:var(--radius-card,16px)}}
