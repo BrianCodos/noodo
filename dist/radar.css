@@ -27,8 +27,8 @@
 
 @media(max-width:760px){.radar-heading{gap:16px}.radar-heading .radar-search{gap:8px;padding:12px;min-height:44px}.radar-heading .radar-search input{font-size:14px}}
 
-/* Desktop map dimensions stay stable while only the event collection scrolls. */
-@media(min-width:1000px){
+/* Wide Radar panels keep the map stable while the event collection scrolls. */
+@container radar (min-width:661px){
  #radar-view:not(.radar-map-hidden) .radar-layout{height:var(--radar-map-height,60dvh);min-height:180px}
  #radar-view:not(.radar-map-hidden) .radar-map-section{height:100%;position:sticky;top:calc(var(--shell-header-height) + 8px)}
  #radar-view:not(.radar-map-hidden) .radar-map{height:100%}
