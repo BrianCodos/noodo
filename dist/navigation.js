@@ -158,8 +158,8 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   const version=++routeVersion,artistRoute=url.pathname.endsWith('/artist.html');transitions.clearLoading();closePanel(false);
   if(artistRoute){
    transitions.beginLoading();
-   try{const html=await loadFragment();if(version!==routeVersion)return;transitions.clearLoading();cleanupArtist?.();artistView.innerHTML=html;showView(artistView);document.body.classList.add('artist-mode');cleanupArtist=window.mountArtist(artistView);normalizeBack(artistView,artistView.querySelector('.hero-back'));selectInfo(url.hash==='#conciertos'?'events':'artist',false,false);syncNavigation();}
-   catch(error){if(version!==routeVersion)return;transitions.clearLoading();console.error(error);artistView.innerHTML='<section><h1>No pudimos abrir el perfil.</h1><p>La reproducción continúa. <a href="listen.html">Volver a canciones</a></p></section>';showView(artistView);}
+   try{const html=await loadFragment();if(version!==routeVersion)return;await transitions.finishLoading();if(version!==routeVersion)return;cleanupArtist?.();artistView.innerHTML=html;showView(artistView);document.body.classList.add('artist-mode');cleanupArtist=window.mountArtist(artistView);normalizeBack(artistView,artistView.querySelector('.hero-back'));selectInfo(url.hash==='#conciertos'?'events':'artist',false,false);syncNavigation();}
+   catch(error){if(version!==routeVersion)return;await transitions.finishLoading();if(version!==routeVersion)return;console.error(error);artistView.innerHTML='<section><h1>No pudimos abrir el perfil.</h1><p>La reproducción continúa. <a href="listen.html">Volver a canciones</a></p></section>';showView(artistView);}
   }else{
    cleanupArtist?.();cleanupArtist=null;artistView.innerHTML='';document.body.classList.remove('artist-mode');document.title='NOODO · Escucha la ciudad';
    const i=url.searchParams.get('track');if(i!==null)window.noodoPlayer.select(Number(i),url.searchParams.get('play')==='1');

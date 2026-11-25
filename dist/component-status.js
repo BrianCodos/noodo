@@ -4,6 +4,8 @@ function implemented(names,source,demo){for(const name of names)componentImpleme
 implemented(['HomeDiscovery','CatalogCoverGrid','ReleaseCard','GenreCard','RecommendedArtistGrid'],'catalog-cards.js','listen.html');
 implemented(['TrackRow','CompactTrackRow','PlayerControls','PlayerProgress / Volume','PlayerExpanded / Mini','Queue / Repeat / Shuffle','ContextPanel','ArtistContext / ProfileLink'],'listen.js','listen.html');
 implemented(['PlaylistLibrary / PlaylistDetail'],'experience.js','listen.html');
+implemented(['TextField / Search'],'unified-search.js','listen.html');
+implemented(['Dialog / Drawer'],'external-navigation.js','listen.html?section=radar');
 implemented(['LibraryNavigation','MobileNavigation / Options','PlayerSidebar','UnifiedBack'],'navigation.js','listen.html');
 implemented(['AdvertisingBanner','SectionDisclosure','FeaturedSession','SessionVideoCard'],'listen.js','listen.html');
 implemented(['SectionPlayer / VolumePopover'],'section-player.js','listen.html?section=radar');

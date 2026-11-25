@@ -485,9 +485,9 @@
       "contract": "Etiqueta persistente, ayuda e ID de error; nunca solo placeholder.",
       "section": "ui",
       "implementation": {
-        "status": "Contrato / muestra de catálogo",
-        "source": null,
-        "demo": null
+        "status": "Prototipo implementado",
+        "source": "unified-search.js",
+        "demo": "listen.html"
       }
     },
     {
@@ -680,9 +680,9 @@
       "contract": "Foco contenido; Escape; botón cerrar; devolver foco al origen.",
       "section": "ui",
       "implementation": {
-        "status": "Contrato / muestra de catálogo",
-        "source": null,
-        "demo": null
+        "status": "Prototipo implementado",
+        "source": "external-navigation.js",
+        "demo": "listen.html?section=radar"
       }
     },
     {

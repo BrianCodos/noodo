@@ -1,5 +1,5 @@
 /* Semantic motion tokens shared by every section entrance. */
-:root{--motion-view-duration:260ms;--motion-view-distance:6px;--motion-view-easing:cubic-bezier(.22,.61,.36,1);--motion-skeleton-duration:1400ms;--view-skeleton-min-height:520px;--view-skeleton-cover-size:280px;--view-skeleton-line-size:16px;--view-skeleton-row-size:56px;--view-skeleton-gap:24px}
+:root{--motion-view-duration:320ms;--motion-view-distance:6px;--motion-view-easing:cubic-bezier(.22,.61,.36,1);--motion-skeleton-min-duration:160ms;--motion-skeleton-duration:1400ms;--view-skeleton-min-height:520px;--view-skeleton-cover-size:280px;--view-skeleton-line-size:16px;--view-skeleton-row-size:56px;--view-skeleton-gap:24px}
 .center-stage.is-view-loading{position:relative;min-height:var(--view-skeleton-min-height)}
 .center-stage.is-view-loading>:not(.view-loading){visibility:hidden;pointer-events:none}
 .view-loading{position:absolute;inset:0;z-index:1;padding-top:var(--view-skeleton-gap);pointer-events:none}

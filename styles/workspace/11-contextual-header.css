@@ -1,0 +1,35 @@
+/* One flexible search area and a contextual control outlet. */
+:root{
+ --header-brand-width:200px;--header-search-max-width:1440px;
+ --header-context-gap:var(--noodo-space-12);--header-filter-width:320px;
+}
+@media(min-width:761px){
+ .workspace-app>.player-topbar{grid-template-columns:var(--header-brand-width) minmax(0,1fr) auto}
+ .workspace-app .player-topbar .topbar-center{grid-column:2;grid-row:1;justify-self:start;width:100%;max-width:var(--header-search-max-width);gap:var(--header-context-gap)}
+}
+.workspace-app .player-topbar .home-button{flex:none}
+.workspace-app .player-topbar .search{min-width:0;flex:1 1 0}
+.section-tools{position:relative;flex:none;min-width:0}
+.section-tools[hidden],.section-tools-controls[hidden],.section-tools-toggle[hidden]{display:none}
+.section-tools-controls{display:flex;align-items:center;gap:var(--noodo-space-8)}
+.section-tools .radar-view-switch,.section-tools .artist-view-switch,.section-tools .search-categories,.section-tools .co-forum-filters{display:flex;align-items:center;gap:var(--noodo-space-4);margin:0;padding:0;border:0;flex-wrap:nowrap}
+.section-tools-controls label{display:flex;align-items:center;gap:var(--noodo-space-8);margin:0;color:var(--muted);font:var(--type-meta)}
+.section-tools-controls select{max-width:230px;min-width:0;min-height:var(--noodo-target);border:1px solid var(--player-divider-color);border-radius:var(--radius-field);padding:var(--noodo-space-8) var(--noodo-space-12);background:var(--surface);color:var(--text);font:var(--type-label)}
+.section-tools-toggle{display:grid;place-items:center;width:var(--noodo-target);height:var(--noodo-target);background:var(--secondary);color:var(--accent);border-radius:var(--radius-compact)}
+.section-tools-toggle svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.section-tools :focus-visible{outline:2px solid var(--noodo-focus);outline-offset:2px}
+/* The result count stays available to assistive technology without an empty toolbar row. */
+#radar-view .radar-results-heading{min-height:0;margin-bottom:0}
+@media(min-width:761px) and (max-width:1100px){
+ .workspace-app>.player-topbar{grid-template-columns:auto minmax(0,1fr) auto}
+}
+@media(max-width:1100px){
+ .section-tools-controls{position:absolute;top:calc(100% + var(--noodo-space-12));right:0;z-index:65;display:flex;flex-wrap:wrap;width:max-content;max-width:min(var(--header-filter-width),calc(100vw - var(--noodo-space-32)));padding:var(--noodo-space-12);border:1px solid var(--player-divider-color);border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--noodo-glow-card)}
+ .section-tools-controls label{flex-direction:column;align-items:stretch}
+ .section-tools-controls select{max-width:100%}
+}
+@media(max-width:760px){
+ .workspace-app .player-topbar .topbar-center{gap:var(--noodo-space-8)}
+ .workspace-app .player-topbar .search{gap:var(--noodo-space-8);padding-left:var(--noodo-space-12)}
+ .workspace-app .player-topbar .search>span[data-icon=search]{display:none}
+}

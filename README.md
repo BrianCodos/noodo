@@ -49,12 +49,16 @@ La revisión visual y funcional más reciente se realizó a 1771×1314, 1093×82
 
 GitHub Actions publica la carpeta `dist/` en GitHub Pages cuando hay cambios en ella en `main`. El workflow también puede ejecutarse manualmente desde Actions.
 
-## Actualización del reproductor · UI 79
+## Actualización del reproductor · UI 82
 
+- Cabecera flexible con buscador ampliado y un ancho máximo de 1440 px para búsqueda y herramientas. Los filtros de Radar, vista de artistas, tipo de resultado y Comunidad se muestran a la derecha según la sección activa. En móvil y tablet se agrupan en un botón accesible, conservando sus controles y estado originales.
+- Buscador único en la barra superior: canciones, artistas, Sessions, playlists, géneros, eventos y Comunidad. Admite tildes, varias palabras y códigos de evento. Presenta sugerencias y una vista completa con filtros por tipo; en Radar filtra las tarjetas y los marcadores sin salir del mapa. El foro utiliza el mismo campo. La búsqueda local no envía consultas a terceros.
+- Radar sin título ni buscador duplicados; conserva el encabezado accesible y coloca el filtro de fechas junto a los controles de vista.
+- Confirmación accesible antes de abrir Google Maps: «Aceptar» abre el destino en otra pestaña; «Quedarse en la página» o Escape conserva el evento y restaura el foco.
 - Biblioteca «Me gusta» con playlists, tarjetas para crear y ver todas, y controles de reproducción debajo de las portadas.
 - Navegación «Sessions» y acceso a playlists junto al buscador. Los artistas por género abren en cuadrícula por defecto y conservan la opción de lista.
 - Tres playlists editoriales de NOODO por género, con portadas, página de canciones y reproducción normal o aleatoria. `dist/genre-playlists.js` selecciona únicamente canciones del género, incluidos géneros secundarios. Las colecciones sin catálogo muestran «Próximamente»; no se añaden a las playlists personales.
-- Apertura de secciones desde arriba con transición sutil; skeleton durante la carga asíncrona de perfiles y respeto por la preferencia de movimiento reducido. Volver conserva la posición anterior.
+- Apertura de secciones desde arriba con transición sutil de 320 ms; skeleton durante la carga asíncrona de perfiles con un mínimo de 160 ms para evitar parpadeos, sin espera adicional cuando la carga ya supera ese tiempo. Respeta la preferencia de movimiento reducido y cancela cualquier espera al cambiar de destino. Volver conserva la posición anterior.
 - Acciones Apoyar, like y añadir alineadas en las filas compactas del artista, y controles publicitarios comunes en todas las rutas del reproductor.
 - Documentación, scripts y evidencia de la biblioteca de componentes de Figma en `design/figma/`. Su punto de partida es UI 70; los ajustes web posteriores no implican sincronización automática del archivo de Figma.
 
@@ -66,7 +70,7 @@ node scripts/build-workspace.cjs --check
 node --test tests/*.test.cjs
 ```
 
-Validación de esta actualización: 25 pruebas automatizadas correctas. Revisión visual y funcional en escritorio y móvil de biblioteca, navegación, apertura de secciones y playlists editoriales. El contenido musical continúa siendo una demostración sin catálogo de audio conectado.
+Validación de esta actualización: 33 pruebas automatizadas. Revisión visual y funcional en escritorio y móvil de búsqueda, navegación y confirmación de Google Maps, además de las comprobaciones previas de biblioteca y playlists editoriales. El contenido musical continúa siendo una demostración sin catálogo de audio conectado.
 
 ## Radar · Mapbox
 

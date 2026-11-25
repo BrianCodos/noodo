@@ -13,7 +13,9 @@
  window.noodoRadarEventCard=window.noodoEventCard;
  let feedbackTimer;
  function feedback(message){const toast=document.getElementById('toast');if(!toast)return;toast.textContent=message;toast.classList.add('visible');clearTimeout(feedbackTimer);feedbackTimer=setTimeout(()=>toast.classList.remove('visible'),3500);}
- root.innerHTML=`<header class="radar-heading">${window.noodoPageTitle.render("Radar")}<label class="radar-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input type="search" placeholder="Evento, artista o zona" aria-label="Buscar eventos por nombre, artista o zona"></label></header><div class="radar-location"><span>⌖ Cali, Colombia</span></div><div class="radar-layout"><section id="radar-map-section" class="radar-map-section" aria-label="Mapa de eventos"><div class="radar-map"><div id="radar-mapbox" aria-label="Mapa de eventos en Cali"></div><div class="radar-map-status" role="status"><p>Preparando el mapa…</p><button type="button" class="pill outline" id="radar-map-retry" hidden>Reintentar</button></div></div></section><section class="radar-results" aria-label="Eventos de muestra"><div class="radar-results-heading"><span id="radar-count" class="radar-sr-only" role="status"></span><div class="radar-view-switch" role="group" aria-label="Vista de eventos"><button type="button" id="radar-toggle-map" aria-label="Ocultar mapa" title="Ocultar mapa" aria-controls="radar-map-section"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3ZM9 3v15M15 6v15"/></svg></button><button type="button" data-radar-view="grid" aria-label="Ver eventos en cuadrícula" title="Cuadrícula"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button><button type="button" data-radar-view="list" aria-label="Ver eventos en lista" title="Lista"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h12M9 12h12M9 19h12M3 5h1M3 12h1M3 19h1"/></svg></button></div></div><div class="radar-cards"></div><p class="radar-empty" hidden>No encontramos eventos. Prueba con otro artista o zona.</p></section></div><p class="radar-footnote">Explora esta primera vista con eventos de ejemplo. Pronto podrás descubrir la agenda y sus ubicaciones reales.</p>`;
+ root.innerHTML=`<h1 class="radar-sr-only">Radar</h1><div class="radar-location"><span>⌖ Cali, Colombia</span></div><div class="radar-layout"><section id="radar-map-section" class="radar-map-section" aria-label="Mapa de eventos"><div class="radar-map"><div id="radar-mapbox" aria-label="Mapa de eventos en Cali"></div><div class="radar-map-status" role="status"><p>Preparando el mapa…</p><button type="button" class="pill outline" id="radar-map-retry" hidden>Reintentar</button></div></div></section><section class="radar-results" aria-label="Eventos de muestra"><div class="radar-results-heading"><span id="radar-count" class="radar-sr-only" role="status"></span><div class="radar-view-switch" role="group" aria-label="Vista de eventos"><button type="button" id="radar-toggle-map" aria-label="Ocultar mapa" title="Ocultar mapa" aria-controls="radar-map-section"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3ZM9 3v15M15 6v15"/></svg></button><button type="button" data-radar-view="grid" aria-label="Ver eventos en cuadrícula" title="Cuadrícula"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button><button type="button" data-radar-view="list" aria-label="Ver eventos en lista" title="Lista"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h12M9 12h12M9 19h12M3 5h1M3 12h1M3 19h1"/></svg></button></div></div><div class="radar-cards"></div><p class="radar-empty" hidden>No encontramos eventos. Prueba con otro artista o zona.</p></section></div><p class="radar-footnote">Explora esta primera vista con eventos de ejemplo. Pronto podrás descubrir la agenda y sus ubicaciones reales.</p>`;
+
+ const viewSwitch=root.querySelector('.radar-view-switch');
 
  let map=null,mapReady=false,loading=false,sdkPromise=null,eventPopup=null,popupEvent=null;
  const markers=new Map(),status=root.querySelector('.radar-map-status'),retry=root.querySelector('#radar-map-retry');
@@ -53,10 +55,10 @@
 
  let dateFilter={mode:'all',start:'',end:''};
  const filterButton=document.createElement('button');filterButton.type='button';filterButton.className='icon-button radar-date-toggle';filterButton.setAttribute('aria-label','Filtrar eventos por fecha');filterButton.setAttribute('aria-expanded','false');filterButton.setAttribute('aria-controls','radar-date-filters');filterButton.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/></svg>';
- root.querySelector('.radar-heading').append(filterButton);
+ viewSwitch.prepend(filterButton);
  const datePanel=document.createElement('form');datePanel.id='radar-date-filters';datePanel.className='radar-date-filters';datePanel.hidden=true;
  datePanel.innerHTML='<label>Cuándo<select name="mode"><option value="all">Cualquier fecha</option><option value="day">Un día</option><option value="week">Esta semana</option><option value="range">Rango de fechas</option></select></label><label data-date-start hidden><span>Fecha</span><input type="date" name="start"></label><label data-date-end hidden>Hasta<input type="date" name="end"></label><button type="submit" class="pill primary">Aplicar</button><button type="button" class="text-button" data-date-clear>Limpiar</button><p role="status" class="radar-date-status"></p>';
- root.querySelector('.radar-heading').after(datePanel);
+ root.querySelector('.radar-location').after(datePanel);
  const modeInput=datePanel.elements.mode,startInput=datePanel.elements.start,endInput=datePanel.elements.end;
  function todayColombia(){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Bogota',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
  function weekRange(today){const day=new Date(today+'T12:00:00Z');const monday=new Date(day);monday.setUTCDate(day.getUTCDate()-((day.getUTCDay()+6)%7));const sunday=new Date(monday);sunday.setUTCDate(monday.getUTCDate()+6);return [monday.toISOString().slice(0,10),sunday.toISOString().slice(0,10)];}
@@ -69,13 +71,13 @@
  datePanel.querySelector('[data-date-clear]').onclick=()=>{dateFilter={mode:'all',start:'',end:''};modeInput.value='all';modeInput.onchange();filterButton.classList.remove('active');filterButton.setAttribute('aria-label','Filtrar eventos por fecha');render();closeFilters();filterButton.focus();};
  datePanel.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();closeFilters();filterButton.focus();}});
  modeInput.onchange();
- const input=root.querySelector('.radar-search input');
+ let searchQuery='';
  const normalize=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  function render(){
-  const query=normalize(input.value.trim());
+  const query=normalize(searchQuery.trim());
   const visible=events.map((event,id)=>({...event,id})).filter(e=>normalize(e.name+' '+e.artist+' '+e.place+' '+e.organizer+' '+e.category+' '+e.code).includes(query)&&matchesDate(e.dateISO));
   if(!visible.some(e=>e.id===selected))selected=-1;
-  root.querySelector('#radar-count').textContent=visible.length+' eventos'+(dateFilter.start?' · '+dateFilter.start+' a '+dateFilter.end:'');
+  root.querySelector('#radar-count').textContent=visible.length+(visible.length===1?' evento':' eventos')+(dateFilter.start?' · '+dateFilter.start+' a '+dateFilter.end:'');
   root.querySelector('.radar-empty').hidden=visible.length>0;
   root.querySelector('.radar-cards').innerHTML=visible.map(event=>window.noodoRadarEventCard.render(event,{selected:event.id===selected,saved:saved.has(event.id)})).join('');
   if(popupEvent!==null&&!visible.some(e=>e.id===popupEvent)){eventPopup?.remove();eventPopup=null;popupEvent=null;}
@@ -121,7 +123,7 @@
    else{await navigator.clipboard.writeText(url);feedback('Enlace del evento copiado para compartir.');}
   }catch(error){if(error.name!=='AbortError')feedback('No se pudo compartir el enlace. Abre el evento y copia su dirección.');}
  });
- input.addEventListener('input',render);
+ window.noodoRadarSearch={setQuery(value){if(searchQuery===value)return;searchQuery=value;render();root.querySelector('.radar-cards').scrollTop=0;}};
  async function selectEvent(id){
   selected=id;render();
   if(mapHidden){mapHidden=false;applyLayout();}
@@ -144,12 +146,12 @@
  function applyLayout(){
   mapSection.hidden=mapHidden;root.classList.toggle('radar-map-hidden',mapHidden);root.dataset.eventView=resultView;
   mapToggle.setAttribute('aria-label',mapHidden?'Mostrar mapa':'Ocultar mapa');mapToggle.title=mapToggle.getAttribute('aria-label');mapToggle.setAttribute('aria-expanded',String(!mapHidden));mapToggle.setAttribute('aria-pressed',String(!mapHidden));
-  root.querySelectorAll('[data-radar-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.radarView===resultView)));
+  viewSwitch.querySelectorAll('[data-radar-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.radarView===resultView)));
   try{localStorage.setItem('noodo-radar-map-hidden',String(mapHidden));}catch{}
   requestAnimationFrame(()=>{sizeMap();if(!mapHidden)ensureMap();});
  }
  mapToggle.onclick=()=>{mapHidden=!mapHidden;if(mapHidden){eventPopup?.remove();eventPopup=null;popupEvent=null;}applyLayout();};
- root.querySelectorAll('[data-radar-view]').forEach(button=>button.onclick=()=>{resultView=button.dataset.radarView;applyLayout();});
+ viewSwitch.querySelectorAll('[data-radar-view]').forEach(button=>button.onclick=()=>{resultView=button.dataset.radarView;applyLayout();});
  function sizeMap(){
   if(root.hidden)return;
   document.body.classList.add('radar-mode');

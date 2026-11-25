@@ -13,8 +13,6 @@
  const money=n=>n?'$'+n.toLocaleString('es-CO'):'Gratis';
  function openEvent(i){const event=events[i];if(event)window.noodoWorkspace.navigate('event.html?event='+event.code);}
  window.noodoEvents={open:openEvent,openCode(code){const event=window.noodoEventIdentity.find(code);if(event){window.noodoWorkspace.showPanel(window.noodoEventPage.render(event.code));return true;}const el=panel('event-not-found','Buscar evento');show(el,'<h1>No encontramos ese evento</h1><p>Revisa el código del evento.</p>');return false;}};
- const search=document.getElementById('search-music');search.placeholder='Canciones, artistas o código de evento';search.setAttribute('aria-label','Buscar canciones, artistas o código de evento');
- search.addEventListener('keydown',e=>{if(e.key==='Enter'&&/^ND-/i.test(search.value.trim())){e.preventDefault();const code=search.value.trim().toUpperCase();search.value='';window.noodoWorkspace.navigate('listen.html?event='+encodeURIComponent(code));}});
  // The same persisted playlist schema is used by artist rows and the library.
  const playlistKey='noodo-playlists-v1';
  function playlists(){const raw=read(playlistKey,[]);return (Array.isArray(raw)?raw:[]).filter(p=>p&&typeof p.id==='string'&&typeof p.name==='string'&&Array.isArray(p.tracks)).map(p=>({...p,tracks:[...new Set(p.tracks)].filter(i=>Number.isInteger(i)&&tracks[i])}));}
@@ -100,7 +98,7 @@
  function renderIfLibrary(){if(document.getElementById('playlist-library'))renderLibrary();}
  function followedArtists(){const extras=read('noodo-followed-profiles',[]),canonical=[...new Set(tracks.map((t,i)=>artistProfileIndex(i)))].map(i=>({key:'noodo-follow-'+(i===0?'lunamarea':'artista-muestra-'+i),name:tracks[i].artist,image:tracks[i].image,href:'artist.html?artist='+i,type:profileKind(i)}));return [...new Map([...canonical,...(Array.isArray(extras)?extras:[])].map(a=>[a.key,a])).values()].filter(a=>localStorage.getItem(a.key)==='true');}
  function openArtists(){const el=panel('followed-artists','Tus artistas'),artists=followedArtists();show(el,`<div class="section-heading"><div><h1>Tus artistas</h1><p>Los proyectos que sigues, en un mismo lugar.</p></div><button class="pill outline" id="discover-artists">Explorar artistas</button></div><div class="genre-artists-grid">${artists.map(a=>`<a class="genre-artist-card" href="${esc(a.href)}"><img src="${esc(a.image)}" alt=""><strong>${esc(a.name)}</strong><span>${esc(a.type)}</span></a>`).join('')}</div>${artists.length?'':'<div class="library-empty"><h2>Aquí empieza tu escena</h2><p>Presiona Seguir artista en un perfil y lo encontrarás aquí.</p></div>'}`);el.querySelector('#discover-artists').onclick=()=>window.noodoGenres.open();activate('artists');}
- window.noodoLibrary={open:openLibrary,pick,artists:openArtists,mountGenrePlaylists,syncSaved(ids){const all=playlists(),entry=all.find(p=>p.id==='my-playlist');entry.tracks=ids;write(playlistKey,all);renderIfLibrary();},rememberArtist(record){const list=read('noodo-followed-profiles',[]);write('noodo-followed-profiles',[...(Array.isArray(list)?list:[]).filter(a=>a.key!==record.key),record]);}};
+ window.noodoLibrary={searchEntries:()=>[...playlists(),...Object.keys(genreNames).flatMap(key=>window.noodoCuratedPlaylists.forGenre(key))],openSearchResult:p=>p.owner==='NOODO'?openCuratedPlaylist(p):window.noodoCommunity.requireProfile(()=>openLibrary(p.id),'playlists'),open:openLibrary,pick,artists:openArtists,mountGenrePlaylists,syncSaved(ids){const all=playlists(),entry=all.find(p=>p.id==='my-playlist');entry.tracks=ids;write(playlistKey,all);renderIfLibrary();},rememberArtist(record){const list=read('noodo-followed-profiles',[]);write('noodo-followed-profiles',[...(Array.isArray(list)?list:[]).filter(a=>a.key!==record.key),record]);}};
 
  // The saved view combines the user's playlists with their liked music.
  const playlistSection=document.createElement('section');playlistSection.className='user-playlists';playlistSection.setAttribute('aria-labelledby','user-playlists-title');
@@ -121,9 +119,9 @@
   const markup=`<h2 id="user-playlists-title" class="section-heading">Tus playlists</h2><div class="user-playlist-grid" role="group" aria-label="Tus playlists">${all.filter(p=>p.id!=='my-playlist').map(playlistCard).join('')}${playlistActionCard('create','Crear playlist','plus','Una nueva selección')}${playlistActionCard('all','Ver todas las playlists','queue',all.length+' '+(all.length===1?'playlist':'playlists'))}</div>`;
   if(markup!==playlistMarkup){playlistSection.innerHTML=markup;playlistMarkup=markup;}
   document.getElementById('user-playlists-title').classList.toggle('library-overview-label',isLibrary);
-  const empty=document.getElementById('empty'),query=search.value.trim();
-  empty.querySelector('h3').textContent=isSaved?(query?'No encontramos favoritos con esa búsqueda.':'Aún no tienes canciones favoritas.'):'No encontramos ese sonido.';
-  empty.querySelector('p').textContent=isSaved?(query?'Prueba con otro nombre de canción o artista.':'Marca el corazón de una canción y aparecerá aquí.'):'Prueba con otro nombre o guarda una pista con el corazón.';
+  const empty=document.getElementById('empty');
+  empty.querySelector('h3').textContent=isSaved?'Aún no tienes canciones favoritas.':'No encontramos ese sonido.';
+  empty.querySelector('p').textContent=isSaved?'Marca el corazón de una canción y aparecerá aquí.':'Prueba con otro nombre o guarda una pista con el corazón.';
   document.getElementById('reset-filter').textContent=isSaved?'Explorar canciones':'Ver toda la selección';
   if(isSaved){
    const favorites=tracks.filter((track,index)=>matches(track,index));

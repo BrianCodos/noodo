@@ -1,10 +1,6 @@
 /* Radar layout: fixed workspace, independent event collection, shared EventCard. */
 #radar-view{min-width:0;padding:0;container-type:inline-size;container-name:radar;display:flex;flex-direction:column;gap:16px}
 #radar-view[hidden],#radar-map-section[hidden]{display:none}
-.radar-heading{display:flex;align-items:center;gap:20px;position:sticky;top:var(--shell-header-height);z-index:25;background:var(--background);padding:8px 0;flex:none}
-.radar-heading h1{margin:0;flex:none}.radar-search{display:flex;align-items:center;gap:12px;flex:1;min-width:0;background:var(--secondary);border:1px solid var(--line);border-radius:var(--radius-card,16px);padding:14px 16px}
-.radar-search svg{width:20px;height:20px;stroke:var(--accent);flex:none}.radar-search input{background:none;border:0;color:var(--text);font:inherit;width:100%;min-width:0;outline:none}
-.radar-search:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 .radar-location{font:var(--type-meta);color:var(--muted);flex:none}
 .radar-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr);gap:24px;min-height:0;flex:1}
 .radar-map-hidden .radar-layout{grid-template-columns:minmax(0,1fr)}
@@ -61,7 +57,7 @@
 #library-radar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}#library-radar[aria-current=page]{color:var(--accent);background:var(--secondary)}
 @media(min-width:761px){html:has(body.radar-mode){overflow:clip}body.radar-mode{height:100dvh;overflow:clip}.workspace-app.radar-mode #content{padding-bottom:0}#radar-view{height:var(--radar-workspace-height,calc(100dvh - var(--shell-header-height) - 48px));min-height:0}}
 @container radar (max-width:620px){.radar-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(160px,.8fr) minmax(180px,1fr)}.radar-map-hidden .radar-layout{grid-template-rows:minmax(0,1fr)}}
-@media(max-width:760px){#radar-view{gap:12px}.radar-heading{gap:12px}.radar-search{padding:12px;gap:8px}.radar-search input{font-size:14px}.radar-layout{display:flex;flex-direction:column;gap:16px}.radar-map-section{height:55dvh;min-height:320px;flex:none}.radar-results{overflow:visible}.radar-cards{overflow:visible;padding-right:3px}#radar-view[data-event-view=grid] .radar-cards{grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr))}.radar-footnote{padding-bottom:16px}.radar-card-select{font-size:16px}.radar-event-copy{padding:14px}.radar-map-event{grid-template-columns:minmax(86px,32%) minmax(0,1fr);gap:12px}.radar-map-event h3{font-size:16px}}
+@media(max-width:760px){#radar-view{gap:12px}.radar-layout{display:flex;flex-direction:column;gap:16px}.radar-map-section{height:55dvh;min-height:320px;flex:none}.radar-results{overflow:visible}.radar-cards{overflow:visible;padding-right:3px}#radar-view[data-event-view=grid] .radar-cards{grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr))}.radar-footnote{padding-bottom:16px}.radar-card-select{font-size:16px}.radar-event-copy{padding:14px}.radar-map-event{grid-template-columns:minmax(86px,32%) minmax(0,1fr);gap:12px}.radar-map-event h3{font-size:16px}}
 /* Preserve the complete poster in the map preview. */
 .radar-map-event>img{height:auto;min-height:0;max-height:100%;aspect-ratio:auto;object-fit:contain;align-self:start}
 .radar-date-toggle{flex:none;width:44px;height:44px;border:1px solid transparent;border-radius:var(--radius-compact, 12px);color:var(--accent);background:var(--secondary)}.radar-date-toggle.active{border-color:var(--accent)}.radar-date-toggle svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7}
