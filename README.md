@@ -49,6 +49,25 @@ La revisión visual y funcional más reciente se realizó a 1771×1314, 1093×82
 
 GitHub Actions publica la carpeta `dist/` en GitHub Pages cuando hay cambios en ella en `main`. El workflow también puede ejecutarse manualmente desde Actions.
 
+## Actualización del reproductor · UI 79
+
+- Biblioteca «Me gusta» con playlists, tarjetas para crear y ver todas, y controles de reproducción debajo de las portadas.
+- Navegación «Sessions» y acceso a playlists junto al buscador. Los artistas por género abren en cuadrícula por defecto y conservan la opción de lista.
+- Tres playlists editoriales de NOODO por género, con portadas, página de canciones y reproducción normal o aleatoria. `dist/genre-playlists.js` selecciona únicamente canciones del género, incluidos géneros secundarios. Las colecciones sin catálogo muestran «Próximamente»; no se añaden a las playlists personales.
+- Apertura de secciones desde arriba con transición sutil; skeleton durante la carga asíncrona de perfiles y respeto por la preferencia de movimiento reducido. Volver conserva la posición anterior.
+- Acciones Apoyar, like y añadir alineadas en las filas compactas del artista, y controles publicitarios comunes en todas las rutas del reproductor.
+- Documentación, scripts y evidencia de la biblioteca de componentes de Figma en `design/figma/`. Su punto de partida es UI 70; los ajustes web posteriores no implican sincronización automática del archivo de Figma.
+
+Los estilos de `dist/workspace.css` se generan a partir de `styles/workspace/`:
+
+```sh
+node scripts/build-workspace.cjs
+node scripts/build-workspace.cjs --check
+node --test tests/*.test.cjs
+```
+
+Validación de esta actualización: 25 pruebas automatizadas correctas. Revisión visual y funcional en escritorio y móvil de biblioteca, navegación, apertura de secciones y playlists editoriales. El contenido musical continúa siendo una demostración sin catálogo de audio conectado.
+
 ## Radar · Mapbox
 
 Radar usa Mapbox GL JS 3.35.0, cargado desde el CDN oficial únicamente al abrir la sección. Conserva una sola instancia al cambiar de sección, y sincroniza el buscador y las tarjetas con los marcadores. Los eventos y sus coordenadas son ejemplos, no una agenda real.

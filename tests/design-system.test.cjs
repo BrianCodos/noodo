@@ -14,6 +14,12 @@ test('all player entry points load the same shell dependencies',()=>{
  const head=n=>read(n).match(/<head>[\s\S]*?<\/head>/)[0];
  for(const n of ['artist.html','article.html','event.html'])assert.equal(head(n),head('listen.html'),n);
 });
+test('direct player routes provide the advertising controls required at startup',()=>{
+ const banner=n=>read(n).match(/<aside[^>]*id="promo-banner"[\s\S]*?<\/aside>/)?.[0];
+ const shared=banner('listen.html');
+ for(const id of ['promo-image','promo-cta','promo-tickets'])assert.ok(shared.includes('id="'+id+'"'),id);
+ for(const n of ['artist.html','article.html','event.html'])assert.equal(banner(n),shared,n);
+});
 test('design imports reject malformed colors and strip unknown token properties',()=>{
  for(const value of ['red','url(example)','<script>','#123',null])assert.throws(()=>vm.runInContext('validateState({tokens:{...defaults,primary:'+JSON.stringify(value)+'}})',context));
  const result=vm.runInContext('validateState({tokens:{...defaults,unexpected:"ignored"}})',context);

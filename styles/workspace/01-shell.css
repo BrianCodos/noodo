@@ -100,6 +100,5 @@
  .workspace-app .player-sidebar{left:16px}.workspace-app .context-sidebar{right:16px}.workspace-app .workspace-tools{z-index:60;margin-bottom:8px}.workspace-app .context-tabs{display:flex;justify-content:space-between}
  .workspace-app .context-summary>img{max-height:180px;object-fit:cover}.center-stage .artist-view .artist-section-bar{top:var(--shell-top-offset)}
 }
-@media(prefers-reduced-motion:no-preference){.central-panel{animation:center-reveal 180ms ease-out}@keyframes center-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
 .center-return{min-height:44px;color:var(--accent);font:var(--type-label);white-space:nowrap}
 .workspace-app .player-sidebar,.workspace-app .context-sidebar,.artist-view .section-nav{scrollbar-color:var(--secondary) transparent;scrollbar-width:thin}

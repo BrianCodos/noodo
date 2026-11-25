@@ -1,0 +1,767 @@
+{
+  "date": "2026-11-24",
+  "status": "Layout defects resolved; two fidelity differences remain",
+  "readOnly": true,
+  "useFigmaReads": 3,
+  "screenshots": 3,
+  "overflow": {
+    "screens": 92,
+    "textCount": 2845,
+    "missingFonts": 0,
+    "unstyled": 0,
+    "horizontalOverflowScreens": 0,
+    "issues": []
+  },
+  "fields": {
+    "fields": [
+      {
+        "id": "49:794",
+        "name": "State=Empty",
+        "width": 600,
+        "fields": [
+          {
+            "id": "49:795",
+            "x": 0,
+            "width": 496,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "49:794",
+              "name": "State=Empty",
+              "width": 600,
+              "paddingRight": 0
+            },
+            "children": [
+              {
+                "id": "I49:795;43:309",
+                "name": "Field contents",
+                "x": 13,
+                "width": 442,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I49:795;43:311",
+                "name": "Icon",
+                "x": 463,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "49:807",
+        "name": "State=Writing",
+        "width": 600,
+        "fields": [
+          {
+            "id": "49:808",
+            "x": 0,
+            "width": 496,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "49:807",
+              "name": "State=Writing",
+              "width": 600,
+              "paddingRight": 0
+            },
+            "children": [
+              {
+                "id": "I49:808;43:309",
+                "name": "Field contents",
+                "x": 13,
+                "width": 442,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I49:808;43:311",
+                "name": "Icon",
+                "x": 463,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "49:820",
+        "name": "State=Disabled",
+        "width": 600,
+        "fields": [
+          {
+            "id": "49:821",
+            "x": 0,
+            "width": 496,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "49:820",
+              "name": "State=Disabled",
+              "width": 600,
+              "paddingRight": 0
+            },
+            "children": [
+              {
+                "id": "I49:821;43:327",
+                "name": "Field contents",
+                "x": 13,
+                "width": 442,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I49:821;43:329",
+                "name": "Icon",
+                "x": 463,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "60:3",
+        "name": "Kind=Playlist, Layout=Desktop",
+        "width": 440,
+        "fields": [
+          {
+            "id": "60:11",
+            "x": 25,
+            "width": 390,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "60:3",
+              "name": "Kind=Playlist, Layout=Desktop",
+              "width": 440,
+              "paddingRight": 24
+            },
+            "children": [
+              {
+                "id": "I60:11;43:303",
+                "name": "Field contents",
+                "x": 13,
+                "width": 336,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I60:11;43:305",
+                "name": "Icon",
+                "x": 357,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "60:29",
+        "name": "Kind=Playlist, Layout=Mobile",
+        "width": 358,
+        "fields": [
+          {
+            "id": "60:36",
+            "x": 25,
+            "width": 308,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "60:29",
+              "name": "Kind=Playlist, Layout=Mobile",
+              "width": 358,
+              "paddingRight": 24
+            },
+            "children": [
+              {
+                "id": "I60:36;43:303",
+                "name": "Field contents",
+                "x": 13,
+                "width": 254,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I60:36;43:305",
+                "name": "Icon",
+                "x": 275,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "60:51",
+        "name": "Kind=Confirm, Layout=Desktop",
+        "width": 440,
+        "fields": []
+      },
+      {
+        "id": "60:67",
+        "name": "Kind=Confirm, Layout=Mobile",
+        "width": 358,
+        "fields": []
+      },
+      {
+        "id": "60:83",
+        "name": "Kind=Support, Layout=Desktop",
+        "width": 440,
+        "fields": []
+      },
+      {
+        "id": "60:106",
+        "name": "Kind=Support, Layout=Mobile",
+        "width": 358,
+        "fields": []
+      },
+      {
+        "id": "60:129",
+        "name": "Kind=Profile, Layout=Desktop",
+        "width": 440,
+        "fields": []
+      },
+      {
+        "id": "60:145",
+        "name": "Kind=Profile, Layout=Mobile",
+        "width": 358,
+        "fields": []
+      },
+      {
+        "id": "60:161",
+        "name": "Kind=Notifications, Layout=Desktop",
+        "width": 440,
+        "fields": []
+      },
+      {
+        "id": "60:177",
+        "name": "Kind=Notifications, Layout=Mobile",
+        "width": 358,
+        "fields": []
+      },
+      {
+        "id": "60:193",
+        "name": "Kind=Share, Layout=Desktop",
+        "width": 440,
+        "fields": [
+          {
+            "id": "60:200",
+            "x": 25,
+            "width": 390,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "60:193",
+              "name": "Kind=Share, Layout=Desktop",
+              "width": 440,
+              "paddingRight": 24
+            },
+            "children": [
+              {
+                "id": "I60:200;43:333",
+                "name": "Field contents",
+                "x": 13,
+                "width": 336,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I60:200;43:335",
+                "name": "Icon",
+                "x": 357,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "60:215",
+        "name": "Kind=Share, Layout=Mobile",
+        "width": 358,
+        "fields": [
+          {
+            "id": "60:222",
+            "x": 25,
+            "width": 308,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "60:215",
+              "name": "Kind=Share, Layout=Mobile",
+              "width": 358,
+              "paddingRight": 24
+            },
+            "children": [
+              {
+                "id": "I60:222;43:333",
+                "name": "Field contents",
+                "x": 13,
+                "width": 254,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I60:222;43:335",
+                "name": "Icon",
+                "x": 275,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "57:3847",
+        "name": "NOODO/Composer",
+        "width": 358,
+        "fields": [
+          {
+            "id": "I57:3847;49:795",
+            "x": 0,
+            "width": 254,
+            "sizing": "FILL",
+            "widthBinding": null,
+            "parent": {
+              "id": "57:3847",
+              "name": "NOODO/Composer",
+              "width": 358,
+              "paddingRight": 0
+            },
+            "children": [
+              {
+                "id": "I57:3847;49:795;43:309",
+                "name": "Field contents",
+                "x": 13,
+                "width": 200,
+                "type": "FRAME",
+                "visible": true
+              },
+              {
+                "id": "I57:3847;49:795;43:311",
+                "name": "Icon",
+                "x": 221,
+                "width": 20,
+                "type": "INSTANCE",
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "57:3488",
+        "name": "NOODO/TicketOption",
+        "width": 358,
+        "fields": []
+      },
+      {
+        "id": "57:3498",
+        "name": "NOODO/TicketOption",
+        "width": 358,
+        "fields": []
+      }
+    ],
+    "checkoutText": [
+      {
+        "id": "57:3479",
+        "name": "title",
+        "characters": "Comprar entrada"
+      },
+      {
+        "id": "57:3480",
+        "name": "body",
+        "characters": "Demostración · No se procesarán cobros."
+      },
+      {
+        "id": "I57:3488;49:1116;44:84",
+        "name": "label",
+        "characters": "General"
+      },
+      {
+        "id": "I57:3488;49:1120",
+        "name": "label",
+        "characters": "$35.000 COP"
+      },
+      {
+        "id": "I57:3488;49:1121",
+        "name": "meta",
+        "characters": "Entrada individual"
+      },
+      {
+        "id": "I57:3498;49:1106;44:79",
+        "name": "label",
+        "characters": "General"
+      },
+      {
+        "id": "I57:3498;49:1110",
+        "name": "label",
+        "characters": "$35.000 COP"
+      },
+      {
+        "id": "I57:3498;49:1111",
+        "name": "meta",
+        "characters": "Entrada individual"
+      }
+    ],
+    "poster": [
+      {
+        "id": "I57:3071;49:998",
+        "width": 160,
+        "height": 160,
+        "sizing": "FIXED",
+        "bound": {
+          "itemSpacing": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:94"
+          },
+          "paddingLeft": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "paddingTop": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "paddingRight": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "paddingBottom": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "width": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:117"
+          },
+          "height": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:117"
+          },
+          "topLeftRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "topRightRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "bottomLeftRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "bottomRightRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "counterAxisSpacing": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          }
+        }
+      },
+      {
+        "id": "I57:3104;49:978",
+        "width": 90,
+        "height": 120,
+        "sizing": "FIXED",
+        "bound": {
+          "itemSpacing": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:94"
+          },
+          "paddingLeft": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "paddingTop": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "paddingRight": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "paddingBottom": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          },
+          "topLeftRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "topRightRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "bottomLeftRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "bottomRightRadius": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:103"
+          },
+          "counterAxisSpacing": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:42:93"
+          }
+        }
+      }
+    ]
+  },
+  "checkout": {
+    "checkout": [
+      {
+        "id": "56:4459",
+        "fields": [
+          {
+            "id": "56:4585",
+            "width": 944,
+            "sizing": "FILL",
+            "text": [
+              {
+                "id": "I56:4585;43:310",
+                "characters": "Nombre completo"
+              }
+            ]
+          },
+          {
+            "id": "56:4591",
+            "width": 944,
+            "sizing": "FILL",
+            "text": [
+              {
+                "id": "I56:4591;43:310",
+                "characters": "Correo electrónico"
+              }
+            ]
+          },
+          {
+            "id": "56:4597",
+            "width": 944,
+            "sizing": "FILL",
+            "text": [
+              {
+                "id": "I56:4597;43:310",
+                "characters": "Documento"
+              }
+            ]
+          }
+        ],
+        "instances": [
+          {
+            "id": "56:4460",
+            "name": "NOODO/Header"
+          },
+          {
+            "id": "56:4489",
+            "name": "NOODO/Sidebar"
+          },
+          {
+            "id": "56:4545",
+            "name": "NOODO/Button"
+          },
+          {
+            "id": "56:4552",
+            "name": "NOODO/SectionHeading"
+          },
+          {
+            "id": "56:4558",
+            "name": "NOODO/TicketOption"
+          },
+          {
+            "id": "56:4568",
+            "name": "NOODO/TicketOption"
+          },
+          {
+            "id": "56:4579",
+            "name": "NOODO/SectionHeading"
+          },
+          {
+            "id": "56:4585",
+            "name": "NOODO/Field"
+          },
+          {
+            "id": "56:4591",
+            "name": "NOODO/Field"
+          },
+          {
+            "id": "56:4597",
+            "name": "NOODO/Field"
+          },
+          {
+            "id": "56:4603",
+            "name": "NOODO/SelectionControl"
+          },
+          {
+            "id": "56:4606",
+            "name": "NOODO/PurchaseSummary"
+          },
+          {
+            "id": "56:4619",
+            "name": "NOODO/SectionPlayer"
+          }
+        ]
+      },
+      {
+        "id": "57:3443",
+        "fields": [
+          {
+            "id": "57:3515",
+            "width": 358,
+            "sizing": "FILL",
+            "text": [
+              {
+                "id": "I57:3515;43:310",
+                "characters": "Nombre completo"
+              }
+            ]
+          },
+          {
+            "id": "57:3521",
+            "width": 358,
+            "sizing": "FILL",
+            "text": [
+              {
+                "id": "I57:3521;43:310",
+                "characters": "Correo electrónico"
+              }
+            ]
+          },
+          {
+            "id": "57:3527",
+            "width": 358,
+            "sizing": "FILL",
+            "text": [
+              {
+                "id": "I57:3527;43:310",
+                "characters": "Documento"
+              }
+            ]
+          }
+        ],
+        "instances": [
+          {
+            "id": "57:3444",
+            "name": "NOODO/Header"
+          },
+          {
+            "id": "57:3475",
+            "name": "NOODO/Button"
+          },
+          {
+            "id": "57:3482",
+            "name": "NOODO/SectionHeading"
+          },
+          {
+            "id": "57:3488",
+            "name": "NOODO/TicketOption"
+          },
+          {
+            "id": "I57:3488;49:1116",
+            "name": "NOODO/SelectionControl"
+          },
+          {
+            "id": "I57:3488;49:1116;44:82",
+            "name": "Icon/check"
+          },
+          {
+            "id": "I57:3488;49:1122",
+            "name": "NOODO/IconButton"
+          },
+          {
+            "id": "I57:3488;49:1122;43:223",
+            "name": "Icon"
+          },
+          {
+            "id": "57:3498",
+            "name": "NOODO/TicketOption"
+          },
+          {
+            "id": "I57:3498;49:1106",
+            "name": "NOODO/SelectionControl"
+          },
+          {
+            "id": "I57:3498;49:1112",
+            "name": "NOODO/IconButton"
+          },
+          {
+            "id": "I57:3498;49:1112;43:223",
+            "name": "Icon"
+          },
+          {
+            "id": "57:3509",
+            "name": "NOODO/SectionHeading"
+          },
+          {
+            "id": "57:3515",
+            "name": "NOODO/Field"
+          },
+          {
+            "id": "57:3521",
+            "name": "NOODO/Field"
+          },
+          {
+            "id": "57:3527",
+            "name": "NOODO/Field"
+          },
+          {
+            "id": "57:3533",
+            "name": "NOODO/SelectionControl"
+          },
+          {
+            "id": "57:3536",
+            "name": "NOODO/PurchaseSummary"
+          },
+          {
+            "id": "57:3550",
+            "name": "NOODO/Dock"
+          },
+          {
+            "id": "57:3591",
+            "name": "NOODO/MobileNavigation"
+          }
+        ]
+      }
+    ],
+    "banner": {
+      "id": "56:154",
+      "width": 982,
+      "sizing": "FILL",
+      "widthBinding": null,
+      "children": [
+        {
+          "id": "I56:154;47:457",
+          "name": "Artwork/Publicidad",
+          "width": 982,
+          "height": 327.3333435058594
+        },
+        {
+          "id": "I56:154;47:458",
+          "name": "Advertising actions",
+          "width": 982,
+          "height": 68
+        }
+      ]
+    }
+  }
+}

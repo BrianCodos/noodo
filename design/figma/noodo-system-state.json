@@ -1,0 +1,2199 @@
+{
+  "variables": {
+    "background/canvas": "VariableID:42:75",
+    "background/player": "VariableID:42:76",
+    "background/surface": "VariableID:42:77",
+    "background/raised": "VariableID:42:78",
+    "text/primary": "VariableID:42:79",
+    "text/secondary": "VariableID:42:80",
+    "text/accent": "VariableID:42:81",
+    "text/onAction": "VariableID:42:82",
+    "text/onSoft": "VariableID:42:83",
+    "action/primary": "VariableID:42:84",
+    "action/soft": "VariableID:42:85",
+    "action/focus": "VariableID:42:86",
+    "border/subtle": "VariableID:42:87",
+    "border/control": "VariableID:42:88",
+    "feedback/success": "VariableID:42:89",
+    "feedback/warning": "VariableID:42:90",
+    "feedback/danger": "VariableID:42:91",
+    "feedback/info": "VariableID:42:92",
+    "spacing/none": "VariableID:42:93",
+    "spacing/inline": "VariableID:42:94",
+    "spacing/compact": "VariableID:42:95",
+    "spacing/control": "VariableID:42:96",
+    "spacing/card": "VariableID:42:97",
+    "spacing/section": "VariableID:42:98",
+    "spacing/page": "VariableID:42:99",
+    "spacing/region": "VariableID:42:100",
+    "radius/none": "VariableID:42:101",
+    "radius/control": "VariableID:42:102",
+    "radius/card": "VariableID:42:103",
+    "radius/panel": "VariableID:42:104",
+    "radius/pill": "VariableID:42:105",
+    "border/default": "VariableID:42:106",
+    "border/focus": "VariableID:42:107",
+    "control/target": "VariableID:42:108",
+    "control/navigation": "VariableID:42:109",
+    "control/play": "VariableID:42:110",
+    "icon/small": "VariableID:42:111",
+    "icon/default": "VariableID:42:112",
+    "icon/large": "VariableID:42:113",
+    "avatar/small": "VariableID:42:114",
+    "avatar/medium": "VariableID:42:115",
+    "avatar/large": "VariableID:42:116",
+    "cover/catalog": "VariableID:42:117",
+    "cover/row": "VariableID:42:118",
+    "cover/hero": "VariableID:42:119",
+    "row/height": "VariableID:42:120",
+    "shell/header": "VariableID:42:121",
+    "shell/sidebar": "VariableID:42:122",
+    "shell/rail": "VariableID:42:123",
+    "shell/context": "VariableID:42:124",
+    "shell/sectionPlayer": "VariableID:42:125",
+    "shell/dock": "VariableID:42:126",
+    "shell/bottomNav": "VariableID:42:127",
+    "screen/desktopWidth": "VariableID:42:128",
+    "screen/desktopHeight": "VariableID:42:129",
+    "screen/mobileWidth": "VariableID:42:130",
+    "screen/mobileHeight": "VariableID:42:131",
+    "content/dialog": "VariableID:42:132",
+    "content/panel": "VariableID:42:133",
+    "content/bannerHeight": "VariableID:42:134",
+    "progress/track": "VariableID:42:135",
+    "progress/thumb": "VariableID:42:136",
+    "opacity/enabled": "VariableID:42:137",
+    "opacity/disabled": "VariableID:42:138",
+    "type/display/size": "VariableID:42:140",
+    "type/display/line": "VariableID:42:141",
+    "type/title/size": "VariableID:42:142",
+    "type/title/line": "VariableID:42:143",
+    "type/heading/size": "VariableID:42:144",
+    "type/heading/line": "VariableID:42:145",
+    "type/body/size": "VariableID:42:146",
+    "type/body/line": "VariableID:42:147",
+    "type/label/size": "VariableID:42:148",
+    "type/label/line": "VariableID:42:149",
+    "type/meta/size": "VariableID:42:150",
+    "type/meta/line": "VariableID:42:151",
+    "catalog/cover": "VariableID:59:1259",
+    "type/family": "VariableID:61:6",
+    "type/style/regular": "VariableID:61:7",
+    "type/style/medium": "VariableID:61:8",
+    "type/style/semibold": "VariableID:61:9",
+    "component/icon-play/container/width": "VariableID:63:100",
+    "component/icon-play/container/height": "VariableID:63:101",
+    "component/icon-pause/container/width": "VariableID:63:102",
+    "component/icon-pause/container/height": "VariableID:63:103",
+    "component/icon-next/container/width": "VariableID:63:104",
+    "component/icon-next/container/height": "VariableID:63:105",
+    "component/icon-previous/container/width": "VariableID:63:106",
+    "component/icon-previous/container/height": "VariableID:63:107",
+    "component/icon-shuffle/container/width": "VariableID:63:108",
+    "component/icon-shuffle/container/height": "VariableID:63:109",
+    "component/icon-repeat/container/width": "VariableID:63:110",
+    "component/icon-repeat/container/height": "VariableID:63:111",
+    "component/icon-volume/container/width": "VariableID:63:112",
+    "component/icon-volume/container/height": "VariableID:63:113",
+    "component/icon-mute/container/width": "VariableID:63:114",
+    "component/icon-mute/container/height": "VariableID:63:115",
+    "component/icon-heart/container/width": "VariableID:63:116",
+    "component/icon-heart/container/height": "VariableID:63:117",
+    "component/icon-arrow/container/width": "VariableID:63:118",
+    "component/icon-arrow/container/height": "VariableID:63:119",
+    "component/icon-sound/container/width": "VariableID:63:120",
+    "component/icon-sound/container/height": "VariableID:63:121",
+    "component/icon-queue/container/width": "VariableID:63:122",
+    "component/icon-queue/container/height": "VariableID:63:123",
+    "component/icon-close/container/width": "VariableID:63:124",
+    "component/icon-close/container/height": "VariableID:63:125",
+    "component/icon-search/container/width": "VariableID:63:126",
+    "component/icon-search/container/height": "VariableID:63:127",
+    "component/icon-plus/container/width": "VariableID:63:128",
+    "component/icon-plus/container/height": "VariableID:63:129",
+    "component/icon-home/container/width": "VariableID:63:130",
+    "component/icon-home/container/height": "VariableID:63:131",
+    "component/icon-music/container/width": "VariableID:63:132",
+    "component/icon-music/container/height": "VariableID:63:133",
+    "component/icon-user/container/width": "VariableID:63:134",
+    "component/icon-user/container/height": "VariableID:63:135",
+    "component/icon-calendar/container/width": "VariableID:63:136",
+    "component/icon-calendar/container/height": "VariableID:63:137",
+    "component/icon-radar/container/width": "VariableID:63:138",
+    "component/icon-radar/container/height": "VariableID:63:139",
+    "component/icon-community/container/width": "VariableID:63:140",
+    "component/icon-community/container/height": "VariableID:63:141",
+    "component/icon-grid/container/width": "VariableID:63:142",
+    "component/icon-grid/container/height": "VariableID:63:143",
+    "component/icon-list/container/width": "VariableID:63:144",
+    "component/icon-list/container/height": "VariableID:63:145",
+    "component/icon-chevron/container/width": "VariableID:63:146",
+    "component/icon-chevron/container/height": "VariableID:63:147",
+    "component/icon-back/container/width": "VariableID:63:148",
+    "component/icon-back/container/height": "VariableID:63:149",
+    "component/icon-share/container/width": "VariableID:63:150",
+    "component/icon-share/container/height": "VariableID:63:151",
+    "component/icon-bookmark/container/width": "VariableID:63:152",
+    "component/icon-bookmark/container/height": "VariableID:63:153",
+    "component/icon-check/container/width": "VariableID:63:154",
+    "component/icon-check/container/height": "VariableID:63:155",
+    "component/icon-more/container/width": "VariableID:63:156",
+    "component/icon-more/container/height": "VariableID:63:157",
+    "component/icon-bell/container/width": "VariableID:63:158",
+    "component/icon-bell/container/height": "VariableID:63:159",
+    "component/icon-panel/container/width": "VariableID:63:160",
+    "component/icon-panel/container/height": "VariableID:63:161",
+    "component/icon-chat/container/width": "VariableID:63:162",
+    "component/icon-chat/container/height": "VariableID:63:163",
+    "component/icon-map/container/width": "VariableID:63:164",
+    "component/icon-map/container/height": "VariableID:63:165",
+    "component/icon-gift/container/width": "VariableID:63:166",
+    "component/icon-gift/container/height": "VariableID:63:167",
+    "component/navigationitem/layout-mobile/container/width": "VariableID:63:168",
+    "component/sectionheading/container/width": "VariableID:63:169",
+    "component/trackrow/layout-desktop/container/width": "VariableID:63:10033",
+    "component/trackrow/layout-mobile/container/width": "VariableID:63:10034",
+    "component/trackrow/layout-compact/container/width": "VariableID:63:10035",
+    "component/range/kind-progress/elapsed/width": "VariableID:63:10036",
+    "component/range/kind-volume/elapsed/width": "VariableID:63:10037",
+    "component/playercontrols/container/width": "VariableID:63:10038",
+    "component/sessioncard/container/width": "VariableID:63:10039",
+    "component/sessioncard/artwork-live-session/width": "VariableID:63:10040",
+    "component/sessioncard/artwork-live-session/height": "VariableID:63:10041",
+    "component/advertisingbanner/layout-desktop/container/width": "VariableID:63:10042",
+    "component/advertisingbanner/layout-desktop/artwork-publicidad/height": "VariableID:63:10043",
+    "component/advertisingbanner/layout-mobile/container/width": "VariableID:63:10044",
+    "component/advertisingbanner/layout-mobile/artwork-publicidad/height": "VariableID:63:10045",
+    "component/emptystate/container/width": "VariableID:63:10046",
+    "component/header/layout-desktop/noodo-field/width": "VariableID:63:10047",
+    "component/dock/layout-desktop/container/width": "VariableID:63:10048",
+    "component/dock/layout-desktop/now-playing/width": "VariableID:63:10049",
+    "component/dock/layout-desktop/artwork-luna-marea/width": "VariableID:63:10050",
+    "component/dock/layout-desktop/artwork-luna-marea/height": "VariableID:63:10051",
+    "component/dock/layout-desktop/noodo-playercontrols/width": "VariableID:63:10052",
+    "component/dock/layout-mobile/container/width": "VariableID:63:10053",
+    "component/dock/layout-mobile/artwork-luna-marea/width": "VariableID:63:10054",
+    "component/dock/layout-mobile/artwork-luna-marea/height": "VariableID:63:10055",
+    "component/dock/layout-expanded/container/width": "VariableID:63:10056",
+    "component/dock/layout-expanded/artwork-entre-luces/width": "VariableID:63:10057",
+    "component/dock/layout-expanded/artwork-entre-luces/height": "VariableID:63:10058",
+    "component/dock/layout-expanded/noodo-playercontrols/width": "VariableID:63:10059",
+    "component/contextpanel/artwork-luna-marea/width": "VariableID:63:10060",
+    "component/contextpanel/artwork-luna-marea/height": "VariableID:63:10061",
+    "component/contextpanel/artwork-evento-luna/width": "VariableID:63:10062",
+    "component/contextpanel/artwork-evento-luna/height": "VariableID:63:10063",
+    "component/sectionplayer/layout-expanded/container/width": "VariableID:63:10064",
+    "component/sectionplayer/layout-expanded/artwork-luna-marea/width": "VariableID:63:10065",
+    "component/sectionplayer/layout-expanded/artwork-luna-marea/height": "VariableID:63:10066",
+    "component/sectionplayer/layout-expanded/noodo-playercontrols/width": "VariableID:63:10067",
+    "component/sectionplayer/layout-collapsed/container/width": "VariableID:63:10068",
+    "component/communitycard/kind-chat/container/width": "VariableID:63:10078",
+    "component/communitycard/kind-chat/community-illustration/height": "VariableID:63:10079",
+    "component/communitycard/kind-match/container/width": "VariableID:63:10080",
+    "component/communitycard/kind-match/community-illustration/height": "VariableID:63:10081",
+    "component/communitycard/kind-forum/container/width": "VariableID:63:10082",
+    "component/communitycard/kind-forum/community-illustration/height": "VariableID:63:10083",
+    "component/roomcard/container/width": "VariableID:63:10084",
+    "component/chatmessage/container/width": "VariableID:63:10085",
+    "component/composer/container/width": "VariableID:63:10086",
+    "component/matchcard/container/width": "VariableID:63:10087",
+    "component/matchcard/artwork-luna-marea/width": "VariableID:63:10088",
+    "component/matchcard/artwork-luna-marea/height": "VariableID:63:10089",
+    "component/forumpost/container/width": "VariableID:63:10090",
+    "component/eventcard/layout-grid/container/width": "VariableID:63:10091",
+    "component/eventcard/layout-grid/artwork-evento-luna/height": "VariableID:63:10092",
+    "component/eventcard/layout-list/container/width": "VariableID:63:10093",
+    "component/eventcard/layout-list/artwork-evento-luna/width": "VariableID:63:10094",
+    "component/eventcard/layout-list/artwork-evento-luna/height": "VariableID:63:10095",
+    "component/eventcard/layout-popup/container/width": "VariableID:63:10096",
+    "component/eventcard/layout-popup/artwork-evento-luna/width": "VariableID:63:10097",
+    "component/ticketoption/container/width": "VariableID:63:10098",
+    "component/purchasesummary/container/width": "VariableID:63:10099",
+    "component/artistidentity/layout-desktop/container/width": "VariableID:63:10100",
+    "component/artistidentity/layout-desktop/artwork-luna-marea/width": "VariableID:63:10101",
+    "component/artistidentity/layout-desktop/artwork-luna-marea/height": "VariableID:63:10102",
+    "component/artistidentity/layout-mobile/container/width": "VariableID:63:10103",
+    "component/artistidentity/layout-mobile/artwork-luna-marea/width": "VariableID:63:10104",
+    "component/artistidentity/layout-mobile/artwork-luna-marea/height": "VariableID:63:10105",
+    "component/editorialcard/layout-desktop/container/width": "VariableID:63:10106",
+    "component/editorialcard/layout-mobile/container/width": "VariableID:63:10107",
+    "component/editorialcard/layout-mobile/artwork-luna-marea/width": "VariableID:63:10108",
+    "component/radarmap/container/width": "VariableID:63:10109",
+    "component/radarmap/container/height": "VariableID:63:10110",
+    "component/radarmap/map-canvas/width": "VariableID:63:10111",
+    "component/radarmap/map-canvas/height": "VariableID:63:10112",
+    "component/radarmap/noodo-eventcard/width": "VariableID:63:10113",
+    "component/infoblock/kind-bio/container/width": "VariableID:63:10114",
+    "component/infoblock/kind-venue/container/width": "VariableID:63:10115",
+    "component/infoblock/kind-lineup/container/width": "VariableID:63:10116",
+    "component/infoblock/kind-contact/container/width": "VariableID:63:10117",
+    "component/infoblock/kind-credits/container/width": "VariableID:63:10118",
+    "component/digitalticket/container/width": "VariableID:63:10119",
+    "component/digitalticket/artwork-evento-luna/width": "VariableID:63:10120",
+    "component/digitalticket/module/width": "VariableID:63:10121",
+    "component/digitalticket/module/height": "VariableID:63:10122",
+    "component/dialog/kind-playlist-layout-desktop/container/width": "VariableID:63:10132",
+    "component/dialog/kind-playlist-layout-mobile/container/width": "VariableID:63:10133",
+    "component/dialog/kind-confirm-layout-desktop/container/width": "VariableID:63:10134",
+    "component/dialog/kind-confirm-layout-mobile/container/width": "VariableID:63:10135",
+    "component/dialog/kind-support-layout-desktop/container/width": "VariableID:63:10136",
+    "component/dialog/kind-support-layout-mobile/container/width": "VariableID:63:10137",
+    "component/dialog/kind-profile-layout-desktop/container/width": "VariableID:63:10138",
+    "component/dialog/kind-profile-layout-mobile/container/width": "VariableID:63:10139",
+    "component/dialog/kind-notifications-layout-desktop/container/width": "VariableID:63:10140",
+    "component/dialog/kind-notifications-layout-mobile/container/width": "VariableID:63:10141",
+    "component/dialog/kind-share-layout-desktop/container/width": "VariableID:63:10142",
+    "component/dialog/kind-share-layout-mobile/container/width": "VariableID:63:10143",
+    "component/menu/kind-track/container/width": "VariableID:63:10144",
+    "component/menu/kind-playlist/container/width": "VariableID:63:10145",
+    "component/menu/kind-artist/container/width": "VariableID:63:10146",
+    "component/menu/kind-account/container/width": "VariableID:63:10147",
+    "component/playlistpicker/container/width": "VariableID:63:10148",
+    "component/paymentmethod/container/width": "VariableID:63:10149",
+    "component/paymentresult/container/width": "VariableID:63:10150",
+    "component/skeleton/kind-card/container/width": "VariableID:63:10151",
+    "component/skeleton/kind-card/artwork-skeleton/width": "VariableID:63:10152",
+    "component/skeleton/kind-card/artwork-skeleton/height": "VariableID:63:10153",
+    "component/skeleton/kind-card/text-skeleton/width": "VariableID:63:10154",
+    "component/skeleton/kind-card/text-skeleton/height": "VariableID:63:10155",
+    "component/skeleton/kind-track/container/width": "VariableID:63:10156",
+    "component/skeleton/kind-track/text-skeleton/width": "VariableID:63:10157",
+    "component/skeleton/kind-track/text-skeleton/height": "VariableID:63:10158",
+    "component/skeleton/kind-article/container/width": "VariableID:63:10159",
+    "component/skeleton/kind-article/text-skeleton/width": "VariableID:63:10160",
+    "component/skeleton/kind-article/text-skeleton/height": "VariableID:63:10161",
+    "effect/playerGlow": "VariableID:67:7",
+    "effect/player/blur": "VariableID:67:8",
+    "effect/player/offsetX": "VariableID:67:9",
+    "effect/player/offsetY": "VariableID:67:10",
+    "effect/player/spread": "VariableID:67:11",
+    "event/listWidth": "VariableID:72:346",
+    "event/art/listWidth": "VariableID:72:347",
+    "event/art/listHeight": "VariableID:72:348",
+    "content/mobileWidth": "VariableID:84:5122"
+  },
+  "primitives": {
+    "color/ivory": "VariableID:42:3",
+    "color/purple": "VariableID:42:4",
+    "color/lavender": "VariableID:42:5",
+    "color/canvas": "VariableID:42:6",
+    "color/player": "VariableID:42:7",
+    "color/surface": "VariableID:42:8",
+    "color/raised": "VariableID:42:9",
+    "color/muted": "VariableID:42:10",
+    "color/neutral": "VariableID:42:11",
+    "color/focus": "VariableID:42:12",
+    "color/border": "VariableID:42:13",
+    "color/control": "VariableID:42:14",
+    "color/success": "VariableID:42:15",
+    "color/warning": "VariableID:42:16",
+    "color/danger": "VariableID:42:17",
+    "color/info": "VariableID:42:18",
+    "dimension/0": "VariableID:42:19",
+    "dimension/1": "VariableID:42:20",
+    "dimension/2": "VariableID:42:21",
+    "dimension/4": "VariableID:42:22",
+    "dimension/6": "VariableID:42:23",
+    "dimension/8": "VariableID:42:24",
+    "dimension/12": "VariableID:42:25",
+    "dimension/14": "VariableID:42:26",
+    "dimension/16": "VariableID:42:27",
+    "dimension/18": "VariableID:42:28",
+    "dimension/20": "VariableID:42:29",
+    "dimension/22": "VariableID:42:30",
+    "dimension/24": "VariableID:42:31",
+    "dimension/26": "VariableID:42:32",
+    "dimension/32": "VariableID:42:33",
+    "dimension/40": "VariableID:42:34",
+    "dimension/44": "VariableID:42:35",
+    "dimension/46": "VariableID:42:36",
+    "dimension/48": "VariableID:42:37",
+    "dimension/56": "VariableID:42:38",
+    "dimension/60": "VariableID:42:39",
+    "dimension/64": "VariableID:42:40",
+    "dimension/68": "VariableID:42:41",
+    "dimension/72": "VariableID:42:42",
+    "dimension/80": "VariableID:42:43",
+    "dimension/88": "VariableID:42:44",
+    "dimension/96": "VariableID:42:45",
+    "dimension/120": "VariableID:42:46",
+    "dimension/144": "VariableID:42:47",
+    "dimension/160": "VariableID:42:48",
+    "dimension/176": "VariableID:42:49",
+    "dimension/180": "VariableID:42:50",
+    "dimension/200": "VariableID:42:51",
+    "dimension/210": "VariableID:42:52",
+    "dimension/234": "VariableID:42:53",
+    "dimension/240": "VariableID:42:54",
+    "dimension/272": "VariableID:42:55",
+    "dimension/280": "VariableID:42:56",
+    "dimension/290": "VariableID:42:57",
+    "dimension/320": "VariableID:42:58",
+    "dimension/358": "VariableID:42:59",
+    "dimension/390": "VariableID:42:60",
+    "dimension/440": "VariableID:42:61",
+    "dimension/480": "VariableID:42:62",
+    "dimension/540": "VariableID:42:63",
+    "dimension/640": "VariableID:42:64",
+    "dimension/720": "VariableID:42:65",
+    "dimension/760": "VariableID:42:66",
+    "dimension/768": "VariableID:42:67",
+    "dimension/900": "VariableID:42:68",
+    "dimension/960": "VariableID:42:69",
+    "dimension/1024": "VariableID:42:70",
+    "dimension/1440": "VariableID:42:71",
+    "dimension/999": "VariableID:42:72",
+    "opacity/disabled": "VariableID:42:73",
+    "opacity/full": "VariableID:53:302",
+    "opacity/muted": "VariableID:53:303",
+    "font/family": "VariableID:61:2",
+    "font/style/Regular": "VariableID:61:3",
+    "font/style/Medium": "VariableID:61:4",
+    "font/style/SemiBold": "VariableID:61:5",
+    "dimension/generated-236": "VariableID:63:10069",
+    "dimension/generated-360": "VariableID:63:10070",
+    "dimension/generated-203": "VariableID:63:10071",
+    "dimension/generated-1408": "VariableID:63:10072",
+    "dimension/generated-260": "VariableID:63:10073",
+    "dimension/generated-202": "VariableID:63:10074",
+    "dimension/generated-230": "VariableID:63:10123",
+    "dimension/generated-352": "VariableID:63:10124",
+    "dimension/generated-600": "VariableID:63:10125",
+    "dimension/generated-560": "VariableID:63:10126",
+    "dimension/generated-90": "VariableID:63:10127",
+    "dimension/generated-520": "VariableID:63:10128",
+    "dimension/generated-326": "VariableID:63:10129",
+    "dimension/generated-500": "VariableID:63:10130",
+    "dimension/generated-288": "VariableID:63:10131",
+    "color/glow-purple": "VariableID:67:2",
+    "effect/player-blur": "VariableID:67:3",
+    "effect/player-offsetX": "VariableID:67:4",
+    "effect/player-offsetY": "VariableID:67:5",
+    "effect/player-spread": "VariableID:67:6",
+    "dimension/event-list-wide": "VariableID:72:344",
+    "dimension/event-art-small": "VariableID:72:345"
+  },
+  "styles": {
+    "display": "S:9614ee6c7ca44977bfb8dd8b4792ff55c5a5b9dd,",
+    "title": "S:766d5fe6d082adfd212a83be8e96bf0c082a3649,",
+    "heading": "S:eb514db86fc8a863ff60d3ffaeb38bec795e6e0c,",
+    "body": "S:1b297176ed55c8aeb93baae4325c86b268f449fa,",
+    "label": "S:dac64c6fef30c8d4074dea890e8e6b6d51ebf1e8,",
+    "meta": "S:965c6c4f54702101545463c556f66bd2888bef8a,"
+  },
+  "pages": {
+    "00 · Start here": "42:158",
+    "01 · Foundations": "42:159",
+    "02 · Controls & navigation": "42:160",
+    "03 · Player & catalog": "42:161",
+    "04 · Community & events": "42:162",
+    "05 · Desktop screens": "42:163",
+    "06 · Mobile screens": "42:164",
+    "07 · States & overlays": "42:165"
+  },
+  "collections": {
+    "primitive": "VariableCollectionId:42:2",
+    "semantic": "VariableCollectionId:42:74",
+    "responsive": "VariableCollectionId:42:139"
+  },
+  "fileKey": "TFCiDPh55B1lg3qrkFv4jb",
+  "sessionId": "d5e76c24-55a4-4d24-9f30-afc0d787b748",
+  "components": {
+    "Button": {
+      "id": "43:124",
+      "variants": [
+        {
+          "id": "43:125",
+          "name": "Kind=Soft, State=Default"
+        },
+        {
+          "id": "43:129",
+          "name": "Kind=Soft, State=Hover"
+        },
+        {
+          "id": "43:133",
+          "name": "Kind=Soft, State=Focus"
+        },
+        {
+          "id": "43:137",
+          "name": "Kind=Soft, State=Pressed"
+        },
+        {
+          "id": "43:141",
+          "name": "Kind=Soft, State=Disabled"
+        },
+        {
+          "id": "43:145",
+          "name": "Kind=Soft, State=Loading"
+        },
+        {
+          "id": "43:149",
+          "name": "Kind=Primary, State=Default"
+        },
+        {
+          "id": "43:153",
+          "name": "Kind=Primary, State=Hover"
+        },
+        {
+          "id": "43:157",
+          "name": "Kind=Primary, State=Focus"
+        },
+        {
+          "id": "43:161",
+          "name": "Kind=Primary, State=Pressed"
+        },
+        {
+          "id": "43:165",
+          "name": "Kind=Primary, State=Disabled"
+        },
+        {
+          "id": "43:169",
+          "name": "Kind=Primary, State=Loading"
+        },
+        {
+          "id": "43:173",
+          "name": "Kind=Outline, State=Default"
+        },
+        {
+          "id": "43:177",
+          "name": "Kind=Outline, State=Hover"
+        },
+        {
+          "id": "43:181",
+          "name": "Kind=Outline, State=Focus"
+        },
+        {
+          "id": "43:185",
+          "name": "Kind=Outline, State=Pressed"
+        },
+        {
+          "id": "43:189",
+          "name": "Kind=Outline, State=Disabled"
+        },
+        {
+          "id": "43:193",
+          "name": "Kind=Outline, State=Loading"
+        },
+        {
+          "id": "43:197",
+          "name": "Kind=Ghost, State=Default"
+        },
+        {
+          "id": "43:201",
+          "name": "Kind=Ghost, State=Hover"
+        },
+        {
+          "id": "43:205",
+          "name": "Kind=Ghost, State=Focus"
+        },
+        {
+          "id": "43:209",
+          "name": "Kind=Ghost, State=Pressed"
+        },
+        {
+          "id": "43:213",
+          "name": "Kind=Ghost, State=Disabled"
+        },
+        {
+          "id": "43:217",
+          "name": "Kind=Ghost, State=Loading"
+        }
+      ]
+    },
+    "IconButton": {
+      "id": "43:221",
+      "variants": [
+        {
+          "id": "43:222",
+          "name": "Kind=Ghost, State=Default"
+        },
+        {
+          "id": "43:225",
+          "name": "Kind=Ghost, State=Hover"
+        },
+        {
+          "id": "43:228",
+          "name": "Kind=Ghost, State=Focus"
+        },
+        {
+          "id": "43:231",
+          "name": "Kind=Ghost, State=Selected"
+        },
+        {
+          "id": "43:234",
+          "name": "Kind=Ghost, State=Disabled"
+        },
+        {
+          "id": "43:237",
+          "name": "Kind=Soft, State=Default"
+        },
+        {
+          "id": "43:240",
+          "name": "Kind=Soft, State=Hover"
+        },
+        {
+          "id": "43:243",
+          "name": "Kind=Soft, State=Focus"
+        },
+        {
+          "id": "43:246",
+          "name": "Kind=Soft, State=Selected"
+        },
+        {
+          "id": "43:249",
+          "name": "Kind=Soft, State=Disabled"
+        },
+        {
+          "id": "43:252",
+          "name": "Kind=Outline, State=Default"
+        },
+        {
+          "id": "43:255",
+          "name": "Kind=Outline, State=Hover"
+        },
+        {
+          "id": "43:258",
+          "name": "Kind=Outline, State=Focus"
+        },
+        {
+          "id": "43:261",
+          "name": "Kind=Outline, State=Selected"
+        },
+        {
+          "id": "43:264",
+          "name": "Kind=Outline, State=Disabled"
+        }
+      ]
+    },
+    "NavigationItem": {
+      "id": "43:267",
+      "variants": [
+        {
+          "id": "43:268",
+          "name": "Layout=Expanded, State=Default"
+        },
+        {
+          "id": "43:272",
+          "name": "Layout=Expanded, State=Active"
+        },
+        {
+          "id": "43:276",
+          "name": "Layout=Expanded, State=Focus"
+        },
+        {
+          "id": "43:280",
+          "name": "Layout=Collapsed, State=Default"
+        },
+        {
+          "id": "43:283",
+          "name": "Layout=Collapsed, State=Active"
+        },
+        {
+          "id": "43:286",
+          "name": "Layout=Collapsed, State=Focus"
+        },
+        {
+          "id": "43:289",
+          "name": "Layout=Mobile, State=Default"
+        },
+        {
+          "id": "43:293",
+          "name": "Layout=Mobile, State=Active"
+        },
+        {
+          "id": "43:297",
+          "name": "Layout=Mobile, State=Focus"
+        }
+      ]
+    },
+    "Field": {
+      "id": "43:301",
+      "variants": [
+        {
+          "id": "43:302",
+          "name": "State=Empty"
+        },
+        {
+          "id": "43:308",
+          "name": "State=Filled"
+        },
+        {
+          "id": "43:314",
+          "name": "State=Focus"
+        },
+        {
+          "id": "43:320",
+          "name": "State=Error"
+        },
+        {
+          "id": "43:326",
+          "name": "State=Disabled"
+        },
+        {
+          "id": "43:332",
+          "name": "State=ReadOnly"
+        }
+      ]
+    },
+    "Chip": {
+      "id": "43:338",
+      "variants": [
+        {
+          "id": "43:339",
+          "name": "State=Default"
+        },
+        {
+          "id": "43:341",
+          "name": "State=Selected"
+        },
+        {
+          "id": "43:343",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "SelectionControl": {
+      "id": "44:62",
+      "variants": [
+        {
+          "id": "44:63",
+          "name": "Kind=Checkbox, State=Off"
+        },
+        {
+          "id": "44:66",
+          "name": "Kind=Checkbox, State=On"
+        },
+        {
+          "id": "44:71",
+          "name": "Kind=Checkbox, State=Focus"
+        },
+        {
+          "id": "44:74",
+          "name": "Kind=Checkbox, State=Disabled"
+        },
+        {
+          "id": "44:77",
+          "name": "Kind=Radio, State=Off"
+        },
+        {
+          "id": "44:80",
+          "name": "Kind=Radio, State=On"
+        },
+        {
+          "id": "44:85",
+          "name": "Kind=Radio, State=Focus"
+        },
+        {
+          "id": "44:88",
+          "name": "Kind=Radio, State=Disabled"
+        },
+        {
+          "id": "44:91",
+          "name": "Kind=Switch, State=Off"
+        },
+        {
+          "id": "44:94",
+          "name": "Kind=Switch, State=On"
+        },
+        {
+          "id": "44:99",
+          "name": "Kind=Switch, State=Focus"
+        },
+        {
+          "id": "44:102",
+          "name": "Kind=Switch, State=Disabled"
+        }
+      ]
+    },
+    "Textarea": {
+      "id": "44:105",
+      "variants": [
+        {
+          "id": "44:106",
+          "name": "State=Empty"
+        },
+        {
+          "id": "44:109",
+          "name": "State=Filled"
+        },
+        {
+          "id": "44:112",
+          "name": "State=Focus"
+        },
+        {
+          "id": "44:115",
+          "name": "State=Error"
+        },
+        {
+          "id": "44:118",
+          "name": "State=Limit"
+        }
+      ]
+    },
+    "Select": {
+      "id": "44:121",
+      "variants": [
+        {
+          "id": "44:122",
+          "name": "State=Empty"
+        },
+        {
+          "id": "44:127",
+          "name": "State=Selected"
+        },
+        {
+          "id": "44:132",
+          "name": "State=Focus"
+        },
+        {
+          "id": "44:137",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "Tab": {
+      "id": "44:142",
+      "variants": [
+        {
+          "id": "44:143",
+          "name": "State=Default"
+        },
+        {
+          "id": "44:149",
+          "name": "State=Active"
+        },
+        {
+          "id": "44:155",
+          "name": "State=Focus"
+        }
+      ]
+    },
+    "TextLink": {
+      "id": "44:161",
+      "variants": [
+        {
+          "id": "44:162",
+          "name": "State=Default"
+        },
+        {
+          "id": "44:166",
+          "name": "State=Hover"
+        },
+        {
+          "id": "44:170",
+          "name": "State=Focus"
+        },
+        {
+          "id": "44:174",
+          "name": "State=Visited"
+        }
+      ]
+    },
+    "Badge": {
+      "id": "44:178",
+      "variants": [
+        {
+          "id": "44:179",
+          "name": "Tone=Info"
+        },
+        {
+          "id": "44:181",
+          "name": "Tone=Success"
+        },
+        {
+          "id": "44:183",
+          "name": "Tone=Warning"
+        },
+        {
+          "id": "44:185",
+          "name": "Tone=Danger"
+        }
+      ]
+    },
+    "Avatar": {
+      "id": "44:187",
+      "variants": [
+        {
+          "id": "44:188",
+          "name": "Content=Image"
+        },
+        {
+          "id": "44:190",
+          "name": "Content=Initials"
+        },
+        {
+          "id": "44:192",
+          "name": "Content=Empty"
+        }
+      ]
+    },
+    "Tooltip": {
+      "id": "44:196",
+      "variants": [
+        {
+          "id": "44:197",
+          "name": "Placement=Top"
+        },
+        {
+          "id": "44:199",
+          "name": "Placement=Bottom"
+        }
+      ]
+    },
+    "SectionHeading": {
+      "id": "44:201",
+      "variants": [
+        {
+          "id": "44:202",
+          "name": "State=Expanded"
+        },
+        {
+          "id": "44:208",
+          "name": "State=Collapsed"
+        }
+      ]
+    },
+    "Toast": {
+      "id": "44:214",
+      "variants": [
+        {
+          "id": "44:215",
+          "name": "Tone=Success"
+        },
+        {
+          "id": "44:223",
+          "name": "Tone=Error"
+        },
+        {
+          "id": "44:231",
+          "name": "Tone=Info"
+        },
+        {
+          "id": "44:239",
+          "name": "Tone=Warning"
+        }
+      ]
+    },
+    "CatalogCard": {
+      "id": "47:13",
+      "variants": [
+        {
+          "id": "47:14",
+          "name": "Kind=Release, State=Default"
+        },
+        {
+          "id": "47:18",
+          "name": "Kind=Release, State=Hover"
+        },
+        {
+          "id": "47:22",
+          "name": "Kind=Release, State=Focus"
+        },
+        {
+          "id": "47:26",
+          "name": "Kind=Release, State=Selected"
+        },
+        {
+          "id": "47:30",
+          "name": "Kind=Artist, State=Default"
+        },
+        {
+          "id": "47:34",
+          "name": "Kind=Artist, State=Hover"
+        },
+        {
+          "id": "47:38",
+          "name": "Kind=Artist, State=Focus"
+        },
+        {
+          "id": "47:42",
+          "name": "Kind=Artist, State=Selected"
+        },
+        {
+          "id": "47:46",
+          "name": "Kind=Playlist, State=Default"
+        },
+        {
+          "id": "47:50",
+          "name": "Kind=Playlist, State=Hover"
+        },
+        {
+          "id": "47:54",
+          "name": "Kind=Playlist, State=Focus"
+        },
+        {
+          "id": "47:58",
+          "name": "Kind=Playlist, State=Selected"
+        },
+        {
+          "id": "47:62",
+          "name": "Kind=Genre, State=Default"
+        },
+        {
+          "id": "47:67",
+          "name": "Kind=Genre, State=Hover"
+        },
+        {
+          "id": "47:72",
+          "name": "Kind=Genre, State=Focus"
+        },
+        {
+          "id": "47:77",
+          "name": "Kind=Genre, State=Selected"
+        },
+        {
+          "id": "47:82",
+          "name": "Kind=SeeAll, State=Default"
+        },
+        {
+          "id": "47:87",
+          "name": "Kind=SeeAll, State=Hover"
+        },
+        {
+          "id": "47:92",
+          "name": "Kind=SeeAll, State=Focus"
+        },
+        {
+          "id": "47:97",
+          "name": "Kind=SeeAll, State=Selected"
+        }
+      ]
+    },
+    "TrackRow": {
+      "id": "47:102",
+      "variants": [
+        {
+          "id": "47:103",
+          "name": "Layout=Desktop, State=Default"
+        },
+        {
+          "id": "47:123",
+          "name": "Layout=Desktop, State=Current"
+        },
+        {
+          "id": "47:142",
+          "name": "Layout=Desktop, State=Playing"
+        },
+        {
+          "id": "47:161",
+          "name": "Layout=Desktop, State=Saved"
+        },
+        {
+          "id": "47:180",
+          "name": "Layout=Desktop, State=Unavailable"
+        },
+        {
+          "id": "47:199",
+          "name": "Layout=Mobile, State=Default"
+        },
+        {
+          "id": "47:213",
+          "name": "Layout=Mobile, State=Current"
+        },
+        {
+          "id": "47:227",
+          "name": "Layout=Mobile, State=Playing"
+        },
+        {
+          "id": "47:241",
+          "name": "Layout=Mobile, State=Saved"
+        },
+        {
+          "id": "47:255",
+          "name": "Layout=Mobile, State=Unavailable"
+        },
+        {
+          "id": "47:269",
+          "name": "Layout=Compact, State=Default"
+        },
+        {
+          "id": "47:279",
+          "name": "Layout=Compact, State=Current"
+        },
+        {
+          "id": "47:289",
+          "name": "Layout=Compact, State=Playing"
+        },
+        {
+          "id": "47:299",
+          "name": "Layout=Compact, State=Saved"
+        },
+        {
+          "id": "47:309",
+          "name": "Layout=Compact, State=Unavailable"
+        }
+      ]
+    },
+    "Range": {
+      "id": "47:319",
+      "variants": [
+        {
+          "id": "47:320",
+          "name": "Kind=Progress, State=Default"
+        },
+        {
+          "id": "47:324",
+          "name": "Kind=Progress, State=Dragging"
+        },
+        {
+          "id": "47:328",
+          "name": "Kind=Progress, State=Focus"
+        },
+        {
+          "id": "47:332",
+          "name": "Kind=Progress, State=Disabled"
+        },
+        {
+          "id": "47:336",
+          "name": "Kind=Volume, State=Default"
+        },
+        {
+          "id": "47:340",
+          "name": "Kind=Volume, State=Dragging"
+        },
+        {
+          "id": "47:344",
+          "name": "Kind=Volume, State=Focus"
+        },
+        {
+          "id": "47:348",
+          "name": "Kind=Volume, State=Disabled"
+        }
+      ]
+    },
+    "PlayerControls": {
+      "id": "47:352",
+      "variants": [
+        {
+          "id": "47:353",
+          "name": "State=Paused"
+        },
+        {
+          "id": "47:369",
+          "name": "State=Playing"
+        },
+        {
+          "id": "47:385",
+          "name": "State=Loading"
+        },
+        {
+          "id": "47:401",
+          "name": "State=Error"
+        }
+      ]
+    },
+    "SessionCard": {
+      "id": "47:417",
+      "variants": [
+        {
+          "id": "47:418",
+          "name": "State=Poster"
+        },
+        {
+          "id": "47:428",
+          "name": "State=Playing"
+        },
+        {
+          "id": "47:437",
+          "name": "State=Loading"
+        },
+        {
+          "id": "47:446",
+          "name": "State=Error"
+        }
+      ]
+    },
+    "AdvertisingBanner": {
+      "id": "47:455",
+      "variants": [
+        {
+          "id": "47:456",
+          "name": "Layout=Desktop"
+        },
+        {
+          "id": "47:468",
+          "name": "Layout=Mobile"
+        }
+      ]
+    },
+    "EmptyState": {
+      "id": "47:480",
+      "variants": [
+        {
+          "id": "47:481",
+          "name": "State=Empty"
+        },
+        {
+          "id": "47:491",
+          "name": "State=NoResults"
+        },
+        {
+          "id": "47:501",
+          "name": "State=Offline"
+        },
+        {
+          "id": "47:511",
+          "name": "State=Error"
+        },
+        {
+          "id": "47:521",
+          "name": "State=Loading"
+        },
+        {
+          "id": "47:530",
+          "name": "State=NoPermission"
+        }
+      ]
+    },
+    "Sidebar": {
+      "id": "48:203",
+      "variants": [
+        {
+          "id": "48:204",
+          "name": "Layout=Expanded, Active=Inicio"
+        },
+        {
+          "id": "48:247",
+          "name": "Layout=Expanded, Active=Canciones"
+        },
+        {
+          "id": "48:289",
+          "name": "Layout=Expanded, Active=Originals"
+        },
+        {
+          "id": "48:331",
+          "name": "Layout=Expanded, Active=Mi playlist"
+        },
+        {
+          "id": "48:373",
+          "name": "Layout=Expanded, Active=Radar"
+        },
+        {
+          "id": "48:415",
+          "name": "Layout=Expanded, Active=Artistas"
+        },
+        {
+          "id": "48:457",
+          "name": "Layout=Expanded, Active=Comunidad"
+        },
+        {
+          "id": "48:499",
+          "name": "Layout=Expanded, Active=Cola de reproducción"
+        },
+        {
+          "id": "48:541",
+          "name": "Layout=Expanded, Active=Explorar géneros"
+        },
+        {
+          "id": "48:583",
+          "name": "Layout=Collapsed, Active=Inicio"
+        },
+        {
+          "id": "48:624",
+          "name": "Layout=Collapsed, Active=Canciones"
+        },
+        {
+          "id": "48:665",
+          "name": "Layout=Collapsed, Active=Originals"
+        },
+        {
+          "id": "48:706",
+          "name": "Layout=Collapsed, Active=Mi playlist"
+        },
+        {
+          "id": "48:747",
+          "name": "Layout=Collapsed, Active=Radar"
+        },
+        {
+          "id": "48:788",
+          "name": "Layout=Collapsed, Active=Artistas"
+        },
+        {
+          "id": "48:829",
+          "name": "Layout=Collapsed, Active=Comunidad"
+        },
+        {
+          "id": "48:870",
+          "name": "Layout=Collapsed, Active=Cola de reproducción"
+        },
+        {
+          "id": "48:911",
+          "name": "Layout=Collapsed, Active=Explorar géneros"
+        }
+      ]
+    },
+    "MobileNavigation": {
+      "id": "48:952",
+      "variants": [
+        {
+          "id": "48:953",
+          "name": "Active=Inicio"
+        },
+        {
+          "id": "48:974",
+          "name": "Active=Canciones"
+        },
+        {
+          "id": "48:995",
+          "name": "Active=Originals"
+        },
+        {
+          "id": "48:1016",
+          "name": "Active=Radar"
+        },
+        {
+          "id": "48:1037",
+          "name": "Active=Comunidad"
+        }
+      ]
+    },
+    "Header": {
+      "id": "48:1058",
+      "variants": [
+        {
+          "id": "48:1059",
+          "name": "Layout=Desktop"
+        },
+        {
+          "id": "48:1085",
+          "name": "Layout=Mobile"
+        }
+      ]
+    },
+    "Dock": {
+      "id": "48:1094",
+      "variants": [
+        {
+          "id": "48:1095",
+          "name": "Layout=Desktop, State=Paused"
+        },
+        {
+          "id": "48:1136",
+          "name": "Layout=Desktop, State=Playing"
+        },
+        {
+          "id": "48:1177",
+          "name": "Layout=Mobile, State=Paused"
+        },
+        {
+          "id": "48:1189",
+          "name": "Layout=Mobile, State=Playing"
+        },
+        {
+          "id": "48:1201",
+          "name": "Layout=Expanded, State=Paused"
+        },
+        {
+          "id": "48:1245",
+          "name": "Layout=Expanded, State=Playing"
+        }
+      ]
+    },
+    "ContextPanel": {
+      "id": "48:1289",
+      "variants": [
+        {
+          "id": "48:1290",
+          "name": "Tab=Song"
+        },
+        {
+          "id": "48:1312",
+          "name": "Tab=Artist"
+        },
+        {
+          "id": "48:1334",
+          "name": "Tab=Events"
+        },
+        {
+          "id": "48:1356",
+          "name": "Tab=Lyrics"
+        }
+      ]
+    },
+    "SectionPlayer": {
+      "id": "48:1372",
+      "variants": [
+        {
+          "id": "48:1373",
+          "name": "Layout=Expanded"
+        },
+        {
+          "id": "48:1541",
+          "name": "Layout=Collapsed"
+        }
+      ]
+    },
+    "CommunityCard": {
+      "id": "49:643",
+      "variants": [
+        {
+          "id": "49:644",
+          "name": "Kind=Chat, State=Default"
+        },
+        {
+          "id": "49:653",
+          "name": "Kind=Chat, State=Selected"
+        },
+        {
+          "id": "49:662",
+          "name": "Kind=Chat, State=Focus"
+        },
+        {
+          "id": "49:671",
+          "name": "Kind=Match, State=Default"
+        },
+        {
+          "id": "49:680",
+          "name": "Kind=Match, State=Selected"
+        },
+        {
+          "id": "49:689",
+          "name": "Kind=Match, State=Focus"
+        },
+        {
+          "id": "49:698",
+          "name": "Kind=Forum, State=Default"
+        },
+        {
+          "id": "49:707",
+          "name": "Kind=Forum, State=Selected"
+        },
+        {
+          "id": "49:716",
+          "name": "Kind=Forum, State=Focus"
+        }
+      ]
+    },
+    "RoomCard": {
+      "id": "49:725",
+      "variants": [
+        {
+          "id": "49:726",
+          "name": "State=Default"
+        },
+        {
+          "id": "49:734",
+          "name": "State=Selected"
+        },
+        {
+          "id": "49:742",
+          "name": "State=Empty"
+        }
+      ]
+    },
+    "ChatMessage": {
+      "id": "49:750",
+      "variants": [
+        {
+          "id": "49:751",
+          "name": "Sender=Self, State=Sent"
+        },
+        {
+          "id": "49:758",
+          "name": "Sender=Self, State=Pending"
+        },
+        {
+          "id": "49:765",
+          "name": "Sender=Self, State=Error"
+        },
+        {
+          "id": "49:772",
+          "name": "Sender=Other, State=Sent"
+        },
+        {
+          "id": "49:779",
+          "name": "Sender=Other, State=Pending"
+        },
+        {
+          "id": "49:786",
+          "name": "Sender=Other, State=Error"
+        }
+      ]
+    },
+    "Composer": {
+      "id": "49:793",
+      "variants": [
+        {
+          "id": "49:794",
+          "name": "State=Empty"
+        },
+        {
+          "id": "49:807",
+          "name": "State=Writing"
+        },
+        {
+          "id": "49:820",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "MatchCard": {
+      "id": "49:833",
+      "variants": [
+        {
+          "id": "49:834",
+          "name": "State=Default"
+        },
+        {
+          "id": "49:849",
+          "name": "State=Matched"
+        },
+        {
+          "id": "49:864",
+          "name": "State=Passed"
+        },
+        {
+          "id": "49:879",
+          "name": "State=Empty"
+        }
+      ]
+    },
+    "ForumPost": {
+      "id": "49:894",
+      "variants": [
+        {
+          "id": "49:895",
+          "name": "State=Default"
+        },
+        {
+          "id": "49:902",
+          "name": "State=Answered"
+        },
+        {
+          "id": "49:909",
+          "name": "State=Selected"
+        }
+      ]
+    },
+    "EventCard": {
+      "id": "49:916",
+      "variants": [
+        {
+          "id": "49:917",
+          "name": "Layout=Grid, State=Default"
+        },
+        {
+          "id": "49:937",
+          "name": "Layout=Grid, State=Selected"
+        },
+        {
+          "id": "49:957",
+          "name": "Layout=Grid, State=Saved"
+        },
+        {
+          "id": "49:977",
+          "name": "Layout=List, State=Default"
+        },
+        {
+          "id": "49:997",
+          "name": "Layout=List, State=Selected"
+        },
+        {
+          "id": "49:1017",
+          "name": "Layout=List, State=Saved"
+        },
+        {
+          "id": "49:1037",
+          "name": "Layout=Popup, State=Default"
+        },
+        {
+          "id": "49:1057",
+          "name": "Layout=Popup, State=Selected"
+        },
+        {
+          "id": "49:1077",
+          "name": "Layout=Popup, State=Saved"
+        }
+      ]
+    },
+    "MapPin": {
+      "id": "49:1097",
+      "variants": [
+        {
+          "id": "49:1098",
+          "name": "State=Default"
+        },
+        {
+          "id": "49:1100",
+          "name": "State=Selected"
+        },
+        {
+          "id": "49:1102",
+          "name": "State=Cluster"
+        }
+      ]
+    },
+    "TicketOption": {
+      "id": "49:1104",
+      "variants": [
+        {
+          "id": "49:1105",
+          "name": "State=Available"
+        },
+        {
+          "id": "49:1115",
+          "name": "State=Selected"
+        },
+        {
+          "id": "49:1125",
+          "name": "State=Limit"
+        },
+        {
+          "id": "49:1135",
+          "name": "State=SoldOut"
+        }
+      ]
+    },
+    "PurchaseSummary": {
+      "id": "49:1145",
+      "variants": [
+        {
+          "id": "49:1146",
+          "name": "State=Default"
+        },
+        {
+          "id": "49:1156",
+          "name": "State=Processing"
+        },
+        {
+          "id": "49:1166",
+          "name": "State=Success"
+        },
+        {
+          "id": "49:1176",
+          "name": "State=Error"
+        }
+      ]
+    },
+    "ArtistIdentity": {
+      "id": "49:1186",
+      "variants": [
+        {
+          "id": "49:1187",
+          "name": "Layout=Desktop"
+        },
+        {
+          "id": "49:1204",
+          "name": "Layout=Mobile"
+        }
+      ]
+    },
+    "EditorialCard": {
+      "id": "49:1221",
+      "variants": [
+        {
+          "id": "49:1222",
+          "name": "Layout=Desktop"
+        },
+        {
+          "id": "49:1232",
+          "name": "Layout=Mobile"
+        }
+      ]
+    },
+    "RadarMap": {
+      "id": "55:252",
+      "variants": [
+        {
+          "id": "55:253",
+          "name": "State=Default"
+        },
+        {
+          "id": "55:283",
+          "name": "State=Selected"
+        },
+        {
+          "id": "55:336",
+          "name": "State=Error"
+        }
+      ]
+    },
+    "DateBlock": {
+      "id": "55:352",
+      "variants": [
+        {
+          "id": "55:353",
+          "name": "State=Confirmed"
+        },
+        {
+          "id": "55:357",
+          "name": "State=Pending"
+        },
+        {
+          "id": "55:361",
+          "name": "State=Rescheduled"
+        }
+      ]
+    },
+    "Quantity": {
+      "id": "55:365",
+      "variants": [
+        {
+          "id": "55:366",
+          "name": "State=Default"
+        },
+        {
+          "id": "55:374",
+          "name": "State=Minimum"
+        },
+        {
+          "id": "55:382",
+          "name": "State=Maximum"
+        },
+        {
+          "id": "55:390",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "InfoBlock": {
+      "id": "55:398",
+      "variants": [
+        {
+          "id": "55:399",
+          "name": "Kind=Bio"
+        },
+        {
+          "id": "55:402",
+          "name": "Kind=Venue"
+        },
+        {
+          "id": "55:405",
+          "name": "Kind=Lineup"
+        },
+        {
+          "id": "55:408",
+          "name": "Kind=Contact"
+        },
+        {
+          "id": "55:411",
+          "name": "Kind=Credits"
+        }
+      ]
+    },
+    "DigitalTicket": {
+      "id": "55:414",
+      "variants": [
+        {
+          "id": "55:415",
+          "name": "State=Valid"
+        },
+        {
+          "id": "55:517",
+          "name": "State=Used"
+        },
+        {
+          "id": "55:619",
+          "name": "State=Pending"
+        },
+        {
+          "id": "55:721",
+          "name": "State=Cancelled"
+        }
+      ]
+    },
+    "GenreCard": {
+      "id": "59:6093",
+      "variants": [
+        {
+          "id": "59:6094",
+          "name": "Genre=Electrónica, State=Default"
+        },
+        {
+          "id": "59:6108",
+          "name": "Genre=Electrónica, State=Hover"
+        },
+        {
+          "id": "59:6122",
+          "name": "Genre=Electrónica, State=Focus"
+        },
+        {
+          "id": "59:6136",
+          "name": "Genre=Fusión Pacífico, State=Default"
+        },
+        {
+          "id": "59:6148",
+          "name": "Genre=Fusión Pacífico, State=Hover"
+        },
+        {
+          "id": "59:6160",
+          "name": "Genre=Fusión Pacífico, State=Focus"
+        },
+        {
+          "id": "59:6172",
+          "name": "Genre=Indie, State=Default"
+        },
+        {
+          "id": "59:6176",
+          "name": "Genre=Indie, State=Hover"
+        },
+        {
+          "id": "59:6180",
+          "name": "Genre=Indie, State=Focus"
+        },
+        {
+          "id": "59:6184",
+          "name": "Genre=Hip hop, State=Default"
+        },
+        {
+          "id": "59:6203",
+          "name": "Genre=Hip hop, State=Hover"
+        },
+        {
+          "id": "59:6222",
+          "name": "Genre=Hip hop, State=Focus"
+        },
+        {
+          "id": "59:6241",
+          "name": "Genre=Tropical, State=Default"
+        },
+        {
+          "id": "59:6252",
+          "name": "Genre=Tropical, State=Hover"
+        },
+        {
+          "id": "59:6263",
+          "name": "Genre=Tropical, State=Focus"
+        },
+        {
+          "id": "59:6274",
+          "name": "Genre=Rock, State=Default"
+        },
+        {
+          "id": "59:6281",
+          "name": "Genre=Rock, State=Hover"
+        },
+        {
+          "id": "59:6288",
+          "name": "Genre=Rock, State=Focus"
+        }
+      ]
+    },
+    "Dialog": {
+      "id": "60:2",
+      "variants": [
+        {
+          "id": "60:3",
+          "name": "Kind=Playlist, Layout=Desktop"
+        },
+        {
+          "id": "60:29",
+          "name": "Kind=Playlist, Layout=Mobile"
+        },
+        {
+          "id": "60:51",
+          "name": "Kind=Confirm, Layout=Desktop"
+        },
+        {
+          "id": "60:67",
+          "name": "Kind=Confirm, Layout=Mobile"
+        },
+        {
+          "id": "60:83",
+          "name": "Kind=Support, Layout=Desktop"
+        },
+        {
+          "id": "60:106",
+          "name": "Kind=Support, Layout=Mobile"
+        },
+        {
+          "id": "60:129",
+          "name": "Kind=Profile, Layout=Desktop"
+        },
+        {
+          "id": "60:145",
+          "name": "Kind=Profile, Layout=Mobile"
+        },
+        {
+          "id": "60:161",
+          "name": "Kind=Notifications, Layout=Desktop"
+        },
+        {
+          "id": "60:177",
+          "name": "Kind=Notifications, Layout=Mobile"
+        },
+        {
+          "id": "60:193",
+          "name": "Kind=Share, Layout=Desktop"
+        },
+        {
+          "id": "60:215",
+          "name": "Kind=Share, Layout=Mobile"
+        }
+      ]
+    },
+    "Menu": {
+      "id": "60:237",
+      "variants": [
+        {
+          "id": "60:238",
+          "name": "Kind=Track"
+        },
+        {
+          "id": "60:256",
+          "name": "Kind=Playlist"
+        },
+        {
+          "id": "60:269",
+          "name": "Kind=Artist"
+        },
+        {
+          "id": "60:282",
+          "name": "Kind=Account"
+        }
+      ]
+    },
+    "PlaylistPicker": {
+      "id": "60:295",
+      "variants": [
+        {
+          "id": "60:296",
+          "name": "State=Populated"
+        },
+        {
+          "id": "60:314",
+          "name": "State=Empty"
+        }
+      ]
+    },
+    "PaymentMethod": {
+      "id": "60:321",
+      "variants": [
+        {
+          "id": "60:322",
+          "name": "Method=Card"
+        },
+        {
+          "id": "60:327",
+          "name": "Method=PSE"
+        },
+        {
+          "id": "60:332",
+          "name": "Method=Nequi"
+        },
+        {
+          "id": "60:337",
+          "name": "Method=Daviplata"
+        }
+      ]
+    },
+    "PaymentResult": {
+      "id": "60:342",
+      "variants": [
+        {
+          "id": "60:343",
+          "name": "State=Approved"
+        },
+        {
+          "id": "60:352",
+          "name": "State=Pending"
+        },
+        {
+          "id": "60:361",
+          "name": "State=Rejected"
+        },
+        {
+          "id": "60:370",
+          "name": "State=Cancelled"
+        },
+        {
+          "id": "60:379",
+          "name": "State=Expired"
+        },
+        {
+          "id": "60:388",
+          "name": "State=Error"
+        }
+      ]
+    },
+    "Skeleton": {
+      "id": "60:397",
+      "variants": [
+        {
+          "id": "60:398",
+          "name": "Kind=Card"
+        },
+        {
+          "id": "60:402",
+          "name": "Kind=Track"
+        },
+        {
+          "id": "60:405",
+          "name": "Kind=Article"
+        }
+      ]
+    },
+    "Breadcrumb": {
+      "id": "60:411",
+      "variants": [
+        {
+          "id": "60:412",
+          "name": "State=Default"
+        },
+        {
+          "id": "60:417",
+          "name": "State=Current"
+        }
+      ]
+    },
+    "Pagination": {
+      "id": "60:422",
+      "variants": [
+        {
+          "id": "60:423",
+          "name": "State=First"
+        },
+        {
+          "id": "60:431",
+          "name": "State=Middle"
+        },
+        {
+          "id": "60:439",
+          "name": "State=Last"
+        }
+      ]
+    },
+    "EventPoster": {
+      "id": "86:344",
+      "variants": [
+        {
+          "id": "86:345",
+          "name": "Artwork=Luna"
+        },
+        {
+          "id": "86:346",
+          "name": "Artwork=Patio"
+        },
+        {
+          "id": "86:347",
+          "name": "Artwork=Bruma"
+        }
+      ]
+    }
+  },
+  "screens": {
+    "desktop": {
+      "01 Inicio": "56:2",
+      "02 Canciones": "56:596",
+      "03 Mis playlists": "56:1007",
+      "04 Playlist detalle": "56:1192",
+      "05 Artistas": "56:1565",
+      "06 Perfil de artista": "56:1778",
+      "07 Álbum": "56:2151",
+      "08 Originals": "56:2477",
+      "09 Sesión de vídeo": "56:2670",
+      "10 Géneros": "56:2843",
+      "11 Cola": "56:3051",
+      "12 Reproductor expandido": "56:3448",
+      "13 Radar": "56:3736",
+      "14 Evento": "56:4222",
+      "15 Checkout": "56:4459",
+      "16 Comunidad": "56:4718",
+      "17 Salas de chat": "56:4954",
+      "18 Nodo Match": "56:5206",
+      "19 Foro": "56:5419",
+      "20 Hilo del foro": "56:5644",
+      "21 Historia de artista": "56:5855",
+      "22 Búsqueda sin resultados": "56:6022",
+      "23 Guardadas vacías": "65:6293",
+      "24 Playlists vacías": "65:6463",
+      "25 Crear playlist": "65:6632",
+      "26 Añadir a playlist": "65:6822",
+      "27 Apoyar · no disponible": "65:7007",
+      "28 Letras": "65:7185",
+      "29 Conciertos del artista": "65:7347",
+      "30 Radar · lista": "65:7528",
+      "31 Radar · mapa": "65:7822",
+      "32 Radar · sin resultados": "65:8056",
+      "33 Evento agotado": "65:8258",
+      "34 Pasarela demo": "65:8459",
+      "35 Verificación demo": "65:8707",
+      "36 Compra aprobada": "65:8904",
+      "37 Mis boletas": "65:9208",
+      "38 Mis boletas vacías": "65:9497",
+      "39 Crear sala": "65:9693",
+      "40 Match · conexión": "65:9892",
+      "41 Match · sin candidatos": "65:10097",
+      "42 Nueva publicación": "65:10293",
+      "43 Galería": "65:10492",
+      "44 Perfil sin sesión": "65:10660",
+      "45 Notificaciones": "65:10837",
+      "46 Sin conexión": "65:11002"
+    },
+    "mobile": {
+      "01 Inicio": "57:2",
+      "02 Canciones": "57:473",
+      "03 Mis playlists": "57:832",
+      "04 Playlist detalle": "57:965",
+      "05 Artistas": "57:1286",
+      "06 Perfil de artista": "57:1447",
+      "07 Álbum": "57:1756",
+      "08 Originals": "57:2030",
+      "09 Sesión de vídeo": "57:2171",
+      "10 Géneros": "57:2292",
+      "11 Cola": "57:2436",
+      "12 Reproductor expandido": "57:2781",
+      "13 Radar": "57:3017",
+      "14 Evento": "57:3289",
+      "15 Checkout": "57:3443",
+      "16 Comunidad": "57:3619",
+      "17 Salas de chat": "57:3772",
+      "18 Nodo Match": "57:3941",
+      "19 Foro": "57:4071",
+      "20 Hilo del foro": "57:4213",
+      "21 Historia de artista": "57:4341",
+      "22 Búsqueda sin resultados": "57:4456",
+      "23 Guardadas vacías": "65:15561",
+      "24 Playlists vacías": "65:15674",
+      "25 Crear playlist": "65:15791",
+      "26 Añadir a playlist": "65:15916",
+      "27 Apoyar · no disponible": "65:16037",
+      "28 Letras": "65:16160",
+      "29 Conciertos del artista": "65:16270",
+      "30 Radar · lista": "65:16399",
+      "31 Radar · mapa": "65:16610",
+      "32 Radar · sin resultados": "65:16752",
+      "33 Evento agotado": "65:16871",
+      "34 Pasarela demo": "65:16989",
+      "35 Verificación demo": "65:17150",
+      "36 Compra aprobada": "65:17264",
+      "37 Mis boletas": "65:17478",
+      "38 Mis boletas vacías": "65:17684",
+      "39 Crear sala": "65:17797",
+      "40 Match · conexión": "65:17913",
+      "41 Match · sin candidatos": "65:18035",
+      "42 Nueva publicación": "65:18148",
+      "43 Galería": "65:18264",
+      "44 Perfil sin sesión": "65:18380",
+      "45 Notificaciones": "65:18505",
+      "46 Sin conexión": "65:18618"
+    }
+  },
+  "icons": {
+    "play": "43:4",
+    "pause": "43:7",
+    "next": "43:10",
+    "previous": "43:13",
+    "shuffle": "43:16",
+    "repeat": "43:19",
+    "volume": "43:22",
+    "mute": "43:25",
+    "heart": "43:28",
+    "arrow": "43:31",
+    "sound": "43:34",
+    "queue": "43:37",
+    "close": "43:40",
+    "search": "43:44",
+    "plus": "43:47",
+    "home": "43:50",
+    "music": "43:55",
+    "user": "43:59",
+    "calendar": "43:63",
+    "radar": "43:68",
+    "community": "43:74",
+    "grid": "43:80",
+    "list": "43:83",
+    "chevron": "43:86",
+    "back": "43:89",
+    "share": "43:95",
+    "bookmark": "43:98",
+    "check": "43:101",
+    "more": "43:106",
+    "bell": "43:109",
+    "panel": "43:113",
+    "chat": "43:116",
+    "map": "43:119",
+    "gift": "43:123"
+  },
+  "assets": [
+    {
+      "name": "Luna Marea",
+      "id": "44:253"
+    },
+    {
+      "name": "Live session",
+      "id": "44:254"
+    },
+    {
+      "name": "Entre luces",
+      "id": "44:255"
+    },
+    {
+      "name": "Marea adentro",
+      "id": "44:256"
+    },
+    {
+      "name": "Raíz eléctrica",
+      "id": "44:257"
+    },
+    {
+      "name": "Umbral",
+      "id": "44:258"
+    },
+    {
+      "name": "Publicidad",
+      "id": "44:259"
+    },
+    {
+      "name": "Comunidad",
+      "id": "44:260"
+    },
+    {
+      "name": "Evento Luna",
+      "id": "44:261"
+    },
+    {
+      "name": "Evento Patio",
+      "id": "44:262"
+    },
+    {
+      "name": "Evento Bruma",
+      "id": "44:263"
+    }
+  ],
+  "artwork": {
+    "Luna Marea": "47:2",
+    "Live session": "47:3",
+    "Entre luces": "47:4",
+    "Marea adentro": "47:5",
+    "Raíz eléctrica": "47:6",
+    "Umbral": "47:7",
+    "Publicidad": "47:8",
+    "Comunidad": "47:9",
+    "Evento Luna": "47:10",
+    "Evento Patio": "47:11",
+    "Evento Bruma": "47:12"
+  },
+  "fontAdaptation": "Roboto (SF Pro unavailable in Figma runtime; app remains system-ui)",
+  "responsiveModeIds": {
+    "Desktop": "42:2",
+    "Mobile": "42:3"
+  },
+  "effects": {
+    "player": "S:ffe21e3e64cf2ba9a2336e3cbab4080655aeb2d4,"
+  },
+  "cover": "66:2",
+  "foundationFrames": {
+    "palette": "66:35",
+    "typography": "66:111",
+    "spacing": "66:132"
+  },
+  "qaFrame": "85:2",
+  "updatedAt": "2026-11-24",
+  "verification": {
+    "families": 55,
+    "variants": 324,
+    "variables": 370,
+    "desktopScreens": 46,
+    "mobileScreens": 46,
+    "independentReport": "QA-revalidation.md",
+    "scope": "Structural scan of 92 screens; visual samples, not every frame. Native local library, no team publication.",
+    "finalCorrections": {
+      "checkoutPhoneDesktop": "81:10946",
+      "checkoutPhoneMobile": "81:15832",
+      "radarSelectedCardMobile": "85:7215",
+      "radarSelectedPoster": "I85:7215;86:349"
+    }
+  }
+}
+

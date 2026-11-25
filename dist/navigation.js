@@ -25,9 +25,11 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  const center=document.getElementById('center-stage'),views=[listenView,artistView,contextView];
  const radarView=document.createElement('section');radarView.id='radar-view';radarView.hidden=true;center.append(radarView);views.push(radarView);
  let cleanupArtist=null,fragment=null,routeVersion=0,activePanel=null,returnView=null,returnScroll=0,returnFocus=null;const panelStack=[];const navigationTrail=[];
+ const transitions=window.noodoViewTransitions.create(center);
+ function enterView(target=activePanel||views.find(item=>!item.hidden),options){if(transitions.loading){routeVersion++;transitions.clearLoading();}transitions.enter(target,options);}
  const loadFragment=()=>fragment||(fragment=fetch('artist-content.html?v=profile-20').then(r=>{if(!r.ok)throw new Error('No se pudo abrir el perfil');return r.text();}).catch(error=>{fragment=null;throw error;}));
  function updatePanelMode(){document.body.classList.toggle('album-mode',activePanel?.dataset.kind==='Álbum');paintPanels();}
- function closePanel(restore=true){if(!activePanel)return;activePanel.hidden=true;if(restore&&panelStack.length){const previous=panelStack.pop();activePanel=previous.panel;activePanel.hidden=false;updatePanelMode();window.scrollTo({top:previous.scroll,behavior:'instant'});previous.focus?.isConnected&&previous.focus.focus({preventScroll:true});return;}panelStack.length=0;details.hidden=true;activePanel=null;updatePanelMode();if(restore){views.forEach(v=>v.hidden=v!==returnView);window.scrollTo({top:returnScroll,behavior:'instant'});if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});if(location.search.includes('session=')||location.search.includes('event=')){const url=new URL(location.href);url.searchParams.delete('session');url.searchParams.delete('event');history.replaceState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;}}}
+ function closePanel(restore=true){if(!activePanel)return;activePanel.hidden=true;if(restore&&panelStack.length){const previous=panelStack.pop();activePanel=previous.panel;activePanel.hidden=false;updatePanelMode();window.scrollTo({top:previous.scroll,behavior:'instant'});previous.focus?.isConnected&&previous.focus.focus({preventScroll:true});enterView(previous.panel,{reset:false,focus:false});return;}panelStack.length=0;details.hidden=true;activePanel=null;updatePanelMode();if(restore){views.forEach(v=>v.hidden=v!==returnView);window.scrollTo({top:returnScroll,behavior:'instant'});if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});enterView(returnView,{reset:false,focus:false});if(location.search.includes('session=')||location.search.includes('event=')){const url=new URL(location.href);url.searchParams.delete('session');url.searchParams.delete('event');history.replaceState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;}}}
  function normalizeBack(container,existing){
   const back=existing||container.querySelector('.unified-back,.center-return,.center-back,[id$="-back"],[id^="close-"],[data-back]')||document.createElement('button');
   back.classList.add('unified-back');if(back.tagName==='BUTTON')back.type='button';
@@ -36,19 +38,20 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   return back;
  }
  function showPanel(panel){
-  if(activePanel===panel){normalizeBack(panel);return;}
+  if(transitions.loading){routeVersion++;transitions.clearLoading();}
+  if(activePanel===panel){normalizeBack(panel);enterView(panel);return;}
   if(activePanel)panelStack.push({panel:activePanel,scroll:scrollY,focus:document.activeElement});
   else{returnView=views.find(v=>!v.hidden);returnScroll=scrollY;returnFocus=document.activeElement;}
   if(activePanel)activePanel.hidden=true;
   views.forEach(v=>v.hidden=true);details.hidden=false;panel.hidden=false;activePanel=panel;updatePanelMode();normalizeBack(panel);
-  window.scrollTo({top:0,behavior:'instant'});panel.focus({preventScroll:true});closeMobilePanels();
+  closeMobilePanels();enterView(panel);
  }
  function showView(view){closePanel(false);views.forEach(v=>v.hidden=v!==view);}
  const mobile=matchMedia('(max-width:760px)');
  let panels={library:true,info:true};try{panels={...panels,...JSON.parse(localStorage.getItem('noodo-workspace-panels')||'{}')};}catch{}
  let mobilePanels={library:false,info:false};
  // Keep navigation available as an icon rail when the library is collapsed.
- const libraryIcons={home:'home',all:'music',session:'play',saved:'heart'};
+ const libraryIcons={home:'home',all:'heart',session:'play',saved:'heart'};
  document.querySelectorAll('#library-body button').forEach(button=>{
   const label=button.textContent.trim();
   button.setAttribute('aria-label',label);button.title=label;
@@ -116,10 +119,8 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   const destination=button.dataset.mobileView;
   closeMobilePanels();
   if(destination==='radar')await navigate('listen.html?section=radar');
-  else if(destination==='saved')window.noodoLibrary.open();
   else if(destination==='community')document.getElementById('library-community').click();
   else {await window.noodoWorkspace.songs();setView(destination);}
-  center.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});
  });
  // Single selection is derived from the visible destination, including sign-in gates.
  function sectionForPanel(panel){
@@ -127,7 +128,7 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   if(panel.dataset.navigation)return panel.dataset.navigation;
   const id=panel.id;
   if(id==='community-page')return 'community';
-  if(id.includes('playlist'))return 'saved';
+  if(id.includes('playlist'))return 'playlists';
   if(id==='followed-artists')return 'artists';
   if(id.startsWith('genre-'))return 'genres';
   if(id==='queue-dialog')return 'queue';
@@ -138,8 +139,8 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
  function syncNavigation(){
   const base=activePanel?returnView:views.find(item=>!item.hidden);
   const current=sectionForPanel(activePanel)||[...panelStack].reverse().map(item=>sectionForPanel(item.panel)).find(Boolean)||(base===radarView?'radar':base===artistView?'artists':base===listenView?view:null);
-  document.querySelectorAll('#library-body [data-navigation]').forEach(button=>{
-   const selected=button.dataset.navigation===current;
+  document.querySelectorAll('#library-body [data-navigation],#top-playlists').forEach(button=>{
+   const selected=(button.id==='top-playlists'?'playlists':button.dataset.navigation)===current;
    button.classList.toggle('active',selected);
    button.setAttribute('aria-pressed',String(selected));
    if(selected)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
@@ -148,16 +149,17 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
    if(button.dataset.mobileView===current)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
   });
  }
- window.noodoNavigation={sync:syncNavigation};
+ window.noodoNavigation={sync:syncNavigation,enter:enterView};
  const navigationObserver=new MutationObserver(syncNavigation);
  navigationObserver.observe(center,{attributes:true,attributeFilter:['hidden','data-navigation'],subtree:true,childList:true});
  syncNavigation();
  const shellResize=new ResizeObserver(()=>{if(mobile.matches){const chrome=dock.offsetHeight-expansion.offsetHeight;document.documentElement.style.setProperty('--mobile-player-chrome',chrome+'px');}document.documentElement.style.setProperty('--shell-dock-height',dock.offsetHeight+'px');document.documentElement.style.setProperty('--shell-header-height',header.offsetHeight+'px');document.documentElement.style.setProperty('--shell-top-offset',(header.offsetHeight+toolbar.offsetHeight)+'px');document.documentElement.style.setProperty('--shell-dock-space',(dock.offsetHeight+32+(mobile.matches?mobileNav.offsetHeight:0))+'px');});shellResize.observe(header);shellResize.observe(toolbar);shellResize.observe(dock);shellResize.observe(mobileNav);
  async function renderRoute(url,scroll=true){
-  const version=++routeVersion,artistRoute=url.pathname.endsWith('/artist.html');closePanel(false);
+  const version=++routeVersion,artistRoute=url.pathname.endsWith('/artist.html');transitions.clearLoading();closePanel(false);
   if(artistRoute){
-   try{const html=await loadFragment();if(version!==routeVersion)return;cleanupArtist?.();artistView.innerHTML=html;showView(artistView);document.body.classList.add('artist-mode');cleanupArtist=window.mountArtist(artistView);normalizeBack(artistView,artistView.querySelector('.hero-back'));selectInfo(url.hash==='#conciertos'?'events':'artist',false,false);syncNavigation();}
-   catch(error){console.error(error);artistView.innerHTML='<section><h1>No pudimos abrir el perfil.</h1><p>La reproducción continúa. <a href="listen.html">Volver a canciones</a></p></section>';showView(artistView);}
+   transitions.beginLoading();
+   try{const html=await loadFragment();if(version!==routeVersion)return;transitions.clearLoading();cleanupArtist?.();artistView.innerHTML=html;showView(artistView);document.body.classList.add('artist-mode');cleanupArtist=window.mountArtist(artistView);normalizeBack(artistView,artistView.querySelector('.hero-back'));selectInfo(url.hash==='#conciertos'?'events':'artist',false,false);syncNavigation();}
+   catch(error){if(version!==routeVersion)return;transitions.clearLoading();console.error(error);artistView.innerHTML='<section><h1>No pudimos abrir el perfil.</h1><p>La reproducción continúa. <a href="listen.html">Volver a canciones</a></p></section>';showView(artistView);}
   }else{
    cleanupArtist?.();cleanupArtist=null;artistView.innerHTML='';document.body.classList.remove('artist-mode');document.title='NOODO · Escucha la ciudad';
    const i=url.searchParams.get('track');if(i!==null)window.noodoPlayer.select(Number(i),url.searchParams.get('play')==='1');
@@ -170,7 +172,8 @@ window.noodoDisclosure={mount({button,panel,section,label,storageKey}){
   closeMobilePanels();paintPanels();window.dispatchEvent(new Event('resize'));const sessionId=url.searchParams.get('session');if(sessionId!==null&&tracks[Number(sessionId)]?.kind==='session')openSession(Number(sessionId));
   if(url.searchParams.get('section')==='community')window.noodoCommunity.open();
   const eventCode=url.searchParams.get('event');if(eventCode&&!url.pathname.endsWith('/event.html'))window.noodoEvents.openCode(eventCode);
-  if(scroll){center.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});const target=url.hash&&document.getElementById(url.hash.slice(1));if(target)target.scrollIntoView({behavior:'instant'});}
+  enterView(undefined,{reset:scroll,focus:scroll});
+  if(scroll){const target=url.hash&&document.getElementById(url.hash.slice(1));if(target)target.scrollIntoView({behavior:'instant'});}
  }
  function captureOrigin(){return {href:location.href,scroll:scrollY,musicView:view,panels:[...panelStack.map(item=>item.panel),activePanel].filter(panel=>panel&&panel.id!=='detail-dialog'),baseScroll:returnScroll};}
  async function goBack(){if(activePanel?.id==='playlist-library'&&activePanel.dataset.libraryView==='detail'){window.noodoLibrary.open();return;}if(activePanel?.dataset.kind==='RadarEvent'&&!navigationTrail.length)return navigate('listen.html?section=radar',false);if(['Editorial','RadarEvent'].includes(activePanel?.dataset.kind)){closePanel(false);}else if(activePanel){closePanel();return;}const origin=navigationTrail.pop();if(!origin)return navigate('listen.html',false);window.noodoPlayer.save();const url=new URL(origin.href);history.pushState({},'',url.pathname+url.search+url.hash);lastRoute=url.pathname+url.search;await renderRoute(url,false);if(!url.pathname.endsWith('/artist.html'))setView(origin.musicView);window.scrollTo({top:origin.baseScroll,behavior:'instant'});for(const panel of origin.panels)if(panel.isConnected)showPanel(panel);window.scrollTo({top:origin.scroll,behavior:'instant'});}

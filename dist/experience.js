@@ -43,10 +43,28 @@
   'sample-voces-asfalto':['abril-neon-v16.png','member-mar-v03.png','artist-portrait-v02.png','bruma-roja-v16.png']
  };
  function playlistArtwork(p){
+  if(p.owner==='NOODO')return `<span class="user-playlist-art noodo-playlist-art" data-edition="${p.edition}" aria-hidden="true"><span class="noodo-playlist-brand">NOODO</span><span class="noodo-playlist-shape"></span><span class="noodo-playlist-cover-title">${esc(p.name)}</span><span class="noodo-playlist-cover-genre">${esc(genreNames[p.genre])}</span></span>`;
   const photos=samplePortraits[p.id]?.map(file=>'assets/'+file)||[...new Set(p.tracks.map(i=>tracks[i]?.image).filter(Boolean))].slice(0,4);
   return `<span class="user-playlist-art ${photos.length?'is-mosaic':''}">${photos.length?Array.from({length:4},(_,i)=>`<img src="${esc(photos[i%photos.length])}" alt="" loading="lazy">`).join(''):`<span class="user-playlist-placeholder">${icon('queue')}</span>`}</span>`;
  }
- function playlistCard(p){return `<button type="button" class="user-playlist-card" data-user-playlist="${esc(p.id)}" aria-label="Abrir playlist: ${esc(p.name)}">${playlistArtwork(p)}<strong>${esc(p.name)}</strong><small>${p.tracks.length} ${p.tracks.length===1?'contenido':'contenidos'}</small></button>`;}
+ function playlistCard(p){const editorial=p.owner==='NOODO';return `<button type="button" class="user-playlist-card" ${editorial?'data-noodo-playlist':'data-user-playlist'}="${esc(p.id)}" aria-label="Abrir playlist: ${esc(p.name)}${editorial?' · NOODO':''}">${playlistArtwork(p)}<strong>${esc(p.name)}</strong><small>${editorial?'NOODO · ':''}${editorial&&!p.tracks.length?'Próximamente':p.tracks.length+' '+(p.tracks.length===1?(editorial?'canción':'contenido'):(editorial?'canciones':'contenidos'))}</small></button>`;}
+ function playlistActionCard(action,label,symbol,description){return `<button type="button" class="user-playlist-card user-playlist-action" data-user-playlist-${action} aria-label="${esc(label)}"><span class="user-playlist-art" aria-hidden="true"><span class="user-playlist-placeholder">${icon(symbol)}</span></span><strong>${esc(label)}</strong><small>${esc(description)}</small></button>`;}
+ let curatedDispose=null;
+ function openCuratedPlaylist(playlist){
+  curatedDispose?.();curatedDispose=null;
+  const el=panel('noodo-playlist-detail',playlist.name);el.dataset.navigation='genres';
+  show(el,`<div class="section-heading"><div class="playlist-page-heading">${playlistArtwork(playlist)}<div><p class="noodo-playlist-owner">NOODO · ${esc(genreNames[playlist.genre])}</p><h1>${esc(playlist.name)}</h1><p>${esc(playlist.description)}</p><p>${playlist.tracks.length} canciones</p></div></div></div><div class="section-heading playlist-selection"><h2>Canciones</h2><div class="song-heading-actions"><button type="button" class="icon-button" data-curated-shuffle aria-label="Reproducir playlist en orden aleatorio" ${playlist.tracks.length?'':'disabled'}>${icon('shuffle')}</button><button type="button" class="pill primary" data-curated-play ${playlist.tracks.length?'':'disabled'}>${icon('play')}Reproducir playlist</button></div></div>${playlist.tracks.length?'<div class="song-list" id="noodo-playlist-rows"></div>':'<div class="library-empty"><h3>Próximamente</h3><p>Estamos preparando esta selección. Aquí encontrarás las canciones cuando estén disponibles.</p></div>'}`);
+  el.querySelector('[data-curated-play]').onclick=()=>window.noodoPlayer.playQueue(playlist.tracks);
+  el.querySelector('[data-curated-shuffle]').onclick=()=>window.noodoPlayer.playQueue(playlist.tracks,true);
+  if(playlist.tracks.length)curatedDispose=window.noodoTrackList.mount(el.querySelector('#noodo-playlist-rows'),playlist.tracks);
+ }
+ function mountGenrePlaylists(host,key){
+  let section=host.querySelector('.noodo-genre-playlists');
+  if(!section){section=document.createElement('section');section.className='noodo-genre-playlists';section.setAttribute('aria-labelledby','noodo-genre-playlists-title');host.append(section);}
+  const collections=window.noodoCuratedPlaylists.forGenre(key);
+  section.innerHTML=`<div class="section-heading"><h2 id="noodo-genre-playlists-title">Playlists de NOODO</h2></div><div class="user-playlist-grid" role="group" aria-label="Playlists de NOODO · ${esc(genreNames[key])}">${collections.map(playlistCard).join('')}</div>`;
+  section.onclick=e=>{const button=e.target.closest('[data-noodo-playlist]'),playlist=collections.find(p=>p.id===button?.dataset.noodoPlaylist);if(playlist)openCuratedPlaylist(playlist);};
+ }
  let libraryMode='all',libraryDispose=null;
  function renderLibrary(){
   libraryDispose?.();libraryDispose=null;
@@ -63,7 +81,7 @@
    [...el.querySelectorAll('[data-user-playlist]')].find(b=>b.dataset.userPlaylist===previous)?.focus();
   };
   el.querySelector('#create-library-playlist').onclick=()=>openCreate();
-  el.querySelectorAll('[data-user-playlist]').forEach(b=>b.onclick=()=>{libraryMode=b.dataset.userPlaylist;renderLibrary();el.querySelector('h1').setAttribute('tabindex','-1');el.querySelector('h1').focus();});
+  el.querySelectorAll('[data-user-playlist]').forEach(b=>b.onclick=()=>{libraryMode=b.dataset.userPlaylist;renderLibrary();window.noodoNavigation?.enter(el);el.querySelector('h1').setAttribute('tabindex','-1');el.querySelector('h1').focus();});
   el.querySelector('#play-library')?.addEventListener('click',()=>window.noodoPlayer.playQueue(ids,false));
   if(activePlaylist&&ids.length)libraryDispose=window.noodoTrackList.mount(el.querySelector('#playlist-rows'),ids);
   el.querySelector('#library-explore')?.addEventListener('click',()=>{window.noodoWorkspace.songs();setView('all');});activate('saved');
@@ -82,19 +100,41 @@
  function renderIfLibrary(){if(document.getElementById('playlist-library'))renderLibrary();}
  function followedArtists(){const extras=read('noodo-followed-profiles',[]),canonical=[...new Set(tracks.map((t,i)=>artistProfileIndex(i)))].map(i=>({key:'noodo-follow-'+(i===0?'lunamarea':'artista-muestra-'+i),name:tracks[i].artist,image:tracks[i].image,href:'artist.html?artist='+i,type:profileKind(i)}));return [...new Map([...canonical,...(Array.isArray(extras)?extras:[])].map(a=>[a.key,a])).values()].filter(a=>localStorage.getItem(a.key)==='true');}
  function openArtists(){const el=panel('followed-artists','Tus artistas'),artists=followedArtists();show(el,`<div class="section-heading"><div><h1>Tus artistas</h1><p>Los proyectos que sigues, en un mismo lugar.</p></div><button class="pill outline" id="discover-artists">Explorar artistas</button></div><div class="genre-artists-grid">${artists.map(a=>`<a class="genre-artist-card" href="${esc(a.href)}"><img src="${esc(a.image)}" alt=""><strong>${esc(a.name)}</strong><span>${esc(a.type)}</span></a>`).join('')}</div>${artists.length?'':'<div class="library-empty"><h2>Aquí empieza tu escena</h2><p>Presiona Seguir artista en un perfil y lo encontrarás aquí.</p></div>'}`);el.querySelector('#discover-artists').onclick=()=>window.noodoGenres.open();activate('artists');}
- window.noodoLibrary={open:openLibrary,pick,artists:openArtists,syncSaved(ids){const all=playlists(),entry=all.find(p=>p.id==='my-playlist');entry.tracks=ids;write(playlistKey,all);renderIfLibrary();},rememberArtist(record){const list=read('noodo-followed-profiles',[]);write('noodo-followed-profiles',[...(Array.isArray(list)?list:[]).filter(a=>a.key!==record.key),record]);}};
+ window.noodoLibrary={open:openLibrary,pick,artists:openArtists,mountGenrePlaylists,syncSaved(ids){const all=playlists(),entry=all.find(p=>p.id==='my-playlist');entry.tracks=ids;write(playlistKey,all);renderIfLibrary();},rememberArtist(record){const list=read('noodo-followed-profiles',[]);write('noodo-followed-profiles',[...(Array.isArray(list)?list:[]).filter(a=>a.key!==record.key),record]);}};
 
- // Album-style collection above the song rows, using the existing local library.
+ // The saved view combines the user's playlists with their liked music.
  const playlistSection=document.createElement('section');playlistSection.className='user-playlists';playlistSection.setAttribute('aria-labelledby','user-playlists-title');
- document.querySelector('.track-columns').before(playlistSection);
+ const trackColumns=document.querySelector('.track-columns'),songsHeading=document.querySelector('.songs-heading'),songActions=document.querySelector('.song-heading-actions');
+ const favoritesHeading=document.createElement('div');favoritesHeading.className='section-heading favorites-heading';favoritesHeading.hidden=true;
+ favoritesHeading.innerHTML='<h2 id="favorites-title">Canciones que te gustan</h2>';
+ trackColumns.before(playlistSection,favoritesHeading);
+ let playlistMarkup='';
  function renderPlaylistGrid(){
-  playlistSection.hidden=view!=='all';
-  const all=playlists();
-  playlistSection.innerHTML=`<div class="section-heading"><h2 id="user-playlists-title">Tus playlists</h2><button type="button" class="text-button" data-user-playlist-create>${icon('plus')}Crear playlist</button></div><div class="user-playlist-grid">${all.map(playlistCard).join('')}</div>`;
+  const isSaved=view==='saved',isLibrary=view==='all',all=playlists();
+  playlistSection.hidden=!isSaved&&!isLibrary;favoritesHeading.hidden=!isSaved&&!isLibrary;
+  songsHeading.classList.toggle('library-overview-label',isLibrary);
+  playlistSection.classList.toggle('library-overview',isLibrary);
+  favoritesHeading.classList.toggle('library-song-actions',isLibrary);
+  document.getElementById('favorites-title').hidden=isLibrary;
+  const actionParent=isSaved||isLibrary?favoritesHeading:songsHeading;
+  if(songActions.parentElement!==actionParent)actionParent.append(songActions);
+  const markup=`<h2 id="user-playlists-title" class="section-heading">Tus playlists</h2><div class="user-playlist-grid" role="group" aria-label="Tus playlists">${all.filter(p=>p.id!=='my-playlist').map(playlistCard).join('')}${playlistActionCard('create','Crear playlist','plus','Una nueva selección')}${playlistActionCard('all','Ver todas las playlists','queue',all.length+' '+(all.length===1?'playlist':'playlists'))}</div>`;
+  if(markup!==playlistMarkup){playlistSection.innerHTML=markup;playlistMarkup=markup;}
+  document.getElementById('user-playlists-title').classList.toggle('library-overview-label',isLibrary);
+  const empty=document.getElementById('empty'),query=search.value.trim();
+  empty.querySelector('h3').textContent=isSaved?(query?'No encontramos favoritos con esa búsqueda.':'Aún no tienes canciones favoritas.'):'No encontramos ese sonido.';
+  empty.querySelector('p').textContent=isSaved?(query?'Prueba con otro nombre de canción o artista.':'Marca el corazón de una canción y aparecerá aquí.'):'Prueba con otro nombre o guarda una pista con el corazón.';
+  document.getElementById('reset-filter').textContent=isSaved?'Explorar canciones':'Ver toda la selección';
+  if(isSaved){
+   const favorites=tracks.filter((track,index)=>matches(track,index));
+   document.getElementById('favorites-title').textContent=favorites.some(track=>track.kind==='session')?'Canciones y sesiones que te gustan':'Canciones que te gustan';
+   document.getElementById('selection-summary').textContent=all.length+' '+(all.length===1?'playlist':'playlists')+' · '+favorites.length+' '+(favorites.length===1?'favorito':'favoritos');
+  }
  }
  playlistSection.addEventListener('click',e=>{
   const card=e.target.closest('[data-user-playlist]');
   if(card)window.noodoLibrary.open(card.dataset.userPlaylist);
+  if(e.target.closest('[data-user-playlist-all]'))window.noodoLibrary.open();
   if(e.target.closest('[data-user-playlist-create]')){window.noodoLibrary.open();document.getElementById('create-library-playlist').click();}
  });
  window.addEventListener('noodo:catalogchange',renderPlaylistGrid);
