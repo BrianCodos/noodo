@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/codos/Documents/Musicaly/noodo-admin/planning/mapa.json",
+  "output": "/Users/codos/Documents/Musicaly/noodo-admin/planning/mapa.html",
+  "specification": {
+    "sha256": "b47ad99659694ed495e3d885978ba601a275a2b03d64202ece87c96e3495c387",
+    "bytes": 3503
+  },
+  "artifact": {
+    "sha256": "547361b8abf8c4d17eb352aab4f7ee0320b71ad5cf955814dd3dca1fd2a700c8",
+    "bytes": 806025
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "errors": 0,
+    "warnings": 0
+  }
+}

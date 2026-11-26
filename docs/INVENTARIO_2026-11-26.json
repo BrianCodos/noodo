@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-26",
+  "sourceLayout": "Musicaly/ con noodo-design-system/ como repositorio y noodo-admin/ como carpeta hermana",
+  "included": [
+    "noodo-admin (fuente, lockfile, pruebas, documentación, planning y capturas)",
+    "documentos (5 DOCX, versiones conservadas)",
+    "generated_images (13 PNG, incluidos originales que coinciden con assets)",
+    "sitio musical y DS con su código completo"
+  ],
+  "excluded": [
+    "node_modules: reinstalable con npm ci",
+    "noodo-admin/dist y tsbuildinfo: builds/cachés regenerables",
+    ".DS_Store y logs: metadatos temporales",
+    ".env y .openai: configuración local no publicable",
+    "noodo-dashboard-plan: carpeta vacía",
+    "Token de dist/mapbox-config.js: configuración local excluida por protección de credenciales de GitHub; el workflow utiliza MAPBOX_PUBLIC_TOKEN."
+  ],
+  "duplicateRootDocs": [
+    "NOODO_Acuerdo_Entre_Socios_v3.docx",
+    "NOODO_Acuerdo_Entre_Socios_v4.docx"
+  ],
+  "duplicateRootDocsNote": "Las copias en la raíz de Musicaly son idénticas a documentos/ y se conservan una sola vez en el repositorio.",
+  "browserData": "No incluidos: localStorage e IndexedDB permanecen en el navegador, fuera del repositorio."
+}

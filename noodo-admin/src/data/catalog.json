@@ -1,0 +1,664 @@
+[
+  {
+    "id": "artist-0",
+    "kind": "Artista",
+    "title": "Luna Marea",
+    "text": "Luna Marea explora la electrónica desde Cali: voces íntimas, sintetizadores cálidos y ritmos que conectan la noche con las raíces del Pacífico.",
+    "subtitle": "Electrónica",
+    "path": "artist.html?artist=0"
+  },
+  {
+    "id": "track-0",
+    "kind": "Canción",
+    "title": "Entre luces",
+    "subtitle": "Luna Marea",
+    "text": "Texturas electrónicas y un pulso que se queda contigo cuando termina la noche.",
+    "path": "listen.html?track=0"
+  },
+  {
+    "id": "artist-1",
+    "kind": "Artista",
+    "title": "Cimarrón Sonoro",
+    "text": "Marimba, cuerdas y percusión se cruzan con la producción electrónica. Cimarrón Sonoro lleva la energía del encuentro a canciones que nacen para tocarse en vivo.",
+    "subtitle": "Fusión Pacífico",
+    "path": "artist.html?artist=1"
+  },
+  {
+    "id": "track-1",
+    "kind": "Sesión",
+    "title": "Pulso de la ciudad",
+    "subtitle": "Cimarrón Sonoro",
+    "text": "Marimba, cuerdas y percusión se encuentran en una sesión íntima. Un diálogo entre tradición y nuevas búsquedas.",
+    "path": "listen.html?session=1"
+  },
+  {
+    "id": "artist-2",
+    "kind": "Artista",
+    "title": "Kora",
+    "text": "Kora construye paisajes sonoros entre lo orgánico y lo digital. Sus sets recorren pulsos lentos, texturas industriales y espacios para la improvisación.",
+    "subtitle": "Experimental",
+    "path": "artist.html?artist=2"
+  },
+  {
+    "id": "track-2",
+    "kind": "Canción",
+    "title": "Otra forma de estar",
+    "subtitle": "Kora",
+    "text": "Un paisaje de capas y pequeños detalles para bajar la velocidad y escuchar de otra manera.",
+    "path": "listen.html?track=2"
+  },
+  {
+    "id": "artist-3",
+    "kind": "Artista",
+    "title": "Vértice",
+    "text": "Vértice reúne guitarras, bajo y batería alrededor de historias cotidianas. El proyecto busca un sonido directo: melodías cercanas y la intensidad de tocar juntos.",
+    "subtitle": "Indie",
+    "path": "artist.html?artist=3"
+  },
+  {
+    "id": "track-3",
+    "kind": "Canción",
+    "title": "Cerca del ruido",
+    "subtitle": "Vértice",
+    "text": "Guitarras y una voz cercana en una canción de la escena independiente.",
+    "path": "listen.html?track=3"
+  },
+  {
+    "id": "artist-4",
+    "kind": "Artista",
+    "title": "La Resistencia",
+    "text": "Palabra, ritmo y ciudad. La Resistencia convierte las conversaciones de la calle en versos y bases que dialogan con el hip hop y la percusión local.",
+    "subtitle": "Hip hop",
+    "path": "artist.html?artist=4"
+  },
+  {
+    "id": "track-4",
+    "kind": "Canción",
+    "title": "Versos de esquina",
+    "subtitle": "La Resistencia",
+    "text": "Rimas y ritmos de una ciudad que siempre tiene algo que contar.",
+    "path": "listen.html?track=4"
+  },
+  {
+    "id": "artist-5",
+    "kind": "Artista",
+    "title": "Pacífico Expande",
+    "text": "Un ensamble de voces, cuerdas y percusión que explora nuevas formas de tocar juntos. Sus arreglos dejan espacio para la improvisación y el diálogo con el público.",
+    "subtitle": "Tropical",
+    "path": "artist.html?artist=5"
+  },
+  {
+    "id": "track-5",
+    "kind": "Sesión",
+    "title": "A la vuelta del río",
+    "subtitle": "Pacífico Expande",
+    "text": "Percusión y melodía para compartir el movimiento.",
+    "path": "listen.html?session=5"
+  },
+  {
+    "id": "track-6",
+    "kind": "Canción",
+    "title": "Cruzar la noche",
+    "subtitle": "Luna Marea",
+    "text": "Una línea de sintetizadores que acompaña el regreso a casa.",
+    "path": "listen.html?track=6"
+  },
+  {
+    "id": "track-7",
+    "kind": "Canción",
+    "title": "Aire violeta",
+    "subtitle": "Luna Marea",
+    "text": "Capas de voz y percusión en un paisaje de electrónica cálida.",
+    "path": "listen.html?track=7"
+  },
+  {
+    "id": "track-8",
+    "kind": "Canción",
+    "title": "De regreso al río",
+    "subtitle": "Luna Marea",
+    "text": "Un encuentro entre ritmos del Pacífico y texturas contemporáneas.",
+    "path": "listen.html?track=8"
+  },
+  {
+    "id": "track-9",
+    "kind": "Canción",
+    "title": "Raíz eléctrica",
+    "subtitle": "Luna Marea",
+    "text": "El pulso de Cali convertido en una canción.",
+    "path": "listen.html?track=9"
+  },
+  {
+    "id": "track-10",
+    "kind": "Canción",
+    "title": "Patio abierto",
+    "subtitle": "Cimarrón Sonoro",
+    "text": "Una canción de Cimarrón Sonoro para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=10"
+  },
+  {
+    "id": "track-11",
+    "kind": "Canción",
+    "title": "El pulso vuelve",
+    "subtitle": "Cimarrón Sonoro",
+    "text": "Una canción de Cimarrón Sonoro para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=11"
+  },
+  {
+    "id": "track-12",
+    "kind": "Canción",
+    "title": "Una voz, muchas raíces",
+    "subtitle": "Cimarrón Sonoro",
+    "text": "Una canción de Cimarrón Sonoro para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=12"
+  },
+  {
+    "id": "track-13",
+    "kind": "Canción",
+    "title": "La última ronda",
+    "subtitle": "Cimarrón Sonoro",
+    "text": "Una canción de Cimarrón Sonoro para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=13"
+  },
+  {
+    "id": "track-14",
+    "kind": "Canción",
+    "title": "Lado B del aire",
+    "subtitle": "Kora",
+    "text": "Una canción de Kora para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=14"
+  },
+  {
+    "id": "track-15",
+    "kind": "Canción",
+    "title": "Pequeñas órbitas",
+    "subtitle": "Kora",
+    "text": "Una canción de Kora para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=15"
+  },
+  {
+    "id": "track-16",
+    "kind": "Canción",
+    "title": "Todo cambia de lugar",
+    "subtitle": "Kora",
+    "text": "Una canción de Kora para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=16"
+  },
+  {
+    "id": "track-17",
+    "kind": "Canción",
+    "title": "Todavía aquí",
+    "subtitle": "Kora",
+    "text": "Una canción de Kora para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=17"
+  },
+  {
+    "id": "track-18",
+    "kind": "Canción",
+    "title": "Calles de regreso",
+    "subtitle": "Vértice",
+    "text": "Una canción de Vértice para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=18"
+  },
+  {
+    "id": "track-19",
+    "kind": "Canción",
+    "title": "Ruido de fondo",
+    "subtitle": "Vértice",
+    "text": "Una canción de Vértice para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=19"
+  },
+  {
+    "id": "track-20",
+    "kind": "Canción",
+    "title": "Antes del amanecer",
+    "subtitle": "Vértice",
+    "text": "Una canción de Vértice para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=20"
+  },
+  {
+    "id": "track-21",
+    "kind": "Canción",
+    "title": "Donde empieza el eco",
+    "subtitle": "Vértice",
+    "text": "Una canción de Vértice para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=21"
+  },
+  {
+    "id": "track-22",
+    "kind": "Canción",
+    "title": "Otra esquina",
+    "subtitle": "La Resistencia",
+    "text": "Una canción de La Resistencia para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=22"
+  },
+  {
+    "id": "track-23",
+    "kind": "Canción",
+    "title": "Mapa de voces",
+    "subtitle": "La Resistencia",
+    "text": "Una canción de La Resistencia para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=23"
+  },
+  {
+    "id": "track-24",
+    "kind": "Canción",
+    "title": "De barrio en barrio",
+    "subtitle": "La Resistencia",
+    "text": "Una canción de La Resistencia para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=24"
+  },
+  {
+    "id": "track-25",
+    "kind": "Canción",
+    "title": "La ciudad responde",
+    "subtitle": "La Resistencia",
+    "text": "Una canción de La Resistencia para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=25"
+  },
+  {
+    "id": "track-26",
+    "kind": "Canción",
+    "title": "Bajo la misma luna",
+    "subtitle": "Pacífico Expande",
+    "text": "Una canción de Pacífico Expande para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=26"
+  },
+  {
+    "id": "track-27",
+    "kind": "Canción",
+    "title": "Agua que baila",
+    "subtitle": "Pacífico Expande",
+    "text": "Una canción de Pacífico Expande para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=27"
+  },
+  {
+    "id": "track-28",
+    "kind": "Canción",
+    "title": "Vuelta al sol",
+    "subtitle": "Pacífico Expande",
+    "text": "Una canción de Pacífico Expande para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=28"
+  },
+  {
+    "id": "track-29",
+    "kind": "Canción",
+    "title": "A ritmo de río",
+    "subtitle": "Pacífico Expande",
+    "text": "Una canción de Pacífico Expande para explorar su repertorio en NOODO.",
+    "path": "listen.html?track=29"
+  },
+  {
+    "id": "track-30",
+    "kind": "Canción",
+    "title": "El patio canta",
+    "subtitle": "Cimarrón Sonoro",
+    "text": "Marimba, cuerdas y percusión se encuentran en una sesión íntima. Un diálogo entre tradición y nuevas búsquedas.",
+    "path": "listen.html?track=30"
+  },
+  {
+    "id": "track-31",
+    "kind": "Canción",
+    "title": "Marea tropical",
+    "subtitle": "Pacífico Expande",
+    "text": "Percusión y melodía para compartir el movimiento.",
+    "path": "listen.html?track=31"
+  },
+  {
+    "id": "artist-32",
+    "kind": "Artista",
+    "title": "Bruma Roja",
+    "text": "Cuatro amigos, amplificadores encendidos y canciones que nacen de caminar Cali. Bruma Roja cruza guitarras ásperas con melodías para cantar juntos.",
+    "subtitle": "Rock",
+    "path": "artist.html?artist=32"
+  },
+  {
+    "id": "track-32",
+    "kind": "Canción",
+    "title": "Arder despacio",
+    "subtitle": "Bruma Roja",
+    "text": "Cuatro amigos, amplificadores encendidos y canciones que nacen de caminar Cali. Bruma Roja cruza guitarras ásperas con melodías para cantar juntos.",
+    "path": "listen.html?track=32"
+  },
+  {
+    "id": "track-33",
+    "kind": "Canción",
+    "title": "Una calle más",
+    "subtitle": "Bruma Roja",
+    "text": "Cuatro amigos, amplificadores encendidos y canciones que nacen de caminar Cali. Bruma Roja cruza guitarras ásperas con melodías para cantar juntos.",
+    "path": "listen.html?track=33"
+  },
+  {
+    "id": "track-34",
+    "kind": "Canción",
+    "title": "Todo lo que queda",
+    "subtitle": "Bruma Roja",
+    "text": "Cuatro amigos, amplificadores encendidos y canciones que nacen de caminar Cali. Bruma Roja cruza guitarras ásperas con melodías para cantar juntos.",
+    "path": "listen.html?track=34"
+  },
+  {
+    "id": "track-35",
+    "kind": "Canción",
+    "title": "Piedra y sol",
+    "subtitle": "Bruma Roja",
+    "text": "Cuatro amigos, amplificadores encendidos y canciones que nacen de caminar Cali. Bruma Roja cruza guitarras ásperas con melodías para cantar juntos.",
+    "path": "listen.html?track=35"
+  },
+  {
+    "id": "track-36",
+    "kind": "Canción",
+    "title": "Volver a empezar",
+    "subtitle": "Bruma Roja",
+    "text": "Cuatro amigos, amplificadores encendidos y canciones que nacen de caminar Cali. Bruma Roja cruza guitarras ásperas con melodías para cantar juntos.",
+    "path": "listen.html?track=36"
+  },
+  {
+    "id": "artist-37",
+    "kind": "Artista",
+    "title": "Órbita Sur",
+    "text": "Un dúo de sintetizadores, voces procesadas y percusión electrónica. Órbita Sur transforma sonidos cotidianos en canciones que se mueven entre la pista y la intimidad.",
+    "subtitle": "Electrónica",
+    "path": "artist.html?artist=37"
+  },
+  {
+    "id": "track-37",
+    "kind": "Canción",
+    "title": "Señal de regreso",
+    "subtitle": "Órbita Sur",
+    "text": "Un dúo de sintetizadores, voces procesadas y percusión electrónica. Órbita Sur transforma sonidos cotidianos en canciones que se mueven entre la pista y la intimidad.",
+    "path": "listen.html?track=37"
+  },
+  {
+    "id": "track-38",
+    "kind": "Canción",
+    "title": "Cuerpo celeste",
+    "subtitle": "Órbita Sur",
+    "text": "Un dúo de sintetizadores, voces procesadas y percusión electrónica. Órbita Sur transforma sonidos cotidianos en canciones que se mueven entre la pista y la intimidad.",
+    "path": "listen.html?track=38"
+  },
+  {
+    "id": "track-39",
+    "kind": "Canción",
+    "title": "Satélites",
+    "subtitle": "Órbita Sur",
+    "text": "Un dúo de sintetizadores, voces procesadas y percusión electrónica. Órbita Sur transforma sonidos cotidianos en canciones que se mueven entre la pista y la intimidad.",
+    "path": "listen.html?track=39"
+  },
+  {
+    "id": "track-40",
+    "kind": "Canción",
+    "title": "La última frecuencia",
+    "subtitle": "Órbita Sur",
+    "text": "Un dúo de sintetizadores, voces procesadas y percusión electrónica. Órbita Sur transforma sonidos cotidianos en canciones que se mueven entre la pista y la intimidad.",
+    "path": "listen.html?track=40"
+  },
+  {
+    "id": "track-41",
+    "kind": "Canción",
+    "title": "Gravedad",
+    "subtitle": "Órbita Sur",
+    "text": "Un dúo de sintetizadores, voces procesadas y percusión electrónica. Órbita Sur transforma sonidos cotidianos en canciones que se mueven entre la pista y la intimidad.",
+    "path": "listen.html?track=41"
+  },
+  {
+    "id": "artist-42",
+    "kind": "Artista",
+    "title": "Abril Neón",
+    "text": "Pop luminoso desde las terrazas de Cali. Dos voces y un teclado encuentran estribillos en las pequeñas historias: los mensajes a medianoche, el verano y las ganas de quedarse.",
+    "subtitle": "Pop",
+    "path": "artist.html?artist=42"
+  },
+  {
+    "id": "track-42",
+    "kind": "Canción",
+    "title": "Domingo contigo",
+    "subtitle": "Abril Neón",
+    "text": "Pop luminoso desde las terrazas de Cali. Dos voces y un teclado encuentran estribillos en las pequeñas historias: los mensajes a medianoche, el verano y las ganas de quedarse.",
+    "path": "listen.html?track=42"
+  },
+  {
+    "id": "track-43",
+    "kind": "Canción",
+    "title": "Fotos sin borrar",
+    "subtitle": "Abril Neón",
+    "text": "Pop luminoso desde las terrazas de Cali. Dos voces y un teclado encuentran estribillos en las pequeñas historias: los mensajes a medianoche, el verano y las ganas de quedarse.",
+    "path": "listen.html?track=43"
+  },
+  {
+    "id": "track-44",
+    "kind": "Canción",
+    "title": "Azotea",
+    "subtitle": "Abril Neón",
+    "text": "Pop luminoso desde las terrazas de Cali. Dos voces y un teclado encuentran estribillos en las pequeñas historias: los mensajes a medianoche, el verano y las ganas de quedarse.",
+    "path": "listen.html?track=44"
+  },
+  {
+    "id": "track-45",
+    "kind": "Canción",
+    "title": "Algo bonito",
+    "subtitle": "Abril Neón",
+    "text": "Pop luminoso desde las terrazas de Cali. Dos voces y un teclado encuentran estribillos en las pequeñas historias: los mensajes a medianoche, el verano y las ganas de quedarse.",
+    "path": "listen.html?track=45"
+  },
+  {
+    "id": "track-46",
+    "kind": "Canción",
+    "title": "Hasta mañana",
+    "subtitle": "Abril Neón",
+    "text": "Pop luminoso desde las terrazas de Cali. Dos voces y un teclado encuentran estribillos en las pequeñas historias: los mensajes a medianoche, el verano y las ganas de quedarse.",
+    "path": "listen.html?track=46"
+  },
+  {
+    "id": "artist-47",
+    "kind": "Artista",
+    "title": "Hierro Vivo",
+    "text": "Riffs densos, batería precisa y una voz que se niega a bajar el volumen. Hierro Vivo reúne cuatro músicos de la escena caleña alrededor del metal y la energía del escenario.",
+    "subtitle": "Metal",
+    "path": "artist.html?artist=47"
+  },
+  {
+    "id": "track-47",
+    "kind": "Canción",
+    "title": "Bajo el concreto",
+    "subtitle": "Hierro Vivo",
+    "text": "Riffs densos, batería precisa y una voz que se niega a bajar el volumen. Hierro Vivo reúne cuatro músicos de la escena caleña alrededor del metal y la energía del escenario.",
+    "path": "listen.html?track=47"
+  },
+  {
+    "id": "track-48",
+    "kind": "Canción",
+    "title": "Sin retroceder",
+    "subtitle": "Hierro Vivo",
+    "text": "Riffs densos, batería precisa y una voz que se niega a bajar el volumen. Hierro Vivo reúne cuatro músicos de la escena caleña alrededor del metal y la energía del escenario.",
+    "path": "listen.html?track=48"
+  },
+  {
+    "id": "track-49",
+    "kind": "Canción",
+    "title": "Pulso de acero",
+    "subtitle": "Hierro Vivo",
+    "text": "Riffs densos, batería precisa y una voz que se niega a bajar el volumen. Hierro Vivo reúne cuatro músicos de la escena caleña alrededor del metal y la energía del escenario.",
+    "path": "listen.html?track=49"
+  },
+  {
+    "id": "track-50",
+    "kind": "Canción",
+    "title": "La grieta",
+    "subtitle": "Hierro Vivo",
+    "text": "Riffs densos, batería precisa y una voz que se niega a bajar el volumen. Hierro Vivo reúne cuatro músicos de la escena caleña alrededor del metal y la energía del escenario.",
+    "path": "listen.html?track=50"
+  },
+  {
+    "id": "track-51",
+    "kind": "Canción",
+    "title": "Seguimos aquí",
+    "subtitle": "Hierro Vivo",
+    "text": "Riffs densos, batería precisa y una voz que se niega a bajar el volumen. Hierro Vivo reúne cuatro músicos de la escena caleña alrededor del metal y la energía del escenario.",
+    "path": "listen.html?track=51"
+  },
+  {
+    "id": "artist-52",
+    "kind": "Artista",
+    "title": "Río Lento",
+    "text": "Voz, saxofón y contrabajo en una conversación sin prisa. Río Lento mezcla soul y jazz con la calidez de una noche junto al río, dejando espacio para improvisar.",
+    "subtitle": "Soul",
+    "path": "artist.html?artist=52"
+  },
+  {
+    "id": "track-52",
+    "kind": "Canción",
+    "title": "Donde baja el agua",
+    "subtitle": "Río Lento",
+    "text": "Voz, saxofón y contrabajo en una conversación sin prisa. Río Lento mezcla soul y jazz con la calidez de una noche junto al río, dejando espacio para improvisar.",
+    "path": "listen.html?track=52"
+  },
+  {
+    "id": "track-53",
+    "kind": "Canción",
+    "title": "La pausa",
+    "subtitle": "Río Lento",
+    "text": "Voz, saxofón y contrabajo en una conversación sin prisa. Río Lento mezcla soul y jazz con la calidez de una noche junto al río, dejando espacio para improvisar.",
+    "path": "listen.html?track=53"
+  },
+  {
+    "id": "track-54",
+    "kind": "Canción",
+    "title": "A media luz",
+    "subtitle": "Río Lento",
+    "text": "Voz, saxofón y contrabajo en una conversación sin prisa. Río Lento mezcla soul y jazz con la calidez de una noche junto al río, dejando espacio para improvisar.",
+    "path": "listen.html?track=54"
+  },
+  {
+    "id": "track-55",
+    "kind": "Canción",
+    "title": "Orillas",
+    "subtitle": "Río Lento",
+    "text": "Voz, saxofón y contrabajo en una conversación sin prisa. Río Lento mezcla soul y jazz con la calidez de una noche junto al río, dejando espacio para improvisar.",
+    "path": "listen.html?track=55"
+  },
+  {
+    "id": "track-56",
+    "kind": "Canción",
+    "title": "Un poco más",
+    "subtitle": "Río Lento",
+    "text": "Voz, saxofón y contrabajo en una conversación sin prisa. Río Lento mezcla soul y jazz con la calidez de una noche junto al río, dejando espacio para improvisar.",
+    "path": "listen.html?track=56"
+  },
+  {
+    "id": "event-ND-R26-001",
+    "kind": "Evento",
+    "title": "Noche de nuevas frecuencias",
+    "subtitle": "Luna Marea · Electrónica",
+    "text": "Voces y sintetizadores se encuentran con las raíces del Pacífico en una noche dedicada a la electrónica local.",
+    "path": "event.html?event=ND-R26-001",
+    "date": "2026-11-27",
+    "time": "19:00",
+    "place": "San Antonio"
+  },
+  {
+    "id": "event-ND-R26-002",
+    "kind": "Evento",
+    "title": "Un patio para sonar",
+    "subtitle": "Cimarrón Sonoro · Fusión Pacífico",
+    "text": "Un patio abierto a las marimbas, la guitarra y las voces del Pacífico. Una tarde para descubrir proyectos de la ciudad.",
+    "path": "event.html?event=ND-R26-002",
+    "date": "2026-11-28",
+    "time": "17:00",
+    "place": "Granada"
+  },
+  {
+    "id": "event-ND-R26-003",
+    "kind": "Evento",
+    "title": "La ciudad en vivo",
+    "subtitle": "Bruma Roja · Indie",
+    "text": "Guitarras y canciones para encontrarnos con la escena independiente. Bruma Roja presenta un repertorio de historias urbanas.",
+    "path": "event.html?event=ND-R26-003",
+    "date": "2026-11-29",
+    "time": "18:00",
+    "place": "San Fernando"
+  },
+  {
+    "id": "event-ND-R26-004",
+    "kind": "Evento",
+    "title": "Voces que conectan",
+    "subtitle": "Mesa de creadores · Conversación",
+    "text": "Artistas, productores y gestores conversan sobre la creación independiente. Incluye preguntas del público y un espacio de intercambio de experiencias.",
+    "path": "event.html?event=ND-R26-004",
+    "date": "2026-12-01",
+    "time": "18:30",
+    "place": "El Peñón"
+  },
+  {
+    "id": "event-ND-R26-005",
+    "kind": "Evento",
+    "title": "Ritmo de barrio",
+    "subtitle": "Escuela del Pulso · Percusión",
+    "text": "Explora patrones de percusión en grupo, desde la escucha hasta la improvisación. Nivel inicial; instrumentos compartidos durante la actividad de muestra.",
+    "path": "event.html?event=ND-R26-005",
+    "date": "2026-12-02",
+    "time": "16:00",
+    "place": "San Nicolás"
+  },
+  {
+    "id": "event-ND-R26-006",
+    "kind": "Evento",
+    "title": "Jazz bajo las estrellas",
+    "subtitle": "Cuarteto Aurora · Jazz",
+    "text": "Saxofón, piano, contrabajo y batería en un encuentro íntimo. Estándares y composiciones originales para escuchar con calma.",
+    "path": "event.html?event=ND-R26-006",
+    "date": "2026-12-03",
+    "time": "19:30",
+    "place": "Centenario"
+  },
+  {
+    "id": "event-ND-R26-007",
+    "kind": "Evento",
+    "title": "Cine a todo volumen",
+    "subtitle": "Pantalla Sonora · Cine",
+    "text": "Una proyección de cortos musicales seguida de una conversación sobre sonido, memoria y ciudad. La selección es parte de esta programación ficticia.",
+    "path": "event.html?event=ND-R26-007",
+    "date": "2026-12-04",
+    "time": "18:00",
+    "place": "San Cayetano"
+  },
+  {
+    "id": "event-ND-R26-008",
+    "kind": "Evento",
+    "title": "Vinilos al atardecer",
+    "subtitle": "Selectores del Sur · Discos",
+    "text": "Una tarde de intercambio, coleccionismo y escucha de discos. Puestos de sellos independientes y sesiones de selección musical.",
+    "path": "event.html?event=ND-R26-008",
+    "date": "2026-12-05",
+    "time": "15:00",
+    "place": "Alameda"
+  },
+  {
+    "id": "event-ND-R26-009",
+    "kind": "Evento",
+    "title": "Cuerpo y raíz",
+    "subtitle": "Colectivo Movimiento · Danza",
+    "text": "Movimiento, respiración y música para explorar el cuerpo en grupo. Un laboratorio abierto a principiantes y personas con experiencia.",
+    "path": "event.html?event=ND-R26-009",
+    "date": "2026-12-06",
+    "time": "10:00",
+    "place": "Tequendama"
+  },
+  {
+    "id": "event-ND-R26-010",
+    "kind": "Evento",
+    "title": "Escribir para sonar",
+    "subtitle": "Laboratorio de Letras · Composición",
+    "text": "Transforma una idea en letra y melodía con ejercicios de escritura y escucha. Trae un cuaderno; no necesitas experiencia musical previa.",
+    "path": "event.html?event=ND-R26-010",
+    "date": "2026-12-08",
+    "time": "15:00",
+    "place": "La Floresta"
+  },
+  {
+    "id": "story-luna-marea",
+    "kind": "Artículo",
+    "title": "Luna Marea: escuchar la ciudad después del ruido",
+    "subtitle": "Luna Marea",
+    "text": "Una mirada a las texturas, las pausas y los pequeños detalles que dan forma a su universo electrónico.\n\nHay canciones que no intentan llenar todos los espacios. Prefieren dejar una puerta abierta: una textura que aparece al fondo, un pulso tranquilo, una melodía que tarda en llegar. En el universo de Luna Marea, esa atención al detalle es el punto de partida.\n\nLa ciudad como punto de partida\nEl recorrido propuesto por su catálogo invita a escuchar Cali desde otro lugar. Más allá del movimiento y el volumen, aparecen escenas pequeñas: el regreso a casa, la luz de una ventana, el silencio que queda después de una conversación. La electrónica funciona aquí como un lenguaje para imaginar esos momentos.\n\nEntre luces y capas de sonido\nEntre luces abre la puerta a esta selección. Su pulso nocturno y sus texturas electrónicas sugieren una escucha sin prisa. En lugar de buscar un único instante protagonista, la propuesta pone el acento en cómo conviven las capas: lo que se escucha al frente y lo que se descubre al volver a la canción.\n\nUn recorrido para escuchar con calma\nCruzar la noche, Aire violeta, De regreso al río y Raíz eléctrica completan el recorrido del perfil. Sus títulos dibujan un mapa de sensaciones y lugares. La invitación es sencilla: empezar por una pista, dejar que avance y regresar a ese detalle que llamó la atención.\n\nConocer a quien está detrás\nEsta sección de NOODO está pensada para acercarnos a los procesos de los artistas: sus referencias, los espacios donde crean y las preguntas que acompañan cada lanzamiento. Aquí podrán convivir perfiles, conversaciones y diarios de estudio, siempre conectados con la música que escuchamos.",
+    "path": "article.html?story=luna-marea"
+  }
+]

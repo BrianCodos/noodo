@@ -8,3 +8,5 @@ node_modules/
 *.key
 coverage/
 .openai/
+*.tsbuildinfo
+noodo-admin/dist/

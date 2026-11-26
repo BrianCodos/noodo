@@ -1,0 +1,324 @@
+{
+  "version": "0.1",
+  "status": "planned_not_implemented",
+  "designSystem": "../../noodo-design-system/dist/noodo-design-system-v0.2.json",
+  "designTokens": "../../noodo-design-system/dist/noodo-tokens-v0.2.css",
+  "routes": [
+    {
+      "path": "/acceso",
+      "screen": "Acceso y recuperación"
+    },
+    {
+      "path": "/inicio",
+      "screen": "Resumen y pendientes"
+    },
+    {
+      "path": "/proyectos",
+      "screen": "Listado / filtros / crear"
+    },
+    {
+      "path": "/proyectos/:id",
+      "screen": "Resumen del expediente"
+    },
+    {
+      "path": "/proyectos/:id/contactos",
+      "screen": "Contactos vinculados"
+    },
+    {
+      "path": "/proyectos/:id/cotizaciones",
+      "screen": "Cotizaciones del proyecto"
+    },
+    {
+      "path": "/proyectos/:id/reuniones",
+      "screen": "Reuniones y calendario"
+    },
+    {
+      "path": "/proyectos/:id/actas",
+      "screen": "Actas y decisiones"
+    },
+    {
+      "path": "/proyectos/:id/compromisos",
+      "screen": "Compromisos y evidencias"
+    },
+    {
+      "path": "/proyectos/:id/documentos",
+      "screen": "Documentos y solicitudes de firma"
+    },
+    {
+      "path": "/proyectos/:id/actividad",
+      "screen": "Historial"
+    },
+    {
+      "path": "/contactos",
+      "screen": "Directorio unificado y ficha"
+    },
+    {
+      "path": "/cotizaciones",
+      "screen": "Listado general y editor"
+    },
+    {
+      "path": "/calendario",
+      "screen": "Agenda general y reunión"
+    },
+    {
+      "path": "/actas",
+      "screen": "Listado general y acta"
+    },
+    {
+      "path": "/legal",
+      "screen": "Documentos: Corporativo / Por proyecto"
+    },
+    {
+      "path": "/legal/pendientes",
+      "screen": "Por firmar / esperando al otro socio"
+    },
+    {
+      "path": "/documentos/:id",
+      "screen": "Documento, versiones y firmantes"
+    },
+    {
+      "path": "/documentos/:id/firmar",
+      "screen": "Revisar / identidad / firmar"
+    },
+    {
+      "path": "/configuracion",
+      "screen": "Perfil, socios, seguridad e integración"
+    }
+  ],
+  "componentGroups": [
+    {
+      "name": "Estructura compartida",
+      "priority": "P0",
+      "components": [
+        {
+          "name": "AppShell",
+          "strategy": "Nuevo",
+          "contract": "Barra lateral 248 px, cabecera 64 px, área de contenido; menú móvil accesible."
+        },
+        {
+          "name": "PageHeader",
+          "strategy": "Nuevo",
+          "contract": "Título, contexto, acción principal y acciones secundarias."
+        },
+        {
+          "name": "ProjectSelector",
+          "strategy": "Nuevo",
+          "contract": "Proyecto actual, búsqueda y opción Todos; mantiene filtros."
+        },
+        {
+          "name": "Breadcrumb / Tabs",
+          "strategy": "Reutilizar",
+          "contract": "Navegación de expediente y ubicación; teclado y foco visibles."
+        },
+        {
+          "name": "Search / FilterBar",
+          "strategy": "Adaptar",
+          "contract": "Buscar, responsable, estado, fechas y limpiar filtros."
+        },
+        {
+          "name": "NotificationList",
+          "strategy": "Nuevo",
+          "contract": "Pendientes de firma, reuniones y compromisos; enlaza al registro."
+        }
+      ]
+    },
+    {
+      "name": "Base de formularios y estados",
+      "priority": "P0",
+      "components": [
+        {
+          "name": "Button / IconButton / TextLink",
+          "strategy": "Reutilizar",
+          "contract": "Primario, secundario, destructivo, carga e inactivo; objetivo 44 px."
+        },
+        {
+          "name": "TextField / Textarea / Select",
+          "strategy": "Reutilizar",
+          "contract": "Etiqueta persistente, ayuda, validación y preservación al fallar."
+        },
+        {
+          "name": "Checkbox / Radio",
+          "strategy": "Reutilizar",
+          "contract": "Consentimiento sin premarcar; grupos con leyenda."
+        },
+        {
+          "name": "Badge / Avatar / Tooltip",
+          "strategy": "Reutilizar",
+          "contract": "Estados con texto e icono; iniciales y ayuda accesibles."
+        },
+        {
+          "name": "Dialog / Drawer",
+          "strategy": "Reutilizar",
+          "contract": "Foco contenido, Escape, cierre y retorno del foco al origen."
+        },
+        {
+          "name": "Toast / Alert / EmptyState",
+          "strategy": "Reutilizar",
+          "contract": "Distinguir vacío, sin resultados, sin permiso y error."
+        },
+        {
+          "name": "Skeleton / Progress / Error",
+          "strategy": "Reutilizar",
+          "contract": "Carga real, reintento, sesión vencida y conservación del contexto."
+        },
+        {
+          "name": "Pagination",
+          "strategy": "Reutilizar",
+          "contract": "Conservar búsqueda y filtros al cambiar página."
+        }
+      ]
+    },
+    {
+      "name": "Información administrativa",
+      "priority": "P0",
+      "components": [
+        {
+          "name": "DataTable",
+          "strategy": "Nuevo",
+          "contract": "Columnas ordenables, filas accionables, selección y paginación; tarjetas en móvil."
+        },
+        {
+          "name": "MetricCard",
+          "strategy": "Nuevo",
+          "contract": "Indicador y vínculo a lista filtrada; sin gráficas decorativas."
+        },
+        {
+          "name": "ProjectCard / ProjectHeader",
+          "strategy": "Nuevo",
+          "contract": "Nombre, responsable, estado, próxima fecha y resumen."
+        },
+        {
+          "name": "ContactPicker / ContactDetail",
+          "strategy": "Nuevo",
+          "contract": "Personas y empresas del directorio; relaciones sin duplicar contactos."
+        },
+        {
+          "name": "ActivityTimeline",
+          "strategy": "Nuevo",
+          "contract": "Actor, acción, fecha y versión; permisos de solo lectura."
+        },
+        {
+          "name": "CommitmentList / CommitmentForm",
+          "strategy": "Nuevo",
+          "contract": "Responsable, vencimiento, estado y evidencia; distinto del contrato."
+        },
+        {
+          "name": "DateTimePicker",
+          "strategy": "Adaptar",
+          "contract": "Fechas legibles, zona America/Bogota y validación de rangos."
+        }
+      ]
+    },
+    {
+      "name": "Cotizaciones y reuniones",
+      "priority": "P1",
+      "components": [
+        {
+          "name": "QuoteEditor / LineItems",
+          "strategy": "Nuevo",
+          "contract": "Servicios, cantidad, precio COP, descuentos e impuestos configurables."
+        },
+        {
+          "name": "QuoteTotals / QuotePreview",
+          "strategy": "Nuevo",
+          "contract": "Cálculo consistente, vigencia, condiciones, PDF y versión enviada."
+        },
+        {
+          "name": "Calendar / Agenda",
+          "strategy": "Nuevo",
+          "contract": "Mes, semana y agenda; agenda accesible por teclado y móvil."
+        },
+        {
+          "name": "MeetingForm / MeetingDetail",
+          "strategy": "Nuevo",
+          "contract": "Participantes, proyecto, horario, enlace y agenda."
+        },
+        {
+          "name": "MinutesEditor / Decisions",
+          "strategy": "Nuevo",
+          "contract": "Asistentes, temas, acuerdos y responsables; borrador y versión cerrada."
+        }
+      ]
+    },
+    {
+      "name": "Documentos y firma",
+      "priority": "P0",
+      "components": [
+        {
+          "name": "DocumentList / Upload",
+          "strategy": "Adaptar",
+          "contract": "Archivo, versión, categoría, proyecto o Corporativo y validación de carga."
+        },
+        {
+          "name": "DocumentViewer",
+          "strategy": "Nuevo",
+          "contract": "Documento completo, zoom, páginas, descargar y alternativa accesible."
+        },
+        {
+          "name": "SignerList / SignerStatus",
+          "strategy": "Nuevo",
+          "contract": "Cada persona y su estado real; quién falta y cuándo firmó."
+        },
+        {
+          "name": "SignatureStepper",
+          "strategy": "Nuevo",
+          "contract": "Revisar → confirmar identidad → firmar; guardar avance sin firmar."
+        },
+        {
+          "name": "IdentityChallenge",
+          "strategy": "Nuevo",
+          "contract": "Verificación del proveedor; expiración, error, reintento y recuperación."
+        },
+        {
+          "name": "ConsentPanel",
+          "strategy": "Nuevo",
+          "contract": "Aceptación explícita del mecanismo y contenido de la versión mostrada."
+        },
+        {
+          "name": "SigningSession",
+          "strategy": "Nuevo",
+          "contract": "Sesión integrada; procesando, cancelación y proveedor no disponible."
+        },
+        {
+          "name": "SignatureResult / EvidencePanel",
+          "strategy": "Nuevo",
+          "contract": "Firma propia recibida, esperando socio o firmado por todos; original y evidencias."
+        },
+        {
+          "name": "VersionHistory / ChangeRequest",
+          "strategy": "Nuevo",
+          "contract": "Historial inalterado; cambios crean versión nueva con nueva solicitud."
+        }
+      ]
+    }
+  ],
+  "signature": {
+    "uiSteps": [
+      "Revisar documento",
+      "Confirmar identidad",
+      "Firmar"
+    ],
+    "provider": "Por configurar",
+    "completionAuthority": "Servidor tras verificar proveedor, firmante y versión",
+    "documentStates": [
+      "Borrador",
+      "En revisión",
+      "Pendiente de firmas",
+      "Parcialmente firmado",
+      "Firmado por todos",
+      "Solicitud rechazada",
+      "Solicitud vencida",
+      "Solicitud cancelada"
+    ],
+    "required": [
+      "Autenticación y autorización por firmante",
+      "Documento y anexos congelados antes de solicitar firma",
+      "Consentimiento ligado a la versión",
+      "Sesiones individuales y temporales",
+      "Resultado del proveedor verificado en servidor",
+      "Operaciones idempotentes y protección contra duplicados",
+      "Original y evidencias descargables con permisos",
+      "Nuevas versiones no sobrescriben firmas previas"
+    ]
+  }
+}

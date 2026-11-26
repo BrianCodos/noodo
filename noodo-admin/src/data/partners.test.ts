@@ -1,0 +1,13 @@
+import {describe,it,expect} from 'vitest';
+import {emptyDatabase} from './seed';
+import {normalizeDatabase,upsert} from './repository';
+import type {Project,Task} from './types';
+const project:Project={id:'p',name:'Prueba',client:'NOODO',kind:'Interno',owner:'Socio 1',status:'En curso',deadline:'',description:'',contactIds:[]};
+const task:Task={id:'t',projectId:'p',title:'Producción',owner:'Socio 2',due:'2026-12-01',done:false};
+const base=()=>normalizeDatabase({...emptyDatabase(),projects:[project],tasks:[task]});
+describe('Directorio de socios y asignaciones',()=>{
+ it('identifica socios anteriores una sola vez sin borrar el historial',()=>{const legacy={...emptyDatabase(),projects:[project,{...project,id:'both',owner:'Ambos socios'}],tasks:[task]};const original=structuredClone(legacy);const db=normalizeDatabase(legacy);expect(db.projects[0]).toMatchObject({owner:'Brian Cobaleda',partnerIds:['partner-brian']});expect(db.tasks[0]).toMatchObject({owner:'Keyla Ortiza',partnerIds:['partner-keyla']});expect(db.projects[1].partnerIds).toEqual(['partner-brian','partner-keyla']);expect(normalizeDatabase(db)).toEqual(db);expect(legacy).toEqual(original);expect(db.activity[0].before).toMatchObject({owner:'Socio 1'});});
+ it('agrega un socio y permite asignarlo a proyecto y tarea mediante su ID',()=>{let db=upsert(base(),'partners',{id:'new',name:'Nuevo socio',email:'',active:true},'Alta');db=upsert(db,'projects',{...db.projects[0],partnerIds:['new']},'Asignar');db=upsert(db,'tasks',{...db.tasks[0],partnerIds:['new']},'Asignar');expect(db.projects[0].owner).toBe('Nuevo socio');expect(db.tasks[0].owner).toBe('Nuevo socio');});
+ it('renombrar conserva asignaciones y snapshots históricos',()=>{const initial=base();const snapshots=structuredClone(initial.activity);const db=upsert(initial,'partners',{...initial.partners[1],name:'Keyla O.'},'Renombrar');expect(db.tasks[0]).toMatchObject({owner:'Keyla O.',partnerIds:['partner-keyla']});expect(db.activity.slice(-snapshots.length)).toEqual(snapshots);expect(initial.partners[1].name).toBe('Keyla Ortiza');});
+ it('rechaza duplicados y evita nuevas asignaciones a socios inactivos',()=>{expect(()=>upsert(base(),'partners',{id:'new',name:' brian  cobaleda ',email:'',active:true},'Alta')).toThrow('Ya existe');const initial=base();const db=upsert(initial,'partners',{...initial.partners[1],active:false},'Desactivar');expect(db.tasks[0].partnerIds).toEqual(['partner-keyla']);expect(()=>upsert(db,'projects',{...db.projects[0],partnerIds:['partner-keyla']},'Asignar')).toThrow('inactivo');expect(()=>upsert(db,'partners',{...db.partners[0],active:false},'Desactivar')).toThrow('al menos');});
+});

@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "noodo · Mapa funcional del dashboard",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1150,
+      740
+    ]
+  },
+  "components": [
+    {
+      "id": "acceso",
+      "type": "frontend",
+      "label": "Acceso privado",
+      "sublabel": "Sesión de cada socio",
+      "pos": [
+        440,
+        30
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "inicio",
+      "type": "frontend",
+      "label": "Inicio",
+      "sublabel": "Pendientes y actividad",
+      "pos": [
+        70,
+        210
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "proyectos",
+      "type": "frontend",
+      "label": "Proyectos",
+      "sublabel": "Listado y expediente único",
+      "pos": [
+        440,
+        210
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "ajustes",
+      "type": "frontend",
+      "label": "Configuración",
+      "sublabel": "Perfil y seguridad",
+      "pos": [
+        810,
+        210
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "contactos",
+      "type": "frontend",
+      "label": "Contactos",
+      "sublabel": "Directorio compartido",
+      "pos": [
+        70,
+        410
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "expediente",
+      "type": "frontend",
+      "label": "Dentro del proyecto",
+      "sublabel": "Resumen · equipo · compromisos",
+      "pos": [
+        440,
+        410
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "legal",
+      "type": "frontend",
+      "label": "Legal y firmas",
+      "sublabel": "Proyecto o Corporativo",
+      "pos": [
+        810,
+        410
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "cotizaciones",
+      "type": "frontend",
+      "label": "Cotizaciones",
+      "sublabel": "Versiones y aceptación",
+      "pos": [
+        70,
+        610
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "calendario",
+      "type": "frontend",
+      "label": "Calendario",
+      "sublabel": "Reuniones vinculadas",
+      "pos": [
+        440,
+        610
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "actas",
+      "type": "frontend",
+      "label": "Actas",
+      "sublabel": "Decisiones y responsables",
+      "pos": [
+        810,
+        610
+      ],
+      "size": [
+        270,
+        90
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "acceso",
+      "to": "inicio"
+    },
+    {
+      "from": "acceso",
+      "to": "proyectos"
+    },
+    {
+      "from": "acceso",
+      "to": "ajustes"
+    },
+    {
+      "from": "proyectos",
+      "to": "expediente"
+    },
+    {
+      "from": "expediente",
+      "to": "contactos"
+    },
+    {
+      "from": "expediente",
+      "to": "legal"
+    },
+    {
+      "from": "expediente",
+      "to": "calendario"
+    },
+    {
+      "from": "contactos",
+      "to": "cotizaciones"
+    },
+    {
+      "from": "legal",
+      "to": "actas"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Un expediente por proyecto",
+      "items": [
+        "Las secciones globales filtran los mismos registros."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Firma dentro de noodo",
+      "items": [
+        "Revisar → confirmar identidad → firmar."
+      ]
+    }
+  ]
+}

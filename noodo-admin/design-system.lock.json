@@ -1,0 +1,10 @@
+{
+  "specification": "noodo-design-system-v0.3.json",
+  "tokens": "noodo-tokens-v0.3.css",
+  "reviewedOn": "2026-11-24",
+  "sha256": {
+    "noodo-design-system-v0.3.json": "63c1be337d38cf73498e4a8e49c049f94b911247522419384e43e37d73a6a427",
+    "noodo-tokens-v0.3.css": "55f10513bba7c6ff35981693d98ab37d54bd7d728f8ffb38cad0ce24c729d50a"
+  },
+  "reviewNotes": "Revisados tokens, fundamentos y contratos de administración vigentes: superficies planas, tipografía semántica, Dialog / Drawer con foco y Escape, formularios con protección de cambios y registro de actividad. Extensiones administrativas compuestas con esos contratos. Revisión 2026-11-24: tokens CSS sin cambios (huella idéntica); revisados contratos vigentes y nuevas reglas de superficies planas/cardSurface, colecciones de artistas y navegación externa. La administración mantiene superficies planas y contratos Button, IconButton, Select, Avatar y Dialog."
+}

@@ -1,0 +1,11 @@
+import {describe,it,expect} from 'vitest';
+import {breadcrumbs,projectSwitchPath} from './breadcrumbs';
+import {emptyDatabase} from '../data/seed';
+describe('Ruta contextual',()=>{
+ const db=emptyDatabase();db.projects=[{id:'p',name:'Sesiones',client:'',kind:'',owner:'Brian',status:'En curso',deadline:'',description:'',contactIds:[]}];db.tasks=[{id:'t',projectId:'p',title:'Producción',owner:'Brian',due:'',done:false},{id:'s',parentId:'t',projectId:'p',title:'Sonido',owner:'Keyla',due:'',done:false}];
+ it('mantiene proyecto, sección y tarea principal al abrir una subtarea directamente',()=>{expect(breadcrumbs('/registros/tasks/s',db)).toEqual([{label:'Inicio',to:'/inicio'},{label:'Proyectos',to:'/proyectos'},{label:'Sesiones',to:'/proyectos/p'},{label:'Tareas',to:'/proyectos/p/tareas'},{label:'Producción',to:'/registros/tasks/t'},{label:'Sonido',to:'/registros/tasks/s'}]);});
+ it('cambia de proyecto conservando sección sin reutilizar un registro de otro expediente',()=>{expect(projectSwitchPath('/proyectos/p/eventos',db,'next')).toBe('/proyectos/next/eventos');expect(projectSwitchPath('/registros/tasks/s',db,'next')).toBe('/proyectos/next/tareas');expect(projectSwitchPath('/proyectos/p',db,'next')).toBe('/proyectos/next');});
+ it('resuelve nombres actualizados y secciones globales',()=>{expect(breadcrumbs('/proyectos/p/documentos',db).map(c=>c.label)).toEqual(['Inicio','Proyectos','Sesiones','Documentos']);expect(breadcrumbs('/configuracion',db).at(-1)?.label).toBe('Configuración');expect(breadcrumbs('/inicio',db)).toHaveLength(1);});
+ it('un registro eliminado tiene una ruta segura y no rompe la navegación',()=>{expect(breadcrumbs('/registros/tasks/missing',db).at(-1)?.label).toBe('Registro no encontrado');});
+ it('conserva la tarea de origen de los adjuntos de entregables',()=>{const withFile={...db,deliverables:[{id:'d',projectId:'p',taskId:'s',title:'Archivo',criteria:'',due:'',status:'Pendiente' as const,url:''}],attachments:[{id:'a',projectId:'p',entityType:'deliverable' as const,entityId:'d',filename:'sonido.pdf',blobKey:'a',size:1,createdAt:''}]};const result=breadcrumbs('/visor/archivo/a',withFile);expect(result.at(-2)?.to).toBe('/registros/tasks/s');expect(result.at(-1)?.label).toBe('sonido.pdf');});
+});

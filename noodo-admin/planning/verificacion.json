@@ -1,0 +1,12 @@
+{
+  "diagram_type": "architecture",
+  "output": "/Users/codos/Documents/Musicaly/noodo-admin/planning/mapa.html",
+  "specification_sha256": "b47ad99659694ed495e3d885978ba601a275a2b03d64202ece87c96e3495c387",
+  "artifact_sha256": "547361b8abf8c4d17eb352aab4f7ee0320b71ad5cf955814dd3dca1fd2a700c8",
+  "validation": "9/9 showcase, 0 errors, 0 warnings",
+  "browser_evidence": "passed",
+  "visual_review": "passed",
+  "correction_rounds": 0,
+  "planning_review": "Se inspeccionó la captura inicial a 1440×1100; enlaces locales y rutas únicas comprobados. No es una app operativa.",
+  "diagram_note": "Diagrama técnico auxiliar con visor Archify en inglés. El mapa del sitio y la planeación visual con tokens de noodo están en index.html."
+}
