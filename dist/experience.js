@@ -108,7 +108,7 @@
  trackColumns.before(playlistSection,favoritesHeading);
  let playlistMarkup='';
  function renderPlaylistGrid(){
-  const isSaved=view==='saved',isLibrary=view==='all',all=playlists();
+  const isSaved=view==='saved',isLibrary=view==='all'||isSaved,all=playlists();
   playlistSection.hidden=!isSaved&&!isLibrary;favoritesHeading.hidden=!isSaved&&!isLibrary;
   songsHeading.classList.toggle('library-overview-label',isLibrary);
   playlistSection.classList.toggle('library-overview',isLibrary);

@@ -49,12 +49,13 @@ La revisión visual y funcional más reciente se realizó a 1771×1314, 1093×82
 
 GitHub Actions publica la carpeta `dist/` en GitHub Pages cuando hay cambios en ella en `main`. El workflow también puede ejecutarse manualmente desde Actions.
 
-## Actualización del reproductor · UI 82
+## Actualización del reproductor · UI 83
 
 - Cabecera flexible con buscador ampliado y un ancho máximo de 1440 px para búsqueda y herramientas. Los filtros de Radar, vista de artistas, tipo de resultado y Comunidad se muestran a la derecha según la sección activa. En móvil y tablet se agrupan en un botón accesible, conservando sus controles y estado originales.
 - Buscador único en la barra superior: canciones, artistas, Sessions, playlists, géneros, eventos y Comunidad. Admite tildes, varias palabras y códigos de evento. Presenta sugerencias y una vista completa con filtros por tipo; en Radar filtra las tarjetas y los marcadores sin salir del mapa. El foro utiliza el mismo campo. La búsqueda local no envía consultas a terceros.
 - Radar sin título ni buscador duplicados; conserva el encabezado accesible y coloca el filtro de fechas junto a los controles de vista.
 - Confirmación accesible antes de abrir Google Maps: «Aceptar» abre el destino en otra pestaña; «Quedarse en la página» o Escape conserva el evento y restaura el foco.
+- «Me gusta» abre directamente la biblioteca en escritorio y móvil, también sin perfil demo, y filtra únicamente los favoritos guardados. No redirige a Comunidad ni muestra todo el catálogo.
 - Biblioteca «Me gusta» con playlists, tarjetas para crear y ver todas, y controles de reproducción debajo de las portadas.
 - Navegación «Sessions» y acceso a playlists junto al buscador. Los artistas por género abren en cuadrícula por defecto y conservan la opción de lista.
 - Tres playlists editoriales de NOODO por género, con portadas, página de canciones y reproducción normal o aleatoria. `dist/genre-playlists.js` selecciona únicamente canciones del género, incluidos géneros secundarios. Las colecciones sin catálogo muestran «Próximamente»; no se añaden a las playlists personales.
@@ -70,7 +71,7 @@ node scripts/build-workspace.cjs --check
 node --test tests/*.test.cjs
 ```
 
-Validación de esta actualización: 33 pruebas automatizadas. Revisión visual y funcional en escritorio y móvil de búsqueda, navegación y confirmación de Google Maps, además de las comprobaciones previas de biblioteca y playlists editoriales. El contenido musical continúa siendo una demostración sin catálogo de audio conectado.
+Validación de esta actualización: 36 pruebas automatizadas. Revisión visual y funcional en escritorio y móvil de búsqueda, navegación y confirmación de Google Maps, además de las comprobaciones previas de biblioteca y playlists editoriales. El contenido musical continúa siendo una demostración sin catálogo de audio conectado.
 
 ## Radar · Mapbox
 
