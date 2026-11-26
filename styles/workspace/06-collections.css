@@ -115,3 +115,5 @@
 
 /* Cards use flat surfaces; editorial cards inherit the page background. */
 .editorial-card{background:transparent;box-shadow:none}
+
+.artist-card-playback .artist-card-play{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--noodo-on-soft,var(--background));border-radius:50%;flex:0 0 44px}

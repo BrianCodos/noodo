@@ -88,3 +88,15 @@ Revisar 320, 390, 525, 768, 1024 y 1440 px, con biblioteca abierta/cerrada y tex
 - `LibraryNavigationItem`: componente compartido en las nueve entradas, altura de 48 px, icono de 20 px y un solo estado activo derivado de la vista visible; rail plegado de 44 px. El estado se conserva al abrir y cerrar paneles y al acceder a una sección que solicita perfil de demo.
 - `CommunityEntryCard`: tres columnas con arte de campaña coherente para Salas de chat, Nodo Match y Foro. En móvil se apilan y la selección abre la sección correspondiente tras entrar a la demo.
 - `TrackRow` variante `compact`: canción y artista en dos líneas, acciones compartidas de guardar y añadir a playlist de 44 px. La cola lateral omite portada, duración, género y botón de play independiente; el título y Enter/Espacio siguen reproduciendo.
+
+### Directorio y navegación · 26 noviembre 2026
+
+Artistas abre el catálogo completo sin perfil demo y reutiliza ArtistCard y el selector de vista existente. El sidebar expandido usa objetivos de 56 px, padding horizontal de 16 px y separación de 8 px mediante tokens semánticos; el rail plegado mantiene sus botones de 44 px. La comparación con el commit anterior no mostró cambios de geometría: esta ampliación responde al ajuste visual solicitado.
+
+Ajuste posterior del sidebar: anclado al borde izquierdo sin el desplazamiento exterior de 20/14 px, conservando la posición del contenido central. Botones de 48 px con padding vertical de 4 px y texto Body (16 px) con interlínea Label (20 px). El rail plegado permanece en 44 px.
+
+UI 86 compacta el sidebar a botones de 44 px, padding vertical de 2 px y gap de 4 px, conservando texto de 16 px. Elimina asimismo los desplazamientos de izquierda en las reglas base de escritorio y tablet.
+
+- **UI 87:** texto del menú aumentado exactamente 2 pt mediante token semántico (16 px + 2 pt); sidebar expandido 50 px más ancho en escritorio y reproductor lateral de 272 a 372 px desde 1101 px. Se conservan las dimensiones compactas de tablet, móvil y barras plegadas.
+
+- **UI 88:** Artistas incluye Bandas recomendadas mediante el mismo montaje de tarjetas adaptables que Inicio, con Ver todas al final. ArtistCard muestra reproducción como botón circular de icono de 44 px y conserva su nombre accesible específico por artista. Sin revisión visual nueva; comprobaciones automatizadas y sintaxis del sitio.

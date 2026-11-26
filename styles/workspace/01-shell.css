@@ -1,5 +1,5 @@
 /* One app shell: the center owns every full view; side panels are optional. */
-:root{--shell-header-height:80px;--shell-top-offset:140px;--shell-dock-space:150px;--shell-left-width:176px;--shell-right-width:234px}
+:root{--shell-header-height:80px;--shell-top-offset:140px;--shell-dock-space:150px;--shell-left-width:226px;--shell-right-width:234px}
 .workspace-app>.player-topbar{position:sticky;top:0;z-index:60;max-width:none;width:100%;background:var(--noodo-player-background);margin:0}
 .workspace-app #content{max-width:1800px;padding:0 20px calc(var(--shell-dock-space) + 24px);margin:auto}
 .workspace-app .workspace-tools{display:flex;z-index:40;justify-content:space-between;gap:12px;padding:10px 0;margin:0 0 14px;background:var(--background)}
@@ -92,7 +92,7 @@
  .artist-view .concert-row{grid-template-columns:52px minmax(0,1fr) 32px;}.artist-view .concert-row>img{display:none}.artist-view .event-date{min-height:92px}.artist-view .event-place{align-items:start}.artist-view .event-place svg{flex-shrink:0;margin-top:2px}
  .central-panel,#context-view{padding:18px}.artist-view .event-badges>span{padding:2px 7px}.center-stage .artist-view .section-heading{display:block}.center-stage .artist-view .section-note{text-align:left;margin-top:10px}
 }
-@media(min-width:1500px){:root{--shell-left-width:210px;--shell-right-width:290px}.workspace-app .workspace-grid{gap:28px}}
+@media(min-width:1500px){:root{--shell-left-width:260px;--shell-right-width:290px}.workspace-app .workspace-grid{gap:28px}}
 @media(max-width:1000px) and (min-width:761px){:root{--shell-left-width:150px;--shell-right-width:200px}.workspace-app #content{padding-inline:14px}.workspace-app .workspace-grid{gap:14px}.workspace-app .player-sidebar{padding-inline:4px}.workspace-app .sidebar-heading h2{font:var(--type-meta)}}
 @media(max-width:760px){
  .workspace-app #content{padding-inline:16px}.workspace-app .workspace-grid,.workspace-app.library-collapsed .workspace-grid,.workspace-app.info-collapsed .workspace-grid,.workspace-app.library-collapsed.info-collapsed .workspace-grid{grid-template-columns:minmax(0,1fr)}

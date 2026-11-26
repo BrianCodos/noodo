@@ -36,9 +36,17 @@
  }
  const bandGrid=document.getElementById('band-slider');
  const bandHTML=bandGrid.innerHTML;
- bandGrid.setAttribute('aria-label','Bandas recomendadas');
- bandGrid.append(moreTile('Ver todas las bandas','Bandas',()=>directory('all-recommended-artists','Todas las bandas',bandHTML)));
- register(bandGrid,true);
+ function mountRecommendedGrid(grid){
+  grid.innerHTML=bandHTML;grid.setAttribute('aria-label','Bandas recomendadas');
+  grid.append(moreTile('Ver todas las bandas','Bandas',()=>directory('all-recommended-artists','Todas las bandas',bandHTML)));
+  register(grid,true);
+ }
+ mountRecommendedGrid(bandGrid);
+ window.noodoRecommendedArtists={mount(host){
+  host.classList.add('recommended');host.setAttribute('aria-label','Bandas recomendadas');
+  host.innerHTML='<div class="section-heading"><h2>Bandas recomendadas</h2></div><div class="band-slider" role="region" aria-label="Bandas recomendadas"></div>';
+  mountRecommendedGrid(host.querySelector('.band-slider'));
+ }};
  const genreGrid=document.getElementById('genre-slider');
  genreGrid.querySelector('[data-all-genres]')?.remove();
  genreGrid.append(moreTile('Ver todas las categorías musicales','Géneros',()=>window.noodoGenres.open()));

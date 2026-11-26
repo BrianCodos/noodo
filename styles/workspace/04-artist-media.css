@@ -26,10 +26,10 @@
 @container stage (max-width:560px){.booking-grid article+article{border-left:0;border-top:var(--player-divider-width) solid var(--player-divider-color);padding-left:0}.gallery-viewer{height:min(var(--gallery-viewer-height,500px),70vh)}}
 @media(min-width:761px){
  .workspace-app .workspace-grid::before{content:'';grid-column:1;grid-row:1;min-width:0}
- .workspace-app .player-sidebar,.workspace-app.library-collapsed #player-sidebar{position:fixed;top:var(--shell-header-height);left:20px;bottom:0;width:var(--shell-left-width);height:calc(100dvh - var(--shell-header-height));max-height:none}
+ .workspace-app .player-sidebar,.workspace-app.library-collapsed #player-sidebar{position:fixed;top:var(--shell-header-height);left:0;bottom:0;width:var(--shell-left-width);height:calc(100dvh - var(--shell-header-height));max-height:none}
  .workspace-app.library-collapsed #player-sidebar{width:var(--shell-rail-width)}
 }
-@media(min-width:761px) and (max-width:1000px){.workspace-app .player-sidebar,.workspace-app.library-collapsed #player-sidebar{left:14px}}
+@media(min-width:761px) and (max-width:1000px){.workspace-app .player-sidebar,.workspace-app.library-collapsed #player-sidebar{left:0}}
 .center-stage .artist-view .section-heading h2{margin:0}
 .center-stage .artist-view .section-heading{margin-bottom:24px}
 

@@ -135,3 +135,6 @@
 #section-player-sidebar .track-row-compact [data-save]{grid-column:2;grid-row:1}
 #section-player-sidebar .track-row-compact .playlist-add{grid-column:3;grid-row:1}
 #section-player-sidebar .track-row-compact .icon-button{width:44px!important;min-width:44px!important;height:44px!important;padding:10px!important}
+
+/* Expanded desktop player; keep compact widths on tablets. */
+@media(min-width:1101px){.workspace-app.section-player-mode{--section-player-expanded-width:372px;--shell-right-width:var(--section-player-expanded-width)}}

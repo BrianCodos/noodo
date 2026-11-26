@@ -68,7 +68,7 @@ window.noodoCommunity={open,requireProfile:gate,
 };
 document.getElementById('library-community').onclick=()=>window.noodoWorkspace.navigate('listen.html?section=community');
 // Capture all existing library/follow actions before their handlers mutate local data.
-const protectedSelector='[data-user-playlist-create],#create-library-playlist,[data-save],[data-session-save],[data-artist-save],[data-playlist-add],[data-follow],#save-current,#library-artists,#top-playlists,#follow-artist,#follow,#create-playlist,#add-to-playlist';
+const protectedSelector='[data-user-playlist-create],#create-library-playlist,[data-save],[data-session-save],[data-artist-save],[data-playlist-add],[data-follow],#save-current,#top-playlists,#follow-artist,#follow,#create-playlist,#add-to-playlist';
 document.addEventListener('click',e=>{const b=e.target.closest(protectedSelector);if(b&&!identity()){e.preventDefault();e.stopImmediatePropagation();gate(()=>{if(b.isConnected)b.click();else open();},b.dataset.navigation||b.dataset.mobileView||(b.id==='top-playlists'?'playlists':'community'));}},true);
 const profile=document.getElementById('profile');profile?.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();if(identity())open();else gate(open);},true);
 window.addEventListener('storage',e=>{if(e.key?.startsWith(PRESENCE))paintParticipants();else if(e.key===KEY&&host&&!host.hidden&&identity())render();});

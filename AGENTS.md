@@ -220,4 +220,17 @@ Antes de subir: revisar status/diff, incluir archivos nuevos del dashboard, conf
 
 Al cerrar trabajo relevante, actualizar aquí decisiones vigentes, límites y pendientes, y documentar comprobaciones con fecha. La memoria incluye solo información de NOODO; nunca copiar conversaciones personales o datos de otros proyectos.
 
+- **26 noviembre, corrección de Artistas:** el acceso público abre `artist-directory` con todos los perfiles únicos del catálogo mediante `noodoArtistCollection`; no solicita perfil demo para consultar artistas. Guardar/seguir conserva el control existente. Sidebar expandido: 56 px de altura, padding de 16 px y gap de 8 px; rail plegado de 44 px. El commit anterior tenía los mismos estilos: se amplía el componente por la solicitud visual, no se revierte el resto de la app.
+  Validación: 38 pruebas del sitio aprobadas, CSS generado sincronizado y sintaxis JS correcta. Sin nueva revisión visual: el control del navegador no está disponible en esta sesión. Cambios locales, pendientes de publicación.
+
+- **26 noviembre, refinamiento del sidebar (UI 85):** sustituye las medidas UI 84 por botones de 48 px, padding vertical de 4 px y texto Body de 16 px con interlínea Label. Sidebar expandido anclado a la izquierda; se absorbe el antiguo desplazamiento en su ancho para mantener alineado el contenido central. Rail plegado conservado.
+
 - **26 noviembre, mapa online:** el despliegue de Pages configura Mapbox con `scripts/configure-mapbox.cjs`, exige el secret público `MAPBOX_PUBLIC_TOKEN` y recorta espacios de su valor. Versiona la URL de configuración en los cuatro HTML con el ID y el intento de Actions para no reutilizar una configuración vacía en caché después de configurar el secret. El token se inyecta solo en el artefacto publicado; no se incorpora al historial Git. Diagnóstico: SDK y estilo de Mapbox respondieron HTTP 200 con el token publicado; la vista abierta aún usaba la configuración previa. Pruebas de publicación cubren todas las entradas, nuevos runs/reintentos y rechazo de tokens ausentes o no públicos.
+
+- **UI 86, ajuste posterior:** sidebar sin desplazamiento izquierdo también en la regla base de escritorio/tablet. Botones expandidos de 44 px, padding vertical de 2 px y separación de 4 px; texto de 16 px conservado. Requiere recargar la página abierta para aplicar el CSS actualizado. Sin revisión visual nueva en navegador.
+
+- **UI 87:** texto del menú aumentado exactamente 2 pt mediante token semántico (16 px + 2 pt); sidebar expandido 50 px más ancho en escritorio y reproductor lateral de 272 a 372 px desde 1101 px. Se conservan las dimensiones compactas de tablet, móvil y barras plegadas.
+
+- **UI 88:** Artistas incluye Bandas recomendadas mediante el mismo montaje de tarjetas adaptables que Inicio, con Ver todas al final. ArtistCard muestra reproducción como botón circular de icono de 44 px y conserva su nombre accesible específico por artista. Sin revisión visual nueva; comprobaciones automatizadas y sintaxis del sitio.
+
+- **Publicación UI 88:** se preparan juntos los ajustes UI 84–88 de directorio de artistas, recomendaciones, iconos de reproducción y dimensiones del sidebar/reproductor. Validación: 41 pruebas aprobadas, sintaxis JS y CSS generado correctos. Se conserva la configuración local Mapbox fuera del commit. No se repitió QA visual de navegador.

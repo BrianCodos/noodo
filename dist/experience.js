@@ -97,7 +97,14 @@
  function syncDefault(){saved=new Set(playlists().find(p=>p.id==='my-playlist')?.tracks||[]);paintCurrent();}
  function renderIfLibrary(){if(document.getElementById('playlist-library'))renderLibrary();}
  function followedArtists(){const extras=read('noodo-followed-profiles',[]),canonical=[...new Set(tracks.map((t,i)=>artistProfileIndex(i)))].map(i=>({key:'noodo-follow-'+(i===0?'lunamarea':'artista-muestra-'+i),name:tracks[i].artist,image:tracks[i].image,href:'artist.html?artist='+i,type:profileKind(i)}));return [...new Map([...canonical,...(Array.isArray(extras)?extras:[])].map(a=>[a.key,a])).values()].filter(a=>localStorage.getItem(a.key)==='true');}
- function openArtists(){const el=panel('followed-artists','Tus artistas'),artists=followedArtists();show(el,`<div class="section-heading"><div><h1>Tus artistas</h1><p>Los proyectos que sigues, en un mismo lugar.</p></div><button class="pill outline" id="discover-artists">Explorar artistas</button></div><div class="genre-artists-grid">${artists.map(a=>`<a class="genre-artist-card" href="${esc(a.href)}"><img src="${esc(a.image)}" alt=""><strong>${esc(a.name)}</strong><span>${esc(a.type)}</span></a>`).join('')}</div>${artists.length?'':'<div class="library-empty"><h2>Aquí empieza tu escena</h2><p>Presiona Seguir artista en un perfil y lo encontrarás aquí.</p></div>'}`);el.querySelector('#discover-artists').onclick=()=>window.noodoGenres.open();activate('artists');}
+ function openArtists(){
+  const el=panel('artist-directory','Artistas');el.dataset.navigation='artists';
+  const profiles=[...new Set(tracks.map((track,index)=>artistProfileIndex(index)))];
+  show(el,'<div class="section-heading"><h1>Artistas</h1></div><div class="genre-artists-grid" id="all-artists-grid"></div><section id="artist-recommendations"></section>');
+  window.noodoArtistCollection.mount(el.querySelector('#all-artists-grid'),profiles);
+  window.noodoRecommendedArtists.mount(el.querySelector('#artist-recommendations'));
+  activate('artists');
+ }
  window.noodoLibrary={searchEntries:()=>[...playlists(),...Object.keys(genreNames).flatMap(key=>window.noodoCuratedPlaylists.forGenre(key))],openSearchResult:p=>p.owner==='NOODO'?openCuratedPlaylist(p):window.noodoCommunity.requireProfile(()=>openLibrary(p.id),'playlists'),open:openLibrary,pick,artists:openArtists,mountGenrePlaylists,syncSaved(ids){const all=playlists(),entry=all.find(p=>p.id==='my-playlist');entry.tracks=ids;write(playlistKey,all);renderIfLibrary();},rememberArtist(record){const list=read('noodo-followed-profiles',[]);write('noodo-followed-profiles',[...(Array.isArray(list)?list:[]).filter(a=>a.key!==record.key),record]);}};
 
  // The saved view combines the user's playlists with their liked music.
