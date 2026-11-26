@@ -3,12 +3,18 @@ export const INTERNAL_PROJECT='noodo-internal';
 export function scopeDatabase(db:Database):Database {
  const next=structuredClone(db);let changed=false;
  const ensure=(id:string)=>{const key=id||INTERNAL_PROJECT;if(!next.projects.some(p=>p.id===key)){next.projects.push({id:key,name:key===INTERNAL_PROJECT?'Gestión interna NOODO':`Proyecto recuperado · ${key}`,client:'NOODO',kind:'Proyecto interno',owner:'Ambos socios',status:'En planeación',deadline:'',description:'Expediente que conserva los registros anteriores. Puedes editar su nombre y alcance.',contactIds:[]});changed=true;}return key;};
- for(const key of ['quotes','meetings','minutes','tasks','documents','transactions','attachments','followUps','deliverables'] as const){next[key]=next[key].map(row=>{const projectId=ensure(row.projectId);if(projectId!==row.projectId){changed=true;return {...row,projectId};}return row;}) as never;}
+ for(const key of ['quotes','meetings','minutes','tasks','documents','transactions','attachments','followUps','deliverables'] as const){next[key]=next[key].map(row=>{if(key==='followUps'&&'entityType' in row&&row.entityType==='budget')return row;const projectId=ensure(row.projectId);if(projectId!==row.projectId){changed=true;return {...row,projectId};}return row;}) as never;}
  for(const c of next.contacts)if(!next.projects.some(p=>p.contactIds.includes(c.id))){const id=ensure(c.projectId||'');next.projects.find(p=>p.id===id)!.contactIds.push(c.id);changed=true;}
  if(changed)next.activity.unshift({id:crypto.randomUUID(),projectId:next.projects.find(p=>p.id===INTERNAL_PROJECT)?.id||next.projects[0]?.id||'',description:'Organización de registros anteriores dentro de proyectos; IDs, archivos e historial conservados.',at:new Date().toISOString(),actor:'Migración local',action:'Migración'});
  return next;
 }
 export function validateScope<K extends Collection>(db:Database,collection:K,record:Database[K][number]) {
+ if(collection==='followUps'&&(record as Database['followUps'][number]).entityType==='budget'){
+  const note=record as Database['followUps'][number];const budget=db.budgets.find(b=>b.id===note.entityId);
+  if(!budget||(budget.projectId||'')!==note.projectId)throw new Error('El comentario debe pertenecer al presupuesto indicado.');
+  if(!note.body.trim())throw new Error('Escribe un comentario.');
+  return;
+ }
  if(collection==='projects'){
   const project=record as Project;
   if(project.contactIds.some(id=>!db.contacts.some(c=>c.id===id)))throw new Error('Selecciona contactos existentes.');

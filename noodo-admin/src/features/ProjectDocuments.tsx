@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {FileText,Upload,History,Trash2,RotateCcw,Pencil} from 'lucide-react';
 import {useStore} from '../data/Store';
-import type {Attachment,Document,Minutes,FileVersion} from '../data/types';
+import type {Attachment,Document,Minutes,FileVersion,Database} from '../data/types';
 import {putFile} from '../data/repository';
 import {currentAttachments,attachmentVersions,fileSnapshot} from '../data/file-versions';
 import {Button,SectionHeader,SearchField,Select,Field,FormActions,Alert,Badge} from '../components/ui';
@@ -12,13 +12,16 @@ import {DocumentViewer} from '../components/domain/DocumentViewer';
 import {MinutesEditor} from './Minutes';
 import {dateLabel,matches} from '../lib/format';
 type Row={id:string;kind:'Documento'|'Acta'|'Adjunto';title:string;filename:string;version:number;date:string;deletedAt?:string;href:string;source:string;record:Document|Minutes|Attachment};
-export function ProjectDocuments({projectId}:{projectId:string}){
- const {db,save}=useStore();const [query,setQuery]=useState('');const [type,setType]=useState('Todos');const [trash,setTrash]=useState(false);const [upload,setUpload]=useState<Row|'new'|null>(null);const [file,setFile]=useState<File|null>(null);const [title,setTitle]=useState('');const [busy,setBusy]=useState(false);const [error,setError]=useState('');const [history,setHistory]=useState<Row|null>(null);const [preview,setPreview]=useState<FileVersion|null>(null);const [acta,setActa]=useState<Minutes|'new'|null>(null);
- const rows:Row[]=[
+export function projectDocumentRows(db:Database,projectId:string):Row[]{
+ return [
   ...db.documents.filter(d=>d.projectId===projectId).map(d=>({id:`d-${d.id}`,kind:'Documento' as const,title:d.title,filename:d.filename,version:d.version,date:d.createdAt,deletedAt:d.deletedAt,href:`/documentos/${d.id}`,source:'Proyecto',record:d})),
   ...db.minutes.filter(d=>d.projectId===projectId).map(d=>({id:`m-${d.id}`,kind:'Acta' as const,title:d.title,filename:d.filename||'Acta de texto',version:d.version||1,date:d.createdAt||'',deletedAt:d.deletedAt,href:`/visor/acta/${d.id}`,source:db.meetings.find(m=>m.id===d.meetingId)?.title||'Proyecto',record:d})),
   ...currentAttachments(db.attachments.filter(d=>d.projectId===projectId)).map(d=>({id:`a-${d.id}`,kind:'Adjunto' as const,title:d.filename,filename:d.filename,version:d.version||1,date:d.createdAt,deletedAt:d.deletedAt,href:`/visor/archivo/${d.id}`,source:d.entityType==='meeting'?'Evento':d.entityType==='deliverable'?'Entregable':d.entityType==='task'?'Tarea':d.entityType==='transaction'?'Contabilidad':'Proyecto',record:d}))
  ];
+}
+export function ProjectDocuments({projectId}:{projectId:string}){
+ const {db,save}=useStore();const [query,setQuery]=useState('');const [type,setType]=useState('Todos');const [trash,setTrash]=useState(false);const [upload,setUpload]=useState<Row|'new'|null>(null);const [file,setFile]=useState<File|null>(null);const [title,setTitle]=useState('');const [busy,setBusy]=useState(false);const [error,setError]=useState('');const [history,setHistory]=useState<Row|null>(null);const [preview,setPreview]=useState<FileVersion|null>(null);const [acta,setActa]=useState<Minutes|'new'|null>(null);
+ const rows=projectDocumentRows(db,projectId);
  const filtered=rows.filter(r=>Boolean(r.deletedAt)===trash&&(type==='Todos'||r.kind===type)&&matches(`${r.title} ${r.filename} ${r.source}`,query));
  const openUpload=(row:Row|'new')=>{setError('');setFile(null);setTitle(row==='new'?'':row.title);setUpload(row);};
  const toggleDeleted=(row:Row)=>{setError('');try{const deletedAt=row.deletedAt?undefined:new Date().toISOString();const label=`${deletedAt?'Enviado a papelera':'Restaurado'}: ${row.title}`;if(row.kind==='Adjunto')save('attachments',{...row.record as Attachment,deletedAt},label);else if(row.kind==='Acta')save('minutes',{...row.record as Minutes,deletedAt},label);else save('documents',{...row.record as Document,deletedAt},label);}catch(e){setError((e as Error).message);}};

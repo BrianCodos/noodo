@@ -1,3 +1,4 @@
+import {mentionTarget} from './mentions';
 import type {Database} from '../data/types';
 import catalog from '../data/catalog.json';
 export interface SearchEntry {id:string;kind:string;title:string;text:string;url:string;subtitle:string}
@@ -17,7 +18,7 @@ export function buildSearchIndex(db:Database):SearchEntry[]{
  db.tasks.forEach(t=>add('Tarea',t.id,t.title,t,`/registros/tasks/${t.id}`,project(t.projectId)));
  db.deliverables.forEach(d=>add('Entregable',d.id,d.title,d,`/registros/tasks/${d.taskId}`,project(d.projectId)));
  db.transactions.forEach(t=>add('Contabilidad',t.id,t.title,t,`/registros/transactions/${t.id}`,project(t.projectId)));
- db.followUps.forEach(n=>add('Seguimiento',n.id,n.body,n,n.entityType==='meeting'?`/reuniones/${n.entityId}`:`/registros/tasks/${n.entityId}`,project(n.projectId)));
+ db.followUps.forEach(n=>add('Seguimiento',n.id,n.body,n,mentionTarget(n),project(n.projectId)));
  db.activity.forEach(a=>add('LOG',a.id,a.description,a,`/registros/activity/${a.id}`,project(a.projectId)));
  catalog.forEach(c=>add(c.kind,c.id,c.title,c,`/catalogo/${c.id}`,c.subtitle));
  return entries;

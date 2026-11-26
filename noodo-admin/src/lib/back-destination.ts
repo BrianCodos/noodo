@@ -4,8 +4,9 @@ export function backDestination(pathname:string,db:Database):{to:string;label:st
  const project=(pid:string,section='')=>({to:`/proyectos/${pid}${section?`/${section}`:''}`,label:'Volver al proyecto'});
  if(!area||area==='inicio')return null;
  if(area==='presupuestos'&&id)return {to:'/presupuestos',label:'Volver a presupuestos'};
+ if(area==='acuerdos'&&id)return {to:'/acuerdos',label:'Volver a Acuerdos'};
  if(area==='proyectos'&&id)return {to:'/proyectos',label:'Todos los proyectos'};
- if(area==='documentos'){if(detail==='firmar')return {to:`/documentos/${id}`,label:'Volver al documento'};const d=db.documents.find(d=>d.id===id);if(d)return project(d.projectId,'documentos');}
+ if(area==='documentos'){if(detail==='firmar')return {to:`/documentos/${id}`,label:'Volver al documento'};const d=db.documents.find(d=>d.id===id);if(d?.kind==='agreement')return {to:'/acuerdos',label:'Volver a Acuerdos'};if(d)return project(d.projectId,'documentos');}
  if(area==='reuniones'){const m=db.meetings.find(m=>m.id===id);if(m)return project(m.projectId,'eventos');}
  if(area==='registros'){
   if(id==='tasks'){const t=db.tasks.find(t=>t.id===detail);if(t)return t.parentId?{to:`/registros/tasks/${t.parentId}`,label:'Volver a la tarea principal'}:project(t.projectId,'tareas');}

@@ -1,22 +1,20 @@
 import {priorityOptions} from '../components/domain/PrioritySelect';
-import {ProjectDescription} from '../components/domain/ProjectDescription';
+import {ProjectOverview} from '../components/domain/ProjectOverview';
 import {RichTextEditor} from '../components/ui/RichTextEditor';
 import {FollowUps} from '../components/domain/RecordExtras';
 import {Workspace,DetailPanel} from '../components/ui/DetailPanel';
 import {ProjectList} from '../components/domain/ProjectList';
-import {currentAttachments} from '../data/file-versions';
 import {ProjectDocuments} from './ProjectDocuments';
 import {ProjectHeader} from '../components/domain/ProjectHeader';
 import {PartnerAssignment} from '../components/domain/PartnerAssignment';
 import {useState} from 'react';
 import {useSearchParams,Link,NavLink,useParams,Navigate} from 'react-router-dom';
-import {Plus,CalendarDays,Users,FolderKanban} from 'lucide-react';
+import {Plus} from 'lucide-react';
 import {useStore} from '../data/Store';
 import type {Project,ProjectStatus,Task} from '../data/types';
-import {PageHeader,Button,Field,Textarea,Select,Alert,FormActions,SearchField,EmptyState,StatusBadge,Avatar,SectionHeader} from '../components/ui';
+import {PageHeader,Button,Field,Textarea,Select,Alert,FormActions,SearchField,EmptyState,StatusBadge,SectionHeader} from '../components/ui';
 import {Dialog} from '../components/ui/Dialog';
-import {TaskList} from '../components/domain/TaskList';
-import {dateLabel,matches,today} from '../lib/format';
+import {matches,today} from '../lib/format';
 import {Contacts} from './Contacts';
 import {Accounting} from './Accounting';
 import {projectProgress} from '../lib/task-progress';
@@ -43,8 +41,8 @@ export function Projects(){
   {deleting&&<Dialog title="Borrar proyecto" onClose={()=>setDeleting(null)}><p>«{deleting.name}» se moverá a la papelera. Puedes restaurarlo con todas sus tareas, documentos, eventos e historial.</p>{error&&<Alert kind="error">{error}</Alert>}<div className="form-actions"><Button variant="secondary" onClick={()=>setDeleting(null)}>Cancelar</Button><Button variant="danger" onClick={remove}>Mover a la papelera</Button></div></Dialog>}
  </>;
 }
-export function ProjectDetail(){const {id,tab}=useParams();const {db,save}=useStore();const project=db.projects.find(p=>p.id===id);const [editing,setEditing]=useState(false);if(!project)return <EmptyState title="Proyecto no encontrado" action={<Link to="/proyectos">Volver a proyectos</Link>}/>;if(tab==='actas'||tab==='reuniones')return <Navigate replace to={`/proyectos/${id}/${tab==='actas'?'documentos':'eventos'}`}/>;const tasks=db.tasks.filter(t=>t.projectId===id);const tabs=[['','Resumen'],['tareas','Tareas'],['cotizaciones','Cotizaciones'],['eventos','Eventos'],['documentos','Documentos'],['contactos','Contactos'],['contabilidad','Contabilidad'],['actividad','Actividad']];return <>{project.deletedAt&&<Alert>Este proyecto está en la papelera. <Button variant="ghost" onClick={()=>save('projects',{...project,deletedAt:undefined},`Proyecto restaurado: ${project.name}`)}>Restaurar proyecto</Button></Alert>}<ProjectHeader key={`header-${project.id}`} project={project} onEdit={()=>setEditing(true)}/><nav className="project-tabs" aria-label="Secciones del proyecto">{tabs.map(([key,label])=><NavLink key={key} end to={`/proyectos/${id}${key?`/${key}`:''}`}>{label}</NavLink>)}</nav>
- {(!tab)&&<Workspace detail={<DetailPanel title="Comentarios del proyecto">{db.followUps.some(n=>n.entityType==='project'&&n.entityId===project.id)&&<p className="meta">{project.name}</p>}<FollowUps key={project.id} entityType="project" entityId={project.id} projectId={project.id} title="Comentarios" conversation/></DetailPanel>}><div className="project-overview"><div className="detail-columns"><ProjectDescription key={project.id} project={project}><dl className="detail-facts"><div><dt>Responsable</dt><dd><Avatar name={project.owner} small/>{project.owner}</dd></div><div><dt>Fecha objetivo</dt><dd><CalendarDays size={16}/>{dateLabel(project.deadline,{year:'numeric'})}</dd></div><div><dt>Contactos</dt><dd><Users size={16}/>{project.contactIds.length} vinculados</dd></div></dl></ProjectDescription><section className="panel panel-padded"><SectionHeader title="Próximos pasos" action={<Link to={`/proyectos/${id}/tareas`} className="text-link">Ver todos</Link>}/><TaskList tasks={tasks.filter(t=>!t.parentId&&!t.done).slice(0,3)}/></section></div><div className="overview-links">{[['cotizaciones','Presupuestos',db.budgets.filter(b=>!b.deletedAt)],['eventos','Eventos',db.meetings],['documentos','Documentos',[...db.documents,...db.minutes,...currentAttachments(db.attachments)].filter(d=>!d.deletedAt)]].map(([path,label,items])=><Link className="panel overview-link" key={path as string} to={`/proyectos/${id}/${path}`}><FolderKanban size={20}/><span>{label as string}</span><strong>{(items as {projectId:string}[]).filter(x=>x.projectId===id).length}</strong></Link>)}</div></div></Workspace>}
+export function ProjectDetail(){const {id,tab}=useParams();const {db,save}=useStore();const project=db.projects.find(p=>p.id===id);const [editing,setEditing]=useState(false);if(!project)return <EmptyState title="Proyecto no encontrado" action={<Link to="/proyectos">Volver a proyectos</Link>}/>;if(tab==='actas'||tab==='reuniones')return <Navigate replace to={`/proyectos/${id}/${tab==='actas'?'documentos':'eventos'}`}/>;const tabs=[['','Resumen'],['tareas','Tareas'],['cotizaciones','Cotizaciones'],['eventos','Eventos'],['documentos','Documentos'],['contactos','Contactos'],['contabilidad','Contabilidad'],['actividad','Actividad']];return <>{project.deletedAt&&<Alert>Este proyecto está en la papelera. <Button variant="ghost" onClick={()=>save('projects',{...project,deletedAt:undefined},`Proyecto restaurado: ${project.name}`)}>Restaurar proyecto</Button></Alert>}<ProjectHeader key={`header-${project.id}`} project={project} onEdit={()=>setEditing(true)}/><nav className="project-tabs" aria-label="Secciones del proyecto">{tabs.map(([key,label])=><NavLink key={key} end to={`/proyectos/${id}${key?`/${key}`:''}`}>{label}</NavLink>)}</nav>
+ {(!tab)&&<Workspace detail={<DetailPanel title="Comentarios del proyecto">{db.followUps.some(n=>n.entityType==='project'&&n.entityId===project.id)&&<p className="meta">{project.name}</p>}<FollowUps key={project.id} entityType="project" entityId={project.id} projectId={project.id} title="Comentarios" conversation/></DetailPanel>}><ProjectOverview project={project}/></Workspace>}
  {tab==='contactos'&&<Contacts key={id} projectId={id}/>} {tab==='contabilidad'&&<Accounting key={id} projectId={id}/>}
  {tab==='cotizaciones'&&<Quotes key={id} projectId={id}/>} {tab==='eventos'&&<Meetings key={id} projectId={id}/>} {tab==='documentos'&&<ProjectDocuments key={id} projectId={id!}/>}
  {(tab==='tareas'||tab==='compromisos')&&<Tasks key={id} projectId={id}/>}

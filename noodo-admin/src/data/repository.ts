@@ -1,4 +1,6 @@
-import {projectPeople,extractMentions} from '../lib/mentions';
+import {commentPeople,extractMentions} from '../lib/mentions';
+import {validateAgreement} from './agreements';
+import {validateBudgetApprovals} from './budget-approvals';
 import {validateBudget,validateMoneySource,applyBudgetBalances} from './budgets';
 import {preserveVersions,currentAttachments} from './file-versions';
 import {initialPartners,normalizePartners,ownership,validatePartner,validateAssignment} from './partners';
@@ -26,16 +28,17 @@ export function upsert<K extends Collection>(db: Database, collection: K, record
  const before=rows.find(r=>r.id===record.id);
  const has=!!before;
  if (has && collection==='followUps') throw new Error('Este registro se conserva sin sobrescribir. Añade una nueva entrada.');
- if(collection==='followUps'){const note=record as Database['followUps'][number];const {mentions:_ignored,...rest}=note;const mentions=extractMentions(note.body,projectPeople(db,note.projectId));record={...rest,...(mentions.length?{mentions}:{})} as typeof record;}
+ if(collection==='followUps'){const note=record as Database['followUps'][number];const {mentions:_ignored,...rest}=note;const mentions=extractMentions(note.body,commentPeople(db,note));record={...rest,...(mentions.length?{mentions}:{})} as typeof record;}
  if(collection==='attachments'){
   const file=record as Database['attachments'][number];const old=before as typeof file|undefined;
   if(old){const {deletedAt:_old,...original}=old;const {deletedAt:_new,...incoming}=file;if(JSON.stringify(original)!==JSON.stringify(incoming))throw new Error('Este registro se conserva sin sobrescribir. Añade una nueva versión.');}
   else if(file.previousId){const previous=db.attachments.find(a=>a.id===file.previousId);if(!previous||previous.projectId!==file.projectId||previous.entityType!==file.entityType||previous.entityId!==file.entityId||!currentAttachments(db.attachments).some(a=>a.id===previous.id)||previous.deletedAt)throw new Error('La versión anterior debe ser la vigente del mismo expediente.');record={...file,groupId:previous.groupId||previous.id,version:(previous.version||1)+1} as typeof record;}
   else record={...file,groupId:file.id,version:1} as typeof record;
  }
+ if(collection==='documents')validateAgreement(record as Database['documents'][number],db,before as Database['documents'][number]|undefined);
  if(collection==='documents'||collection==='minutes')record=preserveVersions(before as Database['documents'][number]|Database['minutes'][number]|undefined,record as Database['documents'][number]|Database['minutes'][number]) as typeof record;
  if(collection==='transactions'){const item=record as Database['transactions'][number];if(!Number.isFinite(item.amount)||item.amount<=0)throw new Error('El importe debe ser mayor que cero.');}
- if(collection==='budgets'){const b=record as Database['budgets'][number];validateBudget(b,db,before as typeof b|undefined);record={...b,isActive:!b.deletedAt&&!b.archivedAt&&!!b.isActive,isPinned:!b.deletedAt&&!!b.isPinned} as typeof record;}
+ if(collection==='budgets'){const b=record as Database['budgets'][number];validateBudget(b,db,before as typeof b|undefined);validateBudgetApprovals(b,db,before as typeof b|undefined,author);record={...b,isActive:!b.deletedAt&&!b.archivedAt&&!!b.isActive,isPinned:!b.deletedAt&&!!b.isPinned} as typeof record;}
  if(collection==='moneySources')validateMoneySource(record as Database['moneySources'][number]);
  if(collection==='partners'){validatePartner(record as Database['partners'][number],db);record={...record,name:(record as Database['partners'][number]).name.trim(),email:(record as Database['partners'][number]).email.trim()} as typeof record;}
  else if(collection!=='budgets'&&collection!=='moneySources')validateScope(db,collection,record);

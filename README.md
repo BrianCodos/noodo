@@ -6,6 +6,8 @@ Proyecto cultural y musical de Cali: sitio de descubrimiento, sistema de diseño
 
 ## Empezar
 
+En este equipo Windows ya preparado, ejecutar `.\iniciar-local.ps1` desde PowerShell en la raíz para iniciar ambos servidores. Ver [entorno local de Windows](docs/LOCAL_WINDOWS.md).
+
 Requisitos: Git, Python 3 y Node.js 24 con npm.
 
 ```sh

@@ -1,13 +1,13 @@
 import type {Attachment,Document,Minutes,FileVersion} from './types';
 type Versioned = Document | Minutes;
 export function fileSnapshot(row:Versioned):FileVersion {
- return {version:row.version||1,title:row.title,filename:row.filename||'',blobKey:row.blobKey,content:'body' in row?`${row.body}\n\nDecisiones y acuerdos\n${row.decisions}`:row.content,createdAt:row.createdAt||''};
+ return {version:row.version||1,title:row.title,filename:row.filename||'',blobKey:row.blobKey,content:'body' in row?`${row.body}\n\nDecisiones y acuerdos\n${row.decisions}`:row.content,createdAt:row.createdAt||'',...('kind' in row&&row.kind==='agreement'?{signerIds:[...(row.signerIds||[])]}:{})};
 }
 export function preserveVersions(before:Versioned|undefined,record:Versioned):Versioned {
  if(!before)return {...record,version:1,createdAt:record.createdAt||new Date().toISOString(),versions:[]};
  const old=fileSnapshot(before),next=fileSnapshot(record);
- const changed=['title','filename','blobKey','content'].some(k=>old[k as keyof FileVersion]!==next[k as keyof FileVersion]);
- return {...record,version:changed?old.version+1:old.version,createdAt:changed?new Date().toISOString():before.createdAt||'',versions:changed?[...(before.versions||[]),old]:(before.versions||[])};
+ const changed=['title','filename','blobKey','content'].some(k=>old[k as keyof FileVersion]!==next[k as keyof FileVersion])||JSON.stringify(old.signerIds)!==JSON.stringify(next.signerIds);
+ return {...record,...(changed&&'kind' in record&&record.kind==='agreement'?{status:'Borrador' as const}:{}),version:changed?old.version+1:old.version,createdAt:changed?new Date().toISOString():before.createdAt||'',versions:changed?[...(before.versions||[]),old]:(before.versions||[])};
 }
 export function currentAttachments(rows:Attachment[]):Attachment[]{
  const groups=new Map<string,Attachment>();
